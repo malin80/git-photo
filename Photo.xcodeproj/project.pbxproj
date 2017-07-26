@@ -16,6 +16,8 @@
 		F481E9121F283B0400EE3D7C /* shopping_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = F481E9111F283B0400EE3D7C /* shopping_selected.png */; };
 		F481E9141F283DD600EE3D7C /* shopping_delete.png in Resources */ = {isa = PBXBuildFile; fileRef = F481E9131F283DD600EE3D7C /* shopping_delete.png */; };
 		F481E9581F28551C00EE3D7C /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F481E9571F28551C00EE3D7C /* BaseViewController.m */; };
+		F481E95B1F28581600EE3D7C /* DatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F481E95A1F28581600EE3D7C /* DatePickerView.m */; };
+		F481E95E1F2865C900EE3D7C /* SexPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F481E95D1F2865C900EE3D7C /* SexPickerView.m */; };
 		F48237281F2605A200DDD487 /* AddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F48237271F2605A200DDD487 /* AddressViewController.m */; };
 		F482372B1F2606BC00DDD487 /* AddressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F482372A1F2606BC00DDD487 /* AddressTableViewCell.m */; };
 		F482372E1F26CC4D00DDD487 /* personal_address_delete.png in Resources */ = {isa = PBXBuildFile; fileRef = F482372C1F26CC4D00DDD487 /* personal_address_delete.png */; };
@@ -120,6 +122,10 @@
 		F481E9131F283DD600EE3D7C /* shopping_delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shopping_delete.png; sourceTree = "<group>"; };
 		F481E9561F28551C00EE3D7C /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		F481E9571F28551C00EE3D7C /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		F481E9591F28581600EE3D7C /* DatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerView.h; sourceTree = "<group>"; };
+		F481E95A1F28581600EE3D7C /* DatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerView.m; sourceTree = "<group>"; };
+		F481E95C1F2865C900EE3D7C /* SexPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SexPickerView.h; sourceTree = "<group>"; };
+		F481E95D1F2865C900EE3D7C /* SexPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SexPickerView.m; sourceTree = "<group>"; };
 		F48237261F2605A200DDD487 /* AddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressViewController.h; sourceTree = "<group>"; };
 		F48237271F2605A200DDD487 /* AddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressViewController.m; sourceTree = "<group>"; };
 		F48237291F2606BC00DDD487 /* AddressTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressTableViewCell.h; sourceTree = "<group>"; };
@@ -595,6 +601,10 @@
 				F4A7A2551F25BC22009FAAEE /* NavigationBar.m */,
 				F48185221F25E25800349143 /* CustomActionSheet.h */,
 				F48185231F25E25800349143 /* CustomActionSheet.m */,
+				F481E9591F28581600EE3D7C /* DatePickerView.h */,
+				F481E95A1F28581600EE3D7C /* DatePickerView.m */,
+				F481E95C1F2865C900EE3D7C /* SexPickerView.h */,
+				F481E95D1F2865C900EE3D7C /* SexPickerView.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -846,10 +856,12 @@
 				F4A7A1391F25A779009FAAEE /* AvatarView.m in Sources */,
 				F4A7A0FC1F257F80009FAAEE /* MASViewConstraint.m in Sources */,
 				F4A7A1401F25B74D009FAAEE /* UserDataViewController.m in Sources */,
+				F481E95E1F2865C900EE3D7C /* SexPickerView.m in Sources */,
 				F4A7A1051F258449009FAAEE /* PersonalTabelViewCell.m in Sources */,
 				F4A7A1081F2588BF009FAAEE /* PersonalHeaderView.m in Sources */,
 				F4A7A0CE1F256D8B009FAAEE /* ShoppingViewController.m in Sources */,
 				F4A7A2561F25BC22009FAAEE /* NavigationBar.m in Sources */,
+				F481E95B1F28581600EE3D7C /* DatePickerView.m in Sources */,
 				F48185241F25E25800349143 /* CustomActionSheet.m in Sources */,
 				F4A7A0F91F257F80009FAAEE /* MASConstraintMaker.m in Sources */,
 				F4A7A0FF1F257F80009FAAEE /* View+MASAdditions.m in Sources */,
