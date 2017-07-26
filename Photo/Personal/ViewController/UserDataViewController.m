@@ -94,7 +94,7 @@
     _tableView.dataSource = self;
     _tableView.delegate = self;
     _tableView.backgroundColor = [UIColor whiteColor];
-    _tableView.separatorColor = [UIColor darkGrayColor];
+    _tableView.separatorColor = [UIColor colorWithRed:232/255.0 green:232/255.0 blue:232/255.0 alpha:1.0];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     _tableView.contentInset = UIEdgeInsetsMake(-40, 0, 0, 0);
     
@@ -116,6 +116,7 @@
     if (!cell) {
         cell = [[UserDataTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     EntryItem *item = _sections[indexPath.section].items[indexPath.row];
     cell.title.text = item.title;
     cell.content.text = item.content;
@@ -132,19 +133,10 @@
     }
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
-        [cell setSeparatorInset:UIEdgeInsetsZero];
-    }
-    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
-        [cell setLayoutMargins:UIEdgeInsetsZero];
-    }
-}
-
 -(UIView *) tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
     UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 30)];
-    footerView.backgroundColor = [UIColor grayColor];
+    footerView.backgroundColor = [UIColor colorWithRed:243/255.0 green:243/255.0 blue:243/255.0 alpha:1.0];
     return footerView;
 }
 

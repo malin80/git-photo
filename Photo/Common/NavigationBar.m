@@ -88,7 +88,7 @@
 - (UILabel *)line {
     if (!_line) {
         _line = [[UILabel alloc] init];
-        _line.backgroundColor = [UIColor grayColor];
+        _line.backgroundColor = [UIColor colorWithRed:232/255.0 green:232/255.0 blue:232/255.0 alpha:1.0];
     }
     return _line;
 }

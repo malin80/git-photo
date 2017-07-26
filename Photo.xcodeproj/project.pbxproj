@@ -15,6 +15,7 @@
 		F481E9101F283A5F00EE3D7C /* shopping_select.png in Resources */ = {isa = PBXBuildFile; fileRef = F481E90F1F283A5F00EE3D7C /* shopping_select.png */; };
 		F481E9121F283B0400EE3D7C /* shopping_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = F481E9111F283B0400EE3D7C /* shopping_selected.png */; };
 		F481E9141F283DD600EE3D7C /* shopping_delete.png in Resources */ = {isa = PBXBuildFile; fileRef = F481E9131F283DD600EE3D7C /* shopping_delete.png */; };
+		F481E9581F28551C00EE3D7C /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F481E9571F28551C00EE3D7C /* BaseViewController.m */; };
 		F48237281F2605A200DDD487 /* AddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F48237271F2605A200DDD487 /* AddressViewController.m */; };
 		F482372B1F2606BC00DDD487 /* AddressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F482372A1F2606BC00DDD487 /* AddressTableViewCell.m */; };
 		F482372E1F26CC4D00DDD487 /* personal_address_delete.png in Resources */ = {isa = PBXBuildFile; fileRef = F482372C1F26CC4D00DDD487 /* personal_address_delete.png */; };
@@ -117,6 +118,8 @@
 		F481E90F1F283A5F00EE3D7C /* shopping_select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shopping_select.png; sourceTree = "<group>"; };
 		F481E9111F283B0400EE3D7C /* shopping_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shopping_selected.png; sourceTree = "<group>"; };
 		F481E9131F283DD600EE3D7C /* shopping_delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shopping_delete.png; sourceTree = "<group>"; };
+		F481E9561F28551C00EE3D7C /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		F481E9571F28551C00EE3D7C /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		F48237261F2605A200DDD487 /* AddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressViewController.h; sourceTree = "<group>"; };
 		F48237271F2605A200DDD487 /* AddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressViewController.m; sourceTree = "<group>"; };
 		F48237291F2606BC00DDD487 /* AddressTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressTableViewCell.h; sourceTree = "<group>"; };
@@ -362,6 +365,8 @@
 				F4A7A0921F256B96009FAAEE /* AppDelegate.m */,
 				F4A7A0941F256B96009FAAEE /* ViewController.h */,
 				F4A7A0951F256B96009FAAEE /* ViewController.m */,
+				F481E9561F28551C00EE3D7C /* BaseViewController.h */,
+				F481E9571F28551C00EE3D7C /* BaseViewController.m */,
 				F4A7A0971F256B96009FAAEE /* Main.storyboard */,
 				F4A7A09A1F256B96009FAAEE /* Assets.xcassets */,
 				F4A7A09C1F256B96009FAAEE /* LaunchScreen.storyboard */,
@@ -857,6 +862,7 @@
 				F48237381F26EA1100DDD487 /* CollectViewController.m in Sources */,
 				F4A7A0FB1F257F80009FAAEE /* MASViewAttribute.m in Sources */,
 				F48237421F27078200DDD487 /* HomePageButtonView.m in Sources */,
+				F481E9581F28551C00EE3D7C /* BaseViewController.m in Sources */,
 				F482373F1F27041300DDD487 /* HomePageScrollView.m in Sources */,
 				F482375D1F27395100DDD487 /* ShoppingBottomView.m in Sources */,
 				F482372B1F2606BC00DDD487 /* AddressTableViewCell.m in Sources */,

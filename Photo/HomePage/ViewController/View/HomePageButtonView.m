@@ -131,6 +131,11 @@
         _cameraButton = [[UIButton alloc] init];
         [_cameraButton addTarget:self action:@selector(touchCameraButton) forControlEvents:UIControlEventTouchUpInside];
         [_cameraButton setImage:[UIImage imageNamed:@"homepage_camera"] forState:UIControlStateNormal];
+        [_cameraButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 20, 0)];
+        [_cameraButton setTitle:@"摄影" forState:UIControlStateNormal];
+        [_cameraButton setTitleEdgeInsets:UIEdgeInsetsMake(30, 0, 0, 0)];
+        [_cameraButton setTintColor:[UIColor redColor]];
+        _cameraButton.titleLabel.font = [UIFont systemFontOfSize:14];
     }
     return _cameraButton;
 }
