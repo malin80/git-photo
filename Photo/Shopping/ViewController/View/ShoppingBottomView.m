@@ -33,8 +33,8 @@
     [_selectedView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self);
         make.left.equalTo(self.mas_left).with.offset(10);
-        make.width.equalTo(@(10));
-        make.height.equalTo(@(10));
+        make.width.equalTo(@(20));
+        make.height.equalTo(@(20));
     }];
     
     [_selectAll mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -59,10 +59,12 @@
 }
 
 #pragma mark --- getters and setters ---
-- (UIImageView *)selectedView {
+- (UIButton *)selectedView {
     if (!_selectedView) {
-        _selectedView = [[UIImageView alloc] init];
-        _selectedView.backgroundColor = [UIColor redColor];
+        _selectedView = [[UIButton alloc] init];
+        [_selectedView setBackgroundImage:[UIImage imageNamed:@"shopping_select"] forState:UIControlStateNormal];
+        [_selectedView setBackgroundImage:[UIImage imageNamed:@"shopping_selected"] forState:UIControlStateSelected];
+        [_selectedView addTarget:self action:@selector(changeSelectViewIconState) forControlEvents:UIControlEventTouchUpInside];
     }
     return _selectedView;
 }
@@ -71,6 +73,7 @@
     if (!_selectAll) {
         _selectAll = [[UILabel alloc] init];
         _selectAll.text = @"全选";
+        _selectAll.textColor = [UIColor colorWithRed:40/255.0 green:44/255.0 blue:42/255.0 alpha:1.0];
         [_selectAll sizeToFit];
     }
     return _selectAll;
@@ -80,6 +83,7 @@
     if (!_total) {
         _total = [[UILabel alloc] init];
         _total.text = @"合计";
+        _total.textColor = [UIColor colorWithRed:40/255.0 green:44/255.0 blue:42/255.0 alpha:1.0];
         [_total sizeToFit];
     }
     return _total;
@@ -89,6 +93,7 @@
     if (!_price) {
         _price = [[UILabel alloc] init];
         _price.text = @"¥0.0";
+        _price.textColor = [UIColor colorWithRed:246/255.0 green:118/255.0 blue:2/255.0 alpha:1.0];
         [_price sizeToFit];
     }
     return _price;
@@ -98,8 +103,23 @@
     if (!_buyButton) {
         _buyButton = [[UIButton alloc] init];
         _buyButton.backgroundColor = [UIColor colorWithRed:255/255.0 green:102/255.0 blue:1/255.0 alpha:1.0];
+        NSString *str = [NSString stringWithFormat:@"结算（0）"];
+        [_buyButton setTitle:str forState:UIControlStateNormal];
+        
     }
     return _buyButton;
+}
+
+#pragma mark --- gestuer ---
+//勾选按钮状态的改变
+- (void)changeSelectViewIconState
+{
+    //标识选中的状态
+    if (_selectedView.selected) {
+        _selectedView.selected = NO;
+    } else {
+        _selectedView.selected = YES;
+    }
 }
 
 @end

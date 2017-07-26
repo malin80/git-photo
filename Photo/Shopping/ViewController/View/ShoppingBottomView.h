@@ -10,7 +10,7 @@
 
 @interface ShoppingBottomView : UIView
 
-@property (nonatomic, strong) UIImageView *selectedView;
+@property (nonatomic, strong) UIButton *selectedView;
 @property (nonatomic, strong) UILabel *selectAll;
 @property (nonatomic, strong) UILabel *total;
 @property (nonatomic, strong) UILabel *price;

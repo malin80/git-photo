@@ -10,12 +10,14 @@
 
 @interface ShoppingTableViewCell : UITableViewCell
 
-@property (nonatomic, strong) UIImageView *selectedView;
+@property (nonatomic, strong) UIButton *selectedView;
 @property (nonatomic, strong) UIImageView *goodsImage;
 @property (nonatomic, strong) UILabel *goodsName;
 @property (nonatomic, strong) UILabel *goodsParameter;
 @property (nonatomic, strong) UILabel *goodsPrice;
 @property (nonatomic, strong) UILabel *goodsCount;
-@property (nonatomic, strong) UIButton *deleteButton;
+@property (nonatomic, strong) UIView *deleteBackView;
+@property (nonatomic, strong) UIImageView *deleteView;
+@property (nonatomic, strong) UILabel *deleteLabel;
 
 @end

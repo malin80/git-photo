@@ -29,6 +29,7 @@
 - (void)createBottomView {
     _bottomView = [[ShoppingBottomView alloc] initWithFrame:CGRectMake(0, [[UIScreen mainScreen] bounds].size.height-120, [[UIScreen mainScreen] bounds].size.width, 100)];
     _bottomView.layer.borderWidth = 1;
+    _bottomView.layer.borderColor = [[UIColor colorWithRed:241/255.0 green:241/255.0 blue:241/255.0 alpha:1.0] CGColor];
     [self.view addSubview:self.bottomView];
 }
 
@@ -58,6 +59,7 @@
     if (!cell) {
         cell = [[ShoppingTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
