@@ -10,6 +10,8 @@
 		33BE91EAF0A94AB73B65E9D1 /* libPods-Photo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD7508C1BC4827C026564603 /* libPods-Photo.a */; };
 		F48185211F25D9E200349143 /* OrderManageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F48185201F25D9E200349143 /* OrderManageViewController.m */; };
 		F48185241F25E25800349143 /* CustomActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = F48185231F25E25800349143 /* CustomActionSheet.m */; };
+		F481E90C1F282D1E00EE3D7C /* personal_address_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = F481E90A1F282D1E00EE3D7C /* personal_address_selected.png */; };
+		F481E90D1F282D1E00EE3D7C /* personal_address_unselect.png in Resources */ = {isa = PBXBuildFile; fileRef = F481E90B1F282D1E00EE3D7C /* personal_address_unselect.png */; };
 		F48237281F2605A200DDD487 /* AddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F48237271F2605A200DDD487 /* AddressViewController.m */; };
 		F482372B1F2606BC00DDD487 /* AddressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F482372A1F2606BC00DDD487 /* AddressTableViewCell.m */; };
 		F482372E1F26CC4D00DDD487 /* personal_address_delete.png in Resources */ = {isa = PBXBuildFile; fileRef = F482372C1F26CC4D00DDD487 /* personal_address_delete.png */; };
@@ -107,6 +109,8 @@
 		F48185201F25D9E200349143 /* OrderManageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderManageViewController.m; sourceTree = "<group>"; };
 		F48185221F25E25800349143 /* CustomActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomActionSheet.h; sourceTree = "<group>"; };
 		F48185231F25E25800349143 /* CustomActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomActionSheet.m; sourceTree = "<group>"; };
+		F481E90A1F282D1E00EE3D7C /* personal_address_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personal_address_selected.png; sourceTree = "<group>"; };
+		F481E90B1F282D1E00EE3D7C /* personal_address_unselect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personal_address_unselect.png; sourceTree = "<group>"; };
 		F48237261F2605A200DDD487 /* AddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressViewController.h; sourceTree = "<group>"; };
 		F48237271F2605A200DDD487 /* AddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressViewController.m; sourceTree = "<group>"; };
 		F48237291F2606BC00DDD487 /* AddressTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressTableViewCell.h; sourceTree = "<group>"; };
@@ -539,6 +543,8 @@
 		F4A7A10A1F25932A009FAAEE /* PersonalImages */ = {
 			isa = PBXGroup;
 			children = (
+				F481E90A1F282D1E00EE3D7C /* personal_address_selected.png */,
+				F481E90B1F282D1E00EE3D7C /* personal_address_unselect.png */,
 				F482372C1F26CC4D00DDD487 /* personal_address_delete.png */,
 				F482372D1F26CC4D00DDD487 /* personal_address_edit.png */,
 				F4A7A11D1F2594D1009FAAEE /* personal_arrow.png */,
@@ -708,6 +714,7 @@
 				F4A7A1151F259445009FAAEE /* personal_about.png in Resources */,
 				F4A7A09B1F256B96009FAAEE /* Assets.xcassets in Resources */,
 				F4A7A1321F25A3A5009FAAEE /* tabbar_personal_red.png in Resources */,
+				F481E90D1F282D1E00EE3D7C /* personal_address_unselect.png in Resources */,
 				F4A7A1191F259445009FAAEE /* personal_order.png in Resources */,
 				F4A7A1171F259445009FAAEE /* personal_celercacher.png in Resources */,
 				F4A7A11E1F2594D1009FAAEE /* personal_arrow.png in Resources */,
@@ -725,6 +732,7 @@
 				F482374D1F27106300DDD487 /* homepage_car.png in Resources */,
 				F4A7A1361F25A3A5009FAAEE /* tabbar_store_red.png in Resources */,
 				F482374C1F27106300DDD487 /* homepage_camera.png in Resources */,
+				F481E90C1F282D1E00EE3D7C /* personal_address_selected.png in Resources */,
 				F4A7A0F61F257F80009FAAEE /* LICENSE in Resources */,
 				F4A7A11C1F259445009FAAEE /* personal_update.png in Resources */,
 				F4A7A1161F259445009FAAEE /* personal_address.png in Resources */,

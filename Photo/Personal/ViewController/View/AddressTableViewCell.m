@@ -16,7 +16,7 @@
     if (self) {
         [self initView];
         [self setImmutableConstraints];
-        self.contentView.backgroundColor = [UIColor grayColor];
+        self.contentView.backgroundColor = [UIColor colorWithRed:250/255.0 green:250/255.0 blue:250/255.0 alpha:1.0];
     }
     return self;
 }
@@ -26,7 +26,7 @@
     [self.contentView addSubview:self.phoneLabel];
     [self.contentView addSubview:self.addressLabel];
     [self.contentView addSubview:self.line];
-    [self.contentView addSubview:self.selectView];
+    [self.contentView addSubview:self.selectedView];
     [self.contentView addSubview:self.normalAddressLabel];
     [self.contentView addSubview:self.editBackView];
     [self.editBackView addSubview:self.editImageView];
@@ -34,6 +34,7 @@
     [self.contentView addSubview:self.deleteBackView];
     [self.deleteBackView addSubview:self.deleteImageView];
     [self.deleteBackView addSubview:self.deleteLabel];
+    [self.contentView addSubview:self.seperateView];
 
 }
 
@@ -59,7 +60,7 @@
         make.height.equalTo(@(1));
     }];
     
-    [_selectView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_selectedView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_line.mas_bottom).with.offset(12);
         make.width.equalTo(@(15));
         make.height.equalTo(@(15));
@@ -67,14 +68,14 @@
     }];
     
     [_normalAddressLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_selectView);
-        make.left.equalTo(_selectView.mas_right).equalTo(@(5));
+        make.top.equalTo(_selectedView);
+        make.left.equalTo(_selectedView.mas_right).equalTo(@(5));
     }];
     
     [_editBackView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_line.mas_bottom).with.offset(5);
+        make.top.equalTo(_line.mas_bottom).with.offset(12);
         make.centerX.equalTo(self.contentView).with.offset(10);
-        make.width.equalTo(@(80));
+        make.width.equalTo(@(100));
         make.height.equalTo(@(30));
     }];
     
@@ -107,6 +108,13 @@
     [_deleteLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(_deleteBackView);
         make.right.equalTo(_deleteBackView.mas_right).with.offset(-15);
+    }];
+    
+    [_seperateView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(self.contentView);
+        make.left.equalTo(self.contentView.mas_left);
+        make.bottom.equalTo(self.contentView.mas_bottom);
+        make.height.equalTo(@(20));
     }];
 }
 
@@ -146,13 +154,17 @@
     return _line;
 }
 
-- (UIImageView *)selectView {
-    if (!_selectView) {
-        _selectView = [[UIImageView alloc] init];
-        _selectView.backgroundColor = [UIColor redColor];
+- (UIButton *)selectedView
+{
+    if (!_selectedView) {
+        _selectedView = [[UIButton alloc] init];
+        [_selectedView setBackgroundImage:[UIImage imageNamed:@"personal_address_unselect"] forState:UIControlStateNormal];
+        [_selectedView setBackgroundImage:[UIImage imageNamed:@"personal_address_selected"] forState:UIControlStateSelected];
+        [_selectedView addTarget:self action:@selector(changeSelectViewIconState) forControlEvents:UIControlEventTouchUpInside];
     }
-    return _selectView;
+    return _selectedView;
 }
+
 
 - (UILabel *)normalAddressLabel {
     if (!_normalAddressLabel) {
@@ -166,10 +178,11 @@
 - (UIView *)editBackView {
     if (!_editBackView) {
         _editBackView = [[UIView alloc] init];
-        _editBackView.backgroundColor = [UIColor clearColor];
+        _editBackView.backgroundColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1.0];
         _editBackView.userInteractionEnabled = YES;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gotoEdit)];
         [_editBackView addGestureRecognizer:tap];
+        _editBackView.layer.cornerRadius = 50.f;
     }
     return _editBackView;
 }
@@ -197,7 +210,7 @@
 - (UIView *)deleteBackView {
     if (!_deleteBackView) {
         _deleteBackView = [[UIView alloc] init];
-        _deleteBackView.backgroundColor = [UIColor clearColor];
+        _deleteBackView.backgroundColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1.0];
     }
     return _deleteBackView;
 }
@@ -222,6 +235,14 @@
     return _deleteLabel;
 }
 
+- (UIView *)seperateView {
+    if (!_seperateView) {
+        _seperateView = [[UIView alloc] init];
+        _seperateView.backgroundColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1.0];
+    }
+    return _seperateView;
+}
+
 #pragma mark --- gestuer ---
 - (void)gotoEdit {
     if ([self.delegate respondsToSelector:@selector(editAddress)]) {
@@ -229,5 +250,17 @@
     }
 }
 
+//勾选按钮状态的改变
+- (void)changeSelectViewIconState
+{
+    //标识选中的状态
+    if (_selectedView.selected) {
+        _selectedView.selected = NO;
+        _normalAddressLabel.text = @"设为默认";
+    } else {
+        _selectedView.selected = YES;
+        _normalAddressLabel.text = @"默认地址";
+    }
+}
 
 @end

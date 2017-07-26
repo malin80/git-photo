@@ -55,24 +55,20 @@
     AddressTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
     if (!cell) {
         cell = [[AddressTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
-        cell.delegate = self;
     }
-//    EntryItem *item = _section.items[indexPath.row];
-//    cell.icon.image = item.icon;
-//    cell.titleLabel.text = item.title;
-    
+    cell.delegate = self;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    EntryItem *item = _section.items[indexPath.row];
-//    [self performSelectorOnMainThread:item.selector withObject:nil waitUntilDone:YES];
-    
-//    [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+    AddressTableViewCell *cell = (AddressTableViewCell *)[_tableView cellForRowAtIndexPath:indexPath];
+    [cell changeSelectViewIconState];
+    [_tableView reloadData];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 100;
+    return 120;
 }
 
 #pragma mark --- NavigationBarDelegate ---
