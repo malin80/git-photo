@@ -83,7 +83,7 @@
 #pragma mark --- getters and setters ---
 - (UIView *)headerView {
     if (!_headerView) {
-        _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 375)];
+        _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 410)];
         _headerView.backgroundColor = [UIColor yellowColor];
     }
     return _headerView;
@@ -98,7 +98,7 @@
 
 - (HomePageButtonView *)buttonView {
     if (!_buttonView) {
-        _buttonView = [[HomePageButtonView alloc] initWithFrame:CGRectMake(0, 250, [[UIScreen mainScreen] bounds].size.width, 125)];
+        _buttonView = [[HomePageButtonView alloc] initWithFrame:CGRectMake(0, 250, [[UIScreen mainScreen] bounds].size.width, 160)];
     }
     return _buttonView;
 }
