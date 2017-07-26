@@ -22,6 +22,8 @@
     NavigationBar *bar = [[NavigationBar alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 64) withTitle:@"订单管理"];
     bar.delegate = self;
     [self.view addSubview:bar];
+    
+    
 }
 
 - (void)createSubNavigationBar {
