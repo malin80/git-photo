@@ -16,6 +16,10 @@
 		A514B1111F290533006A765F /* UIColor+EX.m in Sources */ = {isa = PBXBuildFile; fileRef = A514B10D1F290533006A765F /* UIColor+EX.m */; };
 		F40430831F29790A00DDB2E7 /* main_my_bg.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F40430821F29790A00DDB2E7 /* main_my_bg.jpeg */; };
 		F40430861F29869D00DDB2E7 /* AddAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F40430851F29869D00DDB2E7 /* AddAddressViewController.m */; };
+		F40430891F29BC4300DDB2E7 /* PhoneNumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F40430881F29BC4300DDB2E7 /* PhoneNumberViewController.m */; };
+		F404308C1F29C52F00DDB2E7 /* NickNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F404308B1F29C52F00DDB2E7 /* NickNameViewController.m */; };
+		F404308F1F29C6C800DDB2E7 /* UserNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F404308E1F29C6C800DDB2E7 /* UserNameViewController.m */; };
+		F40430951F29D0FD00DDB2E7 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F40430941F29D0FD00DDB2E7 /* LoginViewController.m */; };
 		F48185211F25D9E200349143 /* OrderManageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F48185201F25D9E200349143 /* OrderManageViewController.m */; };
 		F48185241F25E25800349143 /* CustomActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = F48185231F25E25800349143 /* CustomActionSheet.m */; };
 		F481E90C1F282D1E00EE3D7C /* personal_address_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = F481E90A1F282D1E00EE3D7C /* personal_address_selected.png */; };
@@ -123,6 +127,14 @@
 		F40430821F29790A00DDB2E7 /* main_my_bg.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = main_my_bg.jpeg; sourceTree = "<group>"; };
 		F40430841F29869D00DDB2E7 /* AddAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAddressViewController.h; sourceTree = "<group>"; };
 		F40430851F29869D00DDB2E7 /* AddAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAddressViewController.m; sourceTree = "<group>"; };
+		F40430871F29BC4300DDB2E7 /* PhoneNumberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneNumberViewController.h; sourceTree = "<group>"; };
+		F40430881F29BC4300DDB2E7 /* PhoneNumberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneNumberViewController.m; sourceTree = "<group>"; };
+		F404308A1F29C52F00DDB2E7 /* NickNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NickNameViewController.h; sourceTree = "<group>"; };
+		F404308B1F29C52F00DDB2E7 /* NickNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NickNameViewController.m; sourceTree = "<group>"; };
+		F404308D1F29C6C800DDB2E7 /* UserNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserNameViewController.h; sourceTree = "<group>"; };
+		F404308E1F29C6C800DDB2E7 /* UserNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserNameViewController.m; sourceTree = "<group>"; };
+		F40430931F29D0FD00DDB2E7 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		F40430941F29D0FD00DDB2E7 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		F481851F1F25D9E200349143 /* OrderManageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderManageViewController.h; sourceTree = "<group>"; };
 		F48185201F25D9E200349143 /* OrderManageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderManageViewController.m; sourceTree = "<group>"; };
 		F48185221F25E25800349143 /* CustomActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomActionSheet.h; sourceTree = "<group>"; };
@@ -480,6 +492,12 @@
 				F4A7A0D61F2574A1009FAAEE /* PersonalViewController.m */,
 				F4A7A13E1F25B74D009FAAEE /* UserDataViewController.h */,
 				F4A7A13F1F25B74D009FAAEE /* UserDataViewController.m */,
+				F40430871F29BC4300DDB2E7 /* PhoneNumberViewController.h */,
+				F40430881F29BC4300DDB2E7 /* PhoneNumberViewController.m */,
+				F404308A1F29C52F00DDB2E7 /* NickNameViewController.h */,
+				F404308B1F29C52F00DDB2E7 /* NickNameViewController.m */,
+				F404308D1F29C6C800DDB2E7 /* UserNameViewController.h */,
+				F404308E1F29C6C800DDB2E7 /* UserNameViewController.m */,
 				F481851F1F25D9E200349143 /* OrderManageViewController.h */,
 				F48185201F25D9E200349143 /* OrderManageViewController.m */,
 				F48237261F2605A200DDD487 /* AddressViewController.h */,
@@ -490,6 +508,8 @@
 				F48237311F26D60B00DDD487 /* EditAddressViewController.m */,
 				F48237361F26EA1100DDD487 /* CollectViewController.h */,
 				F48237371F26EA1100DDD487 /* CollectViewController.m */,
+				F40430931F29D0FD00DDB2E7 /* LoginViewController.h */,
+				F40430941F29D0FD00DDB2E7 /* LoginViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -827,6 +847,8 @@
 			files = (
 				F482373B1F26EC3100DDD487 /* CollectTableViewCell.m in Sources */,
 				F48237321F26D60B00DDD487 /* EditAddressViewController.m in Sources */,
+				F404308F1F29C6C800DDB2E7 /* UserNameViewController.m in Sources */,
+				F40430891F29BC4300DDB2E7 /* PhoneNumberViewController.m in Sources */,
 				F4A7A1391F25A779009FAAEE /* AvatarView.m in Sources */,
 				F4A7A1401F25B74D009FAAEE /* UserDataViewController.m in Sources */,
 				F481E95E1F2865C900EE3D7C /* SexPickerView.m in Sources */,
@@ -842,11 +864,13 @@
 				F4A7A0961F256B96009FAAEE /* ViewController.m in Sources */,
 				F48237381F26EA1100DDD487 /* CollectViewController.m in Sources */,
 				A514B0F21F2901A1006A765F /* LeadViewController.m in Sources */,
+				F40430951F29D0FD00DDB2E7 /* LoginViewController.m in Sources */,
 				A514B10E1F290533006A765F /* FitManage.m in Sources */,
 				F48237421F27078200DDD487 /* HomePageButtonView.m in Sources */,
 				F481E9581F28551C00EE3D7C /* BaseViewController.m in Sources */,
 				A514B1111F290533006A765F /* UIColor+EX.m in Sources */,
 				F482373F1F27041300DDD487 /* HomePageScrollView.m in Sources */,
+				F404308C1F29C52F00DDB2E7 /* NickNameViewController.m in Sources */,
 				F482375D1F27395100DDD487 /* ShoppingBottomView.m in Sources */,
 				F482372B1F2606BC00DDD487 /* AddressTableViewCell.m in Sources */,
 				F4A7A2591F25C3D0009FAAEE /* UserDataTableViewCell.m in Sources */,

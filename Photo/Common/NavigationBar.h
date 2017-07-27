@@ -12,6 +12,7 @@
 
 @optional
 - (void)goBack;
+- (void)completeClick;
 
 @end
 

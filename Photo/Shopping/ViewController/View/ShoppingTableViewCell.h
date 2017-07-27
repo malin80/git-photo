@@ -20,4 +20,6 @@
 @property (nonatomic, strong) UIImageView *deleteView;
 @property (nonatomic, strong) UILabel *deleteLabel;
 
+- (void)changeSelectViewIconState;
+
 @end

@@ -27,8 +27,8 @@
     [_rightButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.mas_right).with.offset(-20);
         make.centerY.equalTo(self);
-        make.width.equalTo(@(40));
-        make.height.equalTo(@(10));
+        make.width.equalTo(@(50));
+        make.height.equalTo(@(20));
     }];
     [_rightButton setTitle:title forState:UIControlStateNormal];
 }
@@ -61,6 +61,12 @@
 - (void)goBack {
     if ([self.delegate respondsToSelector:@selector(goBack)]) {
         [self.delegate goBack];
+    }
+}
+
+- (void)completeClick {
+    if ([self.delegate respondsToSelector:@selector(completeClick)]) {
+        [self.delegate completeClick];
     }
 }
 
@@ -97,6 +103,8 @@
     if (!_rightButton) {
         _rightButton = [[UIButton alloc] init];
         _rightButton.backgroundColor = [UIColor redColor];
+        _rightButton.titleLabel.font = [UIFont systemFontOfSize:12];
+        [_rightButton addTarget:self action:@selector(completeClick) forControlEvents:UIControlEventTouchUpInside];
     }
     return _rightButton;
 }

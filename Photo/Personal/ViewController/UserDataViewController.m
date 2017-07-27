@@ -7,6 +7,10 @@
 //
 
 #import "UserDataViewController.h"
+#import "PhoneNumberViewController.h"
+#import "NickNameViewController.h"
+#import "UserNameViewController.h"
+#import "LoginViewController.h"
 
 #import "NavigationBar.h"
 #import "EntrySection.h"
@@ -14,6 +18,7 @@
 #import "UserDataTableViewCell.h"
 #import "DatePickerView.h"
 #import "SexPickerView.h"
+#import "AppDelegate.h"
 
 #define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
 #define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
@@ -51,12 +56,20 @@
     
     [self updateSections];
     [self createTableView];
+    [self createBottomButton];
     
     _maskForDatePicker = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     _maskForDatePicker.backgroundColor = [UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:0.5];
     UITapGestureRecognizer *tapForDatePicker = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapForDatePicker)];
     [_maskForDatePicker addGestureRecognizer:tapForDatePicker];
+}
 
+- (void)createBottomButton {
+    UIButton *bottomButton = [[UIButton alloc] initWithFrame:CGRectMake(0, ScreeHieght- 40, ScreenWidth, 40)];
+    [bottomButton setTitle:@"退出账号" forState:UIControlStateNormal];
+    bottomButton.backgroundColor = UIColorFromRGB(255, 102, 1, 1);
+    [bottomButton addTarget:self action:@selector(closeAccount) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:bottomButton];
 }
 
 - (void)updateSections {
@@ -71,12 +84,12 @@
     
     //手机
     NSString *phoneNumber = @"13885229434";
-    _phoneNumberEntryItem = [EntryItem title:@"手机" content:phoneNumber subtitle:nil selector:@selector(gotoAvatarViewController)];
+    _phoneNumberEntryItem = [EntryItem title:@"手机" content:phoneNumber subtitle:nil selector:@selector(gotoPhoneNumberViewController)];
     [section1.items addObject:_phoneNumberEntryItem];
     
     //昵称
     NSString *nickName = @"member_123456";
-    _nickNameEntryItem = [EntryItem title:@"昵称" content:nickName subtitle:@"修改" selector:@selector(gotoAvatarViewController)];
+    _nickNameEntryItem = [EntryItem title:@"昵称" content:nickName subtitle:@"修改" selector:@selector(gotoNickNameViewController)];
     [section1.items addObject:_nickNameEntryItem];
     
     //性别
@@ -88,7 +101,7 @@
     [section2.items addObject:_avatarEntryItem];
     
     //姓名
-    _userNameEntryItem = [EntryItem title:@"姓名" content:nil subtitle:@"修改" selector:@selector(gotoAvatarViewController)];
+    _userNameEntryItem = [EntryItem title:@"姓名" content:nil subtitle:@"修改" selector:@selector(gotoUserNameViewController)];
     [section2.items addObject:_userNameEntryItem];
     
     //婚期
@@ -168,6 +181,21 @@
 }
 
 #pragma mark --- cell method ---
+- (void)gotoPhoneNumberViewController {
+    PhoneNumberViewController *controller = [[PhoneNumberViewController alloc] init];
+    [self.navigationController pushViewController:controller animated:NO];
+}
+
+- (void)gotoNickNameViewController {
+    NickNameViewController *controller = [[NickNameViewController alloc] init];
+    [self.navigationController pushViewController:controller animated:NO];
+}
+
+- (void)gotoUserNameViewController {
+    UserNameViewController *controller = [[UserNameViewController alloc] init];
+    [self.navigationController pushViewController:controller animated:NO];
+}
+
 - (void)gotoSetBirthDay {
     [self createDatePicker];
     [self datePickerShow];
@@ -181,6 +209,10 @@
 #pragma mark --- NavigationBarDelegate ---
 - (void)goBack {
     [self.navigationController popViewControllerAnimated:NO];
+}
+
+- (void)closeAccount {
+    LoginViewController *controller = [[LoginViewController alloc] init];
 }
 
 #pragma mark --- 性别选择器 ---

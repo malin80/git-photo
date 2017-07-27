@@ -11,6 +11,10 @@
 #import "ShoppingBottomView.h"
 
 @interface ShoppingViewController () <UITableViewDelegate, UITableViewDataSource>
+{
+    NSArray *_array;
+    NSMutableArray *_selectedArray;
+}
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) ShoppingBottomView *bottomView;
@@ -21,6 +25,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _array = [NSArray arrayWithObjects:@"1", @"2", @"3", nil];
     
     [self createTableView];
     [self createBottomView];
@@ -46,11 +52,11 @@
 
 #pragma mark --- tableView delegate ---
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return _array.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -61,6 +67,20 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    ShoppingTableViewCell *cell = (ShoppingTableViewCell *)[_tableView cellForRowAtIndexPath:indexPath];
+    int count = (int)_selectedArray.count;
+
+    if (cell.selectedView.selected) {
+//        [_selectedArray removeObject:info];
+        count = count -1;
+    } else {
+      count = count +1;
+//    [_selectedMedalList addObject:info];
+    }
+    [cell changeSelectViewIconState];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
