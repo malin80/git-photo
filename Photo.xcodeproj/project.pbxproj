@@ -14,6 +14,7 @@
 		A514B10F1F290533006A765F /* NSString+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = A514B1091F290533006A765F /* NSString+Category.m */; };
 		A514B1101F290533006A765F /* SvUDIDTools.m in Sources */ = {isa = PBXBuildFile; fileRef = A514B10B1F290533006A765F /* SvUDIDTools.m */; };
 		A514B1111F290533006A765F /* UIColor+EX.m in Sources */ = {isa = PBXBuildFile; fileRef = A514B10D1F290533006A765F /* UIColor+EX.m */; };
+		F40430831F29790A00DDB2E7 /* main_my_bg.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F40430821F29790A00DDB2E7 /* main_my_bg.jpeg */; };
 		F48185211F25D9E200349143 /* OrderManageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F48185201F25D9E200349143 /* OrderManageViewController.m */; };
 		F48185241F25E25800349143 /* CustomActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = F48185231F25E25800349143 /* CustomActionSheet.m */; };
 		F481E90C1F282D1E00EE3D7C /* personal_address_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = F481E90A1F282D1E00EE3D7C /* personal_address_selected.png */; };
@@ -118,6 +119,7 @@
 		A514B10D1F290533006A765F /* UIColor+EX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+EX.m"; sourceTree = "<group>"; };
 		CD7508C1BC4827C026564603 /* libPods-Photo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Photo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFFD29296EE5B8D87B3DB463 /* Pods-Photo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Photo/Pods-Photo.release.xcconfig"; sourceTree = "<group>"; };
+		F40430821F29790A00DDB2E7 /* main_my_bg.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = main_my_bg.jpeg; sourceTree = "<group>"; };
 		F481851F1F25D9E200349143 /* OrderManageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderManageViewController.h; sourceTree = "<group>"; };
 		F48185201F25D9E200349143 /* OrderManageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderManageViewController.m; sourceTree = "<group>"; };
 		F48185221F25E25800349143 /* CustomActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomActionSheet.h; sourceTree = "<group>"; };
@@ -525,6 +527,7 @@
 		F4A7A1091F2592E1009FAAEE /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				F40430821F29790A00DDB2E7 /* main_my_bg.jpeg */,
 				F481E90E1F283A5F00EE3D7C /* Shopping */,
 				F48237431F27106300DDD487 /* HomePageImages */,
 				F4A7A25A1F25CF3B009FAAEE /* Commom */,
@@ -735,6 +738,7 @@
 				F482374C1F27106300DDD487 /* homepage_camera.png in Resources */,
 				F481E90C1F282D1E00EE3D7C /* personal_address_selected.png in Resources */,
 				F4A7A11C1F259445009FAAEE /* personal_update.png in Resources */,
+				F40430831F29790A00DDB2E7 /* main_my_bg.jpeg in Resources */,
 				F4A7A1161F259445009FAAEE /* personal_address.png in Resources */,
 				F481E9121F283B0400EE3D7C /* shopping_selected.png in Resources */,
 				F482374F1F27106300DDD487 /* homepage_flower.png in Resources */,

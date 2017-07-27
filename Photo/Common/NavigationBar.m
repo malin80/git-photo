@@ -17,7 +17,7 @@
         _titleName = title;
         [self initView];
         [self setImmutableConstraints];
-//        self.backgroundColor = [UIColor darkGrayColor];
+        self.backgroundColor = [UIColor whiteColor];
     }
     return self;
 }
