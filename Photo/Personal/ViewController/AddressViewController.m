@@ -8,6 +8,7 @@
 
 #import "AddressViewController.h"
 #import "EditAddressViewController.h"
+#import "AddAddressViewController.h"
 
 #import "NavigationBar.h"
 #import "AddressTableViewCell.h"
@@ -28,6 +29,15 @@
     [self.view addSubview:bar];
     
     [self createTableView];
+    [self createBottomButton];
+}
+
+- (void)createBottomButton {
+    UIButton *bottomButton = [[UIButton alloc] initWithFrame:CGRectMake(0, ScreeHieght- 40, ScreenWidth, 40)];
+    [bottomButton setTitle:@"添加新地址" forState:UIControlStateNormal];
+    bottomButton.backgroundColor = UIColorFromRGB(255, 102, 1, 1);
+    [bottomButton addTarget:self action:@selector(gotoAddAddress) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:bottomButton];
 }
 
 - (void)createTableView {
@@ -62,9 +72,16 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    AddressTableViewCell *cell = (AddressTableViewCell *)[_tableView cellForRowAtIndexPath:indexPath];
-    [cell changeSelectViewIconState];
-    [_tableView reloadData];
+    //之前选中的cell
+    AddressTableViewCell *lastCell = [tableView viewWithTag:1];
+    lastCell.tag = 0;
+    lastCell.normalAddressLabel.text = @"设为默认";
+    lastCell.selectedView.selected = NO;
+    //目前选中的cell
+    AddressTableViewCell *nowCell = [tableView cellForRowAtIndexPath:indexPath];
+    nowCell.tag = 1;
+    nowCell.normalAddressLabel.text = @"默认地址";
+    nowCell.selectedView.selected = YES;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -79,6 +96,11 @@
 #pragma mark --- AddressTableViewCellDelegate ---
 - (void)editAddress {
     EditAddressViewController *controller = [[EditAddressViewController alloc] init];
+    [self.navigationController pushViewController:controller animated:NO];
+}
+
+- (void)gotoAddAddress {
+    AddAddressViewController *controller = [[AddAddressViewController alloc] init];
     [self.navigationController pushViewController:controller animated:NO];
 }
 

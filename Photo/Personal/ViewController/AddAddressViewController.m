@@ -1,17 +1,16 @@
 //
-//  EditAddressViewController.m
+//  AddAddressViewController.m
 //  Photo
 //
-//  Created by malin  on 2017/7/25.
+//  Created by malin  on 2017/7/27.
 //  Copyright © 2017年 malin . All rights reserved.
 //
 
-#import "EditAddressViewController.h"
-
+#import "AddAddressViewController.h"
 #import "NavigationBar.h"
 #import "Masonry.h"
 
-@interface EditAddressViewController () <NavigationBarDelegate, UITextViewDelegate>
+@interface AddAddressViewController () <NavigationBarDelegate, UITextViewDelegate>
 
 @property (nonatomic, strong) NavigationBar *bar;
 @property (nonatomic, strong) UIView *backView1;
@@ -27,14 +26,14 @@
 
 @end
 
-@implementation EditAddressViewController
+@implementation AddAddressViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.bar = [[NavigationBar alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 64) withTitle:@"修改收货地址"];
+    self.bar = [[NavigationBar alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 64) withTitle:@"添加收货地址"];
     self.bar.delegate = self;
-    [self.bar setRightButtonTitle:@"修改"];
+    [self.bar setRightButtonTitle:@"添加"];
     [self.view addSubview:self.bar];
     
     [self initView];
@@ -54,12 +53,12 @@
     self.backView4 = [[UIView alloc] init];
     self.backView4.layer.borderWidth = 1;
     self.backView4.layer.borderColor = [[UIColor grayColor] CGColor];
-
+    
     self.title1 = [[UILabel alloc] init];
     self.title1.text = @"收货人";
     self.title2 = [[UILabel alloc] init];
     self.title2.text = @"联系电话";
-
+    
     self.textView1 = [[UITextView alloc] init];
     self.textView1.delegate = self;
     self.textView1.returnKeyType = UIReturnKeySend;
@@ -67,9 +66,7 @@
     self.textView1.font = [UIFont systemFontOfSize:15];
     self.textView1.textColor = [UIColor blackColor];
     self.textView1.backgroundColor = [UIColor whiteColor];
-    self.textView1.text = @"收货人是谁";
-    self.textView1.scrollEnabled = NO;
-
+    
     self.textView2 = [[UITextView alloc] init];
     self.textView2.delegate = self;
     self.textView2.returnKeyType = UIReturnKeySend;
@@ -77,9 +74,7 @@
     self.textView2.font = [UIFont systemFontOfSize:15];
     self.textView2.textColor = [UIColor blackColor];
     self.textView2.backgroundColor = [UIColor whiteColor];
-    self.textView2.text = @"123456789";
-    self.textView2.scrollEnabled = NO;
-
+    
     self.textView3 = [[UITextView alloc] init];
     self.textView3.delegate = self;
     self.textView3.returnKeyType = UIReturnKeySend;
@@ -87,16 +82,14 @@
     self.textView3.font = [UIFont systemFontOfSize:15];
     self.textView3.textColor = [UIColor blackColor];
     self.textView3.backgroundColor = [UIColor whiteColor];
-    self.textView3.text = @"这里输地址";
-    self.textView3.scrollEnabled = NO;
-
+    
     self.title3 = [[UILabel alloc] init];
     self.title3.text = @"设为默认";
-
+    
     [self.view addSubview:self.backView1];
     [self.backView1 addSubview:self.title1];
     [self.backView1 addSubview:self.textView1];
-
+    
     [self.view addSubview:self.backView2];
     [self.backView2 addSubview:self.title2];
     [self.backView2 addSubview:self.textView2];
@@ -178,7 +171,7 @@
         make.height.equalTo(@(100));
         make.width.equalTo(@(80));
     }];
-
+    
 }
 
 #pragma mark --- NavigationBarDelegate ---

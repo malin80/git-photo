@@ -15,6 +15,7 @@
 		A514B1101F290533006A765F /* SvUDIDTools.m in Sources */ = {isa = PBXBuildFile; fileRef = A514B10B1F290533006A765F /* SvUDIDTools.m */; };
 		A514B1111F290533006A765F /* UIColor+EX.m in Sources */ = {isa = PBXBuildFile; fileRef = A514B10D1F290533006A765F /* UIColor+EX.m */; };
 		F40430831F29790A00DDB2E7 /* main_my_bg.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F40430821F29790A00DDB2E7 /* main_my_bg.jpeg */; };
+		F40430861F29869D00DDB2E7 /* AddAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F40430851F29869D00DDB2E7 /* AddAddressViewController.m */; };
 		F48185211F25D9E200349143 /* OrderManageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F48185201F25D9E200349143 /* OrderManageViewController.m */; };
 		F48185241F25E25800349143 /* CustomActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = F48185231F25E25800349143 /* CustomActionSheet.m */; };
 		F481E90C1F282D1E00EE3D7C /* personal_address_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = F481E90A1F282D1E00EE3D7C /* personal_address_selected.png */; };
@@ -120,6 +121,8 @@
 		CD7508C1BC4827C026564603 /* libPods-Photo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Photo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFFD29296EE5B8D87B3DB463 /* Pods-Photo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Photo/Pods-Photo.release.xcconfig"; sourceTree = "<group>"; };
 		F40430821F29790A00DDB2E7 /* main_my_bg.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = main_my_bg.jpeg; sourceTree = "<group>"; };
+		F40430841F29869D00DDB2E7 /* AddAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAddressViewController.h; sourceTree = "<group>"; };
+		F40430851F29869D00DDB2E7 /* AddAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAddressViewController.m; sourceTree = "<group>"; };
 		F481851F1F25D9E200349143 /* OrderManageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderManageViewController.h; sourceTree = "<group>"; };
 		F48185201F25D9E200349143 /* OrderManageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderManageViewController.m; sourceTree = "<group>"; };
 		F48185221F25E25800349143 /* CustomActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomActionSheet.h; sourceTree = "<group>"; };
@@ -481,6 +484,8 @@
 				F48185201F25D9E200349143 /* OrderManageViewController.m */,
 				F48237261F2605A200DDD487 /* AddressViewController.h */,
 				F48237271F2605A200DDD487 /* AddressViewController.m */,
+				F40430841F29869D00DDB2E7 /* AddAddressViewController.h */,
+				F40430851F29869D00DDB2E7 /* AddAddressViewController.m */,
 				F48237301F26D60B00DDD487 /* EditAddressViewController.h */,
 				F48237311F26D60B00DDD487 /* EditAddressViewController.m */,
 				F48237361F26EA1100DDD487 /* CollectViewController.h */,
@@ -847,6 +852,7 @@
 				F4A7A2591F25C3D0009FAAEE /* UserDataTableViewCell.m in Sources */,
 				F482375A1F2725AA00DDD487 /* ShoppingTableViewCell.m in Sources */,
 				F48237281F2605A200DDD487 /* AddressViewController.m in Sources */,
+				F40430861F29869D00DDB2E7 /* AddAddressViewController.m in Sources */,
 				F4A7A0D11F256DB1009FAAEE /* HomePageViewController.m in Sources */,
 				F48185211F25D9E200349143 /* OrderManageViewController.m in Sources */,
 				A514B1101F290533006A765F /* SvUDIDTools.m in Sources */,

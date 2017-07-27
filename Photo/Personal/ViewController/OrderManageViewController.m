@@ -23,7 +23,7 @@
     bar.delegate = self;
     [self.view addSubview:bar];
     
-    
+    self.view.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)createSubNavigationBar {

@@ -16,7 +16,7 @@
     if (self) {
         [self initView];
         [self setImmutableConstraints];
-        self.contentView.backgroundColor = [UIColor colorWithRed:250/255.0 green:250/255.0 blue:250/255.0 alpha:1.0];
+        self.contentView.backgroundColor = UIColorFromRGB(250, 250, 250, 1);
     }
     return self;
 }
@@ -249,18 +249,18 @@
         [self.delegate editAddress];
     }
 }
-
-//勾选按钮状态的改变
-- (void)changeSelectViewIconState
-{
-    //标识选中的状态
-    if (_selectedView.selected) {
-        _selectedView.selected = NO;
-        _normalAddressLabel.text = @"设为默认";
-    } else {
-        _selectedView.selected = YES;
-        _normalAddressLabel.text = @"默认地址";
-    }
-}
+//
+////勾选按钮状态的改变
+//- (void)changeSelectViewIconState
+//{
+//    //标识选中的状态
+//    if (_selectedView.selected) {
+//        _selectedView.selected = NO;
+//        _normalAddressLabel.text = @"设为默认";
+//    } else {
+//        _selectedView.selected = YES;
+//        _normalAddressLabel.text = @"默认地址";
+//    }
+//}
 
 @end
