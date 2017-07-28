@@ -11,6 +11,7 @@
 #import "NickNameViewController.h"
 #import "UserNameViewController.h"
 #import "LoginViewController.h"
+#import "ModifyPasswordViewController.h"
 
 #import "NavigationBar.h"
 #import "EntrySection.h"
@@ -109,7 +110,7 @@
     [section2.items addObject:_timeEntryItem];
     
     //密码
-    _passwordEntryItem = [EntryItem title:@"密码" content:nil subtitle:@"修改" selector:@selector(gotoAvatarViewController)];
+    _passwordEntryItem = [EntryItem title:@"密码" content:nil subtitle:@"修改" selector:@selector(gotoModifyPasswordViewController)];
     [section3.items addObject:_passwordEntryItem];
     
     [_sections addObject:section1];
@@ -206,6 +207,11 @@
     [self sexPickerShow];
 }
 
+- (void)gotoModifyPasswordViewController {
+    ModifyPasswordViewController *controller = [[ModifyPasswordViewController alloc] init];
+    [self.navigationController pushViewController:controller animated:NO];
+}
+
 #pragma mark --- NavigationBarDelegate ---
 - (void)goBack {
     [self.navigationController popViewControllerAnimated:NO];
@@ -213,6 +219,9 @@
 
 - (void)closeAccount {
     LoginViewController *controller = [[LoginViewController alloc] init];
+    [self.navigationController presentViewController:controller animated:NO completion:^{
+        
+    }];
 }
 
 #pragma mark --- 性别选择器 ---

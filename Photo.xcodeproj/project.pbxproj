@@ -20,6 +20,8 @@
 		F404308C1F29C52F00DDB2E7 /* NickNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F404308B1F29C52F00DDB2E7 /* NickNameViewController.m */; };
 		F404308F1F29C6C800DDB2E7 /* UserNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F404308E1F29C6C800DDB2E7 /* UserNameViewController.m */; };
 		F40430951F29D0FD00DDB2E7 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F40430941F29D0FD00DDB2E7 /* LoginViewController.m */; };
+		F40575641F2ACF97003C8AF2 /* ModifyPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F40575631F2ACF97003C8AF2 /* ModifyPasswordViewController.m */; };
+		F40575661F2AD29F003C8AF2 /* personal_update_pwd.png in Resources */ = {isa = PBXBuildFile; fileRef = F40575651F2AD29F003C8AF2 /* personal_update_pwd.png */; };
 		F48185211F25D9E200349143 /* OrderManageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F48185201F25D9E200349143 /* OrderManageViewController.m */; };
 		F48185241F25E25800349143 /* CustomActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = F48185231F25E25800349143 /* CustomActionSheet.m */; };
 		F481E90C1F282D1E00EE3D7C /* personal_address_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = F481E90A1F282D1E00EE3D7C /* personal_address_selected.png */; };
@@ -135,6 +137,9 @@
 		F404308E1F29C6C800DDB2E7 /* UserNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserNameViewController.m; sourceTree = "<group>"; };
 		F40430931F29D0FD00DDB2E7 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		F40430941F29D0FD00DDB2E7 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		F40575621F2ACF97003C8AF2 /* ModifyPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifyPasswordViewController.h; sourceTree = "<group>"; };
+		F40575631F2ACF97003C8AF2 /* ModifyPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifyPasswordViewController.m; sourceTree = "<group>"; };
+		F40575651F2AD29F003C8AF2 /* personal_update_pwd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personal_update_pwd.png; sourceTree = "<group>"; };
 		F481851F1F25D9E200349143 /* OrderManageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderManageViewController.h; sourceTree = "<group>"; };
 		F48185201F25D9E200349143 /* OrderManageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderManageViewController.m; sourceTree = "<group>"; };
 		F48185221F25E25800349143 /* CustomActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomActionSheet.h; sourceTree = "<group>"; };
@@ -498,6 +503,8 @@
 				F404308B1F29C52F00DDB2E7 /* NickNameViewController.m */,
 				F404308D1F29C6C800DDB2E7 /* UserNameViewController.h */,
 				F404308E1F29C6C800DDB2E7 /* UserNameViewController.m */,
+				F40575621F2ACF97003C8AF2 /* ModifyPasswordViewController.h */,
+				F40575631F2ACF97003C8AF2 /* ModifyPasswordViewController.m */,
 				F481851F1F25D9E200349143 /* OrderManageViewController.h */,
 				F48185201F25D9E200349143 /* OrderManageViewController.m */,
 				F48237261F2605A200DDD487 /* AddressViewController.h */,
@@ -565,6 +572,7 @@
 		F4A7A10A1F25932A009FAAEE /* PersonalImages */ = {
 			isa = PBXGroup;
 			children = (
+				F40575651F2AD29F003C8AF2 /* personal_update_pwd.png */,
 				F481E90A1F282D1E00EE3D7C /* personal_address_selected.png */,
 				F481E90B1F282D1E00EE3D7C /* personal_address_unselect.png */,
 				F482372C1F26CC4D00DDD487 /* personal_address_delete.png */,
@@ -756,6 +764,7 @@
 				F48237531F27106300DDD487 /* homepage_wedding.png in Resources */,
 				F4A7A1341F25A3A5009FAAEE /* tabbar_shopping_red.png in Resources */,
 				F4A7A11A1F259445009FAAEE /* personal_shareapp.png in Resources */,
+				F40575661F2AD29F003C8AF2 /* personal_update_pwd.png in Resources */,
 				F4A7A1301F25A3A5009FAAEE /* tabbar_homepage_red.png in Resources */,
 				F48237501F27106300DDD487 /* homepage_hotel.png in Resources */,
 				F482374D1F27106300DDD487 /* homepage_car.png in Resources */,
@@ -866,6 +875,7 @@
 				A514B0F21F2901A1006A765F /* LeadViewController.m in Sources */,
 				F40430951F29D0FD00DDB2E7 /* LoginViewController.m in Sources */,
 				A514B10E1F290533006A765F /* FitManage.m in Sources */,
+				F40575641F2ACF97003C8AF2 /* ModifyPasswordViewController.m in Sources */,
 				F48237421F27078200DDD487 /* HomePageButtonView.m in Sources */,
 				F481E9581F28551C00EE3D7C /* BaseViewController.m in Sources */,
 				A514B1111F290533006A765F /* UIColor+EX.m in Sources */,
