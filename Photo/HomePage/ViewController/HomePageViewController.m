@@ -10,8 +10,9 @@
 #import "HomePageScrollView.h"
 #import "HomePageButtonView.h"
 #import "HomePageTableViewCell.h"
+#import "HomePagePesRequest.h"
 
-@interface HomePageViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface HomePageViewController () <UITableViewDelegate, UITableViewDataSource, HomePageButtonViewDelegate>
 {
     NSArray *_titleArrays;
 }
@@ -99,8 +100,14 @@
 - (HomePageButtonView *)buttonView {
     if (!_buttonView) {
         _buttonView = [[HomePageButtonView alloc] initWithFrame:CGRectMake(0, 250, [[UIScreen mainScreen] bounds].size.width, 160)];
+        _buttonView.delegate = self;
     }
     return _buttonView;
+}
+
+#pragma mark --- HomePageButtonViewDelegate ---
+- (void)touchCameraButton {
+    [HomePagePesRequest queryHonorInfo];
 }
 
 @end

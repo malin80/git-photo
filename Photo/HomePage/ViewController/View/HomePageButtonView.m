@@ -96,7 +96,9 @@
 
 #pragma mark --- button method ---
 - (void)touchCameraButton {
-    
+    if ([self.delegate respondsToSelector:@selector(touchCameraButton)]) {
+        [self.delegate touchCameraButton];
+    }
 }
 
 - (void)touchWediingButton {

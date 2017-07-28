@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol HomePageButtonViewDelegate <NSObject>
+
+@optional
+
+- (void)touchCameraButton;
+
+@end
+
+
 @interface HomePageButtonView : UIView
 
 @property (nonatomic, strong) UIButton *cameraButton;
@@ -18,6 +27,9 @@
 @property (nonatomic, strong) UIButton *videoButton;
 @property (nonatomic, strong) UIButton *clothButton;
 @property (nonatomic, strong) UIButton *moreButton;
+
+@property(nonatomic,assign) id<HomePageButtonViewDelegate> delegate;
+
 
 
 @end
