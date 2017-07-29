@@ -27,6 +27,7 @@
     NSString *urlString = [NSString stringWithFormat:@"http://101.201.122.173/%@",string];
     [manager GET:urlString parameters:parameter progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
         [[PesResponse sharedInstance] pesResponseWithResponseObject:responseObject];
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
     }];

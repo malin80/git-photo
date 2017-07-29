@@ -2,13 +2,16 @@
 //  OrderManageViewController.h
 //  Photo
 //
-//  Created by malin  on 2017/7/24.
+//  Created by 陈炳文 on 2017/7/28.
 //  Copyright © 2017年 malin . All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "BaseViewController.h"
-
-@interface OrderManageViewController : BaseViewController
+#import "NavigationBar.h"
+#import "DLTabedSlideView.h"
+#import "BookOrderViewController.h"
+#import "ShopOrderViewController.h"
+@interface OrderManageViewController : BaseViewController<NavigationBarDelegate>
+@property (weak, nonatomic) IBOutlet DLTabedSlideView *tabedSlideView;
 
 @end

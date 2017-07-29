@@ -14,6 +14,17 @@
 		A514B10F1F290533006A765F /* NSString+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = A514B1091F290533006A765F /* NSString+Category.m */; };
 		A514B1101F290533006A765F /* SvUDIDTools.m in Sources */ = {isa = PBXBuildFile; fileRef = A514B10B1F290533006A765F /* SvUDIDTools.m */; };
 		A514B1111F290533006A765F /* UIColor+EX.m in Sources */ = {isa = PBXBuildFile; fileRef = A514B10D1F290533006A765F /* UIColor+EX.m */; };
+		A520C6CD1F2B89A400202622 /* DLLRUCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A520C6BE1F2B89A400202622 /* DLLRUCache.m */; };
+		A520C6CE1F2B89A400202622 /* DLCustomSlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = A520C6C01F2B89A400202622 /* DLCustomSlideView.m */; };
+		A520C6CF1F2B89A400202622 /* DLSlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = A520C6C21F2B89A400202622 /* DLSlideView.m */; };
+		A520C6D01F2B89A400202622 /* DLFixedTabbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = A520C6C51F2B89A400202622 /* DLFixedTabbarView.m */; };
+		A520C6D11F2B89A400202622 /* DLScrollTabbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = A520C6C71F2B89A400202622 /* DLScrollTabbarView.m */; };
+		A520C6D21F2B89A400202622 /* DLTabedSlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = A520C6CA1F2B89A400202622 /* DLTabedSlideView.m */; };
+		A520C6D31F2B89A400202622 /* DLUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = A520C6CC1F2B89A400202622 /* DLUtility.m */; };
+		A520C6D91F2B89C200202622 /* BookOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A520C6D61F2B89C200202622 /* BookOrderViewController.m */; };
+		A520C6DA1F2B89C200202622 /* ShopOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A520C6D81F2B89C200202622 /* ShopOrderViewController.m */; };
+		A520C6DE1F2B89DA00202622 /* OrderManageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A520C6DC1F2B89DA00202622 /* OrderManageViewController.m */; };
+		A520C6DF1F2B89DA00202622 /* OrderManageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A520C6DD1F2B89DA00202622 /* OrderManageViewController.xib */; };
 		F40430831F29790A00DDB2E7 /* main_my_bg.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F40430821F29790A00DDB2E7 /* main_my_bg.jpeg */; };
 		F40430861F29869D00DDB2E7 /* AddAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F40430851F29869D00DDB2E7 /* AddAddressViewController.m */; };
 		F40430891F29BC4300DDB2E7 /* PhoneNumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F40430881F29BC4300DDB2E7 /* PhoneNumberViewController.m */; };
@@ -26,7 +37,6 @@
 		F40575701F2AE38D003C8AF2 /* HomePagePesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F405756F1F2AE38D003C8AF2 /* HomePagePesRequest.m */; };
 		F40575731F2AE56F003C8AF2 /* PesResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F40575721F2AE56F003C8AF2 /* PesResponse.m */; };
 		F40575761F2AE61F003C8AF2 /* HomePagePesResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F40575751F2AE61F003C8AF2 /* HomePagePesResponse.m */; };
-		F48185211F25D9E200349143 /* OrderManageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F48185201F25D9E200349143 /* OrderManageViewController.m */; };
 		F48185241F25E25800349143 /* CustomActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = F48185231F25E25800349143 /* CustomActionSheet.m */; };
 		F481E90C1F282D1E00EE3D7C /* personal_address_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = F481E90A1F282D1E00EE3D7C /* personal_address_selected.png */; };
 		F481E90D1F282D1E00EE3D7C /* personal_address_unselect.png in Resources */ = {isa = PBXBuildFile; fileRef = F481E90B1F282D1E00EE3D7C /* personal_address_unselect.png */; };
@@ -128,6 +138,29 @@
 		A514B10B1F290533006A765F /* SvUDIDTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SvUDIDTools.m; sourceTree = "<group>"; };
 		A514B10C1F290533006A765F /* UIColor+EX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+EX.h"; sourceTree = "<group>"; };
 		A514B10D1F290533006A765F /* UIColor+EX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+EX.m"; sourceTree = "<group>"; };
+		A520C6BC1F2B89A400202622 /* DLCacheProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLCacheProtocol.h; sourceTree = "<group>"; };
+		A520C6BD1F2B89A400202622 /* DLLRUCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLRUCache.h; sourceTree = "<group>"; };
+		A520C6BE1F2B89A400202622 /* DLLRUCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLRUCache.m; sourceTree = "<group>"; };
+		A520C6BF1F2B89A400202622 /* DLCustomSlideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLCustomSlideView.h; sourceTree = "<group>"; };
+		A520C6C01F2B89A400202622 /* DLCustomSlideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLCustomSlideView.m; sourceTree = "<group>"; };
+		A520C6C11F2B89A400202622 /* DLSlideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSlideView.h; sourceTree = "<group>"; };
+		A520C6C21F2B89A400202622 /* DLSlideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSlideView.m; sourceTree = "<group>"; };
+		A520C6C41F2B89A400202622 /* DLFixedTabbarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLFixedTabbarView.h; sourceTree = "<group>"; };
+		A520C6C51F2B89A400202622 /* DLFixedTabbarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLFixedTabbarView.m; sourceTree = "<group>"; };
+		A520C6C61F2B89A400202622 /* DLScrollTabbarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLScrollTabbarView.h; sourceTree = "<group>"; };
+		A520C6C71F2B89A400202622 /* DLScrollTabbarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLScrollTabbarView.m; sourceTree = "<group>"; };
+		A520C6C81F2B89A400202622 /* DLSlideTabbarProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSlideTabbarProtocol.h; sourceTree = "<group>"; };
+		A520C6C91F2B89A400202622 /* DLTabedSlideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLTabedSlideView.h; sourceTree = "<group>"; };
+		A520C6CA1F2B89A400202622 /* DLTabedSlideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLTabedSlideView.m; sourceTree = "<group>"; };
+		A520C6CB1F2B89A400202622 /* DLUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLUtility.h; sourceTree = "<group>"; };
+		A520C6CC1F2B89A400202622 /* DLUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLUtility.m; sourceTree = "<group>"; };
+		A520C6D51F2B89C200202622 /* BookOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookOrderViewController.h; sourceTree = "<group>"; };
+		A520C6D61F2B89C200202622 /* BookOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookOrderViewController.m; sourceTree = "<group>"; };
+		A520C6D71F2B89C200202622 /* ShopOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopOrderViewController.h; sourceTree = "<group>"; };
+		A520C6D81F2B89C200202622 /* ShopOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopOrderViewController.m; sourceTree = "<group>"; };
+		A520C6DB1F2B89DA00202622 /* OrderManageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderManageViewController.h; sourceTree = "<group>"; };
+		A520C6DC1F2B89DA00202622 /* OrderManageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderManageViewController.m; sourceTree = "<group>"; };
+		A520C6DD1F2B89DA00202622 /* OrderManageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderManageViewController.xib; sourceTree = "<group>"; };
 		CD7508C1BC4827C026564603 /* libPods-Photo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Photo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFFD29296EE5B8D87B3DB463 /* Pods-Photo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Photo/Pods-Photo.release.xcconfig"; sourceTree = "<group>"; };
 		F40430821F29790A00DDB2E7 /* main_my_bg.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = main_my_bg.jpeg; sourceTree = "<group>"; };
@@ -152,8 +185,6 @@
 		F40575721F2AE56F003C8AF2 /* PesResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PesResponse.m; sourceTree = "<group>"; };
 		F40575741F2AE61F003C8AF2 /* HomePagePesResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePagePesResponse.h; sourceTree = "<group>"; };
 		F40575751F2AE61F003C8AF2 /* HomePagePesResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePagePesResponse.m; sourceTree = "<group>"; };
-		F481851F1F25D9E200349143 /* OrderManageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderManageViewController.h; sourceTree = "<group>"; };
-		F48185201F25D9E200349143 /* OrderManageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderManageViewController.m; sourceTree = "<group>"; };
 		F48185221F25E25800349143 /* CustomActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomActionSheet.h; sourceTree = "<group>"; };
 		F48185231F25E25800349143 /* CustomActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomActionSheet.m; sourceTree = "<group>"; };
 		F481E90A1F282D1E00EE3D7C /* personal_address_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personal_address_selected.png; sourceTree = "<group>"; };
@@ -322,6 +353,56 @@
 				A514B10D1F290533006A765F /* UIColor+EX.m */,
 			);
 			path = "工具";
+			sourceTree = "<group>";
+		};
+		A520C6BA1F2B89A400202622 /* DLSlideView */ = {
+			isa = PBXGroup;
+			children = (
+				A520C6BB1F2B89A400202622 /* DLCache */,
+				A520C6BF1F2B89A400202622 /* DLCustomSlideView.h */,
+				A520C6C01F2B89A400202622 /* DLCustomSlideView.m */,
+				A520C6C11F2B89A400202622 /* DLSlideView.h */,
+				A520C6C21F2B89A400202622 /* DLSlideView.m */,
+				A520C6C31F2B89A400202622 /* DLTabbarView */,
+				A520C6C91F2B89A400202622 /* DLTabedSlideView.h */,
+				A520C6CA1F2B89A400202622 /* DLTabedSlideView.m */,
+				A520C6CB1F2B89A400202622 /* DLUtility.h */,
+				A520C6CC1F2B89A400202622 /* DLUtility.m */,
+			);
+			path = DLSlideView;
+			sourceTree = "<group>";
+		};
+		A520C6BB1F2B89A400202622 /* DLCache */ = {
+			isa = PBXGroup;
+			children = (
+				A520C6BC1F2B89A400202622 /* DLCacheProtocol.h */,
+				A520C6BD1F2B89A400202622 /* DLLRUCache.h */,
+				A520C6BE1F2B89A400202622 /* DLLRUCache.m */,
+			);
+			path = DLCache;
+			sourceTree = "<group>";
+		};
+		A520C6C31F2B89A400202622 /* DLTabbarView */ = {
+			isa = PBXGroup;
+			children = (
+				A520C6C41F2B89A400202622 /* DLFixedTabbarView.h */,
+				A520C6C51F2B89A400202622 /* DLFixedTabbarView.m */,
+				A520C6C61F2B89A400202622 /* DLScrollTabbarView.h */,
+				A520C6C71F2B89A400202622 /* DLScrollTabbarView.m */,
+				A520C6C81F2B89A400202622 /* DLSlideTabbarProtocol.h */,
+			);
+			path = DLTabbarView;
+			sourceTree = "<group>";
+		};
+		A520C6D41F2B89C200202622 /* 订单管理 */ = {
+			isa = PBXGroup;
+			children = (
+				A520C6D51F2B89C200202622 /* BookOrderViewController.h */,
+				A520C6D61F2B89C200202622 /* BookOrderViewController.m */,
+				A520C6D71F2B89C200202622 /* ShopOrderViewController.h */,
+				A520C6D81F2B89C200202622 /* ShopOrderViewController.m */,
+			);
+			path = "订单管理";
 			sourceTree = "<group>";
 		};
 		F405756A1F2AE34B003C8AF2 /* PesDelegate */ = {
@@ -529,8 +610,10 @@
 				F404308E1F29C6C800DDB2E7 /* UserNameViewController.m */,
 				F40575621F2ACF97003C8AF2 /* ModifyPasswordViewController.h */,
 				F40575631F2ACF97003C8AF2 /* ModifyPasswordViewController.m */,
-				F481851F1F25D9E200349143 /* OrderManageViewController.h */,
-				F48185201F25D9E200349143 /* OrderManageViewController.m */,
+				A520C6DB1F2B89DA00202622 /* OrderManageViewController.h */,
+				A520C6DC1F2B89DA00202622 /* OrderManageViewController.m */,
+				A520C6DD1F2B89DA00202622 /* OrderManageViewController.xib */,
+				A520C6D41F2B89C200202622 /* 订单管理 */,
 				F48237261F2605A200DDD487 /* AddressViewController.h */,
 				F48237271F2605A200DDD487 /* AddressViewController.m */,
 				F40430841F29869D00DDB2E7 /* AddAddressViewController.h */,
@@ -558,6 +641,7 @@
 		F4A7A0D81F257F14009FAAEE /* ThirdParties */ = {
 			isa = PBXGroup;
 			children = (
+				A520C6BA1F2B89A400202622 /* DLSlideView */,
 				A514B1011F2903D3006A765F /* Tabbar */,
 			);
 			path = ThirdParties;
@@ -803,6 +887,7 @@
 				F40430831F29790A00DDB2E7 /* main_my_bg.jpeg in Resources */,
 				F4A7A1161F259445009FAAEE /* personal_address.png in Resources */,
 				F481E9121F283B0400EE3D7C /* shopping_selected.png in Resources */,
+				A520C6DF1F2B89DA00202622 /* OrderManageViewController.xib in Resources */,
 				F482374F1F27106300DDD487 /* homepage_flower.png in Resources */,
 				F482372E1F26CC4D00DDD487 /* personal_address_delete.png in Resources */,
 				F4A7A13D1F25AAE4009FAAEE /* tabbar_shopping_black.png in Resources */,
@@ -895,6 +980,7 @@
 				F4A7A1081F2588BF009FAAEE /* PersonalHeaderView.m in Sources */,
 				F4A7A0CE1F256D8B009FAAEE /* ShoppingViewController.m in Sources */,
 				F4A7A2561F25BC22009FAAEE /* NavigationBar.m in Sources */,
+				A520C6D31F2B89A400202622 /* DLUtility.m in Sources */,
 				F481E95B1F28581600EE3D7C /* DatePickerView.m in Sources */,
 				F48185241F25E25800349143 /* CustomActionSheet.m in Sources */,
 				F4A7A0D71F2574A1009FAAEE /* PersonalViewController.m in Sources */,
@@ -902,15 +988,22 @@
 				F4A7A1251F259629009FAAEE /* EntryItem.m in Sources */,
 				F4A7A0961F256B96009FAAEE /* ViewController.m in Sources */,
 				F48237381F26EA1100DDD487 /* CollectViewController.m in Sources */,
+				A520C6DA1F2B89C200202622 /* ShopOrderViewController.m in Sources */,
 				A514B0F21F2901A1006A765F /* LeadViewController.m in Sources */,
 				F40430951F29D0FD00DDB2E7 /* LoginViewController.m in Sources */,
 				A514B10E1F290533006A765F /* FitManage.m in Sources */,
+				A520C6D01F2B89A400202622 /* DLFixedTabbarView.m in Sources */,
 				F40575641F2ACF97003C8AF2 /* ModifyPasswordViewController.m in Sources */,
 				F48237421F27078200DDD487 /* HomePageButtonView.m in Sources */,
 				F481E9581F28551C00EE3D7C /* BaseViewController.m in Sources */,
 				A514B1111F290533006A765F /* UIColor+EX.m in Sources */,
+				A520C6CD1F2B89A400202622 /* DLLRUCache.m in Sources */,
+				A520C6D21F2B89A400202622 /* DLTabedSlideView.m in Sources */,
+				A520C6CF1F2B89A400202622 /* DLSlideView.m in Sources */,
 				F40575701F2AE38D003C8AF2 /* HomePagePesRequest.m in Sources */,
 				F482373F1F27041300DDD487 /* HomePageScrollView.m in Sources */,
+				A520C6DE1F2B89DA00202622 /* OrderManageViewController.m in Sources */,
+				A520C6D91F2B89C200202622 /* BookOrderViewController.m in Sources */,
 				F404308C1F29C52F00DDB2E7 /* NickNameViewController.m in Sources */,
 				F482375D1F27395100DDD487 /* ShoppingBottomView.m in Sources */,
 				F482372B1F2606BC00DDD487 /* AddressTableViewCell.m in Sources */,
@@ -918,13 +1011,14 @@
 				F482375A1F2725AA00DDD487 /* ShoppingTableViewCell.m in Sources */,
 				F48237281F2605A200DDD487 /* AddressViewController.m in Sources */,
 				F40430861F29869D00DDB2E7 /* AddAddressViewController.m in Sources */,
+				A520C6CE1F2B89A400202622 /* DLCustomSlideView.m in Sources */,
 				F4A7A0D11F256DB1009FAAEE /* HomePageViewController.m in Sources */,
-				F48185211F25D9E200349143 /* OrderManageViewController.m in Sources */,
 				A514B1101F290533006A765F /* SvUDIDTools.m in Sources */,
 				F4A7A0931F256B96009FAAEE /* AppDelegate.m in Sources */,
 				A514B1041F2903D3006A765F /* TabbarViewController.m in Sources */,
 				F40575731F2AE56F003C8AF2 /* PesResponse.m in Sources */,
 				F4A7A0D41F256DC3009FAAEE /* StoreViewController.m in Sources */,
+				A520C6D11F2B89A400202622 /* DLScrollTabbarView.m in Sources */,
 				A514B10F1F290533006A765F /* NSString+Category.m in Sources */,
 				F4A7A0901F256B96009FAAEE /* main.m in Sources */,
 				F48237561F27179700DDD487 /* HomePageTableViewCell.m in Sources */,
@@ -1085,7 +1179,7 @@
 					"$(PROJECT_DIR)/Photo/OpenAPI/SDK/Tencent",
 					"$(PROJECT_DIR)/Photo/Others/OpenAPI/SDK/Tencent",
 				);
-				GCC_PREFIX_HEADER = /Users/malin/Desktop/Photo/Photo/hong.pch;
+				GCC_PREFIX_HEADER = "/Users/malin/Desktop/Photo 2/Photo/hong.pch";
 				INFOPLIST_FILE = Photo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1113,7 +1207,7 @@
 					"$(PROJECT_DIR)/Photo/OpenAPI/SDK/Tencent",
 					"$(PROJECT_DIR)/Photo/Others/OpenAPI/SDK/Tencent",
 				);
-				GCC_PREFIX_HEADER = /Users/malin/Desktop/Photo/Photo/hong.pch;
+				GCC_PREFIX_HEADER = "/Users/malin/Desktop/Photo 2/Photo/hong.pch";
 				INFOPLIST_FILE = Photo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

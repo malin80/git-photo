@@ -1,32 +1,22 @@
 //
-//  LoginViewController.m
+//  ShopOrderViewController.m
 //  Photo
 //
-//  Created by malin  on 2017/7/27.
+//  Created by 陈炳文 on 2017/7/27.
 //  Copyright © 2017年 malin . All rights reserved.
 //
 
-#import "LoginViewController.h"
+#import "ShopOrderViewController.h"
 
-@interface LoginViewController ()
+@interface ShopOrderViewController ()
 
 @end
 
-@implementation LoginViewController
+@implementation ShopOrderViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    UIButton *loginButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 100, 200, 50)];
-    loginButton.backgroundColor = [UIColor redColor];
-    [loginButton addTarget:self action:@selector(login) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:loginButton];
-    
-
-}
-
-- (void)login {
-    
+    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
