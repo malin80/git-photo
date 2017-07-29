@@ -104,6 +104,7 @@
 		F4FDD6B41F2C37CD007263D4 /* AddAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FDD6AF1F2C37CD007263D4 /* AddAddressViewController.m */; };
 		F4FDD6B51F2C37CD007263D4 /* AddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FDD6B11F2C37CD007263D4 /* AddressViewController.m */; };
 		F4FDD6B61F2C37CD007263D4 /* EditAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FDD6B31F2C37CD007263D4 /* EditAddressViewController.m */; };
+		F4FDD6B81F2C3F86007263D4 /* personal_login.png in Resources */ = {isa = PBXBuildFile; fileRef = F4FDD6B71F2C3F86007263D4 /* personal_login.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -286,6 +287,7 @@
 		F4FDD6B11F2C37CD007263D4 /* AddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressViewController.m; sourceTree = "<group>"; };
 		F4FDD6B21F2C37CD007263D4 /* EditAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditAddressViewController.h; sourceTree = "<group>"; };
 		F4FDD6B31F2C37CD007263D4 /* EditAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditAddressViewController.m; sourceTree = "<group>"; };
+		F4FDD6B71F2C3F86007263D4 /* personal_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personal_login.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -586,10 +588,10 @@
 		F4A7A0C71F256D1F009FAAEE /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				F4A7A1021F25841F009FAAEE /* View */,
 				F4FDD6AD1F2C37CD007263D4 /* Address */,
 				F4FDD6911F2C36CF007263D4 /* OrderManage */,
 				F4FDD6981F2C36E9007263D4 /* UserData */,
-				F4A7A1021F25841F009FAAEE /* View */,
 				F4A7A0D51F2574A1009FAAEE /* PersonalViewController.h */,
 				F4A7A0D61F2574A1009FAAEE /* PersonalViewController.m */,
 				F48237361F26EA1100DDD487 /* CollectViewController.h */,
@@ -652,6 +654,7 @@
 		F4A7A10A1F25932A009FAAEE /* PersonalImages */ = {
 			isa = PBXGroup;
 			children = (
+				F4FDD6B71F2C3F86007263D4 /* personal_login.png */,
 				F40575651F2AD29F003C8AF2 /* personal_update_pwd.png */,
 				F481E90A1F282D1E00EE3D7C /* personal_address_selected.png */,
 				F481E90B1F282D1E00EE3D7C /* personal_address_unselect.png */,
@@ -889,6 +892,7 @@
 				F482372F1F26CC4D00DDD487 /* personal_address_edit.png in Resources */,
 				F4A7A1351F25A3A5009FAAEE /* tabbar_store_black.png in Resources */,
 				F481E9141F283DD600EE3D7C /* shopping_delete.png in Resources */,
+				F4FDD6B81F2C3F86007263D4 /* personal_login.png in Resources */,
 				F4A7A11B1F259445009FAAEE /* personal_shoucang.png in Resources */,
 				F48237531F27106300DDD487 /* homepage_wedding.png in Resources */,
 				F4A7A1341F25A3A5009FAAEE /* tabbar_shopping_red.png in Resources */,
