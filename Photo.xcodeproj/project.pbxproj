@@ -31,6 +31,7 @@
 		F405D1971F2EBAFD0015A8E6 /* GoodsOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F405D1961F2EBAFD0015A8E6 /* GoodsOrderViewController.m */; };
 		F405D19A1F2EBB2F0015A8E6 /* BookOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F405D1991F2EBB2F0015A8E6 /* BookOrderViewController.m */; };
 		F405D19D1F2EBC110015A8E6 /* OrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F405D19C1F2EBC110015A8E6 /* OrderTableViewCell.m */; };
+		F405D1A41F2EC6480015A8E6 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F405D1A31F2EC6480015A8E6 /* CameraViewController.m */; };
 		F48185241F25E25800349143 /* CustomActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = F48185231F25E25800349143 /* CustomActionSheet.m */; };
 		F481E90C1F282D1E00EE3D7C /* personal_address_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = F481E90A1F282D1E00EE3D7C /* personal_address_selected.png */; };
 		F481E90D1F282D1E00EE3D7C /* personal_address_unselect.png in Resources */ = {isa = PBXBuildFile; fileRef = F481E90B1F282D1E00EE3D7C /* personal_address_unselect.png */; };
@@ -176,6 +177,8 @@
 		F405D1991F2EBB2F0015A8E6 /* BookOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookOrderViewController.m; sourceTree = "<group>"; };
 		F405D19B1F2EBC110015A8E6 /* OrderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderTableViewCell.h; sourceTree = "<group>"; };
 		F405D19C1F2EBC110015A8E6 /* OrderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderTableViewCell.m; sourceTree = "<group>"; };
+		F405D1A21F2EC6480015A8E6 /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
+		F405D1A31F2EC6480015A8E6 /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
 		F48185221F25E25800349143 /* CustomActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomActionSheet.h; sourceTree = "<group>"; };
 		F48185231F25E25800349143 /* CustomActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomActionSheet.m; sourceTree = "<group>"; };
 		F481E90A1F282D1E00EE3D7C /* personal_address_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personal_address_selected.png; sourceTree = "<group>"; };
@@ -410,6 +413,15 @@
 			path = PesDelegate;
 			sourceTree = "<group>";
 		};
+		F405D19E1F2EC2090015A8E6 /* CameraViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F405D1A21F2EC6480015A8E6 /* CameraViewController.h */,
+				F405D1A31F2EC6480015A8E6 /* CameraViewController.m */,
+			);
+			path = CameraViewController;
+			sourceTree = "<group>";
+		};
 		F481E90E1F283A5F00EE3D7C /* Shopping */ = {
 			isa = PBXGroup;
 			children = (
@@ -609,6 +621,7 @@
 			isa = PBXGroup;
 			children = (
 				F482373C1F2703F700DDD487 /* View */,
+				F405D19E1F2EC2090015A8E6 /* CameraViewController */,
 				F4A7A0CF1F256DB1009FAAEE /* HomePageViewController.h */,
 				F4A7A0D01F256DB1009FAAEE /* HomePageViewController.m */,
 			);
@@ -1031,6 +1044,7 @@
 				F4FDD6AB1F2C379D007263D4 /* OrderManageViewController.m in Sources */,
 				F482375D1F27395100DDD487 /* ShoppingBottomView.m in Sources */,
 				F482372B1F2606BC00DDD487 /* AddressTableViewCell.m in Sources */,
+				F405D1A41F2EC6480015A8E6 /* CameraViewController.m in Sources */,
 				F4FDD6A41F2C378E007263D4 /* NickNameViewController.m in Sources */,
 				F405D19A1F2EBB2F0015A8E6 /* BookOrderViewController.m in Sources */,
 				F4A7A2591F25C3D0009FAAEE /* UserDataTableViewCell.m in Sources */,

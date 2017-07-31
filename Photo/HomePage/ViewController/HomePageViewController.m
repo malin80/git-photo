@@ -7,6 +7,8 @@
 //
 
 #import "HomePageViewController.h"
+#import "CameraViewController.h"
+
 #import "HomePageScrollView.h"
 #import "HomePageButtonView.h"
 #import "HomePageTableViewCell.h"
@@ -107,7 +109,9 @@
 
 #pragma mark --- HomePageButtonViewDelegate ---
 - (void)touchCameraButton {
-    [HomePagePesRequest queryHonorInfo];
+    CameraViewController *controller = [[CameraViewController alloc] init];
+    [self.navigationController pushViewController:controller animated:NO];
+//    [HomePagePesRequest queryHonorInfo];
 }
 
 @end
