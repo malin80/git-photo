@@ -22,7 +22,7 @@
     return sharedClient;
 }
 
-- (void)pesRequestWithFunctionName:(NSString *)string andParameter:(NSDictionary *)parameter {
++ (void)pesRequestWithFunctionName:(NSString *)string andParameter:(NSDictionary *)parameter {
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc]init];
     NSString *urlString = [NSString stringWithFormat:@"http://101.201.122.173/%@",string];
     [manager GET:urlString parameters:parameter progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {

@@ -8,7 +8,8 @@
 
 #import "LoginViewController.h"
 #import "Masonry.h"
-
+#import <AFNetworking.h>
+#import "LoginInfo.h"
 @interface LoginViewController ()
 {
     UIImageView *_iconView;
@@ -21,6 +22,8 @@
     UIButton *_passwordLoginButton;
 }
 
+@property (nonatomic, strong) LoginInfo *loginInfo;
+
 @end
 
 @implementation LoginViewController
@@ -30,6 +33,8 @@
 
     [self initView];
     [self setImmutableConstraints];
+    
+    self.loginInfo = [[LoginInfo alloc] init];
 }
 
 - (void)initView {
@@ -40,25 +45,31 @@
     _phoneTextField = [[UITextField alloc] init];
     _phoneTextField.placeholder = @"请输入手机号码";
     _phoneTextField.textAlignment = NSTextAlignmentCenter;
+    _phoneTextField.textColor = UIColorFromRGB(146, 146, 146, 1);
     [self.view addSubview:_phoneTextField];
     
     _seperateLine = [[UILabel alloc] init];
-    _seperateLine.backgroundColor = [UIColor redColor];
+    _seperateLine.backgroundColor = UIColorFromRGB(223, 223, 223, 1);
     [self.view addSubview:_seperateLine];
     
     _identifyTextField = [[UITextField alloc] init];
     _identifyTextField.placeholder = @"请输入验证码";
     _identifyTextField.textAlignment = NSTextAlignmentCenter;
+    _identifyTextField.textColor = UIColorFromRGB(146, 146, 146, 1);
     [self.view addSubview:_identifyTextField];
     
     _identifyButton = [[UIButton alloc] init];
     [_identifyButton setTitle:@"获取验证码" forState:UIControlStateNormal];
-    _identifyButton.backgroundColor = [UIColor blueColor];
+    _identifyButton.backgroundColor = UIColorFromRGB(95, 193, 255, 1);
+    [_identifyButton addTarget:self action:@selector(getIdentifyCode) forControlEvents:UIControlEventTouchUpInside];
+    _identifyButton.titleLabel.font = [UIFont systemFontOfSize:12];
+    _identifyButton.layer.cornerRadius = 10;
     [self.view addSubview:_identifyButton];
     
     _loginButton = [[UIButton alloc] init];
     [_loginButton setTitle:@"登录" forState:UIControlStateNormal];
     _loginButton.backgroundColor = UIColorFromRGB(95, 193, 255, 1);
+    [_loginButton addTarget:self action:@selector(login) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_loginButton];
     
     _orLabel = [[UILabel alloc] init];
@@ -104,10 +115,10 @@
     }];
     
     [_identifyButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_identifyTextField);
+        make.centerY.equalTo(_identifyTextField);
         make.right.equalTo(_identifyTextField.mas_right);
-        make.height.equalTo(@(40));
-        make.width.equalTo(@(60));
+        make.height.equalTo(@(30));
+        make.width.equalTo(@(80));
     }];
     
     [_loginButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -133,7 +144,48 @@
 }
 
 - (void)login {
+    //memberPhone,memberCode,loginType,appid
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc]init];
+    NSString *urlString = [NSString stringWithFormat:@"http://192.168.1.102:8089/MemberControl/login.do"];
+    NSDictionary *parameters = nil;
+
+    NSString *app_uuid = @"";
+    CFUUIDRef uuidRef = CFUUIDCreate(kCFAllocatorDefault);
+    CFStringRef uuidString = CFUUIDCreateString(kCFAllocatorDefault, uuidRef);
+    app_uuid = [NSString stringWithString:(__bridge NSString *)uuidString];
+
     
+    switch (self.loginInfo.loginType) {
+        case LoginTypePassword:
+            
+            break;
+        
+        case LoginTypeIdentifyCode:
+            parameters = @{@"memberPhone":_phoneTextField.text, @"memberCode":_identifyTextField.text, @"loginType":@(1), @"appid":app_uuid};
+            break;
+            
+        default:
+            break;
+    }
+    [manager GET:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
+}
+
+- (void)getIdentifyCode {
+    self.loginInfo.loginType = LoginTypeIdentifyCode;
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc]init];
+    NSString *urlString = [NSString stringWithFormat:@"http://192.168.1.102:8089/SendsmsControl/Sendsms.do"];
+    NSDictionary *parameters = @{@"mobile":_phoneTextField.text};
+    [manager GET:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
+        self.loginInfo.identifyCode = [responseObject objectForKey:@"data"];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
+
 }
 
 - (void)didReceiveMemoryWarning {

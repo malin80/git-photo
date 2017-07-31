@@ -13,6 +13,6 @@
 
 +(instancetype)sharedInstance;
 
-- (void)pesRequestWithFunctionName:(NSString *)string andParameter:(NSDictionary *)parameter;
++ (void)pesRequestWithFunctionName:(NSString *)string andParameter:(NSDictionary *)parameter;
 
 @end

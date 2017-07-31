@@ -13,7 +13,7 @@
 + (void)queryHonorInfo {
     NSString *functionName = @"TeamControl/selectAllTeam.do";
     
-    [[PesRequest sharedInstance] pesRequestWithFunctionName:functionName andParameter:nil];
+//    [[PesRequest sharedInstance] pesRequestWithFunctionName:functionName andParameter:nil];
 }
 
 @end
