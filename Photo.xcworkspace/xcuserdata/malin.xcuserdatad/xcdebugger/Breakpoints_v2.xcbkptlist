@@ -26,7 +26,7 @@
                   moduleName = "Photo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/malin/Desktop/Photo/Photo/Personal/ViewController/LoginViewController.m"
-                  timestampString = "523165627.698112"
+                  timestampString = "523174084.672808"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "172"
@@ -41,7 +41,7 @@
                   moduleName = "Photo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/malin/Desktop/Photo/Photo/Personal/ViewController/LoginViewController.m"
-                  timestampString = "523165627.700158"
+                  timestampString = "523174084.677129"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "174"
@@ -90,7 +90,7 @@
                   moduleName = "Photo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/malin/Desktop/Photo/Photo/Personal/ViewController/LoginViewController.m"
-                  timestampString = "523165627.710892"
+                  timestampString = "523174084.695138"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "185"
@@ -105,7 +105,7 @@
                   moduleName = "Photo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/malin/Desktop/Photo/Photo/Personal/ViewController/LoginViewController.m"
-                  timestampString = "523165627.713098"
+                  timestampString = "523174084.697908"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "185"
@@ -120,7 +120,7 @@
                   moduleName = "Photo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/malin/Desktop/Photo/Photo/Personal/ViewController/LoginViewController.m"
-                  timestampString = "523165627.715235"
+                  timestampString = "523174084.700568"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "185"
@@ -135,11 +135,89 @@
                   moduleName = "Photo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/malin/Desktop/Photo/Photo/Personal/ViewController/LoginViewController.m"
-                  timestampString = "523165627.716774"
+                  timestampString = "523174084.704876"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "187"
                   endingLineNumber = "187"
+                  offsetFromSymbolStart = "83">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Photo/HomePage/ViewController/View/HomePageScrollView.m"
+            timestampString = "523171300.397587"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "-initDataSource"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__36-[HomePageScrollView initDataSource]_block_invoke"
+                  moduleName = "Photo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/malin/Desktop/Photo/Photo/HomePage/ViewController/View/HomePageScrollView.m"
+                  timestampString = "523171536.905134"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "675">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__copy_helper_block_"
+                  moduleName = "Photo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/malin/Desktop/Photo/Photo/HomePage/ViewController/View/HomePageScrollView.m"
+                  timestampString = "523171536.907595"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "51">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_"
+                  moduleName = "Photo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/malin/Desktop/Photo/Photo/HomePage/ViewController/View/HomePageScrollView.m"
+                  timestampString = "523171536.909701"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "29">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__36-[HomePageScrollView initDataSource]_block_invoke.26"
+                  moduleName = "Photo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/malin/Desktop/Photo/Photo/HomePage/ViewController/View/HomePageScrollView.m"
+                  timestampString = "523171536.91181"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
                   offsetFromSymbolStart = "83">
                </Location>
             </Locations>

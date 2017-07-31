@@ -39,6 +39,7 @@
     [self.headerView addSubview:self.buttonView];
     
     [self createTableView];
+    
 }
 
 - (void)createTableView {

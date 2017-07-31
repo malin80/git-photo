@@ -7,12 +7,13 @@
 //
 
 #import "HomePageScrollView.h"
+#import <AFNetworking.h>
 
 #define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
 
 @interface HomePageScrollView() <UIScrollViewDelegate>
 {
-    NSArray *_dataSource;
+    NSMutableArray *_dataSource;
     UIScrollView *_scrollView;
     UIPageControl *_pageControl;
 }
@@ -24,11 +25,26 @@
 -(id)initWithFrame:(CGRect)frame withDataSource:(NSArray *)dataSource {
     self = [super initWithFrame:frame];
     if (self) {
-        _dataSource = dataSource;
-        _dataSource = [NSArray arrayWithObjects:@"1", @"2", @"3", nil];
-        [self createScrollView];
+        _dataSource = [NSMutableArray array];
+        
+        [self initDataSource];
     }
     return self;
+}
+
+- (void)initDataSource {
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc]init];
+    NSString *urlString = [NSString stringWithFormat:@"http://192.168.1.102:8089/HomeSlideControl/queryHomeSlide.do"];
+    [manager GET:urlString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
+        NSArray *urlArray = [responseObject objectForKey:@"data"];
+        for (NSDictionary *dict in urlArray) {
+            NSString *urlString = [dict objectForKey:@"homeSlideImgUrl"];
+            [_dataSource addObject:urlString];
+        }
+        [self createScrollView];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
 }
 
 - (void)createScrollView
@@ -48,9 +64,13 @@
 }
 
 - (void)createImageView {
-    for (int i = 0; i <= _dataSource.count; i++) {
+    for (int i = 0; i < _dataSource.count; i++) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i*ScreenWidth, 0, ScreenWidth, 250)];
-        imageView.image = [UIImage imageNamed:@"main_my_bg.jpeg"];
+        NSString *imageName = _dataSource[i];
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://101.201.122.173/%@",imageName]];
+//        NSURL *url11=[NSURL URLWithString:@"http://101.201.122.173/backImage/slide/homeSlide/slide1.jpg"];
+        UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
+        imageView.image = imgFromUrl;
         [_scrollView addSubview:imageView];
     }
 }
