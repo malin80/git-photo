@@ -41,18 +41,6 @@
     self.tabedSlideView.tabbarTrackColor = [UIColor colorWithRed:0.833 green:0.052 blue:0.130 alpha:1.000];
     self.tabedSlideView.tabbarBottomSpacing = 3.0;
 
-//    NSArray *array = [NSArray arrayWithObjects:@"跟拍", @"跟拍", @"跟拍", @"跟拍", @"跟拍", @"跟拍", @"跟拍", @"跟拍", nil];
-//    NSMutableArray *mutableArray = [NSMutableArray array];
-//    for (int i = 0; i < array.count; i++) {
-//        DLTabedbarItem *item = [DLTabedbarItem itemWithTitle:[NSString stringWithFormat:@"%@",array[i]] image:nil selectedImage:nil];
-//        [mutableArray addObject:item];
-//        self.tabedSlideView.selectedIndex = 0;
-//    }
-//    self.tabedSlideView.tabbarItems = mutableArray;
-//    [self.tabedSlideView buildTabbar];
-//
-//    [self.view addSubview:self.tabedSlideView];
-
     DLTabedbarItem *item1 = [DLTabedbarItem itemWithTitle:@"商品订单" image:nil selectedImage:nil];
     DLTabedbarItem *item2 = [DLTabedbarItem itemWithTitle:@"预约订单" image:nil selectedImage:nil];
     self.tabedSlideView.tabbarItems = @[item1, item2];

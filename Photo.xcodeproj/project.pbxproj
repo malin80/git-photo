@@ -434,18 +434,18 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
-		F405D1AC1F2EDB7A0015A8E6 /* Delegate */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Delegate;
-			sourceTree = "<group>";
-		};
 		F405D1B61F2EF4740015A8E6 /* Data */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		F405D1B71F2F01B00015A8E6 /* PesDelegate */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PesDelegate;
 			sourceTree = "<group>";
 		};
 		F481E90E1F283A5F00EE3D7C /* Shopping */ = {
@@ -596,7 +596,7 @@
 			isa = PBXGroup;
 			children = (
 				F405D1A51F2ED05F0015A8E6 /* Data */,
-				F405D1AC1F2EDB7A0015A8E6 /* Delegate */,
+				F405D1B71F2F01B00015A8E6 /* PesDelegate */,
 				F4A7A0C71F256D1F009FAAEE /* ViewController */,
 			);
 			path = Personal;
