@@ -1,5 +1,5 @@
 //
-//  BookOrderViewController.h
+//  GoodsOrderViewController.h
 //  Photo
 //
 //  Created by malin  on 2017/7/31.
@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 
-@interface BookOrderViewController : BaseViewController
+@interface GoodsOrderViewController : BaseViewController
 
 @end

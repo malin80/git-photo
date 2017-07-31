@@ -10,7 +10,8 @@
 #import "NavigationBar.h"
 #import "DLTabedSlideView.h"
 #import "BookOrderViewController.h"
-#import "ShopOrderViewController.h"
+#import "GoodsOrderViewController.h"
+
 @interface OrderManageViewController : BaseViewController<NavigationBarDelegate>
 @property (weak, nonatomic) IBOutlet DLTabedSlideView *tabedSlideView;
 

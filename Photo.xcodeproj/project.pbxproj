@@ -28,6 +28,9 @@
 		F40575701F2AE38D003C8AF2 /* HomePagePesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F405756F1F2AE38D003C8AF2 /* HomePagePesRequest.m */; };
 		F40575731F2AE56F003C8AF2 /* PesResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F40575721F2AE56F003C8AF2 /* PesResponse.m */; };
 		F40575761F2AE61F003C8AF2 /* HomePagePesResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F40575751F2AE61F003C8AF2 /* HomePagePesResponse.m */; };
+		F405D1971F2EBAFD0015A8E6 /* GoodsOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F405D1961F2EBAFD0015A8E6 /* GoodsOrderViewController.m */; };
+		F405D19A1F2EBB2F0015A8E6 /* BookOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F405D1991F2EBB2F0015A8E6 /* BookOrderViewController.m */; };
+		F405D19D1F2EBC110015A8E6 /* OrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F405D19C1F2EBC110015A8E6 /* OrderTableViewCell.m */; };
 		F48185241F25E25800349143 /* CustomActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = F48185231F25E25800349143 /* CustomActionSheet.m */; };
 		F481E90C1F282D1E00EE3D7C /* personal_address_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = F481E90A1F282D1E00EE3D7C /* personal_address_selected.png */; };
 		F481E90D1F282D1E00EE3D7C /* personal_address_unselect.png in Resources */ = {isa = PBXBuildFile; fileRef = F481E90B1F282D1E00EE3D7C /* personal_address_unselect.png */; };
@@ -92,8 +95,6 @@
 		F4A7A2561F25BC22009FAAEE /* NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7A2551F25BC22009FAAEE /* NavigationBar.m */; };
 		F4A7A2591F25C3D0009FAAEE /* UserDataTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7A2581F25C3D0009FAAEE /* UserDataTableViewCell.m */; };
 		F4A7A25E1F25D192009FAAEE /* common_back.png in Resources */ = {isa = PBXBuildFile; fileRef = F4A7A25D1F25D192009FAAEE /* common_back.png */; };
-		F4FDD6961F2C36CF007263D4 /* BookOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FDD6931F2C36CF007263D4 /* BookOrderViewController.m */; };
-		F4FDD6971F2C36CF007263D4 /* ShopOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FDD6951F2C36CF007263D4 /* ShopOrderViewController.m */; };
 		F4FDD6A31F2C378E007263D4 /* ModifyPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FDD69A1F2C378E007263D4 /* ModifyPasswordViewController.m */; };
 		F4FDD6A41F2C378E007263D4 /* NickNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FDD69C1F2C378E007263D4 /* NickNameViewController.m */; };
 		F4FDD6A51F2C378E007263D4 /* PhoneNumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FDD69E1F2C378E007263D4 /* PhoneNumberViewController.m */; };
@@ -169,6 +170,12 @@
 		F40575721F2AE56F003C8AF2 /* PesResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PesResponse.m; sourceTree = "<group>"; };
 		F40575741F2AE61F003C8AF2 /* HomePagePesResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePagePesResponse.h; sourceTree = "<group>"; };
 		F40575751F2AE61F003C8AF2 /* HomePagePesResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePagePesResponse.m; sourceTree = "<group>"; };
+		F405D1951F2EBAFD0015A8E6 /* GoodsOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsOrderViewController.h; sourceTree = "<group>"; };
+		F405D1961F2EBAFD0015A8E6 /* GoodsOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsOrderViewController.m; sourceTree = "<group>"; };
+		F405D1981F2EBB2F0015A8E6 /* BookOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookOrderViewController.h; sourceTree = "<group>"; };
+		F405D1991F2EBB2F0015A8E6 /* BookOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookOrderViewController.m; sourceTree = "<group>"; };
+		F405D19B1F2EBC110015A8E6 /* OrderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderTableViewCell.h; sourceTree = "<group>"; };
+		F405D19C1F2EBC110015A8E6 /* OrderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderTableViewCell.m; sourceTree = "<group>"; };
 		F48185221F25E25800349143 /* CustomActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomActionSheet.h; sourceTree = "<group>"; };
 		F48185231F25E25800349143 /* CustomActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomActionSheet.m; sourceTree = "<group>"; };
 		F481E90A1F282D1E00EE3D7C /* personal_address_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personal_address_selected.png; sourceTree = "<group>"; };
@@ -264,10 +271,6 @@
 		F4A7A2571F25C3D0009FAAEE /* UserDataTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDataTableViewCell.h; sourceTree = "<group>"; };
 		F4A7A2581F25C3D0009FAAEE /* UserDataTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDataTableViewCell.m; sourceTree = "<group>"; };
 		F4A7A25D1F25D192009FAAEE /* common_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = common_back.png; sourceTree = "<group>"; };
-		F4FDD6921F2C36CF007263D4 /* BookOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookOrderViewController.h; sourceTree = "<group>"; };
-		F4FDD6931F2C36CF007263D4 /* BookOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookOrderViewController.m; sourceTree = "<group>"; };
-		F4FDD6941F2C36CF007263D4 /* ShopOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopOrderViewController.h; sourceTree = "<group>"; };
-		F4FDD6951F2C36CF007263D4 /* ShopOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopOrderViewController.m; sourceTree = "<group>"; };
 		F4FDD6991F2C378E007263D4 /* ModifyPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifyPasswordViewController.h; sourceTree = "<group>"; };
 		F4FDD69A1F2C378E007263D4 /* ModifyPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifyPasswordViewController.m; sourceTree = "<group>"; };
 		F4FDD69B1F2C378E007263D4 /* NickNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NickNameViewController.h; sourceTree = "<group>"; };
@@ -634,6 +637,8 @@
 				F482372A1F2606BC00DDD487 /* AddressTableViewCell.m */,
 				F48237391F26EC3100DDD487 /* CollectTableViewCell.h */,
 				F482373A1F26EC3100DDD487 /* CollectTableViewCell.m */,
+				F405D19B1F2EBC110015A8E6 /* OrderTableViewCell.h */,
+				F405D19C1F2EBC110015A8E6 /* OrderTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -727,10 +732,10 @@
 				F4FDD6A81F2C379D007263D4 /* OrderManageViewController.h */,
 				F4FDD6A91F2C379D007263D4 /* OrderManageViewController.m */,
 				F4FDD6AA1F2C379D007263D4 /* OrderManageViewController.xib */,
-				F4FDD6921F2C36CF007263D4 /* BookOrderViewController.h */,
-				F4FDD6931F2C36CF007263D4 /* BookOrderViewController.m */,
-				F4FDD6941F2C36CF007263D4 /* ShopOrderViewController.h */,
-				F4FDD6951F2C36CF007263D4 /* ShopOrderViewController.m */,
+				F405D1951F2EBAFD0015A8E6 /* GoodsOrderViewController.h */,
+				F405D1961F2EBAFD0015A8E6 /* GoodsOrderViewController.m */,
+				F405D1981F2EBB2F0015A8E6 /* BookOrderViewController.h */,
+				F405D1991F2EBB2F0015A8E6 /* BookOrderViewController.m */,
 			);
 			path = OrderManage;
 			sourceTree = "<group>";
@@ -755,10 +760,10 @@
 		F4FDD6AD1F2C37CD007263D4 /* Address */ = {
 			isa = PBXGroup;
 			children = (
-				F4FDD6AE1F2C37CD007263D4 /* AddAddressViewController.h */,
-				F4FDD6AF1F2C37CD007263D4 /* AddAddressViewController.m */,
 				F4FDD6B01F2C37CD007263D4 /* AddressViewController.h */,
 				F4FDD6B11F2C37CD007263D4 /* AddressViewController.m */,
+				F4FDD6AE1F2C37CD007263D4 /* AddAddressViewController.h */,
+				F4FDD6AF1F2C37CD007263D4 /* AddAddressViewController.m */,
 				F4FDD6B21F2C37CD007263D4 /* EditAddressViewController.h */,
 				F4FDD6B31F2C37CD007263D4 /* EditAddressViewController.m */,
 			);
@@ -993,6 +998,7 @@
 				F4FDD6A31F2C378E007263D4 /* ModifyPasswordViewController.m in Sources */,
 				F4A7A1391F25A779009FAAEE /* AvatarView.m in Sources */,
 				F481E95E1F2865C900EE3D7C /* SexPickerView.m in Sources */,
+				F405D19D1F2EBC110015A8E6 /* OrderTableViewCell.m in Sources */,
 				F4A7A1051F258449009FAAEE /* PersonalTabelViewCell.m in Sources */,
 				F40575761F2AE61F003C8AF2 /* HomePagePesResponse.m in Sources */,
 				F4A7A1081F2588BF009FAAEE /* PersonalHeaderView.m in Sources */,
@@ -1001,6 +1007,7 @@
 				A520C6D31F2B89A400202622 /* DLUtility.m in Sources */,
 				F481E95B1F28581600EE3D7C /* DatePickerView.m in Sources */,
 				F48185241F25E25800349143 /* CustomActionSheet.m in Sources */,
+				F405D1971F2EBAFD0015A8E6 /* GoodsOrderViewController.m in Sources */,
 				F4A7A0D71F2574A1009FAAEE /* PersonalViewController.m in Sources */,
 				F4A7A1221F2595FF009FAAEE /* EntrySection.m in Sources */,
 				F4A7A1251F259629009FAAEE /* EntryItem.m in Sources */,
@@ -1008,7 +1015,6 @@
 				F4A7A0961F256B96009FAAEE /* ViewController.m in Sources */,
 				F48237381F26EA1100DDD487 /* CollectViewController.m in Sources */,
 				F4FDD6B61F2C37CD007263D4 /* EditAddressViewController.m in Sources */,
-				F4FDD6971F2C36CF007263D4 /* ShopOrderViewController.m in Sources */,
 				A514B0F21F2901A1006A765F /* LeadViewController.m in Sources */,
 				F4FDD6A61F2C378E007263D4 /* UserDataViewController.m in Sources */,
 				F40430951F29D0FD00DDB2E7 /* LoginViewController.m in Sources */,
@@ -1022,11 +1028,11 @@
 				A520C6CF1F2B89A400202622 /* DLSlideView.m in Sources */,
 				F40575701F2AE38D003C8AF2 /* HomePagePesRequest.m in Sources */,
 				F482373F1F27041300DDD487 /* HomePageScrollView.m in Sources */,
-				F4FDD6961F2C36CF007263D4 /* BookOrderViewController.m in Sources */,
 				F4FDD6AB1F2C379D007263D4 /* OrderManageViewController.m in Sources */,
 				F482375D1F27395100DDD487 /* ShoppingBottomView.m in Sources */,
 				F482372B1F2606BC00DDD487 /* AddressTableViewCell.m in Sources */,
 				F4FDD6A41F2C378E007263D4 /* NickNameViewController.m in Sources */,
+				F405D19A1F2EBB2F0015A8E6 /* BookOrderViewController.m in Sources */,
 				F4A7A2591F25C3D0009FAAEE /* UserDataTableViewCell.m in Sources */,
 				F482375A1F2725AA00DDD487 /* ShoppingTableViewCell.m in Sources */,
 				F4FDD6A51F2C378E007263D4 /* PhoneNumberViewController.m in Sources */,

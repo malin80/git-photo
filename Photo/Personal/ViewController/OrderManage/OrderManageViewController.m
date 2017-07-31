@@ -21,9 +21,11 @@
     bar.delegate = self;
     bar.line.hidden=YES;
     [self.view addSubview:bar];
-   [self createView];
+    
+    [self initView];
 }
--(void)createView{
+
+-(void)initView {
     self.tabedSlideView.baseController = self;
     self.tabedSlideView.tabItemNormalColor = [UIColor blackColor];
     self.tabedSlideView.tabItemSelectedColor = [UIColor colorWithRed:0.833 green:0.052 blue:0.130 alpha:1.000];
@@ -37,20 +39,23 @@
     
     self.tabedSlideView.selectedIndex = 0;
 }
-- (NSInteger)numberOfTabsInDLTabedSlideView:(DLTabedSlideView *)sender{
+
+#pragma mark --- DLTabedSlideViewDelegate ---
+- (NSInteger)numberOfTabsInDLTabedSlideView:(DLTabedSlideView *)sender {
     return 2;
 }
-- (UIViewController *)DLTabedSlideView:(DLTabedSlideView *)sender controllerAt:(NSInteger)index{
+
+- (UIViewController *)DLTabedSlideView:(DLTabedSlideView *)sender controllerAt:(NSInteger)index {
     switch (index) {
         case 0:
         {
-            ShopOrderViewController *ctrl = [[ShopOrderViewController alloc] init];
-            return ctrl;
+            GoodsOrderViewController *controller = [[GoodsOrderViewController alloc] init];
+            return controller;
         }
         case 1:
         {
-            BookOrderViewController *ctrl = [[BookOrderViewController alloc] init];
-            return ctrl;
+            BookOrderViewController *controller = [[BookOrderViewController alloc] init];
+            return controller;
         }
             
         default:
