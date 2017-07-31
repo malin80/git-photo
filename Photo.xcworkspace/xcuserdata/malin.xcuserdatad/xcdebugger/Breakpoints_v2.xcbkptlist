@@ -26,12 +26,12 @@
                   moduleName = "Photo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/malin/Desktop/Photo/Photo/Personal/ViewController/LoginViewController.m"
-                  timestampString = "523174084.672808"
+                  timestampString = "523178081.561987"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "172"
                   endingLineNumber = "172"
-                  offsetFromSymbolStart = "83">
+                  offsetFromSymbolStart = "88">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -41,12 +41,12 @@
                   moduleName = "Photo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/malin/Desktop/Photo/Photo/Personal/ViewController/LoginViewController.m"
-                  timestampString = "523174084.677129"
+                  timestampString = "523178081.563348"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "174"
                   endingLineNumber = "174"
-                  offsetFromSymbolStart = "83">
+                  offsetFromSymbolStart = "88">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -90,12 +90,12 @@
                   moduleName = "Photo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/malin/Desktop/Photo/Photo/Personal/ViewController/LoginViewController.m"
-                  timestampString = "523174084.695138"
+                  timestampString = "523178081.571262"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "185"
                   endingLineNumber = "185"
-                  offsetFromSymbolStart = "214">
+                  offsetFromSymbolStart = "236">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -105,12 +105,12 @@
                   moduleName = "Photo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/malin/Desktop/Photo/Photo/Personal/ViewController/LoginViewController.m"
-                  timestampString = "523174084.697908"
+                  timestampString = "523178081.575342"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "185"
                   endingLineNumber = "185"
-                  offsetFromSymbolStart = "51">
+                  offsetFromSymbolStart = "64">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -120,12 +120,12 @@
                   moduleName = "Photo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/malin/Desktop/Photo/Photo/Personal/ViewController/LoginViewController.m"
-                  timestampString = "523174084.700568"
+                  timestampString = "523178081.579684"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "185"
                   endingLineNumber = "185"
-                  offsetFromSymbolStart = "29">
+                  offsetFromSymbolStart = "36">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -135,12 +135,12 @@
                   moduleName = "Photo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/malin/Desktop/Photo/Photo/Personal/ViewController/LoginViewController.m"
-                  timestampString = "523174084.704876"
+                  timestampString = "523178081.582392"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "187"
                   endingLineNumber = "187"
-                  offsetFromSymbolStart = "83">
+                  offsetFromSymbolStart = "88">
                </Location>
             </Locations>
          </BreakpointContent>
