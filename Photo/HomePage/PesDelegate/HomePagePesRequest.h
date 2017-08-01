@@ -11,6 +11,6 @@
 
 @interface HomePagePesRequest : NSObject
 
-+ (void)loadPageScrollViewImage:(void(^)(id restuct,NSString *error))finished;
++ (void)loadPageScrollViewImage:(void(^)(NSDictionary *responseObject,NSString *error))finished;
 
 @end

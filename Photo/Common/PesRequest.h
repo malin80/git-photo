@@ -20,13 +20,13 @@ typedef void(^RequestCallBack)(id result,NSString * error, NSProgress * progress
 
 @interface PesRequest : AFHTTPSessionManager
 
-//单例
-+ (instancetype)sharedInstance;
+DECLARE_SINGLETON_FOR_CLASS(PesRequest)
+
 
 //提交各种账号接口
 - (void)pesRequestWithFunctionName:(NSString *)functionName withParameter:(NSDictionary *)parameter requestCallBack:(RequestCallBack)block;
 
-- (void)netWorkApi:(NSString *)api dic:(NSDictionary *)dic finished:(void(^)(id restuct,NSString *error))finished;
+- (void)requestWithFunctionName:(NSString *)functionName dic:(NSDictionary *)dic finished:(void(^)(NSDictionary *responseObject,NSString *error))finished;
 
 
 @end

@@ -9,6 +9,8 @@
 #import "HomePageScrollView.h"
 #import "HomePagePesRequest.h"
 #import "HomePageManager.h"
+#import "HomePageScrollViewInfo.h"
+
 #define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
 
 @interface HomePageScrollView() <UIScrollViewDelegate>
@@ -59,10 +61,11 @@
 }
 
 - (void)createImageView {
+    HomePageScrollViewInfo *info = [[HomePageScrollViewInfo alloc] init];
     for (int i = 0; i < _dataSource.count; i++) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i*ScreenWidth, 0, ScreenWidth, 250)];
-        NSString *imageName = _dataSource[i];
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://101.201.122.173/%@",imageName]];
+        info = _dataSource[i];
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://101.201.122.173/%@",info.imageUrl]];
         UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
         imageView.image = imgFromUrl;
         [_scrollView addSubview:imageView];

@@ -13,10 +13,8 @@ typedef NS_ENUM(NSInteger, LoginType) {
     LoginTypeIdentifyCode   = 1,
 };
 
-
 @interface LoginInfo : NSObject
 
-@property (nonatomic, copy) NSString *identifyCode;
 @property (nonatomic, assign) LoginType loginType;
 
 @end

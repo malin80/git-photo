@@ -10,16 +10,8 @@
 
 @implementation PesRequest
 
-//单例
-+ (instancetype)sharedInstance {
-    static PesRequest *instance ;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        instance = [[self alloc] init];
-        instance.responseSerializer.acceptableContentTypes =[NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/plain",@"text/html", @"application/javascript",nil];
-    });
-    return instance;
-}
+SYNTHESIZE_SINGLETON_FOR_CLASS(PesRequest)
+
 
 - (void)pesRequestWithFunctionName:(NSString *)functionName withParameter:(NSDictionary *)parameter requestCallBack:(RequestCallBack)block {
     NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:parameter];
@@ -53,8 +45,8 @@
 }
 
 #pragma mark 网络返回
-- (void)netWorkApi:(NSString *)api dic:(NSDictionary *)dic finished:(void(^)(id restuct,NSString *error))finished {
-    [self pesRequestWithFunctionName:api withParameter:dic requestCallBack:^(id result, NSString *error, NSProgress *progress) {
+- (void)requestWithFunctionName:(NSString *)functionName dic:(NSDictionary *)dic finished:(void(^)(NSDictionary *responseObject,NSString *error))finished {
+    [self pesRequestWithFunctionName:functionName withParameter:dic requestCallBack:^(id result, NSString *error, NSProgress *progress) {
         if (error) {
             finished(nil,error);
             return ;

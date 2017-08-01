@@ -10,8 +10,8 @@
 
 @implementation HomePagePesRequest
 
-+ (void)loadPageScrollViewImage:(void(^)(id restuct,NSString *error))finished {
-    [[PesRequest sharedInstance] netWorkApi:@"HomeSlideControl/queryHomeSlide.do" dic:nil finished:finished];
++ (void)loadPageScrollViewImage:(void(^)(NSDictionary *responseObject,NSString *error))finished {
+    [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"HomeSlideControl/queryHomeSlide.do" dic:nil finished:finished];
 }
 
 @end

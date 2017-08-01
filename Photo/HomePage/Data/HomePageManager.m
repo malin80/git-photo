@@ -7,6 +7,7 @@
 //
 
 #import "HomePageManager.h"
+#import "HomePageScrollViewInfo.h"
 
 @implementation HomePageManager
 
@@ -22,11 +23,15 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(HomePageManager)
 }
 
 - (void)loadScrollViewImages {
-    [HomePagePesRequest loadPageScrollViewImage:^(id restuct,NSString *error){
-        NSArray *urlArray = [restuct objectForKey:@"data"];
+    [HomePagePesRequest loadPageScrollViewImage:^(NSDictionary *responseObject,NSString *error){
+        NSArray *urlArray = [responseObject objectForKey:@"data"];
         for (NSDictionary *dict in urlArray) {
+            HomePageScrollViewInfo *info = [[HomePageScrollViewInfo alloc] init];
             NSString *urlString = [dict objectForKey:@"homeSlideImgUrl"];
-            [self.scrollViewImages addObject:urlString];
+            NSInteger imageId = [[dict objectForKey:@"homeSlideId"] integerValue];
+            info.imageUrl = urlString;
+            info.imageId = &(imageId);
+            [self.scrollViewImages addObject:info];
         }
         [[NSNotificationCenter defaultCenter] postNotificationName:@"loadScrollViewImagesSuccess" object:nil];
     }];

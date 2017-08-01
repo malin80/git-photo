@@ -8,8 +8,9 @@
 
 #import "LoginViewController.h"
 #import "Masonry.h"
-#import <AFNetworking.h>
 #import "LoginInfo.h"
+#import "LoginManager.h"
+
 @interface LoginViewController ()
 {
     UIImageView *_iconView;
@@ -144,48 +145,30 @@
 }
 
 - (void)login {
-    //memberPhone,memberCode,loginType,appid
-    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc]init];
-    NSString *urlString = [NSString stringWithFormat:@"http://192.168.1.102:8089/MemberControl/login.do"];
-    NSDictionary *parameters = nil;
-
     NSString *app_uuid = @"";
     CFUUIDRef uuidRef = CFUUIDCreate(kCFAllocatorDefault);
     CFStringRef uuidString = CFUUIDCreateString(kCFAllocatorDefault, uuidRef);
     app_uuid = [NSString stringWithString:(__bridge NSString *)uuidString];
 
-    
-    switch (self.loginInfo.loginType) {
-        case LoginTypePassword:
-            
-            break;
-        
-        case LoginTypeIdentifyCode:
-            parameters = @{@"memberPhone":_phoneTextField.text, @"memberCode":_identifyTextField.text, @"loginType":@(1), @"appid":app_uuid};
-            break;
-            
-        default:
-            break;
-    }
-    [manager GET:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
-    }];
+    [GET_SINGLETON_FOR_CLASS(LoginManager) loginWithPhoneNumber:_phoneTextField.text withIdentifyCode:_identifyTextField.text withLoginType:1 withAppId:app_uuid];
+
+//    switch (self.loginInfo.loginType) {
+//        case LoginTypePassword:
+//            
+//            break;
+//        
+//        case LoginTypeIdentifyCode:
+//            [GET_SINGLETON_FOR_CLASS(LoginManager) loginWithPhoneNumber:_phoneTextField.text withIdentifyCode:_identifyTextField.text withLoginType:1 withAppId:app_uuid];
+//            break;
+//            
+//        default:
+//            break;
+//    }
 }
 
 - (void)getIdentifyCode {
     self.loginInfo.loginType = LoginTypeIdentifyCode;
-    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc]init];
-    NSString *urlString = [NSString stringWithFormat:@"http://192.168.1.102:8089/SendsmsControl/Sendsms.do"];
-    NSDictionary *parameters = @{@"mobile":_phoneTextField.text};
-    [manager GET:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
-        self.loginInfo.identifyCode = [responseObject objectForKey:@"data"];
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
-    }];
-
+    [GET_SINGLETON_FOR_CLASS(LoginManager) getLoginIdentifyCodeWithPhoneNumber:_phoneTextField.text];
 }
 
 - (void)didReceiveMemoryWarning {

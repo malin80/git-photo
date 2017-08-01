@@ -32,6 +32,11 @@
 		F405D1A41F2EC6480015A8E6 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F405D1A31F2EC6480015A8E6 /* CameraViewController.m */; };
 		F405D1A81F2ED06E0015A8E6 /* LoginInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F405D1A71F2ED06E0015A8E6 /* LoginInfo.m */; };
 		F40E7A5E1F3014AA00FD7792 /* HomePageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F40E7A5D1F3014AA00FD7792 /* HomePageManager.m */; };
+		F40E7A611F30197F00FD7792 /* PersonalPesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F40E7A601F30197F00FD7792 /* PersonalPesRequest.m */; };
+		F40E7A641F301BF300FD7792 /* LoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F40E7A631F301BF300FD7792 /* LoginManager.m */; };
+		F40E7A671F301F8A00FD7792 /* HomePageScrollViewInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F40E7A661F301F8A00FD7792 /* HomePageScrollViewInfo.m */; };
+		F40E7A6A1F3023F100FD7792 /* LoginPesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F40E7A691F3023F100FD7792 /* LoginPesRequest.m */; };
+		F40E7A701F30280400FD7792 /* MemberInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F40E7A6F1F30280400FD7792 /* MemberInfo.m */; };
 		F48185241F25E25800349143 /* CustomActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = F48185231F25E25800349143 /* CustomActionSheet.m */; };
 		F481E90C1F282D1E00EE3D7C /* personal_address_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = F481E90A1F282D1E00EE3D7C /* personal_address_selected.png */; };
 		F481E90D1F282D1E00EE3D7C /* personal_address_unselect.png in Resources */ = {isa = PBXBuildFile; fileRef = F481E90B1F282D1E00EE3D7C /* personal_address_unselect.png */; };
@@ -179,6 +184,16 @@
 		F405D1A71F2ED06E0015A8E6 /* LoginInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginInfo.m; sourceTree = "<group>"; };
 		F40E7A5C1F3014AA00FD7792 /* HomePageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageManager.h; sourceTree = "<group>"; };
 		F40E7A5D1F3014AA00FD7792 /* HomePageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageManager.m; sourceTree = "<group>"; };
+		F40E7A5F1F30197F00FD7792 /* PersonalPesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalPesRequest.h; sourceTree = "<group>"; };
+		F40E7A601F30197F00FD7792 /* PersonalPesRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalPesRequest.m; sourceTree = "<group>"; };
+		F40E7A621F301BF300FD7792 /* LoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginManager.h; sourceTree = "<group>"; };
+		F40E7A631F301BF300FD7792 /* LoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginManager.m; sourceTree = "<group>"; };
+		F40E7A651F301F8A00FD7792 /* HomePageScrollViewInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageScrollViewInfo.h; sourceTree = "<group>"; };
+		F40E7A661F301F8A00FD7792 /* HomePageScrollViewInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageScrollViewInfo.m; sourceTree = "<group>"; };
+		F40E7A681F3023F100FD7792 /* LoginPesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginPesRequest.h; sourceTree = "<group>"; };
+		F40E7A691F3023F100FD7792 /* LoginPesRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginPesRequest.m; sourceTree = "<group>"; };
+		F40E7A6E1F30280400FD7792 /* MemberInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemberInfo.h; sourceTree = "<group>"; };
+		F40E7A6F1F30280400FD7792 /* MemberInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemberInfo.m; sourceTree = "<group>"; };
 		F48185221F25E25800349143 /* CustomActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomActionSheet.h; sourceTree = "<group>"; };
 		F48185231F25E25800349143 /* CustomActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomActionSheet.m; sourceTree = "<group>"; };
 		F481E90A1F282D1E00EE3D7C /* personal_address_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personal_address_selected.png; sourceTree = "<group>"; };
@@ -423,8 +438,12 @@
 		F405D1A51F2ED05F0015A8E6 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				F40E7A621F301BF300FD7792 /* LoginManager.h */,
+				F40E7A631F301BF300FD7792 /* LoginManager.m */,
 				F405D1A61F2ED06E0015A8E6 /* LoginInfo.h */,
 				F405D1A71F2ED06E0015A8E6 /* LoginInfo.m */,
+				F40E7A6E1F30280400FD7792 /* MemberInfo.h */,
+				F40E7A6F1F30280400FD7792 /* MemberInfo.m */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -434,6 +453,8 @@
 			children = (
 				F40E7A5C1F3014AA00FD7792 /* HomePageManager.h */,
 				F40E7A5D1F3014AA00FD7792 /* HomePageManager.m */,
+				F40E7A651F301F8A00FD7792 /* HomePageScrollViewInfo.h */,
+				F40E7A661F301F8A00FD7792 /* HomePageScrollViewInfo.m */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -441,6 +462,10 @@
 		F405D1B71F2F01B00015A8E6 /* PesDelegate */ = {
 			isa = PBXGroup;
 			children = (
+				F40E7A5F1F30197F00FD7792 /* PersonalPesRequest.h */,
+				F40E7A601F30197F00FD7792 /* PersonalPesRequest.m */,
+				F40E7A681F3023F100FD7792 /* LoginPesRequest.h */,
+				F40E7A691F3023F100FD7792 /* LoginPesRequest.m */,
 			);
 			path = PesDelegate;
 			sourceTree = "<group>";
@@ -1030,6 +1055,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F482373B1F26EC3100DDD487 /* CollectTableViewCell.m in Sources */,
+				F40E7A701F30280400FD7792 /* MemberInfo.m in Sources */,
 				F40575691F2AE29B003C8AF2 /* PesRequest.m in Sources */,
 				F4FDD6B41F2C37CD007263D4 /* AddAddressViewController.m in Sources */,
 				F4FDD6A31F2C378E007263D4 /* ModifyPasswordViewController.m in Sources */,
@@ -1050,6 +1076,7 @@
 				F4A7A1251F259629009FAAEE /* EntryItem.m in Sources */,
 				F4FDD6A71F2C378E007263D4 /* UserNameViewController.m in Sources */,
 				F4A7A0961F256B96009FAAEE /* ViewController.m in Sources */,
+				F40E7A6A1F3023F100FD7792 /* LoginPesRequest.m in Sources */,
 				F48237381F26EA1100DDD487 /* CollectViewController.m in Sources */,
 				F4FDD6B61F2C37CD007263D4 /* EditAddressViewController.m in Sources */,
 				A514B0F21F2901A1006A765F /* LeadViewController.m in Sources */,
@@ -1064,6 +1091,7 @@
 				A520C6D21F2B89A400202622 /* DLTabedSlideView.m in Sources */,
 				A520C6CF1F2B89A400202622 /* DLSlideView.m in Sources */,
 				F40575701F2AE38D003C8AF2 /* HomePagePesRequest.m in Sources */,
+				F40E7A671F301F8A00FD7792 /* HomePageScrollViewInfo.m in Sources */,
 				F482373F1F27041300DDD487 /* HomePageScrollView.m in Sources */,
 				F4FDD6AB1F2C379D007263D4 /* OrderManageViewController.m in Sources */,
 				F482375D1F27395100DDD487 /* ShoppingBottomView.m in Sources */,
@@ -1071,9 +1099,11 @@
 				F405D1A41F2EC6480015A8E6 /* CameraViewController.m in Sources */,
 				F4FDD6A41F2C378E007263D4 /* NickNameViewController.m in Sources */,
 				F405D19A1F2EBB2F0015A8E6 /* BookOrderViewController.m in Sources */,
+				F40E7A611F30197F00FD7792 /* PersonalPesRequest.m in Sources */,
 				F4A7A2591F25C3D0009FAAEE /* UserDataTableViewCell.m in Sources */,
 				F482375A1F2725AA00DDD487 /* ShoppingTableViewCell.m in Sources */,
 				F4FDD6A51F2C378E007263D4 /* PhoneNumberViewController.m in Sources */,
+				F40E7A641F301BF300FD7792 /* LoginManager.m in Sources */,
 				F4FDD6B51F2C37CD007263D4 /* AddressViewController.m in Sources */,
 				A520C6CE1F2B89A400202622 /* DLCustomSlideView.m in Sources */,
 				F4A7A0D11F256DB1009FAAEE /* HomePageViewController.m in Sources */,
