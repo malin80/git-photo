@@ -24,20 +24,19 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(LoginManager)
         if ([[response objectForKey:@"errorCode"] unsignedLongValue] == 0) {
             MemberInfo *info = [[MemberInfo alloc] init];
             NSDictionary *data = [response objectForKey:@"data"];
-            NSDictionary *safeCode = [response objectForKey:@"safeCode"];
+            NSDictionary *safeCode = [data objectForKey:@"safeCode"];
             NSDictionary *memberDetail = [data objectForKey:@"memberDetail"];
             info.memberId = [[data objectForKey:@"memberId"] unsignedLongValue];
             info.memberPhone = [data objectForKey:@"memberPhone"];
             info.memberPwd = [data objectForKey:@"memberPwd"];
             info.memberNickName = [memberDetail objectForKey:@"pickName"];
             info.memberName = [memberDetail objectForKey:@"memberName"];
-            info.memberSex = [[memberDetail objectForKey:@"memberSex"] unsignedIntegerValue];
+            info.memberSex = [memberDetail objectForKey:@"memberSex"];
             info.memberBirthday = [memberDetail objectForKey:@"memberBirthday"];
             info.memberMarry = [memberDetail objectForKey:@"memberMarry"];
- //         info.safeCodeValue = [safeCode objectForKey:@"safeCodeValue"];
+            info.safeCodeValue = [safeCode objectForKey:@"safeCodeValue"];
         }
     }];
 }
-
 
 @end

@@ -15,7 +15,7 @@
 @property (nonatomic, copy) NSString *memberName;
 @property (nonatomic, copy) NSString *memberPwd;
 @property (nonatomic, copy) NSString *memberPhone;
-@property (nonatomic, assign) NSInteger memberSex;
+@property (nonatomic, copy) NSString *memberSex;
 @property (nonatomic, copy) NSString *memberPic;
 @property (nonatomic, copy) NSString *safeCodeValue;
 @property (nonatomic, copy) NSString *memberBirthday;
