@@ -7,31 +7,63 @@
 //
 
 #import "PesRequest.h"
-#import <AFNetworking.h>
 
 @implementation PesRequest
 
-
-+(instancetype)sharedInstance
-{
-    static id sharedClient = nil;
+//单例
++ (instancetype)sharedInstance {
+    static PesRequest *instance ;
     static dispatch_once_t onceToken;
-    dispatch_once(&onceToken,^ {
-          sharedClient = [[PesRequest alloc]init];
-      });
-    return sharedClient;
+    dispatch_once(&onceToken, ^{
+        instance = [[self alloc] init];
+        instance.responseSerializer.acceptableContentTypes =[NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/plain",@"text/html", @"application/javascript",nil];
+    });
+    return instance;
 }
 
-+ (void)pesRequestWithFunctionName:(NSString *)string andParameter:(NSDictionary *)parameter {
-    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc]init];
-    NSString *urlString = [NSString stringWithFormat:@"http://101.201.122.173/%@",string];
-    [manager GET:urlString parameters:parameter progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
-        [[PesResponse sharedInstance] pesResponseWithResponseObject:responseObject];
+- (void)pesRequestWithFunctionName:(NSString *)functionName withParameter:(NSDictionary *)parameter requestCallBack:(RequestCallBack)block {
+    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:parameter];
+    [self requestWithMethod:RequestMethodPOST urlString:functionName parames:dic finished:block];
+}
+
+#pragma mark - AFN 网络封装
+- (void)requestWithMethod:(RequestMethod)method urlString:(NSString *)urlString parames:(NSDictionary *)parames finished:(RequestCallBack)finished {
+    NSString *url= [baseUrl stringByAppendingString:urlString];
+    
+    void (^successback)(NSURLSessionDataTask *, id ) = ^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull result){
+        //        LogString(result);
+        finished(result,nil,nil);
+    };
+    //失败回调
+    void (^failureback)(NSURLSessionDataTask *, NSError *) = ^(NSURLSessionDataTask * _Nonnull task, NSError * _Nonnull error){
+        NSString *errorData = [NSString string];
+        if (!error.userInfo[@"NSLocalizedDescription"]) {
+            errorData = @"哎呀出错了";
+        }else{
+            errorData = error.userInfo[@"NSLocalizedDescription"];
+        }
+        finished(nil, errorData,nil);
         
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    };
+    if(method == RequestMethodGET) {
+        [self GET:urlString parameters:parames progress:nil success:successback failure:failureback];
+    } else {
+        [self POST:url parameters:parames progress:nil success:successback failure:failureback];
+    }
+}
+
+#pragma mark 网络返回
+- (void)netWorkApi:(NSString *)api dic:(NSDictionary *)dic finished:(void(^)(id restuct,NSString *error))finished {
+    [self pesRequestWithFunctionName:api withParameter:dic requestCallBack:^(id result, NSString *error, NSProgress *progress) {
+        if (error) {
+            finished(nil,error);
+            return ;
+        }
+        
+        if (result) {
+            finished(result,nil);
+        }
         
     }];
-
 }
-
 @end

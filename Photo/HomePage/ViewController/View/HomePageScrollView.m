@@ -7,8 +7,8 @@
 //
 
 #import "HomePageScrollView.h"
-#import <AFNetworking.h>
-
+#import "HomePagePesRequest.h"
+#import "HomePageManager.h"
 #define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
 
 @interface HomePageScrollView() <UIScrollViewDelegate>
@@ -27,36 +27,19 @@
 -(id)initWithFrame:(CGRect)frame withDataSource:(NSArray *)dataSource {
     self = [super initWithFrame:frame];
     if (self) {
-        _dataSource = [NSMutableArray array];
-        
-        [self initDataSource];
+        [self addNotification];
+        [GET_SINGLETON_FOR_CLASS(HomePageManager) loadScrollViewImages];
     }
     return self;
 }
 
-- (void)initDataSource {
-    [[UerInfoViewModel sharedUserInfoViewModel]FirstPageScroll:^(id restuct,NSString *error){
-        NSArray *urlArray = [restuct objectForKey:@"data"];
-        for (NSDictionary *dict in urlArray) {
-            NSString *urlString = [dict objectForKey:@"homeSlideImgUrl"];
-            [_dataSource addObject:urlString];
-        }
-        [self createScrollView];
-    }];
+- (void)addNotification {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadScrollViewImagesSuccess) name:@"loadScrollViewImagesSuccess" object:nil];
+}
 
-
-//    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc]init];
-//    NSString *urlString = [NSString stringWithFormat:@"http://101.201.122.173/HomeSlideControl/queryHomeSlide.do"];
-//    [manager GET:urlString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
-//        NSArray *urlArray = [responseObject objectForKey:@"data"];
-//        for (NSDictionary *dict in urlArray) {
-//            NSString *urlString = [dict objectForKey:@"homeSlideImgUrl"];
-//            [_dataSource addObject:urlString];
-//        }
-//        [self createScrollView];
-//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        
-//    }];
+- (void)loadScrollViewImagesSuccess {
+    _dataSource = GET_SINGLETON_FOR_CLASS(HomePageManager).scrollViewImages;
+    [self createScrollView];
 }
 
 - (void)createScrollView

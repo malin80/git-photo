@@ -10,10 +10,8 @@
 
 @implementation HomePagePesRequest
 
-+ (void)queryHonorInfo {
-    NSString *functionName = @"TeamControl/selectAllTeam.do";
-    
-//    [[PesRequest sharedInstance] pesRequestWithFunctionName:functionName andParameter:nil];
++ (void)loadPageScrollViewImage:(void(^)(id restuct,NSString *error))finished {
+    [[PesRequest sharedInstance] netWorkApi:@"HomeSlideControl/queryHomeSlide.do" dic:nil finished:finished];
 }
 
 @end
