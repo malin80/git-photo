@@ -23,6 +23,12 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(HomePageManager)
 }
 
 - (void)loadScrollViewImages {
+    if (self.scrollViewImages.count != 0) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"loadScrollViewImagesSuccess" object:nil];
+        });
+        return;
+    }
     [HomePagePesRequest loadPageScrollViewImage:^(NSDictionary *responseObject,NSString *error){
         NSArray *urlArray = [responseObject objectForKey:@"data"];
         for (NSDictionary *dict in urlArray) {
@@ -33,7 +39,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(HomePageManager)
             info.imageId = &(imageId);
             [self.scrollViewImages addObject:info];
         }
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"loadScrollViewImagesSuccess" object:nil];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"loadScrollViewImagesSuccess" object:nil];
+        });
     }];
 }
 

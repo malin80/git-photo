@@ -69,7 +69,7 @@
     if (_tabbarItems != tabbarItems) {
         _tabbarItems = tabbarItems;
         
-        assert(tabbarItems.count <= 4);
+        assert(tabbarItems.count <= 8);
         
         float width = self.bounds.size.width/tabbarItems.count;
         float height = self.bounds.size.height;
@@ -96,6 +96,9 @@
             [scrollView_ addSubview:label];
             [scrollView_ addSubview:imageView];
             [scrollView_ addSubview:selectedImageView];
+            if (tabbarItems.count >2) {
+                scrollView_.contentSize = CGSizeMake(80*tabbarItems.count, 30);
+            }
             i++;
         }
         
@@ -112,7 +115,12 @@
 }
 
 - (void)layoutTabbar{
-    float width = self.bounds.size.width/self.tabbarItems.count;
+    float width = 0;
+    if (self.tabbarItems.count<=2) {
+        width = self.bounds.size.width/self.tabbarItems.count;
+    } else {
+        width = 80;
+    }
     float height = self.bounds.size.height;
     float x = 0.0f;
     for (NSInteger i=0; i<self.tabbarItems.count; i++) {
@@ -151,8 +159,12 @@
         toIamge.alpha = (1-percent);
         toSelectedIamge.alpha = percent;
     }
-    
-    float width = self.bounds.size.width/self.tabbarItems.count;
+    float width = 0;
+    if (self.tabbarItems.count > 2) {
+        width = 80;
+    } else {
+        width = self.bounds.size.width/self.tabbarItems.count;
+    }
     float trackX;
     if (toIndex > fromIndex) {
         trackX = width*fromIndex + width*percent;
@@ -186,8 +198,12 @@
             toSelectedIamge.alpha = 1.0f;
         }
         
-        float width = self.bounds.size.width/self.tabbarItems.count;
-        float trackX = width*selectedIndex;
+        float width = 0;
+        if (self.tabbarItems.count > 2) {
+            width = 80;
+        } else {
+            width = self.bounds.size.width/self.tabbarItems.count;
+        }        float trackX = width*selectedIndex;
         trackView_.frame = CGRectMake(trackX, trackView_.frame.origin.y, CGRectGetWidth(trackView_.bounds), CGRectGetHeight(trackView_.bounds));
 
         _selectedIndex = selectedIndex;
@@ -195,8 +211,12 @@
 }
 
 - (void)tapAction:(UITapGestureRecognizer *)tap{
-    float width = self.bounds.size.width/self.tabbarItems.count;
-
+    float width = 0;
+    if (self.tabbarItems.count > 2) {
+        width = 80;
+    } else {
+        width = self.bounds.size.width/self.tabbarItems.count;
+    }
     CGPoint point = [tap locationInView:scrollView_];
     NSInteger i = point.x/width;
     self.selectedIndex = i;

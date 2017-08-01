@@ -10,12 +10,17 @@
 #import "BookOrderViewController.h"
 #import "GoodsOrderViewController.h"
 
+#import "HomePageScrollView.h"
 #import "NavigationBar.h"
 
 
 @interface CameraViewController () <NavigationBarDelegate>
+{
+    NSMutableArray *_slideViews;
+}
 
 @property (nonatomic, strong) DLTabedSlideView *tabedSlideView;
+@property (nonatomic, strong) HomePageScrollView *scrollView;
 
 @end
 
@@ -42,30 +47,23 @@
     self.tabedSlideView.tabbarTrackColor = [UIColor colorWithRed:0.833 green:0.052 blue:0.130 alpha:1.000];
     self.tabedSlideView.tabbarBottomSpacing = 3.0;
 
-//    NSArray *array = [NSArray arrayWithObjects:@"跟拍", @"跟拍", @"跟拍", @"跟拍", @"跟拍", @"跟拍", @"跟拍", @"跟拍", nil];
-//    NSMutableArray *mutableArray = [NSMutableArray array];
-//    for (int i = 0; i < array.count; i++) {
-//        DLTabedbarItem *item = [DLTabedbarItem itemWithTitle:[NSString stringWithFormat:@"%@",array[i]] image:nil selectedImage:nil];
-//        [mutableArray addObject:item];
-//        self.tabedSlideView.selectedIndex = 0;
-//    }
-//    self.tabedSlideView.tabbarItems = mutableArray;
-//    [self.tabedSlideView buildTabbar];
-//
-//    [self.view addSubview:self.tabedSlideView];
-
-    DLTabedbarItem *item1 = [DLTabedbarItem itemWithTitle:@"商品订单" image:nil selectedImage:nil];
-    DLTabedbarItem *item2 = [DLTabedbarItem itemWithTitle:@"预约订单" image:nil selectedImage:nil];
-    self.tabedSlideView.tabbarItems = @[item1, item2];
+    NSArray *array = [NSArray arrayWithObjects:@"跟拍啊啊啊", @"跟拍啊啊啊", @"跟拍啊啊啊", @"跟拍啊啊啊", @"跟拍啊啊啊", @"跟拍啊啊啊", @"跟拍啊啊啊", @"跟拍", nil];
+    _slideViews = [NSMutableArray array];
+    for (int i = 0; i < array.count; i++) {
+        DLTabedbarItem *item = [DLTabedbarItem itemWithTitle:[NSString stringWithFormat:@"%@",array[i]] image:nil selectedImage:nil];
+        [_slideViews addObject:item];
+    }
+    self.tabedSlideView.tabbarItems = _slideViews;
     [self.tabedSlideView buildTabbar];
-    
     self.tabedSlideView.selectedIndex = 0;
-   [self.view addSubview:self.tabedSlideView];
+    [self.view addSubview:self.tabedSlideView];
+
+    [self.view addSubview:self.scrollView];
 }
 
 #pragma mark --- DLTabedSlideViewDelegate ---
 - (NSInteger)numberOfTabsInDLTabedSlideView:(DLTabedSlideView *)sender {
-    return 2;
+    return _slideViews.count;
 }
 
 - (UIViewController *)DLTabedSlideView:(DLTabedSlideView *)sender controllerAt:(NSInteger)index {
@@ -80,15 +78,63 @@
             BookOrderViewController *controller = [[BookOrderViewController alloc] init];
             return controller;
         }
+        case 2:
+        {
+            GoodsOrderViewController *controller = [[GoodsOrderViewController alloc] init];
+            return controller;
+        }
+        case 3:
+        {
+            BookOrderViewController *controller = [[BookOrderViewController alloc] init];
+            return controller;
+        }
+        case 4:
+        {
+            GoodsOrderViewController *controller = [[GoodsOrderViewController alloc] init];
+            return controller;
+        }
+        case 5:
+        {
+            BookOrderViewController *controller = [[BookOrderViewController alloc] init];
+            return controller;
+        }
+        case 6:
+        {
+            GoodsOrderViewController *controller = [[GoodsOrderViewController alloc] init];
+            return controller;
+        }
+        case 7:
+        {
+            BookOrderViewController *controller = [[BookOrderViewController alloc] init];
+            return controller;
+        }
+        case 8:
+        {
+            GoodsOrderViewController *controller = [[GoodsOrderViewController alloc] init];
+            return controller;
+        }
+
 
         default:
             return nil;
     }
 }
 
+- (void)DLSlideTabbar:(id)sender selectAt:(NSInteger)index {
+    
+}
+
 #pragma mark --- NavigationBarDelegate ---
 - (void)goBack {
     [self.navigationController popViewControllerAnimated:NO];
+}
+
+#pragma mark --- getters and setters ---
+- (HomePageScrollView *)scrollView {
+    if (!_scrollView) {
+        _scrollView = [[HomePageScrollView alloc] initWithFrame:CGRectMake(0, 120, ScreenWidth, 250) withIsHomePage:NO];
+    }
+    return _scrollView;
 }
 
 - (void)didReceiveMemoryWarning {

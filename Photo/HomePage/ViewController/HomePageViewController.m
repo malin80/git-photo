@@ -95,7 +95,7 @@
 
 - (HomePageScrollView *)scrollView {
     if (!_scrollView) {
-        _scrollView = [[HomePageScrollView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 250) withDataSource:[NSArray arrayWithObjects:@"1", @"2", nil]];
+        _scrollView = [[HomePageScrollView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 250) withIsHomePage:YES];
     }
     return _scrollView;
 }
@@ -112,7 +112,6 @@
 - (void)touchCameraButton {
     CameraViewController *controller = [[CameraViewController alloc] init];
     [self.navigationController pushViewController:controller animated:NO];
-//    [HomePagePesRequest queryHonorInfo];
 }
 
 @end

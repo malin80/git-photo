@@ -10,6 +10,6 @@
 
 @interface HomePageScrollView : UIView
 
--(id)initWithFrame:(CGRect)frame withDataSource:(NSArray *)dataSource;
+-(id)initWithFrame:(CGRect)frame withIsHomePage:(BOOL)isHomePage;
 
 @end

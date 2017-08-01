@@ -26,16 +26,21 @@
 
 @implementation HomePageScrollView
 
--(id)initWithFrame:(CGRect)frame withDataSource:(NSArray *)dataSource {
+-(id)initWithFrame:(CGRect)frame withIsHomePage:(BOOL)isHomePage {
     self = [super initWithFrame:frame];
     if (self) {
         [self addNotification];
-        [GET_SINGLETON_FOR_CLASS(HomePageManager) loadScrollViewImages];
+        if (isHomePage) {
+            [GET_SINGLETON_FOR_CLASS(HomePageManager) loadScrollViewImages];
+        } else {
+            [self loadScrollViewImagesSuccess];
+        }
     }
     return self;
 }
 
 - (void)addNotification {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadScrollViewImagesSuccess) name:@"loadScrollViewImagesSuccess" object:nil];
 }
 
@@ -61,6 +66,7 @@
 }
 
 - (void)createImageView {
+    [self stopTimer];
     HomePageScrollViewInfo *info = [[HomePageScrollViewInfo alloc] init];
     for (int i = 0; i < _dataSource.count; i++) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i*ScreenWidth, 0, ScreenWidth, 250)];
@@ -70,6 +76,7 @@
         imageView.image = imgFromUrl;
         [_scrollView addSubview:imageView];
     }
+    _currentPage = 0;
     [self startTimer];
 }
 
@@ -107,7 +114,7 @@
 - (void)changeImage {
     _currentPage++;
     [_scrollView setContentOffset:(CGPoint){_currentPage*ScreenWidth,0} animated:YES];
-    if (_currentPage == _dataSource.count-1) {
+    if (_currentPage >= _dataSource.count-1) {
         [self stopTimer];
     }
 }
