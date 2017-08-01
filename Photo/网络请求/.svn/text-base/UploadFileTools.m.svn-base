@@ -1,0 +1,55 @@
+//
+//  UploadFileTools.m
+//  Xiufenqi2.0
+//
+//  Created by 不丕 on 16/10/14.
+//  Copyright © 2016年 艾蒂尔文化传媒有限公司. All rights reserved.
+//
+
+#import "UploadFileTools.h"
+
+@implementation UploadFileTools
+//单利
++ (instancetype)sharedUploadFileTools{
+    static UploadFileTools *instance ;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        
+        instance = [[UploadFileTools alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+        
+        instance.responseSerializer =  [AFHTTPResponseSerializer serializer];
+        
+    });
+    return instance;
+}
+
+//上传图片文件方法
+- (void)uploadImageFile:(NSString *)prefix imagepath:(NSString *)path finshed:(void(^)(NSURLResponse *, id , NSError *))finshed{
+    
+    NSString *url = [baseUrl stringByAppendingString:prefix];
+    NSString *mysign=[[NSString stringWithFormat:@"%@%@mymeifenpai",[self loadsaveSessData],[SvUDIDTools UDID]] md5];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:
+                         [self loadsaveSessData],@"app_sess",
+                         [SvUDIDTools UDID],@"device_code",mysign,@"mysign",
+                         nil];
+    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer]multipartFormRequestWithMethod:@"POST" URLString:url parameters:dic constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
+        [formData appendPartWithFileURL:[NSURL fileURLWithPath:path] name:@"image" fileName:path mimeType:@"application/octet-stream" error:nil];
+        
+    } error:nil];
+    
+    [[[UploadFileTools sharedUploadFileTools]uploadTaskWithStreamedRequest:request progress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+        if (error) {
+            finshed(nil,nil,error);
+        }else{
+            
+            finshed(response,responseObject,nil);
+        }
+    }] resume];
+}
+//获取便好设置数据
+- (NSString *)loadsaveSessData{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:@"app_sess"];
+}
+@end

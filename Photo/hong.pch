@@ -13,11 +13,13 @@
 #define SCALEW  [[UIScreen mainScreen]bounds].size.width/320.00
 #define SCALEH  [[UIScreen mainScreen]bounds].size.height/480.00
 #define UIColorFromRGB(_r_,_g_,_b_,_alpha_)  [UIColor colorWithRed:_r_/255.0 green:_g_/255.0 blue:_b_/255.0 alpha:_alpha_]
-
+#define baseUrl @"http://101.201.122.173/"
 #define RGBA(redValue,greenValue,blueValue,alphaValue) [UIColor colorWithRed:(float)(redValue)/255.0 green:(float)(greenValue)/255.0 blue:(float)(blueValue)/255.0 alpha:(alphaValue)]
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#import "UerInfoViewModel.h"
 #import <IQKeyboardManager.h>
 #import "UIColor+EX.h"
+#import  <MBProgressHUD.h>
 #endif /* hong_pch */
  

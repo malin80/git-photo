@@ -11,7 +11,7 @@
 #import "GoodsOrderViewController.h"
 
 #import "NavigationBar.h"
-#import "DLTabedSlideView.h"
+
 
 @interface CameraViewController () <NavigationBarDelegate>
 
@@ -34,8 +34,9 @@
 }
 
 - (void)initView {
-    self.tabedSlideView = [[DLTabedSlideView alloc] initWithFrame:CGRectMake(0, 100, ScreenWidth, 40)];
+    self.tabedSlideView = [[DLTabedSlideView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreeHieght-64)];
     self.tabedSlideView.baseController = self;
+    self.tabedSlideView.delegate=self;
     self.tabedSlideView.tabItemNormalColor = [UIColor blackColor];
     self.tabedSlideView.tabItemSelectedColor = [UIColor colorWithRed:0.833 green:0.052 blue:0.130 alpha:1.000];
     self.tabedSlideView.tabbarTrackColor = [UIColor colorWithRed:0.833 green:0.052 blue:0.130 alpha:1.000];
@@ -59,7 +60,7 @@
     [self.tabedSlideView buildTabbar];
     
     self.tabedSlideView.selectedIndex = 0;
-//    [self.view addSubview:self.tabedSlideView];
+   [self.view addSubview:self.tabedSlideView];
 }
 
 #pragma mark --- DLTabedSlideViewDelegate ---

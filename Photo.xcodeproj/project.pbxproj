@@ -14,6 +14,8 @@
 		A514B10F1F290533006A765F /* NSString+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = A514B1091F290533006A765F /* NSString+Category.m */; };
 		A514B1101F290533006A765F /* SvUDIDTools.m in Sources */ = {isa = PBXBuildFile; fileRef = A514B10B1F290533006A765F /* SvUDIDTools.m */; };
 		A514B1111F290533006A765F /* UIColor+EX.m in Sources */ = {isa = PBXBuildFile; fileRef = A514B10D1F290533006A765F /* UIColor+EX.m */; };
+		A518E13C1F2F649700423672 /* Networking.m in Sources */ = {isa = PBXBuildFile; fileRef = A518E1371F2F649700423672 /* Networking.m */; };
+		A518E13D1F2F649700423672 /* UerInfoViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A518E1391F2F649700423672 /* UerInfoViewModel.m */; };
 		A520C6CD1F2B89A400202622 /* DLLRUCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A520C6BE1F2B89A400202622 /* DLLRUCache.m */; };
 		A520C6CE1F2B89A400202622 /* DLCustomSlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = A520C6C01F2B89A400202622 /* DLCustomSlideView.m */; };
 		A520C6CF1F2B89A400202622 /* DLSlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = A520C6C21F2B89A400202622 /* DLSlideView.m */; };
@@ -142,6 +144,10 @@
 		A514B10B1F290533006A765F /* SvUDIDTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SvUDIDTools.m; sourceTree = "<group>"; };
 		A514B10C1F290533006A765F /* UIColor+EX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+EX.h"; sourceTree = "<group>"; };
 		A514B10D1F290533006A765F /* UIColor+EX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+EX.m"; sourceTree = "<group>"; };
+		A518E1361F2F649700423672 /* Networking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Networking.h; sourceTree = "<group>"; };
+		A518E1371F2F649700423672 /* Networking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Networking.m; sourceTree = "<group>"; };
+		A518E1381F2F649700423672 /* UerInfoViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UerInfoViewModel.h; sourceTree = "<group>"; };
+		A518E1391F2F649700423672 /* UerInfoViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UerInfoViewModel.m; sourceTree = "<group>"; };
 		A520C6BC1F2B89A400202622 /* DLCacheProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLCacheProtocol.h; sourceTree = "<group>"; };
 		A520C6BD1F2B89A400202622 /* DLLRUCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLRUCache.h; sourceTree = "<group>"; };
 		A520C6BE1F2B89A400202622 /* DLLRUCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLRUCache.m; sourceTree = "<group>"; };
@@ -366,6 +372,17 @@
 			path = "工具";
 			sourceTree = "<group>";
 		};
+		A518E1351F2F649700423672 /* 网络请求 */ = {
+			isa = PBXGroup;
+			children = (
+				A518E1361F2F649700423672 /* Networking.h */,
+				A518E1371F2F649700423672 /* Networking.m */,
+				A518E1381F2F649700423672 /* UerInfoViewModel.h */,
+				A518E1391F2F649700423672 /* UerInfoViewModel.m */,
+			);
+			path = "网络请求";
+			sourceTree = "<group>";
+		};
 		A520C6BA1F2B89A400202622 /* DLSlideView */ = {
 			isa = PBXGroup;
 			children = (
@@ -522,6 +539,7 @@
 		F4A7A08D1F256B96009FAAEE /* Photo */ = {
 			isa = PBXGroup;
 			children = (
+				A518E1351F2F649700423672 /* 网络请求 */,
 				A514B1051F290533006A765F /* 工具 */,
 				F4A7A11F1F2595E5009FAAEE /* Common */,
 				F4A7A1091F2592E1009FAAEE /* Images */,
@@ -1039,6 +1057,7 @@
 				F4FDD6B41F2C37CD007263D4 /* AddAddressViewController.m in Sources */,
 				F4FDD6A31F2C378E007263D4 /* ModifyPasswordViewController.m in Sources */,
 				F4A7A1391F25A779009FAAEE /* AvatarView.m in Sources */,
+				A518E13D1F2F649700423672 /* UerInfoViewModel.m in Sources */,
 				F405D1A81F2ED06E0015A8E6 /* LoginInfo.m in Sources */,
 				F481E95E1F2865C900EE3D7C /* SexPickerView.m in Sources */,
 				F405D19D1F2EBC110015A8E6 /* OrderTableViewCell.m in Sources */,
@@ -1046,6 +1065,7 @@
 				F40575761F2AE61F003C8AF2 /* HomePagePesResponse.m in Sources */,
 				F4A7A1081F2588BF009FAAEE /* PersonalHeaderView.m in Sources */,
 				F4A7A0CE1F256D8B009FAAEE /* ShoppingViewController.m in Sources */,
+				A518E13C1F2F649700423672 /* Networking.m in Sources */,
 				F4A7A2561F25BC22009FAAEE /* NavigationBar.m in Sources */,
 				A520C6D31F2B89A400202622 /* DLUtility.m in Sources */,
 				F481E95B1F28581600EE3D7C /* DatePickerView.m in Sources */,

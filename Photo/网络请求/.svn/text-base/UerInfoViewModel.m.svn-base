@@ -1,0 +1,575 @@
+//
+//  UerInfoViewModel.m
+//  Xiufenqi2.0
+//
+//  Created by 不丕 on 16/10/13.
+//  Copyright © 2016年 艾蒂尔文化传媒有限公司. All rights reserved.
+//
+
+#import "UerInfoViewModel.h"
+
+@implementation UerInfoViewModel
+//单例
++ (instancetype)sharedUserInfoViewModel{
+    static UerInfoViewModel *instance;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        instance = [[self alloc] init];
+    });
+    return instance;
+}
+#pragma mark 用户登录接口
+- (void)loginUserPhone:(NSString *)phone valid:(NSString *)valid finished:(void(^)(BOOL,id))finished{
+    [[Networking sharedTools]loginAPIPrefix:@"auth/login" Phone:phone valid:valid requestCallBack:^(id result, NSString *error, NSProgress *progress) {
+        if (error) {
+            finished(NO,nil);
+            return ;
+        }
+        NSNumber *statuss = result[@"status"];
+        NSInteger status = [statuss integerValue];
+        if (status == 1) {
+            NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+            [defaults setObject:result[@"data"][@"app_sess"] forKey:@"app_sess"];
+            [defaults setObject:phone forKey:@"phone"];
+            finished(YES, result);
+        }else{
+            finished(NO, result);
+        }
+    }];
+}
+#pragma mark 发送短信验证
+- (void)loginSendMessagePhone:(NSString *)phone finished:(void(^)(id restuct,NSString *error))finished{
+    //NSString *mysign=[[NSString stringWithFormat:@"%@mymeifenpai",phone] md5];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:
+                         phone,@"phone",
+                         nil];
+    
+    [[Networking sharedTools]presendUserNOPrefic:@"auth/send_phone_valid/login" parames:dic requestCallBack:^(id result, NSString *error, NSProgress *progress) {
+        if (error) {
+            finished(nil,error);
+            return ;
+        }
+        
+        if (result) {
+            finished(result,nil);
+        }
+        
+        
+    }];
+}
+#pragma mark 短信验证码-更换绑定手机-新手机 auth/send_phone_valid/change_phone/new
+- (void)addNewPhone:(NSString *)phone finished:(void(^)(id restuct,NSString *error))finished{
+    
+ //   NSString *mysign=[[NSString stringWithFormat:@"%@%@%@mymeifenpai",[self loadsaveSessData],[SvUDIDTools UDID],phone] md5];
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
+    [dic setObject:[self loadsaveSessData] forKey:@"app_sess"];
+    [dic setValue:[SvUDIDTools UDID] forKey:@"device_code"];
+    [dic setObject:phone forKey:@"phone"];
+  //  [dic setObject:mysign forKey:@"mysign"];
+    [self netWorkApi:@"http://api.bupichina.com/auth/send_phone_valid/change_phone/new" dic:dic finished:finished];
+}
+#pragma mark 短信验证码-更换绑定手机-旧手机 auth/send_phone_valid/change_phone/old
+- (void)changeOldPhone:(NSString *)phone  finished:(void(^)(id restuct,NSString *error))finished{
+    
+   // NSString *mysign=[[NSString stringWithFormat:@"%@mymeifenpai",phone] md5];
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
+    [dic setObject:[self loadsaveSessData] forKey:@"app_sess"];
+    [dic setValue:[SvUDIDTools UDID] forKey:@"device_code"];
+    [dic setObject:phone forKey:@"phone"];
+   // [dic setObject:mysign forKey:@"mysign"];
+    [self netWorkApi:@"http://api.bupichina.com/auth/send_phone_valid/change_phone/old" dic:dic finished:finished];
+}
+
+
+#pragma mark  提交新手机手机号
+- (void)inputNewPhone:(NSString *)phone valid:(NSString *)valid finished:(void(^)(id restuct,NSString *error))finished{
+    
+    NSString *mysign=[[NSString stringWithFormat:@"%@%@%@%@mymeifenpai",[self loadsaveSessData],[SvUDIDTools UDID],phone,valid] md5];
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
+    [dic setObject:[self loadsaveSessData] forKey:@"app_sess"];
+    [dic setValue:[SvUDIDTools UDID] forKey:@"device_code"];
+    [dic setObject:phone forKey:@"phone"];
+    [dic setObject:valid forKey:@"valid"];
+    [dic setObject:mysign forKey:@"mysign"];
+    [self netWorkApi:@"input/change_phone_bind" dic:dic finished:finished];
+    
+}
+#pragma mark 订单详情
+- (void)orderDetailId:(NSString *)order_id finished:(void(^)(id restuct,NSString *error))finished{
+    NSString *mysign=[[NSString stringWithFormat:@"%@%@%@mymeifenpai",[self loadsaveSessData],[SvUDIDTools UDID],order_id] md5];
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    [dic setObject:[self loadsaveSessData] forKey:@"app_sess"];
+    [dic setValue:[SvUDIDTools UDID] forKey:@"device_code"];
+    [dic setObject:order_id forKey:@"id"];
+    [dic setObject:mysign forKey:@"mysign"];
+    [self netWorkApi:@"my/query_order_detail" dic:dic finished:finished];
+}
+#pragma mark 消息列表
+- (void)GetUserMsgListType:(NSString *)type Page:(NSString *)page Page_size:(NSString *)page_size finished:(void(^)(id restuct,NSString *error))finished{
+    NSString *mysign=[[NSString stringWithFormat:@"%@%@%@%@%@mymeifenpai",[self loadsaveSessData],[SvUDIDTools UDID],page,page_size,type] md5];
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    [dic setObject:[self loadsaveSessData] forKey:@"app_sess"];
+    [dic setValue:[SvUDIDTools UDID] forKey:@"device_code"];
+    [dic setObject:type forKey:@"type"];
+    [dic setObject:page_size forKey:@"page_size"];
+    [dic setObject:page forKey:@"page"];
+    [dic setObject:mysign forKey:@"mysign"];
+    [self netWorkApi:@"my/GetUserMsgLists" dic:dic finished:finished];
+}
+#pragma mark 获取信息条数
+- (void)GetMyNewMsgCountfinished:(void(^)(id restuct,NSString *error))finished{
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    [dic setObject:[self loadsaveSessData] forKey:@"app_sess"];
+    [dic setValue:[SvUDIDTools UDID] forKey:@"device_code"];
+    [self netWorkApi:@"my/GetMyNewMsgCount" dic:dic finished:finished];
+}
+#pragma mark 读取消息
+- (void)ReadMsgType:(NSString *)type finished:(void(^)(id restuct,NSString *error))finished{
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    NSString *mysign=[[NSString stringWithFormat:@"%@%@%@mymeifenpai",[self loadsaveSessData],[SvUDIDTools UDID],type] md5];
+    [dic setObject:[self loadsaveSessData] forKey:@"app_sess"];
+    [dic setValue:[SvUDIDTools UDID] forKey:@"device_code"];
+    [dic setObject:type forKey:@"type"];
+    [dic setObject:mysign forKey:@"mysign"];
+    [self netWorkApi:@"my/ReadMsg" dic:dic finished:finished];
+}
+#pragma mark 提交旧手机手机号
+- (void)inputPhone:(NSString *)phone valid:(NSString *)valid finished:(void(^)(id restuct,NSString *error))finished{
+    NSString *mysign=[[NSString stringWithFormat:@"%@%@%@%@mymeifenpai",[self loadsaveSessData],[SvUDIDTools UDID],phone,valid] md5];
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
+    [dic setObject:[self loadsaveSessData] forKey:@"app_sess"];
+    [dic setValue:[SvUDIDTools UDID] forKey:@"device_code"];
+    [dic setObject:phone forKey:@"phone"];
+    [dic setObject:valid forKey:@"valid"];
+    [dic setObject:mysign forKey:@"mysign"];
+    [self netWorkApi:@"input/change_phone_verification" dic:dic finished:finished];
+    
+}
+#pragma mark 我的订单列表
+- (void)orderListPage:(NSString *)page Page_size:(NSString *)page_size State:(NSString *)state finished:(void(^)(id restuct,NSString *error))finished{
+    //NSString *mysign=[[NSString stringWithFormat:@"%@%@%@%@%@mymeifenpai",[self loadsaveSessData],[SvUDIDTools UDID],page,page_size,state] md5];
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    [dic setObject:[self loadsaveSessData] forKey:@"app_sess"];
+    [dic setValue:[SvUDIDTools UDID] forKey:@"device_code"];
+    [dic setObject:state forKey:@"state"];
+    [dic setObject:page_size forKey:@"page_size"];
+    [dic setObject:page forKey:@"page"];
+   // [dic setObject:mysign forKey:@"mysign"];
+    [self netWorkApi:@"my/query_my_order" dic:dic finished:finished];
+}
+#pragma mark 查询验证信息
+- (void)query_all_verify:(void(^)(id restuct,NSString *error))finished{
+    NSString *mysign=[[NSString stringWithFormat:@"%@%@mymeifenpai",[self loadsaveSessData],[SvUDIDTools UDID]] md5];
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    [dic setObject:[self loadsaveSessData] forKey:@"app_sess"];
+    [dic setValue:[SvUDIDTools UDID] forKey:@"device_code"];
+    [dic setObject:mysign forKey:@"mysign"];
+    [self netWorkApi:@"my/query_all_verify" dic:dic finished:finished];
+}
+#pragma mark 设置身份
+- (void)Set_identityType:(NSString *)type Tongdao:(NSString *)tongdao finished:(void(^)(id restuct,NSString *error))finished{
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    NSString *mysign=[[NSString stringWithFormat:@"%@%@%@%@mymeifenpai",[self loadsaveSessData],[SvUDIDTools UDID],tongdao,type] md5];
+    [dic setObject:[self loadsaveSessData] forKey:@"app_sess"];
+    [dic setValue:[SvUDIDTools UDID] forKey:@"device_code"];
+    [dic setObject:type forKey:@"type"];
+    [dic setObject:tongdao forKey:@"tongdao"];
+    [dic setObject:mysign forKey:@"mysign"];
+    [self netWorkApi:@"/input/set_identity" dic:dic finished:finished];
+}
+
+
+#pragma mark 获取基本信息
+- (void)get_basic_infoType:(NSString *)type finished:(void(^)(id restuct,NSString *error))finished{
+    NSString *mysign=[[NSString stringWithFormat:@"%@%@%@mymeifenpai",[self loadsaveSessData],[SvUDIDTools UDID],type] md5];
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    [dic setObject:[self loadsaveSessData] forKey:@"app_sess"];
+    [dic setValue:[SvUDIDTools UDID] forKey:@"device_code"];
+    [dic setObject:type forKey:@"type"];
+    [dic setObject:mysign forKey:@"mysign"];
+    [self netWorkApi:@"my/get_basic_info" dic:dic finished:finished];
+}
+#pragma mark 提交学生联系人信息
+- (void)PresendStuContactGuanxi:(NSString *)guanxi Parentname:(NSString *)parentname Parent:(NSString *)parent Friendname:(NSString *)friendname Friend:(NSString *)friend Friendname1:(NSString *)friendname1 Friend1:(NSString *)friend1 finished:(void(^)(id restuct,NSString *error))finished{
+    NSString *mysign=[[NSString stringWithFormat:@"%@%@%@%@%@%@%@%@%@mymeifenpai",[self loadsaveSessData],[SvUDIDTools UDID],friend,friend1,friendname,friendname1,guanxi,parent,parentname] md5];
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    [dic setObject:[self loadsaveSessData] forKey:@"app_sess"];
+    [dic setValue:[SvUDIDTools UDID] forKey:@"device_code"];
+    [dic setObject:guanxi forKey:@"guanxi"];
+    [dic setObject:parentname forKey:@"parentname"];
+    [dic setObject:parent forKey:@"parent"];
+    [dic setObject:friendname forKey:@"friendname"];
+    [dic setObject:friendname1 forKey:@"friendname1"];
+    [dic setObject:friend1 forKey:@"friend1"];
+    [dic setObject:friend forKey:@"friend"];
+    [dic setObject:mysign forKey:@"mysign"];
+    [self netWorkApi:@"input/contact" dic:dic finished:finished];
+}
+
+#pragma mark 提交自由职业联系人信息
+- (void)PresendFreeContactGuanxi:(NSString *)guanxi Parentname:(NSString *)parentname Parent:(NSString *)parent Friendname:(NSString *)friendname Friend:(NSString *)friend Friendname1:(NSString *)friendname1 Friend1:(NSString *)friend1 Lxmarry:(NSString *)lxmarry Matename:(NSString *)matename Mate:(NSString *)mate finished:(void(^)(id restuct,NSString *error))finished{
+    NSString *mysign=[[NSString stringWithFormat:@"%@%@%@%@%@%@%@%@%@%@%@%@mymeifenpai",[self loadsaveSessData],[SvUDIDTools UDID],friend,friend1,friendname,friendname1,guanxi,lxmarry,mate,matename,parent,parentname] md5];
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    [dic setObject:[self loadsaveSessData] forKey:@"app_sess"];
+    [dic setValue:[SvUDIDTools UDID] forKey:@"device_code"];
+    [dic setObject:guanxi forKey:@"guanxi"];
+    [dic setObject:parentname forKey:@"parentname"];
+    [dic setObject:parent forKey:@"parent"];
+    [dic setObject:friend forKey:@"friend"];
+    [dic setObject:friendname1 forKey:@"friendname1"];
+    [dic setObject:friendname forKey:@"friendname"];
+    [dic setObject:friend1 forKey:@"friend1"];
+    [dic setObject:lxmarry forKey:@"lxmarry"];
+    if (matename.length>0) {
+        [dic setObject:matename forKey:@"matename"];
+    }
+    if (mate.length>0) {
+        [dic setObject:mate forKey:@"mate"];
+    }
+    [dic setObject:mysign forKey:@"mysign"];
+    [self netWorkApi:@"input/contact" dic:dic finished:finished];
+}
+#pragma mark 提交工作信息
+- (void)presendWorkInfoCompany:(NSString *)company Nianxian:(NSString *)nianxian Companytel:(NSString *)companytel duty:(NSString *)duty salary:(NSString *)salary finished:(void(^)(id restuct,NSString *error))finished{
+    NSString *mysign=[[NSString stringWithFormat:@"%@%@%@%@%@%@%@mymeifenpai",[self loadsaveSessData],company,companytel,[SvUDIDTools UDID],duty,nianxian,salary] md5];
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    [dic setObject:[self loadsaveSessData] forKey:@"app_sess"];
+    [dic setValue:[SvUDIDTools UDID] forKey:@"device_code"];
+    [dic setObject:company forKey:@"company"];
+    [dic setObject:nianxian forKey:@"nianxian"];
+    [dic setObject:duty forKey:@"duty"];
+    [dic setObject:companytel forKey:@"companytel"];
+    [dic setObject:salary forKey:@"salary"];
+    
+    [dic setObject:mysign forKey:@"mysign"];
+    [self netWorkApi:@"input/work" dic:dic finished:finished];
+    
+}
+
+#pragma mark 设置医院
+- (void)Set_hospitalHospital_id:(NSString *)hospital_id finished:(void(^)(id restuct,NSString *error))finished{
+    NSString *mysign=[[NSString stringWithFormat:@"%@%@%@mymeifenpai",[self loadsaveSessData],[SvUDIDTools UDID],hospital_id] md5];
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    [dic setObject:[self loadsaveSessData] forKey:@"app_sess"];
+    [dic setValue:[SvUDIDTools UDID] forKey:@"device_code"];
+    [dic setObject:hospital_id forKey:@"hospital_id"];
+    [dic setObject:mysign forKey:@"mysign"];
+    [self netWorkApi:@"input/set_hospital" dic:dic finished:finished];
+    
+}
+#pragma mark 删除图片
+- (void)DeletePictureId:(NSString *)P_id finished:(void(^)(id restuct,NSString *error))finished{
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    NSString *mysign=[[NSString stringWithFormat:@"%@%@%@mymeifenpai",[self loadsaveSessData],[SvUDIDTools UDID],P_id] md5];
+    [dic setObject:[self loadsaveSessData] forKey:@"app_sess"];
+    [dic setValue:[SvUDIDTools UDID] forKey:@"device_code"];
+    [dic setObject:P_id forKey:@"id"];
+    [dic setObject:mysign forKey:@"mysign"];
+    [self netWorkApi:@"user_image/del" dic:dic finished:finished];
+}
+#pragma mark 提交学校信息
+- (void)presendSchoolInfoCompany:(NSString *)company  duty:(NSString *)duty salary:(NSString *)salary zhiwu:(NSString *)zhiwu finished:(void(^)(id restuct,NSString *error))finished{
+    NSString *mysign=[[NSString stringWithFormat:@"%@%@%@%@%@%@mymeifenpai",[self loadsaveSessData],company,[SvUDIDTools UDID],duty,salary,zhiwu] md5];
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    [dic setObject:[self loadsaveSessData] forKey:@"app_sess"];
+    [dic setValue:[SvUDIDTools UDID] forKey:@"device_code"];
+    [dic setObject:company forKey:@"company"];
+    [dic setObject:duty forKey:@"duty"];
+    [dic setObject:salary forKey:@"salary"];
+    [dic setObject:zhiwu forKey:@"zhiwu"];
+    [dic setObject:mysign forKey:@"mysign"];
+    [self netWorkApi:@"input/work" dic:dic finished:finished ];
+    
+}
+#pragma mark 确认支付页面
+- (void)SurePayId:(NSString *)order_id Type:(NSString *)type Order_no:(NSString *)order_no finished:(void(^)(id restuct,NSString *error))finished{
+    NSString *mysign=[[NSString stringWithFormat:@"%@%@%@%@%@mymeifenpai",[self loadsaveSessData],[SvUDIDTools UDID],order_id,order_no,type] md5];
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    [dic setObject:[self loadsaveSessData] forKey:@"app_sess"];
+    [dic setValue:[SvUDIDTools UDID] forKey:@"device_code"];
+    [dic setObject:order_id forKey:@"id"];
+    [dic setObject:order_no forKey:@"order_no"];
+    [dic setObject:type forKey:@"type"];
+    [dic setObject:mysign forKey:@"mysign"];
+    [self netWorkApi:@"my/confirm_order" dic:dic finished:finished];
+}
+
+#pragma mark 提交同盾验证
+- (void)SubmitTongdunBank_id:(NSString *)bank_id finished:(void(^)(id restuct,NSString *error))finished{
+    NSString *mysign=[[NSString stringWithFormat:@"%@%@%@mymeifenpai",[self loadsaveSessData],bank_id,[SvUDIDTools UDID]] md5];
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    [dic setObject:[self loadsaveSessData] forKey:@"app_sess"];
+    [dic setValue:[SvUDIDTools UDID] forKey:@"device_code"];
+    [dic setObject:bank_id forKey:@"bank_id"];
+    [dic setObject:mysign forKey:@"mysign"];
+    [self netWorkApi:@"my/SubmitTongdun" dic:dic finished:finished];
+}
+#pragma mark 提交工作者联系人信息
+- (void)PresendWorkContactGuanxi:(NSString *)guanxi Parentname:(NSString *)parentname Parent:(NSString *)parent Friendname:(NSString *)friendname Friend:(NSString *)friend Colleaguename:(NSString *)colleaguename Colleague:(NSString *)colleague finished:(void(^)(id restuct,NSString *error))finished{
+    NSString *mysign=[[NSString stringWithFormat:@"%@%@%@%@%@%@%@%@%@mymeifenpai",[self loadsaveSessData],colleague,colleaguename,[SvUDIDTools UDID],friend,friendname,guanxi,parent,parentname] md5];
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    [dic setObject:[self loadsaveSessData] forKey:@"app_sess"];
+    [dic setValue:[SvUDIDTools UDID] forKey:@"device_code"];
+    [dic setObject:guanxi forKey:@"guanxi"];
+    [dic setObject:parentname forKey:@"parentname"];
+    [dic setObject:parent forKey:@"parent"];
+    [dic setObject:friendname forKey:@"friendname"];
+    [dic setObject:colleague forKey:@"colleague"];
+    [dic setObject:colleaguename forKey:@"colleaguename"];
+    [dic setObject:friend forKey:@"friend"];
+    [dic setObject:mysign forKey:@"mysign"];
+    [self netWorkApi:@"input/contact" dic:dic finished:finished];
+}
+
+#pragma mark 提交学生基本信息
+- (void)presentStudentInfoName:(NSString *)name idnum:(NSString *)idnum  marry:(NSString *)marry province:(NSString *)province address:(NSString *)address Education:(NSString *)education finished:(void(^)(id restuct,NSString *error))finished{
+    NSString *mysign=[[NSString stringWithFormat:@"%@%@%@%@%@%@%@%@mymeifenpai",address,[self loadsaveSessData],[SvUDIDTools UDID],education,idnum,marry,name,province] md5];
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    [dic setObject:[self loadsaveSessData] forKey:@"app_sess"];
+    [dic setValue:[SvUDIDTools UDID] forKey:@"device_code"];
+    [dic setObject:name forKey:@"name"];
+    [dic setObject:idnum forKey:@"idnum"];
+    [dic setObject:marry forKey:@"marry"];
+    [dic setObject:education forKey:@"education"];
+    [dic setObject:province forKey:@"province"];
+    if (address.length>0) {
+        [dic setObject:address forKey:@"address"];
+    }
+    [dic setObject:mysign forKey:@"mysign"];
+    [self netWorkApi:@"input/basic" dic:dic finished:finished];
+}
+//#pragma mark 提交不是学生基本信息
+//- (void)presentUserInfoName:(NSString *)name idnum:(NSString *)idnum  marry:(NSString *)marry province:(NSString *)province address:(NSString *)address finished:(void(^)(id restuct,NSString *error))finished{
+//    NSString *mysign=[[NSString stringWithFormat:@"%@%@%@%@%@%@%@mymeifenpai",address,[self loadsaveSessData],[SvUDIDTools UDID],idnum,marry,name,province] md5];
+//    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+//    [dic setObject:[self loadsaveSessData] forKey:@"app_sess"];
+//    [dic setValue:[SvUDIDTools UDID] forKey:@"device_code"];
+//    [dic setObject:name forKey:@"name"];
+//    [dic setObject:idnum forKey:@"idnum"];
+//    [dic setObject:marry forKey:@"marry"];
+//    [dic setObject:province forKey:@"province"];
+//    [dic setObject:address forKey:@"address"];
+//    [dic setObject:mysign forKey:@"mysign"];
+//    [self netWorkApi:@"input/basic" dic:dic finished:finished];
+//}
+#pragma mark 查询余额
+- (void)demandMoney:(NSString *)phone finished:(void(^)(id restuct,NSString *error))finished{
+    
+    NSString *mysign=[[NSString stringWithFormat:@"%@%@%@mymeifenpai",[self loadsaveSessData],[SvUDIDTools UDID],phone] md5];
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
+    [dic setObject:[self loadsaveSessData] forKey:@"app_sess"];
+    [dic setValue:[SvUDIDTools UDID] forKey:@"device_code"];
+    [dic setObject:phone forKey:@"phone"];
+    [dic setObject:mysign forKey:@"mysign"];
+    [self netWorkApi:@"query/balance" dic:dic finished:finished];
+    
+}
+
+#pragma mark 支付
+- (void)PayForfeit:(NSString *)forfeit Pledge:(NSString *)pledge MerchantRemark:(NSString *)merchantRemark TradeNum:(NSString *)tradeNum TradeAmount:(NSString *)tradeAmount TradeDescription:(NSString *)tradeDescription TradeName:(NSString *)tradeName Payfs:(NSString *)payfs finished:(void(^)(id restuct,NSString *error))finished{
+    NSString *mysign=[[NSString stringWithFormat:@"%@%@%@%@%@%@%@%@%@%@%@mymeifenpai",[self loadsaveSessData],[SvUDIDTools UDID],forfeit,merchantRemark,[FitManage loadsavePhoneData],payfs,pledge,tradeAmount,tradeDescription,tradeName,tradeNum] md5];
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    [dic setObject:[self loadsaveSessData] forKey:@"app_sess"];
+    [dic setValue:[SvUDIDTools UDID] forKey:@"device_code"];
+    [dic setObject:[FitManage loadsavePhoneData] forKey:@"phone"];
+    [dic setObject:forfeit forKey:@"forfeit"];
+    [dic setObject:pledge forKey:@"pledge"];
+    [dic setObject:merchantRemark forKey:@"merchantRemark"];
+    [dic setObject:tradeNum forKey:@"tradeNum"];
+    [dic setObject:tradeAmount forKey:@"tradeAmount"];
+    [dic setObject:tradeDescription forKey:@"tradeDescription"];
+    [dic setObject:tradeName forKey:@"tradeName"];
+    [dic setObject:payfs forKey:@"payfs"];
+    [dic setObject:mysign forKey:@"mysign"];
+    [self netWorkApi:@"jdpay/form" dic:dic finished:finished];
+}
+#pragma mark 提交企业信息
+- (void)presendCompanyInfoCompany:(NSString *)company Companytel:(NSString *)companytel Duty:(NSString *)duty Salary:(NSString *)salary Guimo:(NSString *)guimo finished:(void(^)(id restuct,NSString *error))finished{
+    NSString *mysign=[[NSString stringWithFormat:@"%@%@%@%@%@%@%@mymeifenpai",[self loadsaveSessData],company,companytel,[SvUDIDTools UDID],duty,guimo,salary] md5];
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    [dic setObject:[self loadsaveSessData] forKey:@"app_sess"];
+    [dic setValue:[SvUDIDTools UDID] forKey:@"device_code"];
+    [dic setObject:company forKey:@"company"];
+    
+    [dic setObject:duty forKey:@"duty"];
+    [dic setObject:guimo forKey:@"guimo"];
+    [dic setObject:salary forKey:@"salary"];
+    [dic setObject:companytel forKey:@"companytel"];
+    
+    [dic setObject:mysign forKey:@"mysign"];
+    [self netWorkApi:@"input/work" dic:dic finished:finished];
+    
+}
+#pragma mark 上传签名
+- (void)ApiqianmingHospital_id:(NSString *)hospital_id Price:(NSString *)price Paya:(NSString *)pay Payment:(NSString *)payment Qianming:(NSString *)qianming Uid:(NSString *)uid finished:(void(^)(id restuct,NSString *error))finished{
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    //NSString *mysign=[[NSString stringWithFormat:@"%@%@%@%@%@%@%@%@mymeifenpai",[self loadsaveSessData],[SvUDIDTools UDID],hospital_id,pay,payment,price,qianming,uid] md5];
+    [dic setObject:[self loadsaveSessData] forKey:@"app_sess"];
+    [dic setValue:[SvUDIDTools UDID] forKey:@"device_code"];
+    [dic setObject:hospital_id forKey:@"hospital_id"];
+    [dic setObject:price forKey:@"price"];
+    [dic setObject:pay forKey:@"pay"];
+    
+    [dic setObject:uid forKey:@"uid"];
+    [dic setObject:qianming forKey:@"qianming"];
+    [dic setObject:payment forKey:@"payment"];
+    //[dic setObject:mysign forKey:@"mysign"];
+    
+    [self netWorkApi:@"http://m.bupichina.com/index/Apiqianming" dic:dic finished:finished];
+}
+#pragma mark 获取分期手续费详情
+- (void)GetStagesDetailsPrice:(NSString *)price Paya:(NSString *)pay Payment:(NSString *)payment finished:(void(^)(id restuct,NSString *error))finished{
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    NSString *mysign=[[NSString stringWithFormat:@"%@%@%@%@%@mymeifenpai",[self loadsaveSessData],[SvUDIDTools UDID],pay,payment,price] md5];
+    [dic setObject:[self loadsaveSessData] forKey:@"app_sess"];
+    [dic setValue:[SvUDIDTools UDID] forKey:@"device_code"];
+    [dic setObject:price forKey:@"price"];
+    [dic setObject:pay forKey:@"pay"];
+    [dic setObject:payment forKey:@"payment"];
+    [dic setObject:mysign forKey:@"mysign"];
+    [self netWorkApi:@"my/GetStagesDetails" dic:dic finished:finished];
+}
+#pragma mark 获取京东协议
+- (void)get_jdxyfinished:(void(^)(id restuct,NSString *error))finished{
+    [self netWorkApi:@"/my/get_jdxy" dic:nil finished:finished];
+}
+#pragma mark 搜索医院/医院列表
+- (void)getHosListPage:(NSString *)page Page_size:(NSString *)page_size Search:(NSString *)search finished:(void(^)(id restuct,NSString *error))finished{
+    NSString *mysign=[[NSString stringWithFormat:@"%@%@%@%@%@mymeifenpai",[self loadsaveSessData],[SvUDIDTools UDID],page,page_size,search] md5];
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    [dic setObject:[self loadsaveSessData] forKey:@"app_sess"];
+    [dic setValue:[SvUDIDTools UDID] forKey:@"device_code"];
+    [dic setObject:search forKey:@"search"];
+    [dic setObject:page_size forKey:@"page_size"];
+    [dic setObject:page forKey:@"page"];
+    [dic setObject:mysign forKey:@"mysign"];
+    [self netWorkApi:@"my/GetHosList" dic:dic finished:finished];
+}
+#pragma mark 修改分期订单
+- (void)EditOrderfinished:(void(^)(id restuct,NSString *error))finished{
+    NSString *mysign=[[NSString stringWithFormat:@"%@%@mymeifenpai",[self loadsaveSessData],[SvUDIDTools UDID]] md5];
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    [dic setObject:[self loadsaveSessData] forKey:@"app_sess"];
+    [dic setValue:[SvUDIDTools UDID] forKey:@"device_code"];
+    [dic setObject:mysign forKey:@"mysign"];
+    [self netWorkApi:@"order/edit" dic:dic finished:finished];
+}
+#pragma mark 提交京东
+- (void)JDCheckVerifyUsername:(NSString *)username Pwd:(NSString *)pwd Captche:(NSString *)captche finished:(void(^)(id restuct,NSString *error))finished{
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    NSString *mysign=[[NSString stringWithFormat:@"%@%@%@%@%@mymeifenpai",[self loadsaveSessData],captche,[SvUDIDTools UDID],pwd,username] md5];
+    [dic setObject:[self loadsaveSessData] forKey:@"app_sess"];
+    [dic setValue:[SvUDIDTools UDID] forKey:@"device_code"];
+    [dic setObject:username forKey:@"username"];
+    [dic setObject:pwd forKey:@"pwd"];
+    [dic setObject:captche forKey:@"captche"];
+    [dic setObject:mysign forKey:@"mysign"];
+    [self netWorkApi:@"/my/JDCheckVerify" dic:dic finished:finished];
+}
+#pragma mark 重置服务密码
+- (void)ResetPwdPwd:(NSString *)pwd Captche:(NSString *)captche finished:(void(^)(id restuct,NSString *error))finished{
+    NSString *mysign=[[NSString stringWithFormat:@"%@%@%@%@mymeifenpai",[self loadsaveSessData],captche,[SvUDIDTools UDID],pwd] md5];
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    [dic setObject:[self loadsaveSessData] forKey:@"app_sess"];
+    [dic setValue:[SvUDIDTools UDID] forKey:@"device_code"];
+    [dic setObject:captche forKey:@"captche"];
+    [dic setObject:pwd forKey:@"pwd"];
+    [dic setObject:mysign forKey:@"mysign"];
+    [self netWorkApi:@"my/ResetPwd" dic:dic finished:finished];
+}
+
+#pragma mark 电话验证---发送验证码
+- (void)SendPhoneVerifyName:(NSString *)name Type:(NSString *)type Pwd:(NSString *)pwd finished:(void(^)(id restuct,NSString *error))finished{
+    NSString *mysign=[[NSString stringWithFormat:@"%@%@%@%@%@mymeifenpai",[self loadsaveSessData],[SvUDIDTools UDID],name,pwd,type] md5];
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    [dic setObject:[self loadsaveSessData] forKey:@"app_sess"];
+    [dic setValue:[SvUDIDTools UDID] forKey:@"device_code"];
+    [dic setObject:type forKey:@"type"];
+    [dic setObject:name forKey:@"name"];
+    [dic setObject:pwd forKey:@"pwd"];
+    [dic setObject:mysign forKey:@"mysign"];
+    [self netWorkApi:@"my/SendPhoneVerify" dic:dic finished:finished];
+}
+#pragma mark 创建订单
+- (void)save_plasticProject_name:(NSString *)project_name Doctor_name:(NSString *)doctor_name Project_price:(NSString *)project_price First_pay:(NSString *)first_pay Order_months:(NSString *)order_months Service:(NSString *)service Hkxy:(NSString *)hkxy Ssd:(NSString *)ssd Edu_type:(NSString *)edu_type Order_id:order_id finished:(void(^)(id restuct,NSString *error))finished{
+    NSString *mysign=[[NSString stringWithFormat:@"%@%@%@%@%@%@%@%@%@%@%@%@mymeifenpai",[self loadsaveSessData],[SvUDIDTools UDID],doctor_name,edu_type,first_pay,hkxy,order_months,order_id,project_name,project_price,service,ssd] md5];
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    [dic setObject:[self loadsaveSessData] forKey:@"app_sess"];
+    [dic setValue:[SvUDIDTools UDID] forKey:@"device_code"];
+    [dic setObject:project_name forKey:@"project_name"];
+    [dic setObject:doctor_name forKey:@"doctor_name"];
+    [dic setObject:service forKey:@"service"];
+    [dic setObject:project_price forKey:@"project_price"];
+    [dic setObject:first_pay forKey:@"first_pay"];
+    [dic setObject:hkxy forKey:@"hkxy"];
+    [dic setObject:edu_type forKey:@"edu_type"];
+    [dic setObject:order_id forKey:@"order_id"];
+    [dic setObject:ssd forKey:@"ssd"];
+    [dic setObject:order_months forKey:@"order_months"];
+    [dic setObject:mysign forKey:@"mysign"];
+    [self netWorkApi:@"order/create" dic:dic finished:finished];
+}
+#pragma mark 获取收据订单
+- (void)GetShoujufinished:(void(^)(id restuct,NSString *error))finished{
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    [dic setObject:[self loadsaveSessData] forKey:@"app_sess"];
+    [dic setValue:[SvUDIDTools UDID] forKey:@"device_code"];
+    [self netWorkApi:@"my/shouju" dic:dic finished:finished];
+}
+#pragma mark 设置收据订单
+- (void)SetShoujuOrder_id:(NSString *)order_id Img:(NSString *)img finished:(void(^)(id restuct,NSString *error))finished{
+    NSString *mysign=[[NSString stringWithFormat:@"%@%@%@%@mymeifenpai",[self loadsaveSessData],[SvUDIDTools UDID],img,order_id] md5];
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    [dic setObject:[self loadsaveSessData] forKey:@"app_sess"];
+    [dic setValue:[SvUDIDTools UDID] forKey:@"device_code"];
+    [dic setObject:order_id forKey:@"order_id"];
+    [dic setObject:img forKey:@"img"];
+    [dic setObject:mysign forKey:@"mysign"];
+    [self netWorkApi:@"my/set_shouju" dic:dic finished:finished];
+}
+#pragma mark 电话服务密码验证
+- (void)CheckVerifyPhone:(NSString *)phone Pwd:(NSString *)pwd Captche:(NSString *)captche finished:(void(^)(id restuct,NSString *error))finished{
+    NSString *mysign=[[NSString stringWithFormat:@"%@%@%@%@%@mymeifenpai",[self loadsaveSessData],captche,[SvUDIDTools UDID],phone,pwd] md5];
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    [dic setObject:[self loadsaveSessData] forKey:@"app_sess"];
+    [dic setValue:[SvUDIDTools UDID] forKey:@"device_code"];
+    [dic setObject:captche forKey:@"captche"];
+    [dic setObject:phone forKey:@"phone"];
+    [dic setObject:pwd forKey:@"pwd"];
+    [dic setObject:mysign forKey:@"mysign"];
+    [self netWorkApi:@"my/CheckVerify" dic:dic finished:finished];
+}
+#pragma mark 退出登录接口
+- (void)logoutUserPhone:(NSString *)phone finished:(void(^)(BOOL))finished{
+    NSMutableDictionary *parames=[[NSMutableDictionary alloc]init];
+    [parames setObject:phone forKey:@"phone"];
+    [[Networking sharedTools]presendUserNOPrefic:@"auth/logout" parames:parames requestCallBack:^(id result, NSString *error, NSProgress *progress) {
+        
+        if (error) {
+            finished(NO);
+            return ;
+        }
+        finished(YES);
+    }];
+}
+#pragma mark 获取便好设置数据
+- (NSString *)loadsaveSessData{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:@"app_sess"];
+}
+#pragma mark 网络返回
+- (void)netWorkApi:(NSString *)api dic:(NSDictionary *)dic finished:(void(^)(id restuct,NSString *error))finished{
+    
+    [[Networking sharedTools]presendUserNOPrefic:api parames:dic requestCallBack:^(id result, NSString *error, NSProgress *progress) {
+        if (error) {
+            finished(nil,error);
+            return ;
+        }
+        
+        if (result) {
+            finished(result,nil);
+        }
+        
+    }];
+}
+@end

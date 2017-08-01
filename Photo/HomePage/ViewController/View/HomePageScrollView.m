@@ -35,18 +35,28 @@
 }
 
 - (void)initDataSource {
-    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc]init];
-    NSString *urlString = [NSString stringWithFormat:@"http://101.201.122.173/HomeSlideControl/queryHomeSlide.do"];
-    [manager GET:urlString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
-        NSArray *urlArray = [responseObject objectForKey:@"data"];
+    [[UerInfoViewModel sharedUserInfoViewModel]FirstPageScroll:^(id restuct,NSString *error){
+        NSArray *urlArray = [restuct objectForKey:@"data"];
         for (NSDictionary *dict in urlArray) {
             NSString *urlString = [dict objectForKey:@"homeSlideImgUrl"];
             [_dataSource addObject:urlString];
         }
         [self createScrollView];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
     }];
+
+
+//    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc]init];
+//    NSString *urlString = [NSString stringWithFormat:@"http://101.201.122.173/HomeSlideControl/queryHomeSlide.do"];
+//    [manager GET:urlString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
+//        NSArray *urlArray = [responseObject objectForKey:@"data"];
+//        for (NSDictionary *dict in urlArray) {
+//            NSString *urlString = [dict objectForKey:@"homeSlideImgUrl"];
+//            [_dataSource addObject:urlString];
+//        }
+//        [self createScrollView];
+//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//        
+//    }];
 }
 
 - (void)createScrollView

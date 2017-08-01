@@ -1,0 +1,99 @@
+//
+//  UerInfoViewModel.h
+//  Xiufenqi2.0
+//
+//  Created by 不丕 on 16/10/13.
+//  Copyright © 2016年 艾蒂尔文化传媒有限公司. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "Networking.h"
+@interface UerInfoViewModel : NSObject
+typedef void(^RequestCallBack)(id result,NSString * error, NSProgress * progress);
+typedef void(^UploadFileCallBack)(NSURLResponse *response, id  responseObject, NSError *error,NSProgress * progress);
+typedef void(^RequestCallBack)(id result,NSString *error, NSProgress *progress);
+// 单例
++ (instancetype)sharedUserInfoViewModel;
+//登录接口
+- (void)loginUserPhone:(NSString *)phone valid:(NSString *)valid finished:(void(^)(BOOL,id))finished;
+//查询验证信息
+- (void)query_all_verify:(void(^)(id restuct,NSString *error))finished;
+//发送短信验证
+- (void)loginSendMessagePhone:(NSString *)phone finished:(void(^)(id restuct,NSString *error))finished;
+//设置身份
+- (void)Set_identityType:(NSString *)type Tongdao:(NSString *)tongdao finished:(void(^)(id restuct,NSString *error))finished;
+//获取基本信息
+- (void)get_basic_infoType:(NSString *)type finished:(void(^)(id restuct,NSString *error))finished;
+// 提交学生基本信息
+- (void)presentStudentInfoName:(NSString *)name idnum:(NSString *)idnum  marry:(NSString *)marry province:(NSString *)province address:(NSString *)address Education:(NSString *)education finished:(void(^)(id restuct,NSString *error))finished;
+//设置医院
+- (void)Set_hospitalHospital_id:(NSString *)hospital_id finished:(void(^)(id restuct,NSString *error))finished;
+//提交学生联系人信息
+- (void)PresendStuContactGuanxi:(NSString *)guanxi Parentname:(NSString *)parentname Parent:(NSString *)parent Friendname:(NSString *)friendname Friend:(NSString *)friend Friendname1:(NSString *)friendname1 Friend1:(NSString *)friend1 finished:(void(^)(id restuct,NSString *error))finished;
+//提交自由职业联系人信息
+- (void)PresendFreeContactGuanxi:(NSString *)guanxi Parentname:(NSString *)parentname Parent:(NSString *)parent Friendname:(NSString *)friendname Friend:(NSString *)friend Friendname1:(NSString *)friendname1 Friend1:(NSString *)friend1 Lxmarry:(NSString *)lxmarry Matename:(NSString *)matename Mate:(NSString *)mate finished:(void(^)(id restuct,NSString *error))finished;
+//提交工作者联系人信息
+- (void)PresendWorkContactGuanxi:(NSString *)guanxi Parentname:(NSString *)parentname Parent:(NSString *)parent Friendname:(NSString *)friendname Friend:(NSString *)friend Colleaguename:(NSString *)colleaguename Colleague:(NSString *)colleague finished:(void(^)(id restuct,NSString *error))finished;
+//删除图片
+- (void)DeletePictureId:(NSString *)P_id finished:(void(^)(id restuct,NSString *error))finished;
+//提交同盾验证
+- (void)SubmitTongdunBank_id:(NSString *)bank_id finished:(void(^)(id restuct,NSString *error))finished;
+//退出登录接口
+- (void)logoutUserPhone:(NSString *)phone finished:(void(^)(BOOL))finished;
+//支付
+- (void)PayForfeit:(NSString *)forfeit Pledge:(NSString *)pledge MerchantRemark:(NSString *)merchantRemark TradeNum:(NSString *)tradeNum TradeAmount:(NSString *)tradeAmount TradeDescription:(NSString *)tradeDescription TradeName:(NSString *)tradeName Payfs:(NSString *)payfs finished:(void(^)(id restuct,NSString *error))finished;
+//查询余额
+- (void)demandMoney:(NSString *)phone finished:(void(^)(id restuct,NSString *error))finished;
+//提交新手机手机号
+- (void)inputNewPhone:(NSString *)phone valid:(NSString *)valid finished:(void(^)(id restuct,NSString *error))finished;
+//提交旧手机手机号
+- (void)inputPhone:(NSString *)phone valid:(NSString *)valid finished:(void(^)(id restuct,NSString *error))finished;
+//我的订单列表
+- (void)orderListPage:(NSString *)page Page_size:(NSString *)page_size State:(NSString *)state finished:(void(^)(id restuct,NSString *error))finished;
+//获取信息条数
+- (void)GetMyNewMsgCountfinished:(void(^)(id restuct,NSString *error))finished;
+//短信验证码-更换绑定手机-旧手机 auth/send_phone_valid/change_phone/old
+- (void)changeOldPhone:(NSString *)phone finished:(void(^)(id restuct,NSString *error))finished;
+//短信验证码-更换绑定手机-新手机 auth/send_phone_valid/change_phone/new
+- (void)addNewPhone:(NSString *)phone finished:(void(^)(id restuct,NSString *error))finished;
+//读取消息
+- (void)ReadMsgType:(NSString *)type finished:(void(^)(id restuct,NSString *error))finished;
+//提交学校信息
+- (void)presendSchoolInfoCompany:(NSString *)company duty:(NSString *)duty salary:(NSString *)salary zhiwu:(NSString *)zhiwu finished:(void(^)(id restuct,NSString *error))finished;
+//消息列表
+- (void)GetUserMsgListType:(NSString *)type Page:(NSString *)page Page_size:(NSString *)page_size finished:(void(^)(id restuct,NSString *error))finished;
+//确认支付页面
+- (void)SurePayId:(NSString *)order_id Type:(NSString *)type Order_no:(NSString *)order_no finished:(void(^)(id restuct,NSString *error))finished;
+//订单详情
+- (void)orderDetailId:(NSString *)order_id finished:(void(^)(id restuct,NSString *error))finished;
+
+//提交工作信息
+- (void)presendWorkInfoCompany:(NSString *)company Nianxian:(NSString *)nianxian Companytel:(NSString *)companytel duty:(NSString *)duty salary:(NSString *)salary  finished:(void(^)(id restuct,NSString *error))finished;
+//获取分期手续费详情
+- (void)GetStagesDetailsPrice:(NSString *)price Paya:(NSString *)pay Payment:(NSString *)payment finished:(void(^)(id restuct,NSString *error))finished;
+//提交企业信息
+- (void)presendCompanyInfoCompany:(NSString *)company Companytel:(NSString *)companytel Duty:(NSString *)duty Salary:(NSString *)salary Guimo:(NSString *)guimo finished:(void(^)(id restuct,NSString *error))finished;
+//获取京东协议
+- (void)get_jdxyfinished:(void(^)(id restuct,NSString *error))finished;
+//搜索医院/医院列表
+- (void)getHosListPage:(NSString *)page Page_size:(NSString *)page_size Search:(NSString *)search finished:(void(^)(id restuct,NSString *error))finished;
+//上传签名
+- (void)ApiqianmingHospital_id:(NSString *)hospital_id Price:(NSString *)price Paya:(NSString *)pay Payment:(NSString *)payment Qianming:(NSString *)qianming Uid:(NSString *)uid finished:(void(^)(id restuct,NSString *error))finished;
+//创建订单
+- (void)save_plasticProject_name:(NSString *)project_name Doctor_name:(NSString *)doctor_name Project_price:(NSString *)project_price First_pay:(NSString *)first_pay Order_months:(NSString *)order_months Service:(NSString *)service Hkxy:(NSString *)hkxy Ssd:(NSString *)ssd Edu_type:(NSString *)edu_type Order_id:order_id finished:(void(^)(id restuct,NSString *error))finished;
+// 电话验证---发送验证码
+- (void)SendPhoneVerifyName:(NSString *)name Type:(NSString *)type Pwd:(NSString *)pwd finished:(void(^)(id restuct,NSString *error))finished;
+//电话服务密码验证
+- (void)CheckVerifyPhone:(NSString *)phone Pwd:(NSString *)pwd Captche:(NSString *)captche finished:(void(^)(id restuct,NSString *error))finished;
+//提交京东
+- (void)JDCheckVerifyUsername:(NSString *)username Pwd:(NSString *)pwd Captche:(NSString *)captche finished:(void(^)(id restuct,NSString *error))finished;
+//修改分期订单
+- (void)EditOrderfinished:(void(^)(id restuct,NSString *error))finished;
+//重置服务密码
+- (void)ResetPwdPwd:(NSString *)pwd Captche:(NSString *)captche finished:(void(^)(id restuct,NSString *error))finished;
+
+// 获取收据订单
+- (void)GetShoujufinished:(void(^)(id restuct,NSString *error))finished;
+// 设置收据订单
+- (void)SetShoujuOrder_id:(NSString *)order_id Img:(NSString *)img finished:(void(^)(id restuct,NSString *error))finished;
+@end
