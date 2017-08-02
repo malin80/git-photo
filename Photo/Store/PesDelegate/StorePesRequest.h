@@ -13,4 +13,6 @@
 
 + (void)queryAllGoodsInfo:(void(^)(NSDictionary *responseObject,NSString *error))finished;
 
++ (void)queryGoodsClassify:(void(^)(NSDictionary *responseObject,NSString *error))finished;
+
 @end

@@ -56,6 +56,7 @@
     [[UINavigationBar appearance] setBarTintColor:[UIColor whiteColor]];
     
     [GET_SINGLETON_FOR_CLASS(StoreManager) queryAllGoodsInfo];
+    [GET_SINGLETON_FOR_CLASS(StoreManager) queryGoodsClassify];
     return YES;
 }
 

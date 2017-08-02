@@ -23,6 +23,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(StoreManager)
     self = [super init];
     if (self) {
         self.goodsInfoArray = [NSMutableArray array];
+        self.goodsClassifyArray = [NSMutableArray array];
     }
     return self;
 }
@@ -52,6 +53,18 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(StoreManager)
             info.goodsDetailPic = [dict objectForKey:@"goodsDetail"];
             info.goodsDate = [dict objectForKey:@"goodsDate"];
             [_goodsInfoArray addObject:info];
+        }
+    }];
+}
+
+- (void)queryGoodsClassify {
+    [StorePesRequest queryGoodsClassify:^(NSDictionary *responseObject, NSString *error) {
+        NSArray *array = [responseObject objectForKey:@"data"];
+        for (NSDictionary *dict in array) {
+            GoodsInfo *info = [[GoodsInfo alloc] init];
+            info.goodsTypeName = [dict objectForKey:@"goodsTypeName"];
+            info.goodsTypeId = [[dict objectForKey:@"goodsTypeId"] unsignedLongValue];
+            [_goodsClassifyArray addObject:info];
         }
     }];
 }

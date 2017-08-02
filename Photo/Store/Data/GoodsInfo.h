@@ -21,7 +21,9 @@
 @property (nonatomic, assign)   long         goodsId;
 @property (nonatomic, assign)   long         goodsCount;                //已售
 @property (nonatomic, assign)   long         goodsSlideId;
-
 @property (nonatomic, strong)   NSMutableArray *goodsSlideUrls;
+
+@property (nonatomic, strong)   NSString    *goodsTypeName;
+@property (nonatomic, assign)   long         goodsTypeId;
 
 @end

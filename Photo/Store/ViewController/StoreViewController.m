@@ -13,7 +13,7 @@
 #import "StoreManager.h"
 #import "GoodsInfo.h"
 
-@interface StoreViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface StoreViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource>
 {
     UICollectionView *_collectionView;
 }
@@ -25,9 +25,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 40)];
-    titleView.backgroundColor =[ UIColor redColor];
-    [self.view addSubview:titleView];
     [self createCollectionView];
 }
 
@@ -36,21 +33,17 @@
     flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
     flowLayout.minimumInteritemSpacing = 20;
     
-//    flowLayout.headerReferenceSize = CGSizeMake(ScreenWidth, 20);
-//    flowLayout.footerReferenceSize = CGSizeMake(ScreenWidth, 9);
+    flowLayout.headerReferenceSize = CGSizeMake(ScreenWidth, 30);
     
-    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 40, ScreenWidth, ScreeHieght) collectionViewLayout:flowLayout];
+    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreeHieght-80) collectionViewLayout:flowLayout];
     _collectionView.dataSource = self;
     _collectionView.delegate = self;
     _collectionView.backgroundColor = [UIColor clearColor];
     
     [_collectionView registerClass:[StoreCollectionViewCell class] forCellWithReuseIdentifier:@"MedalCell"];
     
-//    [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"headerView"];
-//    
-//    [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"footerView"];
+    [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"headerView"];
     [self.view addSubview:_collectionView];
-//    [_collectionView reloadData];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -96,6 +89,83 @@
     StoreDetailViewController *controller = [[StoreDetailViewController alloc] init];
     controller.info = info;
     [self.navigationController pushViewController:controller animated:NO];
+}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
+    
+    NSString *reuseIdentifier;
+    if ([kind isEqualToString: UICollectionElementKindSectionFooter]){
+        reuseIdentifier = @"footerView";
+    }else{
+        reuseIdentifier = @"headerView";
+    }
+    
+    UICollectionReusableView *view = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    
+    if ([kind isEqualToString:UICollectionElementKindSectionHeader]){
+        view.backgroundColor = [UIColor redColor];
+        UIButton *classifyBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth/3, 30)];
+        classifyBtn.backgroundColor = [UIColor orangeColor];
+        [classifyBtn addTarget:self action:@selector(clickClassifyBtn) forControlEvents:UIControlEventTouchUpInside];
+        [view addSubview:classifyBtn];
+        UIButton *sortBtn = [[UIButton alloc] initWithFrame:CGRectMake(ScreenWidth/3, 0, ScreenWidth/3, 30)];
+        sortBtn.backgroundColor = [UIColor blackColor];
+        [view addSubview:sortBtn];
+        UIButton *reloadBtn = [[UIButton alloc] initWithFrame:CGRectMake((ScreenWidth/3)*2, 0, ScreenWidth/3, 30)];
+        reloadBtn.backgroundColor = [UIColor yellowColor];
+        [view addSubview:reloadBtn];
+    }
+    else if ([kind isEqualToString:UICollectionElementKindSectionFooter]){
+    }
+    return view;
+}
+
+- (void)clickClassifyBtn {
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 30, ScreenWidth, GET_SINGLETON_FOR_CLASS(StoreManager).goodsClassifyArray.count*30) style:UITableViewStyleGrouped];
+    tableView.dataSource = self;
+    tableView.delegate = self;
+    tableView.backgroundColor = [UIColor whiteColor];
+    tableView.separatorColor = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1.0];
+    tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    tableView.contentInset = UIEdgeInsetsMake(-40, 0, 0, 0);
+//    if ([tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+//        [tableView setSeparatorInset:UIEdgeInsetsZero];
+//    }
+//    if ([tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+//        [tableView setLayoutMargins:UIEdgeInsetsZero];
+//    }
+    [self.view addSubview:tableView];
+}
+
+#pragma mark --- tableView delegate ---
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return GET_SINGLETON_FOR_CLASS(StoreManager).goodsClassifyArray.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *cellIdentify = [NSString stringWithFormat:@"cellIdentify"];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
+    }
+    NSArray *array = GET_SINGLETON_FOR_CLASS(StoreManager).goodsClassifyArray;
+    GoodsInfo *info = [[GoodsInfo alloc] init];
+    info = array[indexPath.row];
+    cell.textLabel.text = info.goodsTypeName;
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 0;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 30;
 }
 
 

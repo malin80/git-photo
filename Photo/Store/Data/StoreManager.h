@@ -14,7 +14,11 @@ DECLARE_SINGLETON_FOR_CLASS(StoreManager)
 
 @property (nonatomic, strong) NSMutableArray *goodsInfoArray;
 
+@property (nonatomic, strong) NSMutableArray *goodsClassifyArray;
+
 - (void)queryAllGoodsInfo;
+
+- (void)queryGoodsClassify;
 
 
 @end

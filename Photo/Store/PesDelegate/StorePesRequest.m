@@ -14,4 +14,9 @@
     [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"GoodsInfoControl/queryGoodsInfo.do" dic:nil finished:finished];
 }
 
++ (void)queryGoodsClassify:(void(^)(NSDictionary *responseObject,NSString *error))finished {
+    [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"GoodsTypeControl/queryGoodsType.do" dic:nil finished:finished];
+}
+
+
 @end
