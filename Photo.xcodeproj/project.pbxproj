@@ -118,6 +118,8 @@
 		F4FDD6B51F2C37CD007263D4 /* AddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FDD6B11F2C37CD007263D4 /* AddressViewController.m */; };
 		F4FDD6B61F2C37CD007263D4 /* EditAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FDD6B31F2C37CD007263D4 /* EditAddressViewController.m */; };
 		F4FDD6B81F2C3F86007263D4 /* personal_login.png in Resources */ = {isa = PBXBuildFile; fileRef = F4FDD6B71F2C3F86007263D4 /* personal_login.png */; };
+		F4FEB0CC1F31A64B00C2F5A3 /* StoreDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FEB0CB1F31A64B00C2F5A3 /* StoreDetailTableViewCell.m */; };
+		F4FEB0CF1F31B86500C2F5A3 /* StoreDetailSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FEB0CE1F31B86500C2F5A3 /* StoreDetailSecondViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -327,6 +329,10 @@
 		F4FDD6B21F2C37CD007263D4 /* EditAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditAddressViewController.h; sourceTree = "<group>"; };
 		F4FDD6B31F2C37CD007263D4 /* EditAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditAddressViewController.m; sourceTree = "<group>"; };
 		F4FDD6B71F2C3F86007263D4 /* personal_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personal_login.png; sourceTree = "<group>"; };
+		F4FEB0CA1F31A64B00C2F5A3 /* StoreDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreDetailTableViewCell.h; sourceTree = "<group>"; };
+		F4FEB0CB1F31A64B00C2F5A3 /* StoreDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreDetailTableViewCell.m; sourceTree = "<group>"; };
+		F4FEB0CD1F31B86500C2F5A3 /* StoreDetailSecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreDetailSecondViewController.h; sourceTree = "<group>"; };
+		F4FEB0CE1F31B86500C2F5A3 /* StoreDetailSecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreDetailSecondViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -493,6 +499,8 @@
 			children = (
 				F40A2ADE1F315F5700BEDFFB /* StoreCollectionViewCell.h */,
 				F40A2ADF1F315F5700BEDFFB /* StoreCollectionViewCell.m */,
+				F4FEB0CA1F31A64B00C2F5A3 /* StoreDetailTableViewCell.h */,
+				F4FEB0CB1F31A64B00C2F5A3 /* StoreDetailTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -691,6 +699,8 @@
 				F40A2AF01F31727800BEDFFB /* StoreDetailViewController.m */,
 				F40A2AF21F3176A100BEDFFB /* StoreDetailFirstViewController.h */,
 				F40A2AF31F3176A100BEDFFB /* StoreDetailFirstViewController.m */,
+				F4FEB0CD1F31B86500C2F5A3 /* StoreDetailSecondViewController.h */,
+				F4FEB0CE1F31B86500C2F5A3 /* StoreDetailSecondViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1127,6 +1137,7 @@
 				F48185241F25E25800349143 /* CustomActionSheet.m in Sources */,
 				F405D1971F2EBAFD0015A8E6 /* GoodsOrderViewController.m in Sources */,
 				F4A7A0D71F2574A1009FAAEE /* PersonalViewController.m in Sources */,
+				F4FEB0CF1F31B86500C2F5A3 /* StoreDetailSecondViewController.m in Sources */,
 				F4A7A1221F2595FF009FAAEE /* EntrySection.m in Sources */,
 				F4A7A1251F259629009FAAEE /* EntryItem.m in Sources */,
 				F4FDD6A71F2C378E007263D4 /* UserNameViewController.m in Sources */,
@@ -1139,6 +1150,7 @@
 				F40430951F29D0FD00DDB2E7 /* LoginViewController.m in Sources */,
 				A514B10E1F290533006A765F /* FitManage.m in Sources */,
 				A520C6D01F2B89A400202622 /* DLFixedTabbarView.m in Sources */,
+				F4FEB0CC1F31A64B00C2F5A3 /* StoreDetailTableViewCell.m in Sources */,
 				F48237421F27078200DDD487 /* HomePageButtonView.m in Sources */,
 				F481E9581F28551C00EE3D7C /* BaseViewController.m in Sources */,
 				A514B1111F290533006A765F /* UIColor+EX.m in Sources */,

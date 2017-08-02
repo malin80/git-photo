@@ -10,6 +10,7 @@
 #import "NavigationBar.h"
 #import "DLTabedSlideView.h"
 #import "StoreDetailFirstViewController.h"
+#import "StoreDetailSecondViewController.h"
 
 @interface StoreDetailViewController () <NavigationBarDelegate, DLSlideTabbarDelegate>
 
@@ -64,7 +65,8 @@
         }
         case 1:
         {
-            StoreDetailFirstViewController *controller = [[StoreDetailFirstViewController alloc] init];
+            StoreDetailSecondViewController *controller = [[StoreDetailSecondViewController alloc] init];
+            controller.info = self.info;
             return controller;
         }
         case 2:

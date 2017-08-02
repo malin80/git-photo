@@ -69,11 +69,13 @@
     static NSString * CellIdentifier = @"MedalCell";
     StoreCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
     GoodsInfo *info = GET_SINGLETON_FOR_CLASS(StoreManager).goodsInfoArray[indexPath.item];
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://101.201.122.173/%@",info.goodsPic]];
-    UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
-    cell.imageView.image = imgFromUrl;
-    cell.goodsName.text = info.goodsName;
-    cell.goodsPrice.text = [NSString stringWithFormat:@"特价：¥%ld",info.goodsPrice];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://101.201.122.173/%@",info.goodsPic]];
+        UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
+        cell.imageView.image = imgFromUrl;
+        cell.goodsName.text = info.goodsName;
+        cell.goodsPrice.text = [NSString stringWithFormat:@"特价：¥%ld",info.goodsPrice];
+    });
     return cell;
 }
 
