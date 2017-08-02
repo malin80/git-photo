@@ -12,6 +12,8 @@
 #import "ShoppingViewController.h"
 #import "PersonalViewController.h"
 
+#import "StoreManager.h"
+
 @interface AppDelegate ()
 
 @end
@@ -52,6 +54,8 @@
     // Override point for customization after application launch.
     [self createViewController];
     [[UINavigationBar appearance] setBarTintColor:[UIColor whiteColor]];
+    
+    [GET_SINGLETON_FOR_CLASS(StoreManager) queryAllGoodsInfo];
     return YES;
 }
 

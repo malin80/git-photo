@@ -31,6 +31,12 @@
 		F405D19D1F2EBC110015A8E6 /* OrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F405D19C1F2EBC110015A8E6 /* OrderTableViewCell.m */; };
 		F405D1A41F2EC6480015A8E6 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F405D1A31F2EC6480015A8E6 /* CameraViewController.m */; };
 		F405D1A81F2ED06E0015A8E6 /* LoginInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F405D1A71F2ED06E0015A8E6 /* LoginInfo.m */; };
+		F40A2AE01F315F5700BEDFFB /* StoreCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F40A2ADF1F315F5700BEDFFB /* StoreCollectionViewCell.m */; };
+		F40A2AE51F31650700BEDFFB /* StorePesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F40A2AE41F31650700BEDFFB /* StorePesRequest.m */; };
+		F40A2AE81F3165D600BEDFFB /* StoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F40A2AE71F3165D600BEDFFB /* StoreManager.m */; };
+		F40A2AEB1F31671000BEDFFB /* GoodsInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F40A2AEA1F31671000BEDFFB /* GoodsInfo.m */; };
+		F40A2AF11F31727800BEDFFB /* StoreDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F40A2AF01F31727800BEDFFB /* StoreDetailViewController.m */; };
+		F40A2AF41F3176A100BEDFFB /* StoreDetailFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F40A2AF31F3176A100BEDFFB /* StoreDetailFirstViewController.m */; };
 		F40E7A5E1F3014AA00FD7792 /* HomePageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F40E7A5D1F3014AA00FD7792 /* HomePageManager.m */; };
 		F40E7A611F30197F00FD7792 /* PersonalPesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F40E7A601F30197F00FD7792 /* PersonalPesRequest.m */; };
 		F40E7A641F301BF300FD7792 /* LoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F40E7A631F301BF300FD7792 /* LoginManager.m */; };
@@ -182,6 +188,18 @@
 		F405D1A31F2EC6480015A8E6 /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
 		F405D1A61F2ED06E0015A8E6 /* LoginInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginInfo.h; sourceTree = "<group>"; };
 		F405D1A71F2ED06E0015A8E6 /* LoginInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginInfo.m; sourceTree = "<group>"; };
+		F40A2ADE1F315F5700BEDFFB /* StoreCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreCollectionViewCell.h; sourceTree = "<group>"; };
+		F40A2ADF1F315F5700BEDFFB /* StoreCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreCollectionViewCell.m; sourceTree = "<group>"; };
+		F40A2AE31F31650700BEDFFB /* StorePesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorePesRequest.h; sourceTree = "<group>"; };
+		F40A2AE41F31650700BEDFFB /* StorePesRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorePesRequest.m; sourceTree = "<group>"; };
+		F40A2AE61F3165D600BEDFFB /* StoreManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreManager.h; sourceTree = "<group>"; };
+		F40A2AE71F3165D600BEDFFB /* StoreManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreManager.m; sourceTree = "<group>"; };
+		F40A2AE91F31671000BEDFFB /* GoodsInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsInfo.h; sourceTree = "<group>"; };
+		F40A2AEA1F31671000BEDFFB /* GoodsInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsInfo.m; sourceTree = "<group>"; };
+		F40A2AEF1F31727800BEDFFB /* StoreDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreDetailViewController.h; sourceTree = "<group>"; };
+		F40A2AF01F31727800BEDFFB /* StoreDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreDetailViewController.m; sourceTree = "<group>"; };
+		F40A2AF21F3176A100BEDFFB /* StoreDetailFirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreDetailFirstViewController.h; sourceTree = "<group>"; };
+		F40A2AF31F3176A100BEDFFB /* StoreDetailFirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreDetailFirstViewController.m; sourceTree = "<group>"; };
 		F40E7A5C1F3014AA00FD7792 /* HomePageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageManager.h; sourceTree = "<group>"; };
 		F40E7A5D1F3014AA00FD7792 /* HomePageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageManager.m; sourceTree = "<group>"; };
 		F40E7A5F1F30197F00FD7792 /* PersonalPesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalPesRequest.h; sourceTree = "<group>"; };
@@ -470,6 +488,35 @@
 			path = PesDelegate;
 			sourceTree = "<group>";
 		};
+		F40A2ADD1F315F4300BEDFFB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F40A2ADE1F315F5700BEDFFB /* StoreCollectionViewCell.h */,
+				F40A2ADF1F315F5700BEDFFB /* StoreCollectionViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F40A2AE11F31630600BEDFFB /* PesDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				F40A2AE31F31650700BEDFFB /* StorePesRequest.h */,
+				F40A2AE41F31650700BEDFFB /* StorePesRequest.m */,
+			);
+			path = PesDelegate;
+			sourceTree = "<group>";
+		};
+		F40A2AE21F31630600BEDFFB /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				F40A2AE61F3165D600BEDFFB /* StoreManager.h */,
+				F40A2AE71F3165D600BEDFFB /* StoreManager.m */,
+				F40A2AE91F31671000BEDFFB /* GoodsInfo.h */,
+				F40A2AEA1F31671000BEDFFB /* GoodsInfo.m */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		F481E90E1F283A5F00EE3D7C /* Shopping */ = {
 			isa = PBXGroup;
 			children = (
@@ -627,6 +674,8 @@
 		F4A7A0C41F256C3F009FAAEE /* Store */ = {
 			isa = PBXGroup;
 			children = (
+				F40A2AE21F31630600BEDFFB /* Data */,
+				F40A2AE11F31630600BEDFFB /* PesDelegate */,
 				F4A7A0C51F256CF3009FAAEE /* ViewController */,
 			);
 			path = Store;
@@ -635,8 +684,13 @@
 		F4A7A0C51F256CF3009FAAEE /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				F40A2ADD1F315F4300BEDFFB /* View */,
 				F4A7A0D21F256DC3009FAAEE /* StoreViewController.h */,
 				F4A7A0D31F256DC3009FAAEE /* StoreViewController.m */,
+				F40A2AEF1F31727800BEDFFB /* StoreDetailViewController.h */,
+				F40A2AF01F31727800BEDFFB /* StoreDetailViewController.m */,
+				F40A2AF21F3176A100BEDFFB /* StoreDetailFirstViewController.h */,
+				F40A2AF31F3176A100BEDFFB /* StoreDetailFirstViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1064,6 +1118,7 @@
 				F481E95E1F2865C900EE3D7C /* SexPickerView.m in Sources */,
 				F405D19D1F2EBC110015A8E6 /* OrderTableViewCell.m in Sources */,
 				F4A7A1051F258449009FAAEE /* PersonalTabelViewCell.m in Sources */,
+				F40A2AE51F31650700BEDFFB /* StorePesRequest.m in Sources */,
 				F4A7A1081F2588BF009FAAEE /* PersonalHeaderView.m in Sources */,
 				F4A7A0CE1F256D8B009FAAEE /* ShoppingViewController.m in Sources */,
 				F4A7A2561F25BC22009FAAEE /* NavigationBar.m in Sources */,
@@ -1087,11 +1142,13 @@
 				F48237421F27078200DDD487 /* HomePageButtonView.m in Sources */,
 				F481E9581F28551C00EE3D7C /* BaseViewController.m in Sources */,
 				A514B1111F290533006A765F /* UIColor+EX.m in Sources */,
+				F40A2AEB1F31671000BEDFFB /* GoodsInfo.m in Sources */,
 				A520C6CD1F2B89A400202622 /* DLLRUCache.m in Sources */,
 				A520C6D21F2B89A400202622 /* DLTabedSlideView.m in Sources */,
 				A520C6CF1F2B89A400202622 /* DLSlideView.m in Sources */,
 				F40575701F2AE38D003C8AF2 /* HomePagePesRequest.m in Sources */,
 				F40E7A671F301F8A00FD7792 /* HomePageScrollViewInfo.m in Sources */,
+				F40A2AE81F3165D600BEDFFB /* StoreManager.m in Sources */,
 				F482373F1F27041300DDD487 /* HomePageScrollView.m in Sources */,
 				F4FDD6AB1F2C379D007263D4 /* OrderManageViewController.m in Sources */,
 				F482375D1F27395100DDD487 /* ShoppingBottomView.m in Sources */,
@@ -1099,6 +1156,7 @@
 				F405D1A41F2EC6480015A8E6 /* CameraViewController.m in Sources */,
 				F4FDD6A41F2C378E007263D4 /* NickNameViewController.m in Sources */,
 				F405D19A1F2EBB2F0015A8E6 /* BookOrderViewController.m in Sources */,
+				F40A2AF41F3176A100BEDFFB /* StoreDetailFirstViewController.m in Sources */,
 				F40E7A611F30197F00FD7792 /* PersonalPesRequest.m in Sources */,
 				F4A7A2591F25C3D0009FAAEE /* UserDataTableViewCell.m in Sources */,
 				F482375A1F2725AA00DDD487 /* ShoppingTableViewCell.m in Sources */,
@@ -1107,11 +1165,13 @@
 				F4FDD6B51F2C37CD007263D4 /* AddressViewController.m in Sources */,
 				A520C6CE1F2B89A400202622 /* DLCustomSlideView.m in Sources */,
 				F4A7A0D11F256DB1009FAAEE /* HomePageViewController.m in Sources */,
+				F40A2AE01F315F5700BEDFFB /* StoreCollectionViewCell.m in Sources */,
 				A514B1101F290533006A765F /* SvUDIDTools.m in Sources */,
 				F4A7A0931F256B96009FAAEE /* AppDelegate.m in Sources */,
 				A514B1041F2903D3006A765F /* TabbarViewController.m in Sources */,
 				F4A7A0D41F256DC3009FAAEE /* StoreViewController.m in Sources */,
 				A520C6D11F2B89A400202622 /* DLScrollTabbarView.m in Sources */,
+				F40A2AF11F31727800BEDFFB /* StoreDetailViewController.m in Sources */,
 				A514B10F1F290533006A765F /* NSString+Category.m in Sources */,
 				F4A7A0901F256B96009FAAEE /* main.m in Sources */,
 				F48237561F27179700DDD487 /* HomePageTableViewCell.m in Sources */,
