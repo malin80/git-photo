@@ -24,7 +24,7 @@
     NSArray *temp=[self.info.goodsDetailPic componentsSeparatedByString:@";"];
 
     for (int i=0; i<temp.count; i++) {
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://101.201.122.173/%@",temp[i]]];
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,temp[i]]];
         UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, i*180, ScreenWidth, 180)];
         imageView.image = imgFromUrl;

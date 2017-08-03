@@ -66,7 +66,7 @@
     }
     
     CameraTeamInfo *info = [GET_SINGLETON_FOR_CLASS(HomePageManager).cameraTeams objectAtIndex:indexPath.row];
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://101.201.122.173/%@",info.teamPic]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,info.teamPic]];
     UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
     cell.teamImageView.image = imgFromUrl;
     cell.teamNameLabel.text = info.teamName;

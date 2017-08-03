@@ -71,7 +71,7 @@
     for (int i = 0; i < _dataSource.count; i++) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i*ScreenWidth, 0, ScreenWidth, 250)];
         info = _dataSource[i];
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://101.201.122.173/%@",info.imageUrl]];
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,info.imageUrl]];
         UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
         imageView.image = imgFromUrl;
         [_scrollView addSubview:imageView];

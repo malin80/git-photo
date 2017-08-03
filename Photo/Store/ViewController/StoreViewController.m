@@ -63,7 +63,7 @@
     StoreCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
     GoodsInfo *info = GET_SINGLETON_FOR_CLASS(StoreManager).goodsInfoArray[indexPath.item];
     dispatch_async(dispatch_get_main_queue(), ^{
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://101.201.122.173/%@",info.goodsPic]];
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,info.goodsPic]];
         UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
         cell.imageView.image = imgFromUrl;
         cell.goodsName.text = info.goodsName;

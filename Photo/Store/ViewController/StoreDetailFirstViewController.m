@@ -53,7 +53,7 @@
 //    [self stopTimer];
     for (int i = 0; i < self.info.goodsSlideUrls.count; i++) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i*ScreenWidth+10, 0, ScreenWidth-20, kScrollViewHeight)];
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://101.201.122.173/%@",self.info.goodsSlideUrls[i]]];
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,self.info.goodsSlideUrls[i]]];
         UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
         imageView.image = imgFromUrl;
         [_scrollView addSubview:imageView];
