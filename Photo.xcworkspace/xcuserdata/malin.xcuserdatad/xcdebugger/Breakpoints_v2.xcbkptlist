@@ -6,32 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Photo/ThirdParties/DLSlideView/DLTabbarView/DLFixedTabbarView.m"
-            timestampString = "523261795.295182"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
-            landmarkName = "-layoutTabbar"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photo/HomePage/Data/HomePageManager.m"
-            timestampString = "523328806.178431"
+            timestampString = "523434818.20928"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "-loadScrollViewImages"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "-queryCameraTeamWithGroupId:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

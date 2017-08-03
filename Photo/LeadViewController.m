@@ -19,16 +19,16 @@
     // Do any additional setup after loading the view.
     [self.view addSubview:self.scrollview];
     NSArray *array;
-    if (ScreeHieght == 480) {
+    if (ScreenHieght == 480) {
         array = @[@"lead4-1",@"lead4-2",@"lead4-3",@"lead4-4"];
-    }else if(ScreeHieght == 568){
+    }else if(ScreenHieght == 568){
         array = @[@"lead5-1",@"lead5-2",@"lead5-3",@"lead5-4"];
     }else{
         array = @[@"lead6-1",@"lead6-2",@"lead6-3",@"lead6-4"];
     }
-    self.scrollview.contentSize = CGSizeMake(ScreenWidth*4, ScreeHieght);
+    self.scrollview.contentSize = CGSizeMake(ScreenWidth*4, ScreenHieght);
     for (int i=0; i<4; i++) {
-        UIImageView *imageview = [[UIImageView alloc]initWithFrame:CGRectMake(i*ScreenWidth, 0, ScreenWidth, ScreeHieght)];
+        UIImageView *imageview = [[UIImageView alloc]initWithFrame:CGRectMake(i*ScreenWidth, 0, ScreenWidth, ScreenHieght)];
         imageview.image = [UIImage imageNamed:array[i]];
         [self.scrollview addSubview:imageview];
     }
@@ -57,7 +57,7 @@
     
     if (_scrollview == nil) {
         
-        _scrollview = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreeHieght)];
+        _scrollview = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHieght)];
         _scrollview.showsHorizontalScrollIndicator = NO;
         _scrollview.delegate = self;
         _scrollview.bounces = NO;
@@ -70,7 +70,7 @@
     
     if (_btn == nil) {
         
-        _btn = [[UIButton alloc]initWithFrame:CGRectMake(ScreenWidth/2-50*SCALEW, ScreeHieght-76*SCALEH, 100*SCALEW, 36*SCALEW)];
+        _btn = [[UIButton alloc]initWithFrame:CGRectMake(ScreenWidth/2-50*SCALEW, ScreenHieght-76*SCALEH, 100*SCALEW, 36*SCALEW)];
         _btn.userInteractionEnabled = NO;
         [_btn setImage:[UIImage imageNamed:@"di1"] forState:0];
         [_btn addTarget:self action:@selector(btnPush) forControlEvents:UIControlEventTouchUpInside];

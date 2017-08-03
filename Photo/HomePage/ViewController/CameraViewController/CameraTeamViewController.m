@@ -1,38 +1,43 @@
 //
-//  StoreDetailViewController.m
+//  CameraTeamViewController.m
 //  Photo
 //
-//  Created by malin  on 2017/8/2.
+//  Created by malin  on 2017/8/3.
 //  Copyright © 2017年 malin . All rights reserved.
 //
 
-#import "StoreDetailViewController.h"
-#import "NavigationBar.h"
-#import "DLTabedSlideView.h"
-#import "StoreDetailFirstViewController.h"
-#import "StoreDetailSecondViewController.h"
+#import "CameraTeamViewController.h"
+#import "CameraManViewController.h"
 
-@interface StoreDetailViewController () <NavigationBarDelegate, DLSlideTabbarDelegate>
+#import "DLTabedSlideView.h"
+#import "NavigationBar.h"
+
+@interface CameraTeamViewController () <NavigationBarDelegate, DLTabedSlideViewDelegate>
 
 @property (nonatomic, strong) DLTabedSlideView *tabedSlideView;
 
 @end
 
-@implementation StoreDetailViewController
+@implementation CameraTeamViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.navigationController.navigationBarHidden = YES;
-    NavigationBar *bar = [[NavigationBar alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 64) withTitle:[NSString stringWithFormat:@"%@ 详情",self.info.goodsName]];
+    self.navigationController.navigationBar.hidden = YES;
+    NavigationBar *bar = [[NavigationBar alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 64) withTitle:[NSString stringWithFormat:@"婚纱摄影>%@",self.info.teamName]];
     bar.delegate = self;
+    bar.line.hidden=YES;
     [self.view addSubview:bar];
     
     [self initView];
 }
 
 - (void)initView {
-    self.tabedSlideView = [[DLTabedSlideView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHieght-64)];
+    UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 200)];
+    titleView.backgroundColor = [UIColor redColor];
+    [self.view addSubview:titleView];
+    
+    self.tabedSlideView = [[DLTabedSlideView alloc] initWithFrame:CGRectMake(0, 200, ScreenWidth, ScreenHieght-200)];
     self.tabedSlideView.baseController = self;
     self.tabedSlideView.delegate=self;
     self.tabedSlideView.tabItemNormalColor = [UIColor blackColor];
@@ -40,38 +45,30 @@
     self.tabedSlideView.tabbarTrackColor = [UIColor colorWithRed:0.833 green:0.052 blue:0.130 alpha:1.000];
     self.tabedSlideView.tabbarBottomSpacing = 3.0;
     
-    DLTabedbarItem *item1 = [DLTabedbarItem itemWithTitle:@"商品" image:nil selectedImage:nil];
-    DLTabedbarItem *item2 = [DLTabedbarItem itemWithTitle:@"详情" image:nil selectedImage:nil];
-    DLTabedbarItem *item3 = [DLTabedbarItem itemWithTitle:@"评价" image:nil selectedImage:nil];
-
-    self.tabedSlideView.tabbarItems = @[item1, item2, item3];
+    DLTabedbarItem *item1 = [DLTabedbarItem itemWithTitle:@"摄影师" image:nil selectedImage:nil];
+    DLTabedbarItem *item2 = [DLTabedbarItem itemWithTitle:@"化妆师" image:nil selectedImage:nil];
+    self.tabedSlideView.tabbarItems = @[item1, item2];
     [self.tabedSlideView buildTabbar];
     self.tabedSlideView.selectedIndex = 0;
     [self.view addSubview:self.tabedSlideView];
+
 }
 
 #pragma mark --- DLTabedSlideViewDelegate ---
 - (NSInteger)numberOfTabsInDLTabedSlideView:(DLTabedSlideView *)sender {
-    return 3;
+    return 2;
 }
 
 - (UIViewController *)DLTabedSlideView:(DLTabedSlideView *)sender controllerAt:(NSInteger)index {
     switch (index) {
         case 0:
         {
-            StoreDetailFirstViewController *controller = [[StoreDetailFirstViewController alloc] init];
-            controller.info = self.info;
+            CameraManViewController *controller = [[CameraManViewController alloc] init];
             return controller;
         }
         case 1:
         {
-            StoreDetailSecondViewController *controller = [[StoreDetailSecondViewController alloc] init];
-            controller.info = self.info;
-            return controller;
-        }
-        case 2:
-        {
-            StoreDetailFirstViewController *controller = [[StoreDetailFirstViewController alloc] init];
+            CameraManViewController *controller = [[CameraManViewController alloc] init];
             return controller;
         }
             

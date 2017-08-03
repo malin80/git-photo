@@ -69,7 +69,7 @@
     if (_tabbarItems != tabbarItems) {
         _tabbarItems = tabbarItems;
         
-        assert(tabbarItems.count <= 8);
+        assert(tabbarItems.count <= 30);
         
         float width = self.bounds.size.width/tabbarItems.count;
         float height = self.bounds.size.height;

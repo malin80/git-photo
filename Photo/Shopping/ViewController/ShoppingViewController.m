@@ -33,7 +33,7 @@
 }
 
 - (void)createBottomView {
-    _bottomView = [[ShoppingBottomView alloc] initWithFrame:CGRectMake(0, ScreeHieght-180, ScreenWidth, 100)];
+    _bottomView = [[ShoppingBottomView alloc] initWithFrame:CGRectMake(0, ScreenHieght-180, ScreenWidth, 100)];
     _bottomView.layer.borderWidth = 1;
     _bottomView.layer.borderColor = [[UIColor colorWithRed:241/255.0 green:241/255.0 blue:241/255.0 alpha:1.0] CGColor];
     [self.view addSubview:self.bottomView];

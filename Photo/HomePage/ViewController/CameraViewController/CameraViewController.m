@@ -7,14 +7,14 @@
 //
 
 #import "CameraViewController.h"
-#import "BookOrderViewController.h"
-#import "GoodsOrderViewController.h"
+#import "CameraDetailViewController.h"
 
 #import "HomePageScrollView.h"
 #import "NavigationBar.h"
+#import "HomePageManager.h"
+#import "HomePageCameraGroupInfo.h"
 
-
-@interface CameraViewController () <NavigationBarDelegate>
+@interface CameraViewController () <NavigationBarDelegate, DLTabedSlideViewDelegate>
 {
     NSMutableArray *_slideViews;
 }
@@ -35,11 +35,12 @@
     bar.line.hidden=YES;
     [self.view addSubview:bar];
     
+    
     [self initView];
 }
 
 - (void)initView {
-    self.tabedSlideView = [[DLTabedSlideView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreeHieght-64)];
+    self.tabedSlideView = [[DLTabedSlideView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHieght-64)];
     self.tabedSlideView.baseController = self;
     self.tabedSlideView.delegate=self;
     self.tabedSlideView.tabItemNormalColor = [UIColor blackColor];
@@ -47,10 +48,10 @@
     self.tabedSlideView.tabbarTrackColor = [UIColor colorWithRed:0.833 green:0.052 blue:0.130 alpha:1.000];
     self.tabedSlideView.tabbarBottomSpacing = 3.0;
 
-    NSArray *array = [NSArray arrayWithObjects:@"跟拍啊啊啊", @"跟拍啊啊啊", @"跟拍啊啊啊", @"跟拍啊啊啊", @"跟拍啊啊啊", @"跟拍啊啊啊", @"跟拍啊啊啊", @"跟拍", nil];
     _slideViews = [NSMutableArray array];
-    for (int i = 0; i < array.count; i++) {
-        DLTabedbarItem *item = [DLTabedbarItem itemWithTitle:[NSString stringWithFormat:@"%@",array[i]] image:nil selectedImage:nil];
+    for (int i = 0; i < GET_SINGLETON_FOR_CLASS(HomePageManager).cameraGroups.count; i++) {
+        HomePageCameraGroupInfo *info = GET_SINGLETON_FOR_CLASS(HomePageManager).cameraGroups[i];
+        DLTabedbarItem *item = [DLTabedbarItem itemWithTitle:[NSString stringWithFormat:@"%@",info.cameraGroupName] image:nil selectedImage:nil];
         [_slideViews addObject:item];
     }
     self.tabedSlideView.tabbarItems = _slideViews;
@@ -67,57 +68,15 @@
 }
 
 - (UIViewController *)DLTabedSlideView:(DLTabedSlideView *)sender controllerAt:(NSInteger)index {
-    switch (index) {
-        case 0:
-        {
-            GoodsOrderViewController *controller = [[GoodsOrderViewController alloc] init];
-            return controller;
-        }
-        case 1:
-        {
-            BookOrderViewController *controller = [[BookOrderViewController alloc] init];
-            return controller;
-        }
-        case 2:
-        {
-            GoodsOrderViewController *controller = [[GoodsOrderViewController alloc] init];
-            return controller;
-        }
-        case 3:
-        {
-            BookOrderViewController *controller = [[BookOrderViewController alloc] init];
-            return controller;
-        }
-        case 4:
-        {
-            GoodsOrderViewController *controller = [[GoodsOrderViewController alloc] init];
-            return controller;
-        }
-        case 5:
-        {
-            BookOrderViewController *controller = [[BookOrderViewController alloc] init];
-            return controller;
-        }
-        case 6:
-        {
-            GoodsOrderViewController *controller = [[GoodsOrderViewController alloc] init];
-            return controller;
-        }
-        case 7:
-        {
-            BookOrderViewController *controller = [[BookOrderViewController alloc] init];
-            return controller;
-        }
-        case 8:
-        {
-            GoodsOrderViewController *controller = [[GoodsOrderViewController alloc] init];
-            return controller;
-        }
-
-
-        default:
-            return nil;
-    }
+    HomePageCameraGroupInfo *info = [GET_SINGLETON_FOR_CLASS(HomePageManager).cameraGroups objectAtIndex:index];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [GET_SINGLETON_FOR_CLASS(HomePageManager) queryCameraTeamWithGroupId:info.cameraGroupId];
+    });
+    [GET_SINGLETON_FOR_CLASS(HomePageManager).cameraTeams removeAllObjects];
+    CameraDetailViewController *controller = [[CameraDetailViewController alloc] init];
+    controller.groupId = info.cameraGroupId;
+    return controller;
 }
 
 - (void)DLSlideTabbar:(id)sender selectAt:(NSInteger)index {

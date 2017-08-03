@@ -13,6 +13,7 @@
 #import "PersonalViewController.h"
 
 #import "StoreManager.h"
+#import "HomePageManager.h"
 
 @interface AppDelegate ()
 
@@ -55,8 +56,12 @@
     [self createViewController];
     [[UINavigationBar appearance] setBarTintColor:[UIColor whiteColor]];
     
-    [GET_SINGLETON_FOR_CLASS(StoreManager) queryAllGoodsInfo];
-    [GET_SINGLETON_FOR_CLASS(StoreManager) queryGoodsClassify];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [GET_SINGLETON_FOR_CLASS(StoreManager) queryAllGoodsInfo];
+        [GET_SINGLETON_FOR_CLASS(StoreManager) queryGoodsClassify];
+        [GET_SINGLETON_FOR_CLASS(HomePageManager) queryCameraGroup];
+    });
+    
     return YES;
 }
 

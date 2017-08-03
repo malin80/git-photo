@@ -35,7 +35,7 @@
     
     flowLayout.headerReferenceSize = CGSizeMake(ScreenWidth, 30);
     
-    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreeHieght-80) collectionViewLayout:flowLayout];
+    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHieght-80) collectionViewLayout:flowLayout];
     _collectionView.dataSource = self;
     _collectionView.delegate = self;
     _collectionView.backgroundColor = [UIColor clearColor];
@@ -128,12 +128,6 @@
     tableView.separatorColor = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1.0];
     tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     tableView.contentInset = UIEdgeInsetsMake(-40, 0, 0, 0);
-//    if ([tableView respondsToSelector:@selector(setSeparatorInset:)]) {
-//        [tableView setSeparatorInset:UIEdgeInsetsZero];
-//    }
-//    if ([tableView respondsToSelector:@selector(setLayoutMargins:)]) {
-//        [tableView setLayoutMargins:UIEdgeInsetsZero];
-//    }
     [self.view addSubview:tableView];
 }
 

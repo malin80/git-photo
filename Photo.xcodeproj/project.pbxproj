@@ -107,6 +107,14 @@
 		F4A7A2561F25BC22009FAAEE /* NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7A2551F25BC22009FAAEE /* NavigationBar.m */; };
 		F4A7A2591F25C3D0009FAAEE /* UserDataTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7A2581F25C3D0009FAAEE /* UserDataTableViewCell.m */; };
 		F4A7A25E1F25D192009FAAEE /* common_back.png in Resources */ = {isa = PBXBuildFile; fileRef = F4A7A25D1F25D192009FAAEE /* common_back.png */; };
+		F4FD30471F32C1B200048DD6 /* ShoppingPesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FD30461F32C1B200048DD6 /* ShoppingPesRequest.m */; };
+		F4FD304A1F32C46800048DD6 /* HomePageCameraGroupInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FD30491F32C46800048DD6 /* HomePageCameraGroupInfo.m */; };
+		F4FD304D1F32C97300048DD6 /* CameraDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FD304C1F32C97300048DD6 /* CameraDetailViewController.m */; };
+		F4FD30531F32D35800048DD6 /* CameraDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FD30521F32D35800048DD6 /* CameraDetailTableViewCell.m */; };
+		F4FD30571F32E4D000048DD6 /* CameraTeamInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FD30561F32E4D000048DD6 /* CameraTeamInfo.m */; };
+		F4FD305A1F32F7C700048DD6 /* CameraTeamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FD30591F32F7C700048DD6 /* CameraTeamViewController.m */; };
+		F4FD305D1F33010900048DD6 /* CameraManViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FD305C1F33010900048DD6 /* CameraManViewController.m */; };
+		F4FD30601F3304AF00048DD6 /* CameraManTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FD305F1F3304AF00048DD6 /* CameraManTableViewCell.m */; };
 		F4FDD6A31F2C378E007263D4 /* ModifyPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FDD69A1F2C378E007263D4 /* ModifyPasswordViewController.m */; };
 		F4FDD6A41F2C378E007263D4 /* NickNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FDD69C1F2C378E007263D4 /* NickNameViewController.m */; };
 		F4FDD6A51F2C378E007263D4 /* PhoneNumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FDD69E1F2C378E007263D4 /* PhoneNumberViewController.m */; };
@@ -309,6 +317,22 @@
 		F4A7A2571F25C3D0009FAAEE /* UserDataTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDataTableViewCell.h; sourceTree = "<group>"; };
 		F4A7A2581F25C3D0009FAAEE /* UserDataTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDataTableViewCell.m; sourceTree = "<group>"; };
 		F4A7A25D1F25D192009FAAEE /* common_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = common_back.png; sourceTree = "<group>"; };
+		F4FD30451F32C1B200048DD6 /* ShoppingPesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingPesRequest.h; sourceTree = "<group>"; };
+		F4FD30461F32C1B200048DD6 /* ShoppingPesRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingPesRequest.m; sourceTree = "<group>"; };
+		F4FD30481F32C46800048DD6 /* HomePageCameraGroupInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageCameraGroupInfo.h; sourceTree = "<group>"; };
+		F4FD30491F32C46800048DD6 /* HomePageCameraGroupInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageCameraGroupInfo.m; sourceTree = "<group>"; };
+		F4FD304B1F32C97300048DD6 /* CameraDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraDetailViewController.h; sourceTree = "<group>"; };
+		F4FD304C1F32C97300048DD6 /* CameraDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraDetailViewController.m; sourceTree = "<group>"; };
+		F4FD30511F32D35800048DD6 /* CameraDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraDetailTableViewCell.h; sourceTree = "<group>"; };
+		F4FD30521F32D35800048DD6 /* CameraDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraDetailTableViewCell.m; sourceTree = "<group>"; };
+		F4FD30551F32E4D000048DD6 /* CameraTeamInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraTeamInfo.h; sourceTree = "<group>"; };
+		F4FD30561F32E4D000048DD6 /* CameraTeamInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraTeamInfo.m; sourceTree = "<group>"; };
+		F4FD30581F32F7C700048DD6 /* CameraTeamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraTeamViewController.h; sourceTree = "<group>"; };
+		F4FD30591F32F7C700048DD6 /* CameraTeamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraTeamViewController.m; sourceTree = "<group>"; };
+		F4FD305B1F33010900048DD6 /* CameraManViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraManViewController.h; sourceTree = "<group>"; };
+		F4FD305C1F33010900048DD6 /* CameraManViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraManViewController.m; sourceTree = "<group>"; };
+		F4FD305E1F3304AF00048DD6 /* CameraManTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraManTableViewCell.h; sourceTree = "<group>"; };
+		F4FD305F1F3304AF00048DD6 /* CameraManTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraManTableViewCell.m; sourceTree = "<group>"; };
 		F4FDD6991F2C378E007263D4 /* ModifyPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifyPasswordViewController.h; sourceTree = "<group>"; };
 		F4FDD69A1F2C378E007263D4 /* ModifyPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifyPasswordViewController.m; sourceTree = "<group>"; };
 		F4FDD69B1F2C378E007263D4 /* NickNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NickNameViewController.h; sourceTree = "<group>"; };
@@ -455,6 +479,12 @@
 			children = (
 				F405D1A21F2EC6480015A8E6 /* CameraViewController.h */,
 				F405D1A31F2EC6480015A8E6 /* CameraViewController.m */,
+				F4FD304B1F32C97300048DD6 /* CameraDetailViewController.h */,
+				F4FD304C1F32C97300048DD6 /* CameraDetailViewController.m */,
+				F4FD30581F32F7C700048DD6 /* CameraTeamViewController.h */,
+				F4FD30591F32F7C700048DD6 /* CameraTeamViewController.m */,
+				F4FD305B1F33010900048DD6 /* CameraManViewController.h */,
+				F4FD305C1F33010900048DD6 /* CameraManViewController.m */,
 			);
 			path = CameraViewController;
 			sourceTree = "<group>";
@@ -479,6 +509,10 @@
 				F40E7A5D1F3014AA00FD7792 /* HomePageManager.m */,
 				F40E7A651F301F8A00FD7792 /* HomePageScrollViewInfo.h */,
 				F40E7A661F301F8A00FD7792 /* HomePageScrollViewInfo.m */,
+				F4FD30481F32C46800048DD6 /* HomePageCameraGroupInfo.h */,
+				F4FD30491F32C46800048DD6 /* HomePageCameraGroupInfo.m */,
+				F4FD30551F32E4D000048DD6 /* CameraTeamInfo.h */,
+				F4FD30561F32E4D000048DD6 /* CameraTeamInfo.m */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -544,6 +578,10 @@
 				F48237411F27078200DDD487 /* HomePageButtonView.m */,
 				F48237541F27179700DDD487 /* HomePageTableViewCell.h */,
 				F48237551F27179700DDD487 /* HomePageTableViewCell.m */,
+				F4FD30511F32D35800048DD6 /* CameraDetailTableViewCell.h */,
+				F4FD30521F32D35800048DD6 /* CameraDetailTableViewCell.m */,
+				F4FD305E1F3304AF00048DD6 /* CameraManTableViewCell.h */,
+				F4FD305F1F3304AF00048DD6 /* CameraManTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -654,6 +692,8 @@
 		F4A7A0C11F256C3F009FAAEE /* Shopping */ = {
 			isa = PBXGroup;
 			children = (
+				F4FD30411F32C16F00048DD6 /* Data */,
+				F4FD30401F32C16F00048DD6 /* Delegate */,
 				F4A7A0C61F256D10009FAAEE /* ViewController */,
 			);
 			path = Shopping;
@@ -850,6 +890,22 @@
 				F4A7A25D1F25D192009FAAEE /* common_back.png */,
 			);
 			path = Commom;
+			sourceTree = "<group>";
+		};
+		F4FD30401F32C16F00048DD6 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				F4FD30451F32C1B200048DD6 /* ShoppingPesRequest.h */,
+				F4FD30461F32C1B200048DD6 /* ShoppingPesRequest.m */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		F4FD30411F32C16F00048DD6 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		F4FDD6911F2C36CF007263D4 /* OrderManage */ = {
@@ -1118,6 +1174,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4FD304D1F32C97300048DD6 /* CameraDetailViewController.m in Sources */,
+				F4FD30601F3304AF00048DD6 /* CameraManTableViewCell.m in Sources */,
 				F482373B1F26EC3100DDD487 /* CollectTableViewCell.m in Sources */,
 				F40E7A701F30280400FD7792 /* MemberInfo.m in Sources */,
 				F40575691F2AE29B003C8AF2 /* PesRequest.m in Sources */,
@@ -1129,6 +1187,7 @@
 				F405D19D1F2EBC110015A8E6 /* OrderTableViewCell.m in Sources */,
 				F4A7A1051F258449009FAAEE /* PersonalTabelViewCell.m in Sources */,
 				F40A2AE51F31650700BEDFFB /* StorePesRequest.m in Sources */,
+				F4FD305A1F32F7C700048DD6 /* CameraTeamViewController.m in Sources */,
 				F4A7A1081F2588BF009FAAEE /* PersonalHeaderView.m in Sources */,
 				F4A7A0CE1F256D8B009FAAEE /* ShoppingViewController.m in Sources */,
 				F4A7A2561F25BC22009FAAEE /* NavigationBar.m in Sources */,
@@ -1156,6 +1215,7 @@
 				A514B1111F290533006A765F /* UIColor+EX.m in Sources */,
 				F40A2AEB1F31671000BEDFFB /* GoodsInfo.m in Sources */,
 				A520C6CD1F2B89A400202622 /* DLLRUCache.m in Sources */,
+				F4FD305D1F33010900048DD6 /* CameraManViewController.m in Sources */,
 				A520C6D21F2B89A400202622 /* DLTabedSlideView.m in Sources */,
 				A520C6CF1F2B89A400202622 /* DLSlideView.m in Sources */,
 				F40575701F2AE38D003C8AF2 /* HomePagePesRequest.m in Sources */,
@@ -1166,6 +1226,7 @@
 				F482375D1F27395100DDD487 /* ShoppingBottomView.m in Sources */,
 				F482372B1F2606BC00DDD487 /* AddressTableViewCell.m in Sources */,
 				F405D1A41F2EC6480015A8E6 /* CameraViewController.m in Sources */,
+				F4FD30531F32D35800048DD6 /* CameraDetailTableViewCell.m in Sources */,
 				F4FDD6A41F2C378E007263D4 /* NickNameViewController.m in Sources */,
 				F405D19A1F2EBB2F0015A8E6 /* BookOrderViewController.m in Sources */,
 				F40A2AF41F3176A100BEDFFB /* StoreDetailFirstViewController.m in Sources */,
@@ -1173,15 +1234,18 @@
 				F4A7A2591F25C3D0009FAAEE /* UserDataTableViewCell.m in Sources */,
 				F482375A1F2725AA00DDD487 /* ShoppingTableViewCell.m in Sources */,
 				F4FDD6A51F2C378E007263D4 /* PhoneNumberViewController.m in Sources */,
+				F4FD30471F32C1B200048DD6 /* ShoppingPesRequest.m in Sources */,
 				F40E7A641F301BF300FD7792 /* LoginManager.m in Sources */,
 				F4FDD6B51F2C37CD007263D4 /* AddressViewController.m in Sources */,
 				A520C6CE1F2B89A400202622 /* DLCustomSlideView.m in Sources */,
 				F4A7A0D11F256DB1009FAAEE /* HomePageViewController.m in Sources */,
+				F4FD304A1F32C46800048DD6 /* HomePageCameraGroupInfo.m in Sources */,
 				F40A2AE01F315F5700BEDFFB /* StoreCollectionViewCell.m in Sources */,
 				A514B1101F290533006A765F /* SvUDIDTools.m in Sources */,
 				F4A7A0931F256B96009FAAEE /* AppDelegate.m in Sources */,
 				A514B1041F2903D3006A765F /* TabbarViewController.m in Sources */,
 				F4A7A0D41F256DC3009FAAEE /* StoreViewController.m in Sources */,
+				F4FD30571F32E4D000048DD6 /* CameraTeamInfo.m in Sources */,
 				A520C6D11F2B89A400202622 /* DLScrollTabbarView.m in Sources */,
 				F40A2AF11F31727800BEDFFB /* StoreDetailViewController.m in Sources */,
 				A514B10F1F290533006A765F /* NSString+Category.m in Sources */,

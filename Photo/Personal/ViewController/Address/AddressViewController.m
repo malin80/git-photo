@@ -33,7 +33,7 @@
 }
 
 - (void)createBottomButton {
-    UIButton *bottomButton = [[UIButton alloc] initWithFrame:CGRectMake(0, ScreeHieght- 40, ScreenWidth, 40)];
+    UIButton *bottomButton = [[UIButton alloc] initWithFrame:CGRectMake(0, ScreenHieght- 40, ScreenWidth, 40)];
     [bottomButton setTitle:@"添加新地址" forState:UIControlStateNormal];
     bottomButton.backgroundColor = UIColorFromRGB(255, 102, 1, 1);
     [bottomButton addTarget:self action:@selector(gotoAddAddress) forControlEvents:UIControlEventTouchUpInside];
