@@ -12,7 +12,7 @@
 #import "StoreDetailFirstViewController.h"
 #import "StoreDetailSecondViewController.h"
 
-@interface StoreDetailViewController () <NavigationBarDelegate, DLSlideTabbarDelegate>
+@interface StoreDetailViewController () <NavigationBarDelegate, DLTabedSlideViewDelegate>
 
 @property (nonatomic, strong) DLTabedSlideView *tabedSlideView;
 
@@ -48,6 +48,44 @@
     [self.tabedSlideView buildTabbar];
     self.tabedSlideView.selectedIndex = 0;
     [self.view addSubview:self.tabedSlideView];
+    
+    UIView *bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, ScreenHieght-60, ScreenWidth, 60)];
+    bottomView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:bottomView];
+    
+    UIButton *collectBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth*0.2, 60)];
+    [collectBtn setTitle:@"收藏" forState:UIControlStateNormal];
+    [collectBtn setTitleColor:[UIColor colorR:250 G:250 B:250 alpha:1] forState:UIControlStateNormal];
+    collectBtn.backgroundColor= [UIColor colorR:128 G:128 B:128 alpha:1];
+    [collectBtn addTarget:self action:@selector(collectBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [bottomView addSubview:collectBtn];
+    
+    UIButton *addCarBtn = [[UIButton alloc] initWithFrame:CGRectMake(ScreenWidth*0.2, 0, ScreenWidth*0.4, 60)];
+    [addCarBtn setTitle:@"加入购物车" forState:UIControlStateNormal];
+    [addCarBtn setTitleColor:[UIColor colorR:248 G:246 B:230 alpha:1] forState:UIControlStateNormal];
+    addCarBtn.backgroundColor = [UIColor colorR:254 G:224 B:51 alpha:1];
+    [addCarBtn addTarget:self action:@selector(addCarBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [bottomView addSubview:addCarBtn];
+    
+    UIButton *buyBtn = [[UIButton alloc] initWithFrame:CGRectMake(ScreenWidth*0.6, 0, ScreenWidth*0.4, 60)];
+    [buyBtn setTitle:@"立即购买" forState:UIControlStateNormal];
+    [buyBtn setTitleColor:[UIColor colorR:248 G:246 B:230 alpha:1] forState:UIControlStateNormal];
+    buyBtn.backgroundColor = [UIColor colorR:255 G:51 B:52 alpha:1];
+    [buyBtn addTarget:self action:@selector(buyBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [bottomView addSubview:buyBtn];
+}
+
+#pragma mark --- button method ---
+- (void)collectBtnClick {
+    
+}
+
+- (void)addCarBtnClick {
+    
+}
+
+- (void)buyBtnClick {
+    
 }
 
 #pragma mark --- DLTabedSlideViewDelegate ---
