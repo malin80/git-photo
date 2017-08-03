@@ -6,22 +6,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Photo/HomePage/Data/HomePageManager.m"
-            timestampString = "523437609.239376"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "-loadScrollViewImages"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -42,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photo/HomePage/Data/HomePageManager.m"
-            timestampString = "523437822.697049"
+            timestampString = "523438306.723473"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "-queryCameraGroup"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "-loadScrollViewImages"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -57,13 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Photo/HomePage/Data/HomePageManager.m"
-            timestampString = "523437825.353099"
+            filePath = "Photo/HomePage/ViewController/View/HomePageScrollView.m"
+            timestampString = "523438320.739496"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "-queryCameraTeamWithGroupId:"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "-loadScrollViewImagesSuccess"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
