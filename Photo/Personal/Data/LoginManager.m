@@ -7,7 +7,6 @@
 //
 
 #import "LoginManager.h"
-#import "MemberInfo.h"
 
 @implementation LoginManager
 
@@ -22,21 +21,31 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(LoginManager)
 - (void)loginWithPhoneNumber:(NSString *)number withIdentifyCode:(NSString *)code withLoginType:(NSInteger)loginType withAppId:(NSString *)appId {
     [LoginPesRequest loginWithPhoneNumber:number withIdentifyCode:code withLoginType:loginType withAppId:appId withBlock:^(NSDictionary *response, NSString *error) {
         if ([[response objectForKey:@"errorCode"] unsignedLongValue] == 0) {
-            MemberInfo *info = [[MemberInfo alloc] init];
             NSDictionary *data = [response objectForKey:@"data"];
-            NSDictionary *safeCode = [data objectForKey:@"safeCode"];
-            NSDictionary *memberDetail = [data objectForKey:@"memberDetail"];
-            info.memberId = [[data objectForKey:@"memberId"] unsignedLongValue];
-            info.memberPhone = [data objectForKey:@"memberPhone"];
-            info.memberPwd = [data objectForKey:@"memberPwd"];
-            info.memberNickName = [memberDetail objectForKey:@"pickName"];
-            info.memberName = [memberDetail objectForKey:@"memberName"];
-            info.memberSex = [memberDetail objectForKey:@"memberSex"];
-            info.memberBirthday = [memberDetail objectForKey:@"memberBirthday"];
-            info.memberMarry = [memberDetail objectForKey:@"memberMarry"];
-            info.safeCodeValue = [safeCode objectForKey:@"safeCodeValue"];
+            [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"shuju"];
+            [[NSUserDefaults standardUserDefaults] setObject:@"isLogin" forKey:@"isLogin"];
+
+            if ([self.delegate respondsToSelector:@selector(loginSuccess)]) {
+                [self.delegate loginSuccess];
+            }
         }
     }];
+}
+
+- (void)getMemberInfo {
+    MemberInfo *info = [[MemberInfo alloc] init];
+    NSDictionary *dict=[[NSUserDefaults standardUserDefaults]objectForKey:@"shuju"];
+    
+    info.memberId = [[dict objectForKey:@"memberId"] unsignedLongValue];
+    info.memberPhone = [dict objectForKey:@"memberPhone"];
+    info.memberPwd = [dict objectForKey:@"memberPwd"];
+    info.memberNickName = [[dict objectForKey:@"memberDetail"] objectForKey:@"pickName"];
+    info.memberName = [[dict objectForKey:@"memberDetail"] objectForKey:@"memberName"];
+    info.memberSex = [[dict objectForKey:@"memberDetail"] objectForKey:@"memberSex"];
+    info.memberMarry = [[dict objectForKey:@"memberDetail"] objectForKey:@"memberMarry"];
+    info.memberPic = [[dict objectForKey:@"memberDetail"] objectForKey:@"memberPic"];
+    info.safeCodeValue = [[dict objectForKey:@"safeCode"] objectForKey:@"safeCodeValue"];
+    self.memberInfo = info;
 }
 
 @end

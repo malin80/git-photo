@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AvatarView.h"
+#import "MemberInfo.h"
 
 @interface PersonalHeaderView : UIView
 
@@ -16,5 +17,6 @@
 @property (nonatomic, strong) UILabel *userNameLabel;
 @property (nonatomic, strong) UILabel *phoneNunberLabel;
 
+@property (nonatomic, strong) MemberInfo *info;
 
 @end

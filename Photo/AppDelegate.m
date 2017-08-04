@@ -14,6 +14,7 @@
 
 #import "StoreManager.h"
 #import "HomePageManager.h"
+#import "LoginManager.h"
 
 @interface AppDelegate ()
 
@@ -22,20 +23,29 @@
 @implementation AppDelegate
 
 - (void)createViewController{
-   // if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"isfirst"] length]>0) {
-        TabbarViewController *controller = [[TabbarViewController alloc] init];
-        UINavigationController *na=[[UINavigationController alloc]initWithRootViewController:controller];
-        self.window.rootViewController = na;
-  // }else{
-//        LeadViewController *lead=[[LeadViewController alloc]init];
-//        lead.block = ^{
-//            TabbarViewController *controller = [[TabbarViewController alloc] init];
-//            UINavigationController *na=[[UINavigationController alloc]initWithRootViewController:controller];
-//            [[NSUserDefaults standardUserDefaults] setObject:@"sss" forKey:@"isfirst"];
-//            self.window.rootViewController = na;
-//        };
-//        self.window.rootViewController =lead;
-//    }
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"isfirst"] length]>0) {
+        if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"isLogin"] length]>0) {
+            TabbarViewController *controller = [[TabbarViewController alloc] init];
+            UINavigationController *na=[[UINavigationController alloc]initWithRootViewController:controller];
+            self.window.rootViewController = na;
+        } else {
+            LoginViewController *login=[[LoginViewController alloc]init];
+            login.block = ^{
+                TabbarViewController *controller = [[TabbarViewController alloc] init];
+                UINavigationController *na=[[UINavigationController alloc]initWithRootViewController:controller];
+                self.window.rootViewController = na;
+            };
+            self.window.rootViewController =login;
+        }
+    }else{
+        LeadViewController *lead=[[LeadViewController alloc]init];
+        lead.block = ^{
+            LoginViewController *login=[[LoginViewController alloc]init];
+            self.window.rootViewController =login;
+            [[NSUserDefaults standardUserDefaults] setObject:@"sss" forKey:@"isfirst"];
+        };
+        self.window.rootViewController =lead;
+    }
     IQKeyboardManager *manager = [IQKeyboardManager sharedManager];
     manager.enable = YES;
     manager.shouldResignOnTouchOutside = YES;
@@ -60,6 +70,7 @@
         [GET_SINGLETON_FOR_CLASS(StoreManager) queryAllGoodsInfo];
         [GET_SINGLETON_FOR_CLASS(StoreManager) queryGoodsClassify];
         [GET_SINGLETON_FOR_CLASS(HomePageManager) queryCameraGroup];
+        [GET_SINGLETON_FOR_CLASS(LoginManager) getMemberInfo];
     });
     
     return YES;

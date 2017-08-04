@@ -11,7 +11,7 @@
 #import "LoginInfo.h"
 #import "LoginManager.h"
 
-@interface LoginViewController ()
+@interface LoginViewController () <LoginManagerDelegate>
 {
     UIImageView *_iconView;
     UITextField *_phoneTextField;
@@ -24,6 +24,7 @@
 }
 
 @property (nonatomic, strong) LoginInfo *loginInfo;
+@property (nonatomic, strong) LoginManager *loginManager;
 
 @end
 
@@ -150,7 +151,7 @@
     CFStringRef uuidString = CFUUIDCreateString(kCFAllocatorDefault, uuidRef);
     app_uuid = [NSString stringWithString:(__bridge NSString *)uuidString];
 
-    [GET_SINGLETON_FOR_CLASS(LoginManager) loginWithPhoneNumber:_phoneTextField.text withIdentifyCode:_identifyTextField.text withLoginType:1 withAppId:app_uuid];
+    [self.loginManager loginWithPhoneNumber:_phoneTextField.text withIdentifyCode:_identifyTextField.text withLoginType:1 withAppId:app_uuid];
 
 //    switch (self.loginInfo.loginType) {
 //        case LoginTypePassword:
@@ -168,7 +169,21 @@
 
 - (void)getIdentifyCode {
     self.loginInfo.loginType = LoginTypeIdentifyCode;
-    [GET_SINGLETON_FOR_CLASS(LoginManager) getLoginIdentifyCodeWithPhoneNumber:_phoneTextField.text];
+    [self.loginManager getLoginIdentifyCodeWithPhoneNumber:_phoneTextField.text];
+}
+
+#pragma mark --- LoginManagerDelegate ---
+- (void)loginSuccess {
+    self.block();
+}
+
+#pragma mark --- getters and setters ---
+- (LoginManager *)loginManager {
+    if (!_loginManager) {
+        _loginManager = [[LoginManager alloc] init];
+        _loginManager.delegate = self;
+    }
+    return _loginManager;
 }
 
 - (void)didReceiveMemoryWarning {

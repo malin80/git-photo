@@ -8,12 +8,14 @@
 
 #import "PersonalHeaderView.h"
 #import "Masonry.h"
+#import "LoginManager.h"
 
 @implementation PersonalHeaderView
 
 -(id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
+        self.info = GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo;
         [self initView];
         [self setImmutableConstraints];
     }
@@ -61,7 +63,9 @@
 - (UIImageView *)avatarView {
     if (!_avatarView) {
         _avatarView = [[AvatarView alloc] init];
-        _avatarView.backgroundColor = [UIColor redColor];
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,self.info.memberPic]];
+        UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
+        _avatarView.image = imgFromUrl;
         _avatarView.layer.masksToBounds = YES;
         _avatarView.layer.cornerRadius = 54/2;
     }
@@ -71,7 +75,7 @@
 - (UILabel *)userNameLabel {
     if (!_userNameLabel) {
         _userNameLabel = [[UILabel alloc] init];
-        _userNameLabel.text = @"member_890315";
+        _userNameLabel.text = self.info.memberNickName;
         _userNameLabel.textColor = [UIColor colorWithRed:248/255.0 green:255/255.0 blue:255/255.0 alpha:1.0];
         [_userNameLabel sizeToFit];
     }
@@ -81,7 +85,7 @@
 - (UILabel *)phoneNunberLabel {
     if (!_phoneNunberLabel) {
         _phoneNunberLabel = [[UILabel alloc] init];
-        _phoneNunberLabel.text = @"18275610941";
+        _phoneNunberLabel.text = self.info.memberPhone;
         _phoneNunberLabel.textColor = [UIColor colorWithRed:221/255.0 green:226/255.0 blue:231/255.0 alpha:1.0];
         [_phoneNunberLabel sizeToFit];
     }

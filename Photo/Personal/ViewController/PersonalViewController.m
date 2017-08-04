@@ -18,6 +18,8 @@
 #import "EntrySection.h"
 #import "EntryItem.h"
 #import "CustomActionSheet.h"
+#import "MemberInfo.h"
+#import "LoginManager.h"
 
 @interface PersonalViewController () <UITableViewDelegate, UITableViewDataSource, CustomActionSheetDelegate>
 {
