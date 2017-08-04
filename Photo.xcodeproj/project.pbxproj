@@ -48,6 +48,7 @@
 		F41B19C41F3416120026E483 /* AddGoodsToShoppingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F41B19C31F3416120026E483 /* AddGoodsToShoppingViewController.m */; };
 		F41B19C81F341DE00026E483 /* store_number_add.png in Resources */ = {isa = PBXBuildFile; fileRef = F41B19C61F341DE00026E483 /* store_number_add.png */; };
 		F41B19CB1F341E490026E483 /* store_number_sub.png in Resources */ = {isa = PBXBuildFile; fileRef = F41B19CA1F341E490026E483 /* store_number_sub.png */; };
+		F41B19D11F343EE70026E483 /* ShoppingGoodsInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F41B19D01F343EE70026E483 /* ShoppingGoodsInfo.m */; };
 		F48185241F25E25800349143 /* CustomActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = F48185231F25E25800349143 /* CustomActionSheet.m */; };
 		F481E90C1F282D1E00EE3D7C /* personal_address_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = F481E90A1F282D1E00EE3D7C /* personal_address_selected.png */; };
 		F481E90D1F282D1E00EE3D7C /* personal_address_unselect.png in Resources */ = {isa = PBXBuildFile; fileRef = F481E90B1F282D1E00EE3D7C /* personal_address_unselect.png */; };
@@ -235,6 +236,8 @@
 		F41B19C31F3416120026E483 /* AddGoodsToShoppingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddGoodsToShoppingViewController.m; sourceTree = "<group>"; };
 		F41B19C61F341DE00026E483 /* store_number_add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = store_number_add.png; sourceTree = "<group>"; };
 		F41B19CA1F341E490026E483 /* store_number_sub.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = store_number_sub.png; sourceTree = "<group>"; };
+		F41B19CF1F343EE70026E483 /* ShoppingGoodsInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingGoodsInfo.h; sourceTree = "<group>"; };
+		F41B19D01F343EE70026E483 /* ShoppingGoodsInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingGoodsInfo.m; sourceTree = "<group>"; };
 		F48185221F25E25800349143 /* CustomActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomActionSheet.h; sourceTree = "<group>"; };
 		F48185231F25E25800349143 /* CustomActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomActionSheet.m; sourceTree = "<group>"; };
 		F481E90A1F282D1E00EE3D7C /* personal_address_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personal_address_selected.png; sourceTree = "<group>"; };
@@ -933,6 +936,8 @@
 			children = (
 				F41B19BC1F340EC00026E483 /* ShoppingManager.h */,
 				F41B19BD1F340EC00026E483 /* ShoppingManager.m */,
+				F41B19CF1F343EE70026E483 /* ShoppingGoodsInfo.h */,
+				F41B19D01F343EE70026E483 /* ShoppingGoodsInfo.m */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -1233,6 +1238,7 @@
 				F41B19C41F3416120026E483 /* AddGoodsToShoppingViewController.m in Sources */,
 				F4FDD6A71F2C378E007263D4 /* UserNameViewController.m in Sources */,
 				F4A7A0961F256B96009FAAEE /* ViewController.m in Sources */,
+				F41B19D11F343EE70026E483 /* ShoppingGoodsInfo.m in Sources */,
 				F41B19C11F3411660026E483 /* PersonalManager.m in Sources */,
 				F40E7A6A1F3023F100FD7792 /* LoginPesRequest.m in Sources */,
 				F48237381F26EA1100DDD487 /* CollectViewController.m in Sources */,

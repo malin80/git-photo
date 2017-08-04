@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ShoppingTableViewCellDelegate <NSObject>
+
+@optional
+- (void)selectGoodsInfo;
+- (void)selectedGoodsInfo;
+
+@end
+
 @interface ShoppingTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) UIButton *selectedView;
@@ -21,5 +29,8 @@
 @property (nonatomic, strong) UILabel *deleteLabel;
 
 - (void)changeSelectViewIconState;
+
+@property(nonatomic, weak)  id<ShoppingTableViewCellDelegate> delegate;
+
 
 @end

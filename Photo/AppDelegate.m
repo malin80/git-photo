@@ -72,7 +72,9 @@
         [GET_SINGLETON_FOR_CLASS(StoreManager) queryGoodsClassify];
         [GET_SINGLETON_FOR_CLASS(HomePageManager) queryCameraGroup];
         [GET_SINGLETON_FOR_CLASS(LoginManager) getMemberInfo];
-        [GET_SINGLETON_FOR_CLASS(ShoppingManager) queryShoppingGoodsInfoWithSafeCodeValue:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue];
+        if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"isLogin"] length]>0) {
+            [GET_SINGLETON_FOR_CLASS(ShoppingManager) queryShoppingGoodsInfoWithSafeCodeValue:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue];
+        }
     });
     
     return YES;

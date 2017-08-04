@@ -12,6 +12,8 @@
 
 DECLARE_SINGLETON_FOR_CLASS(ShoppingManager)
 
+@property (nonatomic, strong) NSMutableArray *shoppingGoodsInfos;
+
 - (void)queryShoppingGoodsInfoWithSafeCodeValue:(NSString *)value;
 
 @end

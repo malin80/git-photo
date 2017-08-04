@@ -8,6 +8,7 @@
 
 #import "ShoppingBottomView.h"
 #import "Masonry.h"
+#import "ShoppingManager.h"
 
 @implementation ShoppingBottomView
 
@@ -16,6 +17,8 @@
     if (self) {
         [self initView];
         [self setImmutableConstraints];
+        
+        self.info = GET_SINGLETON_FOR_CLASS(ShoppingManager).shoppingGoodsInfos[0];
     }
     return self;
 
@@ -92,7 +95,7 @@
 - (UILabel *)price {
     if (!_price) {
         _price = [[UILabel alloc] init];
-        _price.text = @"¥0.0";
+        _price.text = [NSString stringWithFormat:@"¥：%ld",self.info.goodsCartPrice];
         _price.textColor = [UIColor colorWithRed:246/255.0 green:118/255.0 blue:2/255.0 alpha:1.0];
         [_price sizeToFit];
     }
@@ -112,12 +115,26 @@
 
 #pragma mark --- gestuer ---
 //勾选按钮状态的改变
-- (void)changeSelectViewIconState
+- (void)changeSelectViewIconWithSelected:(BOOL)selected
 {
     //标识选中的状态
-    if (_selectedView.selected) {
+    if (selected) {
         _selectedView.selected = NO;
     } else {
+        _selectedView.selected = YES;
+    }
+}
+
+- (void)changeSelectViewIconState {
+    if (_selectedView.selected) {
+        if ([self.delegate respondsToSelector:@selector(changeSelectedArrayWith:)]) {
+            [self.delegate changeSelectedArrayWith:_selectedView.selected];
+        }
+        _selectedView.selected = NO;
+    } else {
+        if ([self.delegate respondsToSelector:@selector(changeSelectedArrayWith:)]) {
+            [self.delegate changeSelectedArrayWith:_selectedView.selected];
+        }
         _selectedView.selected = YES;
     }
 }

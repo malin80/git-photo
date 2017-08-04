@@ -9,10 +9,13 @@
 #import "ShoppingViewController.h"
 #import "ShoppingTableViewCell.h"
 #import "ShoppingBottomView.h"
+#import "ShoppingGoodsInfo.h"
+#import "ShoppingManager.h"
 
-@interface ShoppingViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface ShoppingViewController () <UITableViewDelegate, UITableViewDataSource, ShoppingTableViewCellDelegate, ShoppingBottomViewDelegate>
 {
     NSArray *_array;
+    NSInteger _index;
     NSMutableArray *_selectedArray;
 }
 
@@ -26,16 +29,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _array = [NSArray arrayWithObjects:@"1", @"2", @"3", nil];
+    if (GET_SINGLETON_FOR_CLASS(ShoppingManager).shoppingGoodsInfos.count > 0) {
+        [self createTableView];
+        [self createBottomView];
+    }
     
-    [self createTableView];
-    [self createBottomView];
+    _selectedArray = [NSMutableArray array];
 }
 
 - (void)createBottomView {
     _bottomView = [[ShoppingBottomView alloc] initWithFrame:CGRectMake(0, ScreenHieght-180, ScreenWidth, 100)];
+    _bottomView.backgroundColor = [UIColor whiteColor];
     _bottomView.layer.borderWidth = 1;
     _bottomView.layer.borderColor = [[UIColor colorWithRed:241/255.0 green:241/255.0 blue:241/255.0 alpha:1.0] CGColor];
+    _bottomView.delegate = self;
     [self.view addSubview:self.bottomView];
 }
 
@@ -52,39 +59,56 @@
 
 #pragma mark --- tableView delegate ---
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _array.count;
+    return GET_SINGLETON_FOR_CLASS(ShoppingManager).shoppingGoodsInfos.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    ShoppingGoodsInfo *info = [GET_SINGLETON_FOR_CLASS(ShoppingManager).shoppingGoodsInfos objectAtIndex:indexPath.row];
     NSString *cellIdentify = [NSString stringWithFormat:@"cellIdentify"];
     ShoppingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
     if (!cell) {
         cell = [[ShoppingTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
+        cell.delegate = self;
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.goodsName.text = info.goodsName;
+    cell.goodsParameter.text = info.goodsParamValue;
+    cell.goodsPrice.text = [NSString stringWithFormat:@"%ld",info.goodsPrice];
+    cell.goodsCount.text = [NSString stringWithFormat:@"×%ld",info.goodsCount];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,info.goodsPic]];
+    UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
+    cell.goodsImage.image = imgFromUrl;
     return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    ShoppingTableViewCell *cell = (ShoppingTableViewCell *)[_tableView cellForRowAtIndexPath:indexPath];
-    int count = (int)_selectedArray.count;
-
-    if (cell.selectedView.selected) {
-//        [_selectedArray removeObject:info];
-        count = count -1;
-    } else {
-      count = count +1;
-//    [_selectedMedalList addObject:info];
-    }
-    [cell changeSelectViewIconState];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 150;
+}
+
+#pragma mark --- ShoppingTableViewCellDelegate ---
+- (void)selectGoodsInfo {
+    ShoppingGoodsInfo *info = [GET_SINGLETON_FOR_CLASS(ShoppingManager).shoppingGoodsInfos objectAtIndex:_index];
+    [_selectedArray addObject:info];
+    if (_selectedArray.count == GET_SINGLETON_FOR_CLASS(ShoppingManager).shoppingGoodsInfos.count) {
+        [_bottomView changeSelectViewIconWithSelected:NO];
+    }
+}
+
+- (void)selectedGoodsInfo {
+    ShoppingGoodsInfo *info = [GET_SINGLETON_FOR_CLASS(ShoppingManager).shoppingGoodsInfos objectAtIndex:_index];
+    [_selectedArray removeObject:info];
+    if (_selectedArray.count != GET_SINGLETON_FOR_CLASS(ShoppingManager).shoppingGoodsInfos.count) {
+        [_bottomView changeSelectViewIconWithSelected:YES];
+    }
+}
+
+#pragma mark --- ShoppingTableViewCellDelegate --- 
+- (void)changeSelectedArrayWith:(BOOL)allSelected {
+
 }
 
 @end

@@ -109,7 +109,6 @@
 - (UILabel *)goodsName {
     if (!_goodsName) {
         _goodsName = [[UILabel alloc] init];
-        _goodsName.text = @"商品名称";
         _goodsName.textColor = [UIColor colorWithRed:26/255.0 green:34/255.0 blue:30/255.0 alpha:1.0];
         _goodsName.font = [UIFont systemFontOfSize:15];
         [_goodsName sizeToFit];
@@ -131,7 +130,6 @@
 - (UILabel *)goodsPrice {
     if (!_goodsPrice) {
         _goodsPrice = [[UILabel alloc] init];
-        _goodsPrice.text = @"商品价格";
         _goodsPrice.textColor = [UIColor colorWithRed:253/255.0 green:130/255.0 blue:38/255.0 alpha:1.0];
         _goodsPrice.font = [UIFont systemFontOfSize:15];
         [_goodsPrice sizeToFit];
@@ -142,7 +140,6 @@
 - (UILabel *)goodsCount {
     if (!_goodsCount) {
         _goodsCount = [[UILabel alloc] init];
-        _goodsCount.text = @"商品数量";
         _goodsParameter.textColor = [UIColor colorWithRed:82/255.0 green:86/255.0 blue:85/255.0 alpha:1.0];
         _goodsCount.font = [UIFont systemFontOfSize:15];
         [_goodsCount sizeToFit];
@@ -183,9 +180,16 @@
 {
     //标识选中的状态
     if (_selectedView.selected) {
-        _selectedView.selected = NO;
+        if ([self.delegate respondsToSelector:@selector(selectGoodsInfo)]) {
+            _selectedView.selected = NO;
+            [self.delegate selectedGoodsInfo];
+        }
     } else {
-        _selectedView.selected = YES;
+        if ([self.delegate respondsToSelector:@selector(selectGoodsInfo)]) {
+            _selectedView.selected = YES;
+            [self.delegate selectGoodsInfo];
+        }
     }
 }
+
 @end

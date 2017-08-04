@@ -7,6 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ShoppingGoodsInfo.h"
+
+@protocol ShoppingBottomViewDelegate <NSObject>
+
+@optional
+- (void)changeSelectedArrayWith:(BOOL)allSelected;
+
+@end
 
 @interface ShoppingBottomView : UIView
 
@@ -15,5 +23,12 @@
 @property (nonatomic, strong) UILabel *total;
 @property (nonatomic, strong) UILabel *price;
 @property (nonatomic, strong) UIButton *buyButton;
+
+@property (nonatomic, strong) ShoppingGoodsInfo *info;
+
+@property(nonatomic, weak)  id<ShoppingBottomViewDelegate> delegate;
+
+
+- (void)changeSelectViewIconWithSelected:(BOOL)selected;
 
 @end
