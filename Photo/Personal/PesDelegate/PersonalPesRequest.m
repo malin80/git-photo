@@ -13,7 +13,7 @@
 
 + (void)queryCollectGoodsInfoWithMemberId:(long)memberId withBlock:(void (^)(NSDictionary *response, NSString *error))finished {
     NSDictionary *dict = @{@"memberId":@(memberId)};
-    [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"SendsmsControl/Sendsms.do" dic:dict finished:finished];
+    [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"CollectionInfoControl/queryCollectionInfo.do" dic:dict finished:finished];
 }
 
 @end

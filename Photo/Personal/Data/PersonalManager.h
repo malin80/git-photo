@@ -11,6 +11,8 @@
 @interface PersonalManager : NSObject
 DECLARE_SINGLETON_FOR_CLASS(PersonalManager)
 
+@property (nonatomic, strong) NSMutableArray *collectGoodsInfos;
+
 - (void)queryCollectGoodsInfo;
 
 @end

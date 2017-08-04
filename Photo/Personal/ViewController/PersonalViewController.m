@@ -57,6 +57,8 @@
     if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
         [self.tableView setLayoutMargins:UIEdgeInsetsZero];
     }
+    
+    [GET_SINGLETON_FOR_CLASS(PersonalManager) queryCollectGoodsInfo];
 }
 
 - (void)updateSections
@@ -184,7 +186,6 @@
 
 - (void)gotoCollectViewController {
     CollectViewController *controller = [[CollectViewController alloc] init];
-    [GET_SINGLETON_FOR_CLASS(PersonalManager) queryCollectGoodsInfo];
     [self.navigationController pushViewController:controller animated:NO];
 }
 

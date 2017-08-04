@@ -10,6 +10,8 @@
 
 #import "NavigationBar.h"
 #import "CollectTableViewCell.h"
+#import "PersonalManager.h"
+#import "CollectGoodsInfo.h"
 
 @interface CollectViewController () <UITableViewDelegate, UITableViewDataSource, NavigationBarDelegate>
 
@@ -47,10 +49,11 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return GET_SINGLETON_FOR_CLASS(PersonalManager).collectGoodsInfos.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    CollectGoodsInfo *info = [GET_SINGLETON_FOR_CLASS(PersonalManager).collectGoodsInfos objectAtIndex:indexPath.row];
     NSString *cellIdentify = [NSString stringWithFormat:@"cellIdentify"];
     CollectTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
     if (!cell) {
@@ -58,6 +61,14 @@
     }
     cell.layer.borderWidth = 1;
     cell.layer.borderColor = [[UIColor colorWithRed:247/255.0 green:247/255.0 blue:247/255.0 alpha:1.0] CGColor];
+    
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,info.goodsPic]];
+    UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
+    cell.goodsImage.image = imgFromUrl;
+    cell.goodsNamme.text = info.goodsName;
+    cell.goodsSales.text = [NSString stringWithFormat:@"产品销量 %ld",info.goodsCount];
+    cell.goodsPrice.text = [NSString stringWithFormat:@"产品价格 ¥%ld",info.goodsPrice];
+    cell.time.text = [NSString stringWithFormat:@"收藏时间 %@",info.colletDate];
     
     return cell;
 }
