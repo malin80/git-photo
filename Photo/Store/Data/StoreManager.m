@@ -69,4 +69,16 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(StoreManager)
     }];
 }
 
+- (void)collectGoodsWithMemberId:(long)memberId withGoodsId:(long)goodsId {
+    [StorePesRequest collectGoodsWithMemberId:memberId withGoodsId:goodsId withBlock:^(NSDictionary *responseObject, NSString *error) {
+        
+    }];
+}
+
+- (void)addGoodsToShoppingWithGoodsCount:(NSString *)goodsCount withGoodParam:(NSString *)goodsParam withSafeCodeValue:(NSString *)value withGoodsId:(long)goodsId {
+    [StorePesRequest addGoodsToShoppingWithGoodsCount:goodsCount withGoodParam:goodsParam withSafeCodeValue:value withGoodsId:goodsId withBlock:^(NSDictionary *responseObject, NSString *error) {
+        
+    }];
+}
+
 @end

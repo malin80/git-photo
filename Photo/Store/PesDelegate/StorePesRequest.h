@@ -15,4 +15,9 @@
 
 + (void)queryGoodsClassify:(void(^)(NSDictionary *responseObject,NSString *error))finished;
 
++ (void)collectGoodsWithMemberId:(long)memberId withGoodsId:(long)goodsId withBlock:(void(^)(NSDictionary *responseObject,NSString *error))finished;
+
++ (void)addGoodsToShoppingWithGoodsCount:(NSString *)goodsCount withGoodParam:(NSString *)goodsParam withSafeCodeValue:(NSString *)value withGoodsId:(long)goodsId withBlock:(void(^)(NSDictionary *responseObject,NSString *error))finished;
+
+
 @end

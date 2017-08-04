@@ -7,10 +7,14 @@
 //
 
 #import "StoreDetailViewController.h"
-#import "NavigationBar.h"
-#import "DLTabedSlideView.h"
 #import "StoreDetailFirstViewController.h"
 #import "StoreDetailSecondViewController.h"
+#import "AddGoodsToShoppingViewController.h"
+
+#import "StoreManager.h"
+#import "LoginManager.h"
+#import "NavigationBar.h"
+#import "DLTabedSlideView.h"
 
 @interface StoreDetailViewController () <NavigationBarDelegate, DLTabedSlideViewDelegate>
 
@@ -77,11 +81,13 @@
 
 #pragma mark --- button method ---
 - (void)collectBtnClick {
-    
+    [GET_SINGLETON_FOR_CLASS(StoreManager) collectGoodsWithMemberId:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.memberId withGoodsId:self.info.goodsId];
 }
 
 - (void)addCarBtnClick {
-    
+    AddGoodsToShoppingViewController *controller = [[AddGoodsToShoppingViewController alloc] init];
+    controller.info = self.info;
+    [self.navigationController pushViewController:controller animated:NO];
 }
 
 - (void)buyBtnClick {

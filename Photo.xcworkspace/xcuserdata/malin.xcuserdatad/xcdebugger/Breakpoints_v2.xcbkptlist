@@ -9,13 +9,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Photo/Shopping/Data/ShoppingManager.m"
-            timestampString = "523505921.634585"
+            filePath = "Photo/Store/Data/StoreManager.m"
+            timestampString = "523511711.19522"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
-            landmarkName = "-queryShoppingGoodsInfoWithSafeCodeValue:"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "-addGoodsToShoppingWithGoodsCount:withGoodParam:withSafeCodeValue:withGoodsId:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Photo/Store/PesDelegate/StorePesRequest.m"
+            timestampString = "523517224.357397"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "+addGoodsToShoppingWithGoodsCount:withGoodParam:withSafeCodeValue:withGoodsId:withBlock:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

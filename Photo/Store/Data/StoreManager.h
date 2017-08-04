@@ -20,5 +20,13 @@ DECLARE_SINGLETON_FOR_CLASS(StoreManager)
 
 - (void)queryGoodsClassify;
 
+//收藏
+- (void)collectGoodsWithMemberId:(long)memberId withGoodsId:(long)goodsId;
+
+//加入购物车
+- (void)addGoodsToShoppingWithGoodsCount:(NSString *)goodsCount withGoodParam:(NSString *)goodsParam withSafeCodeValue:(NSString *)value withGoodsId:(long)goodsId;
+
+//立即购买
+- (void)buyGoods;
 
 @end
