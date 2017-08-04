@@ -43,6 +43,8 @@
 		F40E7A671F301F8A00FD7792 /* HomePageScrollViewInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F40E7A661F301F8A00FD7792 /* HomePageScrollViewInfo.m */; };
 		F40E7A6A1F3023F100FD7792 /* LoginPesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F40E7A691F3023F100FD7792 /* LoginPesRequest.m */; };
 		F40E7A701F30280400FD7792 /* MemberInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F40E7A6F1F30280400FD7792 /* MemberInfo.m */; };
+		F41B19BE1F340EC00026E483 /* ShoppingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F41B19BD1F340EC00026E483 /* ShoppingManager.m */; };
+		F41B19C11F3411660026E483 /* PersonalManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F41B19C01F3411660026E483 /* PersonalManager.m */; };
 		F48185241F25E25800349143 /* CustomActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = F48185231F25E25800349143 /* CustomActionSheet.m */; };
 		F481E90C1F282D1E00EE3D7C /* personal_address_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = F481E90A1F282D1E00EE3D7C /* personal_address_selected.png */; };
 		F481E90D1F282D1E00EE3D7C /* personal_address_unselect.png in Resources */ = {isa = PBXBuildFile; fileRef = F481E90B1F282D1E00EE3D7C /* personal_address_unselect.png */; };
@@ -222,6 +224,10 @@
 		F40E7A691F3023F100FD7792 /* LoginPesRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginPesRequest.m; sourceTree = "<group>"; };
 		F40E7A6E1F30280400FD7792 /* MemberInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemberInfo.h; sourceTree = "<group>"; };
 		F40E7A6F1F30280400FD7792 /* MemberInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemberInfo.m; sourceTree = "<group>"; };
+		F41B19BC1F340EC00026E483 /* ShoppingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingManager.h; sourceTree = "<group>"; };
+		F41B19BD1F340EC00026E483 /* ShoppingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingManager.m; sourceTree = "<group>"; };
+		F41B19BF1F3411660026E483 /* PersonalManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalManager.h; sourceTree = "<group>"; };
+		F41B19C01F3411660026E483 /* PersonalManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalManager.m; sourceTree = "<group>"; };
 		F48185221F25E25800349143 /* CustomActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomActionSheet.h; sourceTree = "<group>"; };
 		F48185231F25E25800349143 /* CustomActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomActionSheet.m; sourceTree = "<group>"; };
 		F481E90A1F282D1E00EE3D7C /* personal_address_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personal_address_selected.png; sourceTree = "<group>"; };
@@ -494,6 +500,8 @@
 			children = (
 				F40E7A621F301BF300FD7792 /* LoginManager.h */,
 				F40E7A631F301BF300FD7792 /* LoginManager.m */,
+				F41B19BF1F3411660026E483 /* PersonalManager.h */,
+				F41B19C01F3411660026E483 /* PersonalManager.m */,
 				F405D1A61F2ED06E0015A8E6 /* LoginInfo.h */,
 				F405D1A71F2ED06E0015A8E6 /* LoginInfo.m */,
 				F40E7A6E1F30280400FD7792 /* MemberInfo.h */,
@@ -904,6 +912,8 @@
 		F4FD30411F32C16F00048DD6 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				F41B19BC1F340EC00026E483 /* ShoppingManager.h */,
+				F41B19BD1F340EC00026E483 /* ShoppingManager.m */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -1201,6 +1211,7 @@
 				F4A7A1251F259629009FAAEE /* EntryItem.m in Sources */,
 				F4FDD6A71F2C378E007263D4 /* UserNameViewController.m in Sources */,
 				F4A7A0961F256B96009FAAEE /* ViewController.m in Sources */,
+				F41B19C11F3411660026E483 /* PersonalManager.m in Sources */,
 				F40E7A6A1F3023F100FD7792 /* LoginPesRequest.m in Sources */,
 				F48237381F26EA1100DDD487 /* CollectViewController.m in Sources */,
 				F4FDD6B61F2C37CD007263D4 /* EditAddressViewController.m in Sources */,
@@ -1244,6 +1255,7 @@
 				A514B1101F290533006A765F /* SvUDIDTools.m in Sources */,
 				F4A7A0931F256B96009FAAEE /* AppDelegate.m in Sources */,
 				A514B1041F2903D3006A765F /* TabbarViewController.m in Sources */,
+				F41B19BE1F340EC00026E483 /* ShoppingManager.m in Sources */,
 				F4A7A0D41F256DC3009FAAEE /* StoreViewController.m in Sources */,
 				F4FD30571F32E4D000048DD6 /* CameraTeamInfo.m in Sources */,
 				A520C6D11F2B89A400202622 /* DLScrollTabbarView.m in Sources */,

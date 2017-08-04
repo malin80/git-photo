@@ -19,7 +19,9 @@
 #import "EntryItem.h"
 #import "CustomActionSheet.h"
 #import "MemberInfo.h"
+
 #import "LoginManager.h"
+#import "PersonalManager.h"
 
 @interface PersonalViewController () <UITableViewDelegate, UITableViewDataSource, CustomActionSheetDelegate>
 {
@@ -182,6 +184,7 @@
 
 - (void)gotoCollectViewController {
     CollectViewController *controller = [[CollectViewController alloc] init];
+    [GET_SINGLETON_FOR_CLASS(PersonalManager) queryCollectGoodsInfo];
     [self.navigationController pushViewController:controller animated:NO];
 }
 

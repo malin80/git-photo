@@ -11,4 +11,6 @@
 
 @interface ShoppingPesRequest : NSObject
 
++ (void)queryShoppingGoodsInfoWithSafeCodeValue:(NSString *)safeCodeValue withBlock:(void(^)(NSDictionary *responseObject,NSString *error))finished;
+
 @end

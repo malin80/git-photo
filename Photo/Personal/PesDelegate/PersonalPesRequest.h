@@ -10,6 +10,6 @@
 
 @interface PersonalPesRequest : NSObject
 
-
++ (void)queryCollectGoodsInfoWithMemberId:(long)memberId withBlock:(void (^)(NSDictionary *response, NSString *error))finished;
 
 @end

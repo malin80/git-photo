@@ -15,6 +15,7 @@
 #import "StoreManager.h"
 #import "HomePageManager.h"
 #import "LoginManager.h"
+#import "ShoppingManager.h"
 
 @interface AppDelegate ()
 
@@ -71,6 +72,7 @@
         [GET_SINGLETON_FOR_CLASS(StoreManager) queryGoodsClassify];
         [GET_SINGLETON_FOR_CLASS(HomePageManager) queryCameraGroup];
         [GET_SINGLETON_FOR_CLASS(LoginManager) getMemberInfo];
+        [GET_SINGLETON_FOR_CLASS(ShoppingManager) queryShoppingGoodsInfoWithSafeCodeValue:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue];
     });
     
     return YES;

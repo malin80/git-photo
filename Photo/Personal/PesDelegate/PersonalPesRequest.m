@@ -7,9 +7,13 @@
 //
 
 #import "PersonalPesRequest.h"
+#import "PesRequest.h"
 
 @implementation PersonalPesRequest
 
-
++ (void)queryCollectGoodsInfoWithMemberId:(long)memberId withBlock:(void (^)(NSDictionary *response, NSString *error))finished {
+    NSDictionary *dict = @{@"memberId":@(memberId)};
+    [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"SendsmsControl/Sendsms.do" dic:dict finished:finished];
+}
 
 @end

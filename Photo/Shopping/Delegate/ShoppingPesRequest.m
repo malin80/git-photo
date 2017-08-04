@@ -10,5 +10,9 @@
 
 @implementation ShoppingPesRequest
 
++ (void)queryShoppingGoodsInfoWithSafeCodeValue:(NSString *)safeCodeValue withBlock:(void(^)(NSDictionary *responseObject,NSString *error))finished {
+    NSDictionary *dict = @{@"token":safeCodeValue};
+    [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"CartInfoControl/queryCartInfo.do" dic:dict finished:finished];
+}
 
 @end
