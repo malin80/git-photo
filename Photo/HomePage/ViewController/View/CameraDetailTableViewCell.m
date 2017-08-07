@@ -44,6 +44,11 @@
         make.centerY.equalTo(self.contentView).with.offset(20);
         make.left.equalTo(_teamNameLabel);
     }];
+    
+    [_teamPriceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.contentView.mas_bottom);
+        make.right.equalTo(self.contentView.mas_right);
+    }];
 }
 
 #pragma mark --- getters and setters ---
@@ -75,7 +80,6 @@
 - (UILabel *)teamPriceLabel {
     if (!_teamPriceLabel) {
         _teamPriceLabel = [[UILabel alloc] init];
-        _teamPriceLabel.text = @"32423434钱";
     }
     return _teamPriceLabel;
 }

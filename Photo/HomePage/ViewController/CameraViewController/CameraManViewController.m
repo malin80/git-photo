@@ -7,6 +7,9 @@
 //
 
 #import "CameraManViewController.h"
+#import "HomePageManager.h"
+#import "CameraManTableViewCell.h"
+#import "CameraManInfo.h"
 
 @interface CameraManViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -19,11 +22,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self addNotification];
     [self createTableView];
 }
 
+- (void)addNotification {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryCameraManSuccess) name:@"queryCameraManSuccess" object:nil];
+}
+
+- (void)queryCameraManSuccess {
+    [_tableView reloadData];
+}
+
 - (void)createTableView {
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHieght) style:UITableViewStyleGrouped];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(10, 0, ScreenWidth-20, ScreenHieght) style:UITableViewStyleGrouped];
     _tableView.dataSource = self;
     _tableView.delegate = self;
     _tableView.backgroundColor = [UIColor whiteColor];
@@ -39,21 +52,33 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 7;
+    return GET_SINGLETON_FOR_CLASS(HomePageManager).cameraMans.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *cellIdentify = [NSString stringWithFormat:@"cellIdentify"];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
+    CameraManTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
+        cell = [[CameraManTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
     }
-    cell.backgroundColor = [UIColor redColor];
+    CameraManInfo *info = [GET_SINGLETON_FOR_CLASS(HomePageManager).cameraMans objectAtIndex:indexPath.row];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,info.cameraManPic]];
+    UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
+    cell.cameraManImage.image = imgFromUrl;
+    cell.name.text = info.cameraManName;
+    cell.content.text = info.cameraManContent;
+    cell.works.text = [NSString stringWithFormat:@"作品 %ld",info.worksOfCameraMan];
+    cell.subscribeCount.text = [NSString stringWithFormat:@"预约 %ld",info.subscribeCount];
+    cell.commentCount.text = [NSString stringWithFormat:@"评论 %ld",info.commentCount];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 100;
 }
 
 - (void)didReceiveMemoryWarning {

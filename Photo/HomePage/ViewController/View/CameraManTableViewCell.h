@@ -10,4 +10,11 @@
 
 @interface CameraManTableViewCell : UITableViewCell
 
+@property (nonatomic, strong) UIImageView *cameraManImage;
+@property (nonatomic, strong) UILabel *name;
+@property (nonatomic, strong) UILabel *content;
+@property (nonatomic, strong) UILabel *works;
+@property (nonatomic, strong) UILabel *subscribeCount;
+@property (nonatomic, strong) UILabel *commentCount;
+
 @end

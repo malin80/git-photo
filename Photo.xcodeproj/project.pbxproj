@@ -114,6 +114,8 @@
 		F4A7A2561F25BC22009FAAEE /* NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7A2551F25BC22009FAAEE /* NavigationBar.m */; };
 		F4A7A2591F25C3D0009FAAEE /* UserDataTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7A2581F25C3D0009FAAEE /* UserDataTableViewCell.m */; };
 		F4A7A25E1F25D192009FAAEE /* common_back.png in Resources */ = {isa = PBXBuildFile; fileRef = F4A7A25D1F25D192009FAAEE /* common_back.png */; };
+		F4E83C1E1F38471A003CE93E /* CameraManInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E83C1D1F38471A003CE93E /* CameraManInfo.m */; };
+		F4E83C211F3854C2003CE93E /* CameraManDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E83C201F3854C2003CE93E /* CameraManDetailViewController.m */; };
 		F4FD30471F32C1B200048DD6 /* ShoppingPesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FD30461F32C1B200048DD6 /* ShoppingPesRequest.m */; };
 		F4FD304A1F32C46800048DD6 /* HomePageCameraGroupInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FD30491F32C46800048DD6 /* HomePageCameraGroupInfo.m */; };
 		F4FD304D1F32C97300048DD6 /* CameraDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FD304C1F32C97300048DD6 /* CameraDetailViewController.m */; };
@@ -336,6 +338,10 @@
 		F4A7A2571F25C3D0009FAAEE /* UserDataTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDataTableViewCell.h; sourceTree = "<group>"; };
 		F4A7A2581F25C3D0009FAAEE /* UserDataTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDataTableViewCell.m; sourceTree = "<group>"; };
 		F4A7A25D1F25D192009FAAEE /* common_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = common_back.png; sourceTree = "<group>"; };
+		F4E83C1C1F38471A003CE93E /* CameraManInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraManInfo.h; sourceTree = "<group>"; };
+		F4E83C1D1F38471A003CE93E /* CameraManInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraManInfo.m; sourceTree = "<group>"; };
+		F4E83C1F1F3854C2003CE93E /* CameraManDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraManDetailViewController.h; sourceTree = "<group>"; };
+		F4E83C201F3854C2003CE93E /* CameraManDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraManDetailViewController.m; sourceTree = "<group>"; };
 		F4FD30451F32C1B200048DD6 /* ShoppingPesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingPesRequest.h; sourceTree = "<group>"; };
 		F4FD30461F32C1B200048DD6 /* ShoppingPesRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingPesRequest.m; sourceTree = "<group>"; };
 		F4FD30481F32C46800048DD6 /* HomePageCameraGroupInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageCameraGroupInfo.h; sourceTree = "<group>"; };
@@ -504,6 +510,8 @@
 				F4FD30591F32F7C700048DD6 /* CameraTeamViewController.m */,
 				F4FD305B1F33010900048DD6 /* CameraManViewController.h */,
 				F4FD305C1F33010900048DD6 /* CameraManViewController.m */,
+				F4E83C1F1F3854C2003CE93E /* CameraManDetailViewController.h */,
+				F4E83C201F3854C2003CE93E /* CameraManDetailViewController.m */,
 			);
 			path = CameraViewController;
 			sourceTree = "<group>";
@@ -536,6 +544,8 @@
 				F4FD30491F32C46800048DD6 /* HomePageCameraGroupInfo.m */,
 				F4FD30551F32E4D000048DD6 /* CameraTeamInfo.h */,
 				F4FD30561F32E4D000048DD6 /* CameraTeamInfo.m */,
+				F4E83C1C1F38471A003CE93E /* CameraManInfo.h */,
+				F4E83C1D1F38471A003CE93E /* CameraManInfo.m */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -1258,6 +1268,7 @@
 				F481E9581F28551C00EE3D7C /* BaseViewController.m in Sources */,
 				A514B1111F290533006A765F /* UIColor+EX.m in Sources */,
 				F40A2AEB1F31671000BEDFFB /* GoodsInfo.m in Sources */,
+				F4E83C1E1F38471A003CE93E /* CameraManInfo.m in Sources */,
 				A520C6CD1F2B89A400202622 /* DLLRUCache.m in Sources */,
 				F41B19D71F3462070026E483 /* CollectGoodsInfo.m in Sources */,
 				F4FD305D1F33010900048DD6 /* CameraManViewController.m in Sources */,
@@ -1275,6 +1286,7 @@
 				F4FDD6A41F2C378E007263D4 /* NickNameViewController.m in Sources */,
 				F405D19A1F2EBB2F0015A8E6 /* BookOrderViewController.m in Sources */,
 				F40A2AF41F3176A100BEDFFB /* StoreDetailFirstViewController.m in Sources */,
+				F4E83C211F3854C2003CE93E /* CameraManDetailViewController.m in Sources */,
 				F40E7A611F30197F00FD7792 /* PersonalPesRequest.m in Sources */,
 				F4A7A2591F25C3D0009FAAEE /* UserDataTableViewCell.m in Sources */,
 				F482375A1F2725AA00DDD487 /* ShoppingTableViewCell.m in Sources */,

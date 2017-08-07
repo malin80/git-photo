@@ -79,6 +79,7 @@
     CameraTeamInfo *info = [GET_SINGLETON_FOR_CLASS(HomePageManager).cameraTeams objectAtIndex:indexPath.row];
     CameraTeamViewController *controller = [[CameraTeamViewController alloc] init];
     controller.info = info;
+    [GET_SINGLETON_FOR_CLASS(HomePageManager) queryCameraManWithTeamId:info.teamId];
     [self.navigationController pushViewController:controller animated:NO];
 }
 

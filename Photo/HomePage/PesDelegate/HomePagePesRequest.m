@@ -23,4 +23,9 @@
     [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"TeamControl/selectTeamByCamerGroup.do" dic:dict finished:finished];
 }
 
++ (void)queryCarmeraManWithTeamId:(long)teamId withBlock:(void (^)(NSDictionary *, NSString *))finished {
+    NSDictionary *dict = @{@"teamId":@(teamId)};
+    [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"CameramanControl/queryCameramanByTeam.do" dic:dict finished:finished];
+}
+
 @end

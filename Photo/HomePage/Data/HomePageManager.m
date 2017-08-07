@@ -10,6 +10,7 @@
 #import "HomePageScrollViewInfo.h"
 #import "HomePageCameraGroupInfo.h"
 #import "CameraTeamInfo.h"
+#import "CameraManInfo.h"
 
 @implementation HomePageManager
 
@@ -22,6 +23,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(HomePageManager)
         self.scrollViewImages = [NSMutableArray array];
         self.cameraGroups = [NSMutableArray array];
         self.cameraTeams = [NSMutableArray array];
+        self.cameraMans = [NSMutableArray array];
     }
     return self;
 }
@@ -67,7 +69,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(HomePageManager)
     [HomePagePesRequest queryCameraTeamWithGroupId:groupId withBlock:^(NSDictionary *responseObject, NSString *error) {
         if ([[responseObject objectForKey:@"errorCode"] unsignedLongValue]== 0) {
             NSArray *array = [responseObject objectForKey:@"data"];
-            NSLog(@"%lu",(unsigned long)array.count);
             
             if (array.count > 0) {
                 for (NSDictionary *dict in array) {
@@ -84,7 +85,35 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(HomePageManager)
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"queryCameraTeamWithGroupIdSuccess" object:nil];
                 });
             } else {
-                
+            
+            }
+        }
+    }];
+}
+
+- (void)queryCameraManWithTeamId:(long)teamId {
+    [HomePagePesRequest queryCarmeraManWithTeamId:teamId withBlock:^(NSDictionary *responseObject, NSString *error) {
+        if ([[responseObject objectForKey:@"errorCode"] unsignedLongValue]== 0) {
+            NSArray *array = [responseObject objectForKey:@"data"];
+            [self.cameraMans removeAllObjects];
+            if (array.count > 0) {
+                for (NSDictionary *dict in array) {
+                    CameraManInfo *info = [[CameraManInfo alloc] init];
+                    info.cameraManPic = [dict objectForKey:@"cameramanPic"];
+                    info.subscribeCount = [[dict objectForKey:@"subscribeCount"] unsignedLongValue];
+                    info.cameraManName = [dict objectForKey:@"cameramanName"];
+                    info.cameraManSynopsis = [dict objectForKey:@"cameramanSynopsis"];
+                    info.cameraManId = [[dict objectForKey:@"cameramanId"] unsignedLongValue];
+                    info.cameraManNum = [dict objectForKey:@"cameramanNum"];
+                    info.cameraManPwd = [dict objectForKey:@"cameramanPwd"];
+                    info.cameraManContent = [dict objectForKey:@"cameramanContent"];
+                    info.worksOfCameraMan = [[dict objectForKey:@"worksOfCameramanCount"] unsignedLongValue];
+                    info.isSubscribe = [[dict objectForKey:@"isSubscribe"] unsignedLongValue];
+                    info.commentCount = [[dict objectForKey:@"commentCount"] unsignedLongValue];
+                    info.cameraManComment = [dict objectForKey:@"cameramanComment"];
+                    [self.cameraMans addObject:info];
+                }
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"queryCameraManSuccess" object:nil];
             }
         }
     }];
