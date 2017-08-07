@@ -57,8 +57,10 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(LoginManager)
             info.safeCodeValue = [safeCode objectForKey:@"safeCodeValue"];
             [[NSUserDefaults standardUserDefaults] setObject:info.safeCodeValue forKey:@"safeCodeValue"];
 
-            NSDictionary *dict = [NSDictionary dictionaryWithObject:info forKey:@"memberInfo"];
-            [[NSUserDefaults standardUserDefaults] setObject:dict forKey:@"memberInfo"];
+            if (loginType == 1) {
+                NSDictionary *dict = [NSDictionary dictionaryWithObject:info forKey:@"memberInfo"];
+                [[NSUserDefaults standardUserDefaults] setObject:dict forKey:@"memberInfo"];
+            }
 
             
             if ([self.delegate respondsToSelector:@selector(loginSuccess)]) {

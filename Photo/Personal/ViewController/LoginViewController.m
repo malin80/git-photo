@@ -37,6 +37,7 @@
     [self setImmutableConstraints];
     
     self.loginInfo = [[LoginInfo alloc] init];
+    self.loginInfo.loginType = LoginTypeIdentifyCode;
 }
 
 - (void)initView {
@@ -84,6 +85,7 @@
     _passwordLoginButton.layer.borderWidth = 2;
     _passwordLoginButton.layer.borderColor = [UIColorFromRGB(123, 199, 229, 1) CGColor];
     [_passwordLoginButton setTitleColor:UIColorFromRGB(71, 177, 215, 1) forState:UIControlStateNormal];
+    [_passwordLoginButton addTarget:self action:@selector(loginWithPassword) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_passwordLoginButton];
 }
 
@@ -150,21 +152,22 @@
     CFUUIDRef uuidRef = CFUUIDCreate(kCFAllocatorDefault);
     CFStringRef uuidString = CFUUIDCreateString(kCFAllocatorDefault, uuidRef);
     app_uuid = [NSString stringWithString:(__bridge NSString *)uuidString];
+    
+    [self.loginManager loginWithPhoneNumber:_phoneTextField.text withIdentifyCode:_identifyTextField.text withLoginType:self.loginInfo.loginType withAppId:app_uuid];
+}
 
-    [self.loginManager loginWithPhoneNumber:_phoneTextField.text withIdentifyCode:_identifyTextField.text withLoginType:1 withAppId:app_uuid];
-
-//    switch (self.loginInfo.loginType) {
-//        case LoginTypePassword:
-//            
-//            break;
-//        
-//        case LoginTypeIdentifyCode:
-//            [GET_SINGLETON_FOR_CLASS(LoginManager) loginWithPhoneNumber:_phoneTextField.text withIdentifyCode:_identifyTextField.text withLoginType:1 withAppId:app_uuid];
-//            break;
-//            
-//        default:
-//            break;
-//    }
+- (void)loginWithPassword {
+    if (self.loginInfo.loginType == LoginTypeIdentifyCode) {
+        _identifyTextField.placeholder = @"请输入密码";
+        _identifyButton.hidden = YES;
+        [_passwordLoginButton setTitle:@"验证码登录" forState:UIControlStateNormal];
+        self.loginInfo.loginType = LoginTypePassword;
+    } else {
+        _identifyTextField.placeholder = @"请输入验证码";
+        _identifyButton.hidden = NO;
+        [_passwordLoginButton setTitle:@"账号密码登录" forState:UIControlStateNormal];
+        self.loginInfo.loginType = LoginTypeIdentifyCode;
+    }
 }
 
 - (void)getIdentifyCode {
