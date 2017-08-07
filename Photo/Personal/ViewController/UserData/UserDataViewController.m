@@ -20,6 +20,7 @@
 #import "DatePickerView.h"
 #import "SexPickerView.h"
 #import "AppDelegate.h"
+#import "LoginManager.h"
 
 #define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
 #define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
@@ -55,6 +56,7 @@
     bar.delegate = self;
     [self.view addSubview:bar];
     
+    [self addNotification];
     [self updateSections];
     [self createTableView];
     [self createBottomButton];
@@ -63,6 +65,17 @@
     _maskForDatePicker.backgroundColor = [UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:0.5];
     UITapGestureRecognizer *tapForDatePicker = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapForDatePicker)];
     [_maskForDatePicker addGestureRecognizer:tapForDatePicker];
+}
+
+- (void)addNotification {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateMemberInfoSuccess) name:@"updateMemberInfoSuccess" object:nil];
+}
+
+#pragma mark --- notification method ---
+- (void)updateMemberInfoSuccess {
+    [self updateSections];
+    [_tableView reloadData];
 }
 
 - (void)createBottomButton {
@@ -84,12 +97,12 @@
     [section1.items addObject:_avatarEntryItem];
     
     //手机
-    NSString *phoneNumber = @"13885229434";
+    NSString *phoneNumber = [NSString stringWithFormat:@"%@",GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.memberPhone];
     _phoneNumberEntryItem = [EntryItem title:@"手机" content:phoneNumber subtitle:nil selector:@selector(gotoPhoneNumberViewController)];
     [section1.items addObject:_phoneNumberEntryItem];
     
     //昵称
-    NSString *nickName = @"member_123456";
+    NSString *nickName = [NSString stringWithFormat:@"%@",GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.memberNickName];
     _nickNameEntryItem = [EntryItem title:@"昵称" content:nickName subtitle:@"修改" selector:@selector(gotoNickNameViewController)];
     [section1.items addObject:_nickNameEntryItem];
     
@@ -102,7 +115,12 @@
     [section2.items addObject:_avatarEntryItem];
     
     //姓名
-    _userNameEntryItem = [EntryItem title:@"姓名" content:nil subtitle:@"修改" selector:@selector(gotoUserNameViewController)];
+    if (![GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.memberName isEqualToString:@"未设置"]) {
+        NSString *name = [NSString stringWithFormat:@"%@",GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.memberName];
+        _userNameEntryItem = [EntryItem title:@"姓名" content:name subtitle:@"修改" selector:@selector(gotoUserNameViewController)];
+    } else {
+        _userNameEntryItem = [EntryItem title:@"姓名" content:nil subtitle:@"修改" selector:@selector(gotoUserNameViewController)];
+    }
     [section2.items addObject:_userNameEntryItem];
     
     //婚期
@@ -110,7 +128,7 @@
     [section2.items addObject:_timeEntryItem];
     
     //密码
-    _passwordEntryItem = [EntryItem title:@"密码" content:nil subtitle:@"修改" selector:@selector(gotoModifyPasswordViewController)];
+    _passwordEntryItem = [EntryItem title:@"密码" content:@"******" subtitle:@"修改" selector:@selector(gotoModifyPasswordViewController)];
     [section3.items addObject:_passwordEntryItem];
     
     [_sections addObject:section1];
@@ -150,6 +168,9 @@
     cell.title.text = item.title;
     cell.content.text = item.content;
     cell.subtitle.text = item.subtitle;
+    if (indexPath.section == 0 && indexPath.row == 0) {
+        cell.avatarView.hidden = NO;
+    }
     
     return cell;
 }

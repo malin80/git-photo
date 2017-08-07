@@ -964,14 +964,14 @@
 		F4FDD6981F2C36E9007263D4 /* UserData */ = {
 			isa = PBXGroup;
 			children = (
+				F4FDD69F1F2C378E007263D4 /* UserDataViewController.h */,
+				F4FDD6A01F2C378E007263D4 /* UserDataViewController.m */,
 				F4FDD6991F2C378E007263D4 /* ModifyPasswordViewController.h */,
 				F4FDD69A1F2C378E007263D4 /* ModifyPasswordViewController.m */,
 				F4FDD69B1F2C378E007263D4 /* NickNameViewController.h */,
 				F4FDD69C1F2C378E007263D4 /* NickNameViewController.m */,
 				F4FDD69D1F2C378E007263D4 /* PhoneNumberViewController.h */,
 				F4FDD69E1F2C378E007263D4 /* PhoneNumberViewController.m */,
-				F4FDD69F1F2C378E007263D4 /* UserDataViewController.h */,
-				F4FDD6A01F2C378E007263D4 /* UserDataViewController.m */,
 				F4FDD6A11F2C378E007263D4 /* UserNameViewController.h */,
 				F4FDD6A21F2C378E007263D4 /* UserNameViewController.m */,
 			);

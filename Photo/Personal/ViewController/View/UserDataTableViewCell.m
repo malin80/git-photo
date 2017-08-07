@@ -8,12 +8,15 @@
 
 #import "UserDataTableViewCell.h"
 #import "Masonry.h"
+#import "LoginManager.h"
 
 @implementation UserDataTableViewCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        self.info = GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo;
+
         [self initView];
         [self setImmutableConstraints];
     }
@@ -21,12 +24,20 @@
 }
 
 - (void)initView {
+    [self.contentView addSubview:self.avatarView];
     [self.contentView addSubview:self.title];
     [self.contentView addSubview:self.content];
     [self.contentView addSubview:self.subtitle];
 }
 
 - (void)setImmutableConstraints {
+    [_avatarView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.contentView);
+        make.right.equalTo(self.contentView.mas_right).with.offset(-80);
+        make.width.equalTo(@(54));
+        make.height.equalTo(@(54));
+    }];
+    
     [_title mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentView.mas_left).with.offset(10);
         make.centerY.equalTo(self.contentView);
@@ -43,6 +54,19 @@
 }
 
 #pragma mark --- getters and setters ---
+- (UIImageView *)avatarView {
+    if (!_avatarView) {
+        _avatarView = [[AvatarView alloc] init];
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,self.info.memberPic]];
+        UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
+        _avatarView.image = imgFromUrl;
+        _avatarView.layer.masksToBounds = YES;
+        _avatarView.layer.cornerRadius = 54/2;
+        _avatarView.hidden = YES;
+    }
+    return _avatarView;
+}
+
 - (UILabel *)title {
     if (!_title) {
         _title = [[UILabel alloc] init];

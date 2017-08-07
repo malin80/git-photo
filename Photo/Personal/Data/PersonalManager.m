@@ -23,6 +23,32 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(PersonalManager)
     return self;
 }
 
+- (void)updateMemberInfoWithNickName:(NSString *)nickName
+                      withMemberName:(NSString *)memberName
+                       withMemberSex:(NSString *)memberSex
+                     withMemberMarry:(NSString *)memberMarry
+                  withMemberBirthday:(NSString *)memberBirthday
+                           withToken:(NSString *)token {
+    [PersonalPesRequest updateMemberInfoWithNickName:nickName withMemberName:memberName withMemberSex:memberSex withMemberMarry:memberMarry withMemberBirthday:memberBirthday withToken:token withBlock:^(NSDictionary *response, NSString *error) {
+        if ([[response objectForKey:@"errorCode"] unsignedLongValue] == 0) {
+            GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.memberName = memberName;
+            [[NSUserDefaults standardUserDefaults] setObject:memberName forKey:@"memberName"];
+            GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.memberNickName= nickName;
+            [[NSUserDefaults standardUserDefaults] setObject:nickName forKey:@"memberNickName"];
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"updateMemberInfoSuccess" object:nil];
+        }
+    }];
+}
+
+- (void)updatePasswordWithToke:(NSString *)token withOldCode:(NSString *)oldCode withNewCode:(NSString *)newCode wihhUpdateType:(int)type {
+    [PersonalPesRequest updatePasswordWithToke:token withOldCode:oldCode withNewCode:newCode wihhUpdateType:type withBlock:^(NSDictionary *response, NSString *error) {
+        if ([[response objectForKey:@"errorCode"] unsignedLongValue] == 0) {
+            GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.memberPwd = newCode;
+            [[NSUserDefaults standardUserDefaults] setObject:newCode forKey:@"memberPwd"];
+        }
+    }];
+}
 
 - (void)queryCollectGoodsInfo {
     [PersonalPesRequest queryCollectGoodsInfoWithMemberId:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.memberId withBlock:^(NSDictionary *response, NSString *error) {

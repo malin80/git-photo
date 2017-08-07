@@ -9,12 +9,17 @@
 #import "ModifyPasswordViewController.h"
 #import "Masonry.h"
 #import "NavigationBar.h"
+#import "LoginManager.h"
+#import "PersonalManager.h"
 
 @interface ModifyPasswordViewController () <NavigationBarDelegate>
 {
     UIImageView *_icon;
     UITextField *_phoneTextField;
+    UILabel     *_line1;
     UITextField *_identifyTextField;
+    UIButton    *_getIdentifyButton;
+    UILabel     *_line2;
     UITextField *_passwordTextField;
     UIButton *_confirmButton;
     UILabel *_orLabel;
@@ -41,23 +46,43 @@
     [self.view addSubview:_icon];
     
     _phoneTextField = [[UITextField alloc] init];
-    _phoneTextField.text = @"13885229434";
+    _phoneTextField.text = GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.memberPhone;
+    _phoneTextField.textColor = [UIColor colorR:173 G:174 B:174 alpha:1];
     _phoneTextField.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:_phoneTextField];
     
+    _line1 = [[UILabel alloc] init];
+    _line1.backgroundColor = [UIColor colorR:237 G:237 B:237 alpha:1];
+    [self.view addSubview:_line1];
+    
     _identifyTextField = [[UITextField alloc] init];
-    _identifyTextField.text = @"请输入验证码";
+    _identifyTextField.placeholder = @"请输入验证码";
+    _identifyTextField.textColor = [UIColor colorR:173 G:174 B:174 alpha:1];
     _identifyTextField.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:_identifyTextField];
     
+    _getIdentifyButton = [[UIButton alloc] init];
+    [_getIdentifyButton setTitle:@"获取验证码" forState:UIControlStateNormal];
+    _getIdentifyButton.titleLabel.font = [UIFont systemFontOfSize:12];
+    _getIdentifyButton.backgroundColor = [UIColor colorR:95 G:193 B:255 alpha:1];
+    _getIdentifyButton.layer.cornerRadius = 10;
+    [_getIdentifyButton addTarget:self action:@selector(getIdentifyCode) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_getIdentifyButton];
+    
+    _line2 = [[UILabel alloc] init];
+    _line2.backgroundColor = [UIColor colorR:237 G:237 B:237 alpha:1];
+    [self.view addSubview:_line2];
+
     _passwordTextField = [[UITextField alloc] init];
-    _passwordTextField.text = @"请输入密码";
+    _passwordTextField.placeholder = @"请输入密码";
+    _passwordTextField.textColor = [UIColor colorR:173 G:174 B:174 alpha:1];
     _passwordTextField.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:_passwordTextField];
     
     _confirmButton = [[UIButton alloc] init];
     [_confirmButton setTitle:@"修改密码" forState:UIControlStateNormal];
     _confirmButton.backgroundColor = UIColorFromRGB(95, 193, 255, 1);
+    [_confirmButton addTarget:self action:@selector(updatePassword) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_confirmButton];
     
     _orLabel = [[UILabel alloc] init];
@@ -66,7 +91,7 @@
     [self.view addSubview:_orLabel];
     
     _oldPasswordButton = [[UIButton alloc] init];
-    [_oldPasswordButton setTitle:@"旧密码登录" forState:UIControlStateNormal];
+    [_oldPasswordButton setTitle:@"旧密码验证" forState:UIControlStateNormal];
     _oldPasswordButton.layer.borderWidth = 2;
     _oldPasswordButton.layer.borderColor = [UIColorFromRGB(123, 199, 229, 1) CGColor];
     [_oldPasswordButton setTitleColor:UIColorFromRGB(71, 177, 215, 1) forState:UIControlStateNormal];
@@ -88,11 +113,33 @@
         make.width.equalTo(@(ScreenWidth));
     }];
     
+    [_line1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(_phoneTextField.mas_bottom).with.offset(5);
+        make.height.equalTo(@(1));
+        make.width.equalTo(@(ScreenWidth*0.8));
+        make.centerX.equalTo(self.view);
+    }];
+    
     [_identifyTextField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.view);
         make.top.equalTo(_phoneTextField.mas_bottom).with.offset(20);
         make.height.equalTo(@(30));
-        make.width.equalTo(@(ScreenWidth));
+        make.width.equalTo(@(ScreenWidth*0.8));
+        make.centerX.equalTo(self.view);
+    }];
+    
+    [_getIdentifyButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(_identifyTextField);
+        make.height.equalTo(@(30));
+        make.width.equalTo(@(60));
+        make.right.equalTo(_identifyTextField.mas_right).with.offset(-20);
+    }];
+    
+    [_line2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(_identifyTextField.mas_bottom).with.offset(5);
+        make.height.equalTo(@(1));
+        make.width.equalTo(@(ScreenWidth*0.8));
+        make.centerX.equalTo(self.view);
     }];
     
     [_passwordTextField mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -105,7 +152,7 @@
     [_confirmButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.view);
         make.top.equalTo(_passwordTextField.mas_bottom).with.offset(40);
-        make.width.equalTo(@(120));
+        make.width.equalTo(@(ScreenWidth*0.8));
         make.height.equalTo(@(40));
     }];
     
@@ -119,7 +166,7 @@
     [_oldPasswordButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.view);
         make.top.equalTo(_orLabel.mas_bottom).with.offset(20);
-        make.width.equalTo(@(120));
+        make.width.equalTo(@(ScreenWidth*0.8));
         make.height.equalTo(@(40));
     }];
 
@@ -127,6 +174,16 @@
 
 - (void)goBack {
     [self.navigationController popViewControllerAnimated:NO];
+}
+
+#pragma mark --- button method ---
+- (void)getIdentifyCode {
+    [GET_SINGLETON_FOR_CLASS(LoginManager) getLoginIdentifyCodeWithPhoneNumber:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.memberPhone];
+}
+
+- (void)updatePassword {
+    LoginManager *manager = GET_SINGLETON_FOR_CLASS(LoginManager);
+    [GET_SINGLETON_FOR_CLASS(PersonalManager) updatePasswordWithToke:manager.memberInfo.safeCodeValue withOldCode:_identifyTextField.text withNewCode:_passwordTextField.text wihhUpdateType:1];
 }
 
 - (void)didReceiveMemoryWarning {

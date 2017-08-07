@@ -10,10 +10,12 @@
 
 #import "NavigationBar.h"
 #import "Masonry.h"
+#import "PersonalManager.h"
+#import "LoginManager.h"
 
 @interface UserNameViewController () <NavigationBarDelegate, UITextFieldDelegate>
 {
-    UITextField *_phoneFieldText;
+    UITextField *_nameTextField;
     UIView *_topLine;
     UIView *_bottomLine;
 }
@@ -39,18 +41,18 @@
     _topLine.backgroundColor = [UIColor redColor];
     [self.view addSubview:_topLine];
     
-    _phoneFieldText = [[UITextField alloc] init];
-    _phoneFieldText.textColor = [UIColor blackColor];
-    _phoneFieldText.font = [UIFont boldSystemFontOfSize:13];
-    _phoneFieldText.keyboardType = UIKeyboardTypeEmailAddress;
-    _phoneFieldText.delegate = self;
-    _phoneFieldText.clearButtonMode = UITextFieldViewModeWhileEditing;
-    _phoneFieldText.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-    _phoneFieldText.placeholder = @"请输入姓名";
-    _phoneFieldText.returnKeyType = UIReturnKeyDone;
-    _phoneFieldText.backgroundColor = [UIColor whiteColor];
-    [_phoneFieldText becomeFirstResponder];
-    [self.view addSubview:_phoneFieldText];
+    _nameTextField = [[UITextField alloc] init];
+    _nameTextField.textColor = [UIColor blackColor];
+    _nameTextField.font = [UIFont boldSystemFontOfSize:13];
+    _nameTextField.keyboardType = UIKeyboardTypeEmailAddress;
+    _nameTextField.delegate = self;
+    _nameTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    _nameTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    _nameTextField.placeholder = @"请输入姓名";
+    _nameTextField.returnKeyType = UIReturnKeyDone;
+    _nameTextField.backgroundColor = [UIColor whiteColor];
+    [_nameTextField becomeFirstResponder];
+    [self.view addSubview:_nameTextField];
     
     _bottomLine = [[UIView alloc] init];
     _bottomLine.backgroundColor = [UIColor darkGrayColor];
@@ -65,7 +67,7 @@
         make.height.equalTo(@(1));
     }];
     
-    [_phoneFieldText mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_nameTextField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_topLine.mas_bottom);
         make.width.equalTo(@(ScreenWidth));
         make.height.equalTo(@(41));
@@ -73,7 +75,7 @@
     }];
     
     [_bottomLine mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_phoneFieldText.mas_bottom);
+        make.top.equalTo(_nameTextField.mas_bottom);
         make.width.equalTo(@(ScreenWidth));
         make.height.equalTo(@(1));
         make.left.equalTo(self.view.mas_left);
@@ -86,6 +88,9 @@
 }
 
 - (void)completeClick {
+    LoginManager *manager = GET_SINGLETON_FOR_CLASS(LoginManager);
+    [GET_SINGLETON_FOR_CLASS(PersonalManager) updateMemberInfoWithNickName:manager.memberInfo.memberNickName withMemberName:_nameTextField.text withMemberSex:manager.memberInfo.memberSex withMemberMarry:manager.memberInfo.memberMarry withMemberBirthday:manager.memberInfo.memberBirthday withToken:manager.memberInfo.safeCodeValue];
+
     [self.navigationController popViewControllerAnimated:NO];
 }
 

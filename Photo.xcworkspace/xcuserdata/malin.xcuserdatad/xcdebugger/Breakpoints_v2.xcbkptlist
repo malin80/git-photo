@@ -26,12 +26,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photo/Personal/Data/PersonalManager.m"
-            timestampString = "523527929.476113"
+            timestampString = "523770452.699084"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "-queryCollectGoodsInfo"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "-updatePasswordWithToke:withOldCode:withNewCode:wihhUpdateType:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Photo/Personal/Data/PersonalManager.m"
+            timestampString = "523770463.370867"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "-updatePasswordWithToke:withOldCode:withNewCode:wihhUpdateType:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
