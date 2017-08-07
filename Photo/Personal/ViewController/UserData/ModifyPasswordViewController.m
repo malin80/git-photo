@@ -11,9 +11,12 @@
 #import "NavigationBar.h"
 #import "LoginManager.h"
 #import "PersonalManager.h"
+#import "LoginInfo.h"
 
 @interface ModifyPasswordViewController () <NavigationBarDelegate>
 {
+    LoginInfo *_info;
+    
     UIImageView *_icon;
     UITextField *_phoneTextField;
     UILabel     *_line1;
@@ -39,6 +42,8 @@
 
     [self initView];
     [self setImmutableConstraints];
+    _info = [[LoginInfo alloc] init];
+    _info.loginType = LoginTypeIdentifyCode;
 }
 
 - (void)initView {
@@ -74,7 +79,7 @@
     [self.view addSubview:_line2];
 
     _passwordTextField = [[UITextField alloc] init];
-    _passwordTextField.placeholder = @"请输入密码";
+    _passwordTextField.placeholder = @"请输入新密码";
     _passwordTextField.textColor = [UIColor colorR:173 G:174 B:174 alpha:1];
     _passwordTextField.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:_passwordTextField];
@@ -95,6 +100,7 @@
     _oldPasswordButton.layer.borderWidth = 2;
     _oldPasswordButton.layer.borderColor = [UIColorFromRGB(123, 199, 229, 1) CGColor];
     [_oldPasswordButton setTitleColor:UIColorFromRGB(71, 177, 215, 1) forState:UIControlStateNormal];
+    [_oldPasswordButton addTarget:self action:@selector(modifyPwdWithOldPwd) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_oldPasswordButton];
 }
 
@@ -184,6 +190,20 @@
 - (void)updatePassword {
     LoginManager *manager = GET_SINGLETON_FOR_CLASS(LoginManager);
     [GET_SINGLETON_FOR_CLASS(PersonalManager) updatePasswordWithToke:manager.memberInfo.safeCodeValue withOldCode:_identifyTextField.text withNewCode:_passwordTextField.text wihhUpdateType:1];
+}
+
+- (void)modifyPwdWithOldPwd {
+    if (_info.loginType == LoginTypeIdentifyCode) {
+        _identifyTextField.placeholder = @"请输入旧密码";
+        _getIdentifyButton.hidden = YES;
+        [_oldPasswordButton setTitle:@"旧密码验证" forState:UIControlStateNormal];
+        _info.loginType = LoginTypePassword;
+    } else {
+        _identifyTextField.placeholder = @"请输入验证码";
+        _getIdentifyButton.hidden = NO;
+        [_oldPasswordButton setTitle:@"验证码验证" forState:UIControlStateNormal];
+        _info.loginType = LoginTypeIdentifyCode;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
