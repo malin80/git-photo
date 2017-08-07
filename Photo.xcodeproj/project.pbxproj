@@ -116,6 +116,10 @@
 		F4A7A25E1F25D192009FAAEE /* common_back.png in Resources */ = {isa = PBXBuildFile; fileRef = F4A7A25D1F25D192009FAAEE /* common_back.png */; };
 		F4E83C1E1F38471A003CE93E /* CameraManInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E83C1D1F38471A003CE93E /* CameraManInfo.m */; };
 		F4E83C211F3854C2003CE93E /* CameraManDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E83C201F3854C2003CE93E /* CameraManDetailViewController.m */; };
+		F4E83C241F385FEE003CE93E /* CameraManDetailFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E83C231F385FEE003CE93E /* CameraManDetailFirstViewController.m */; };
+		F4E83C271F38614C003CE93E /* CameraManDetailSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E83C261F38614C003CE93E /* CameraManDetailSecondViewController.m */; };
+		F4E83C2A1F386177003CE93E /* CameraManDetailThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E83C291F386177003CE93E /* CameraManDetailThirdViewController.m */; };
+		F4E83C2D1F3861A7003CE93E /* CameraManDetailFourViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E83C2C1F3861A7003CE93E /* CameraManDetailFourViewController.m */; };
 		F4FD30471F32C1B200048DD6 /* ShoppingPesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FD30461F32C1B200048DD6 /* ShoppingPesRequest.m */; };
 		F4FD304A1F32C46800048DD6 /* HomePageCameraGroupInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FD30491F32C46800048DD6 /* HomePageCameraGroupInfo.m */; };
 		F4FD304D1F32C97300048DD6 /* CameraDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FD304C1F32C97300048DD6 /* CameraDetailViewController.m */; };
@@ -342,6 +346,14 @@
 		F4E83C1D1F38471A003CE93E /* CameraManInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraManInfo.m; sourceTree = "<group>"; };
 		F4E83C1F1F3854C2003CE93E /* CameraManDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraManDetailViewController.h; sourceTree = "<group>"; };
 		F4E83C201F3854C2003CE93E /* CameraManDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraManDetailViewController.m; sourceTree = "<group>"; };
+		F4E83C221F385FEE003CE93E /* CameraManDetailFirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraManDetailFirstViewController.h; sourceTree = "<group>"; };
+		F4E83C231F385FEE003CE93E /* CameraManDetailFirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraManDetailFirstViewController.m; sourceTree = "<group>"; };
+		F4E83C251F38614C003CE93E /* CameraManDetailSecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraManDetailSecondViewController.h; sourceTree = "<group>"; };
+		F4E83C261F38614C003CE93E /* CameraManDetailSecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraManDetailSecondViewController.m; sourceTree = "<group>"; };
+		F4E83C281F386177003CE93E /* CameraManDetailThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraManDetailThirdViewController.h; sourceTree = "<group>"; };
+		F4E83C291F386177003CE93E /* CameraManDetailThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraManDetailThirdViewController.m; sourceTree = "<group>"; };
+		F4E83C2B1F3861A7003CE93E /* CameraManDetailFourViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraManDetailFourViewController.h; sourceTree = "<group>"; };
+		F4E83C2C1F3861A7003CE93E /* CameraManDetailFourViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraManDetailFourViewController.m; sourceTree = "<group>"; };
 		F4FD30451F32C1B200048DD6 /* ShoppingPesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingPesRequest.h; sourceTree = "<group>"; };
 		F4FD30461F32C1B200048DD6 /* ShoppingPesRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingPesRequest.m; sourceTree = "<group>"; };
 		F4FD30481F32C46800048DD6 /* HomePageCameraGroupInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageCameraGroupInfo.h; sourceTree = "<group>"; };
@@ -512,6 +524,14 @@
 				F4FD305C1F33010900048DD6 /* CameraManViewController.m */,
 				F4E83C1F1F3854C2003CE93E /* CameraManDetailViewController.h */,
 				F4E83C201F3854C2003CE93E /* CameraManDetailViewController.m */,
+				F4E83C221F385FEE003CE93E /* CameraManDetailFirstViewController.h */,
+				F4E83C231F385FEE003CE93E /* CameraManDetailFirstViewController.m */,
+				F4E83C251F38614C003CE93E /* CameraManDetailSecondViewController.h */,
+				F4E83C261F38614C003CE93E /* CameraManDetailSecondViewController.m */,
+				F4E83C281F386177003CE93E /* CameraManDetailThirdViewController.h */,
+				F4E83C291F386177003CE93E /* CameraManDetailThirdViewController.m */,
+				F4E83C2B1F3861A7003CE93E /* CameraManDetailFourViewController.h */,
+				F4E83C2C1F3861A7003CE93E /* CameraManDetailFourViewController.m */,
 			);
 			path = CameraViewController;
 			sourceTree = "<group>";
@@ -1234,6 +1254,7 @@
 				F4FDD6A31F2C378E007263D4 /* ModifyPasswordViewController.m in Sources */,
 				F4A7A1391F25A779009FAAEE /* AvatarView.m in Sources */,
 				F405D1A81F2ED06E0015A8E6 /* LoginInfo.m in Sources */,
+				F4E83C2A1F386177003CE93E /* CameraManDetailThirdViewController.m in Sources */,
 				F481E95E1F2865C900EE3D7C /* SexPickerView.m in Sources */,
 				F405D19D1F2EBC110015A8E6 /* OrderTableViewCell.m in Sources */,
 				F4A7A1051F258449009FAAEE /* PersonalTabelViewCell.m in Sources */,
@@ -1250,6 +1271,7 @@
 				F4FEB0CF1F31B86500C2F5A3 /* StoreDetailSecondViewController.m in Sources */,
 				F4A7A1221F2595FF009FAAEE /* EntrySection.m in Sources */,
 				F4A7A1251F259629009FAAEE /* EntryItem.m in Sources */,
+				F4E83C2D1F3861A7003CE93E /* CameraManDetailFourViewController.m in Sources */,
 				F41B19C41F3416120026E483 /* AddGoodsToShoppingViewController.m in Sources */,
 				F4FDD6A71F2C378E007263D4 /* UserNameViewController.m in Sources */,
 				F4A7A0961F256B96009FAAEE /* ViewController.m in Sources */,
@@ -1263,6 +1285,7 @@
 				F40430951F29D0FD00DDB2E7 /* LoginViewController.m in Sources */,
 				A514B10E1F290533006A765F /* FitManage.m in Sources */,
 				A520C6D01F2B89A400202622 /* DLFixedTabbarView.m in Sources */,
+				F4E83C241F385FEE003CE93E /* CameraManDetailFirstViewController.m in Sources */,
 				F4FEB0CC1F31A64B00C2F5A3 /* StoreDetailTableViewCell.m in Sources */,
 				F48237421F27078200DDD487 /* HomePageButtonView.m in Sources */,
 				F481E9581F28551C00EE3D7C /* BaseViewController.m in Sources */,
@@ -1306,6 +1329,7 @@
 				F4FD30571F32E4D000048DD6 /* CameraTeamInfo.m in Sources */,
 				A520C6D11F2B89A400202622 /* DLScrollTabbarView.m in Sources */,
 				F40A2AF11F31727800BEDFFB /* StoreDetailViewController.m in Sources */,
+				F4E83C271F38614C003CE93E /* CameraManDetailSecondViewController.m in Sources */,
 				A514B10F1F290533006A765F /* NSString+Category.m in Sources */,
 				F4A7A0901F256B96009FAAEE /* main.m in Sources */,
 				F48237561F27179700DDD487 /* HomePageTableViewCell.m in Sources */,

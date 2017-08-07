@@ -81,6 +81,7 @@
             label.font = [UIFont systemFontOfSize:15];
             label.backgroundColor = [UIColor clearColor];
             label.textColor = item.titleColor;
+            label.textAlignment = NSTextAlignmentCenter;
             [label sizeToFit];
             label.tag = kLabelTagBase+i;
             
@@ -96,7 +97,7 @@
             [scrollView_ addSubview:label];
             [scrollView_ addSubview:imageView];
             [scrollView_ addSubview:selectedImageView];
-            if (tabbarItems.count >4) {
+            if (tabbarItems.count >5) {
                 scrollView_.contentSize = CGSizeMake(80*tabbarItems.count, 30);
             }
             i++;
@@ -116,7 +117,7 @@
 
 - (void)layoutTabbar{
     float width = 0;
-    if (self.tabbarItems.count<=3) {
+    if (self.tabbarItems.count<=4) {
         width = self.bounds.size.width/self.tabbarItems.count;
     } else {
         width = 80;
@@ -199,7 +200,7 @@
         }
         
         float width = 0;
-        if (self.tabbarItems.count > 4) {
+        if (self.tabbarItems.count > 5) {
             width = 80;
         } else {
             width = self.bounds.size.width/self.tabbarItems.count;
@@ -212,7 +213,7 @@
 
 - (void)tapAction:(UITapGestureRecognizer *)tap{
     float width = 0;
-    if (self.tabbarItems.count > 4) {
+    if (self.tabbarItems.count > 5) {
         width = 80;
     } else {
         width = self.bounds.size.width/self.tabbarItems.count;

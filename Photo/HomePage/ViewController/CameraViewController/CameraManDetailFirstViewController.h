@@ -1,5 +1,5 @@
 //
-//  CameraManDetailViewController.h
+//  CameraManDetailFirstViewController.h
 //  Photo
 //
 //  Created by malin  on 2017/8/7.
@@ -7,10 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BaseViewController.h"
 #import "CameraManInfo.h"
 
-@interface CameraManDetailViewController : BaseViewController
+@interface CameraManDetailFirstViewController : UIViewController
 
 @property (nonatomic, strong) CameraManInfo *cameraManInfo;
 

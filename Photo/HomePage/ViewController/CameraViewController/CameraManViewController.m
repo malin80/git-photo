@@ -7,6 +7,8 @@
 //
 
 #import "CameraManViewController.h"
+#import "CameraManDetailViewController.h"
+
 #import "HomePageManager.h"
 #import "CameraManTableViewCell.h"
 #import "CameraManInfo.h"
@@ -74,7 +76,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
+    CameraManDetailViewController *controller = [[CameraManDetailViewController alloc] init];
+    controller.cameraManInfo = [GET_SINGLETON_FOR_CLASS(HomePageManager).cameraMans objectAtIndex:indexPath.row];
+    [self.navigationController pushViewController:controller animated:NO];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
