@@ -8,6 +8,7 @@
 
 #import "HomePageTableViewCell.h"
 #import "Masonry.h"
+#import "HomePageManager.h"
 
 @implementation HomePageTableViewCell
 
@@ -21,7 +22,7 @@
 }
 
 - (void)initView {
-    [self.contentView addSubview:self.image];
+//    [self.contentView addSubview:self.scrollView];
     [self.contentView addSubview:self.colorLabel];
     [self.contentView addSubview:self.title];
 }
@@ -39,22 +40,22 @@
         make.left.equalTo(_colorLabel.mas_right).with.offset(10);
     }];
     
-    [_image mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_colorLabel);
-        make.right.equalTo(self.contentView.mas_right).with.offset(-10);
-        make.top.equalTo(_colorLabel.mas_bottom).with.offset(5);
-        make.bottom.equalTo(self.contentView.mas_bottom);
-    }];
+//    [_scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.equalTo(_colorLabel);
+//        make.top.equalTo(_colorLabel.mas_bottom).with.offset(5);
+//        make.bottom.equalTo(self.contentView.mas_bottom);
+//        make.width.equalTo(@(6*ScreenWidth));
+//    }];
 }
 
 #pragma mark --- getters and setters ---
-- (UIImageView *)image {
-    if (!_image) {
-        _image = [[UIImageView alloc] init];
-        _image.backgroundColor = [UIColor blueColor];
-    }
-    return _image;
-}
+//- (UIScrollView *)scrollView {
+//    if (!_scrollView) {
+//        _scrollView = [[UIScrollView alloc] init];
+//        _scrollView.backgroundColor = [UIColor blueColor];
+//    }
+//    return _scrollView;
+//}
 
 - (UILabel *)colorLabel {
     if (!_colorLabel) {

@@ -12,11 +12,11 @@
 #import "HomePageScrollView.h"
 #import "HomePageButtonView.h"
 #import "HomePageTableViewCell.h"
-#import "HomePagePesRequest.h"
+#import "HomePageManager.h"
+#import "ImageInfo.h"
 
 @interface HomePageViewController () <UITableViewDelegate, UITableViewDataSource, HomePageButtonViewDelegate>
 {
-    NSArray *_titleArrays;
 }
 
 @property (nonatomic, strong) UIView *headerView;
@@ -31,15 +31,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    _titleArrays = [NSArray arrayWithObjects:@"婚纱摄影", @"婚庆服务", @"婚车租赁", @"花艺", @"酒店", nil];
     
+    [self addNotification];
     [self.view addSubview:self.headerView];
     [self.headerView addSubview:self.scrollView];
     [self.headerView addSubview:self.buttonView];
-    
+    [GET_SINGLETON_FOR_CLASS(HomePageManager) loadRecommendImages];
+}
+
+- (void)addNotification {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadRecommendImagesSuccess) name:@"loadRecommendImagesSuccess" object:nil];
+}
+
+- (void)loadRecommendImagesSuccess {
     [self createTableView];
-    
 }
 
 - (void)createTableView {
@@ -57,7 +63,7 @@
 
 #pragma mark --- tableView delegate ---
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 5;
+    return GET_SINGLETON_FOR_CLASS(HomePageManager).recommendImages.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -65,12 +71,24 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    ImageInfo *info = GET_SINGLETON_FOR_CLASS(HomePageManager).recommendImages[indexPath.section];
     NSString *cellIdentify = [NSString stringWithFormat:@"cellIdentify"];
     HomePageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
     if (!cell) {
         cell = [[HomePageTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
-        cell.title.text = [_titleArrays objectAtIndex:indexPath.section];
     }
+    cell.title.text = info.imageName;
+//    NSArray *array = GET_SINGLETON_FOR_CLASS(HomePageManager).singleRecommendImages;
+//    cell.scrollView.contentSize = CGSizeMake(array.count*ScreenWidth, 140);
+//    cell.scrollView.backgroundColor = [UIColor orangeColor];
+//    for (int i = 0; i<GET_SINGLETON_FOR_CLASS(HomePageManager).singleRecommendImages.count; i++) {
+//        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i*ScreenWidth, 0, ScreenWidth, 140)];
+//        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,GET_SINGLETON_FOR_CLASS(HomePageManager).singleRecommendImages[i]]];
+//        UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
+//        imageView.image = imgFromUrl;
+//        [cell.scrollView addSubview:imageView];
+//    }
+
     return cell;
 }
 

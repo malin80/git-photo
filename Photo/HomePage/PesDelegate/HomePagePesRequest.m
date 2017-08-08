@@ -14,4 +14,8 @@
     [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"HomeSlideControl/queryHomeSlide.do" dic:nil finished:finished];
 }
 
++ (void)loadPageRecommendImages:(void (^)(NSDictionary *, NSString *))finished {
+    [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"RecommendSlideControl/queryRecommendSlide.do" dic:nil finished:finished];
+}
+
 @end

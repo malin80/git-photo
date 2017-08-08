@@ -13,4 +13,6 @@
 
 + (void)loadPageScrollViewImage:(void(^)(NSDictionary *responseObject,NSString *error))finished;
 
++ (void)loadPageRecommendImages:(void(^)(NSDictionary *responseObject,NSString *error))finished;
+
 @end

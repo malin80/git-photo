@@ -9,7 +9,7 @@
 #import "HomePageScrollView.h"
 #import "HomePagePesRequest.h"
 #import "HomePageManager.h"
-#import "HomePageScrollViewInfo.h"
+#import "ImageInfo.h"
 
 #define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
 
@@ -67,7 +67,7 @@
 
 - (void)createImageView {
     [self stopTimer];
-    HomePageScrollViewInfo *info = [[HomePageScrollViewInfo alloc] init];
+    ImageInfo *info = [[ImageInfo alloc] init];
     for (int i = 0; i < _dataSource.count; i++) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i*ScreenWidth, 0, ScreenWidth, 250)];
         info = _dataSource[i];

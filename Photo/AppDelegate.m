@@ -16,6 +16,7 @@
 #import "LoginManager.h"
 #import "ShoppingManager.h"
 #import "CameraManager.h"
+#import "HomePageManager.h"
 
 @interface AppDelegate ()
 

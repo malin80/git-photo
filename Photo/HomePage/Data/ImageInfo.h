@@ -1,16 +1,17 @@
 //
-//  HomePageScrollViewInfo.h
+//  ImageInfo.h
 //  Photo
 //
-//  Created by malin  on 2017/8/1.
+//  Created by malin  on 2017/8/8.
 //  Copyright © 2017年 malin . All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@interface HomePageScrollViewInfo : NSObject
+@interface ImageInfo : NSObject
 
 @property (nonatomic, copy) NSString *imageUrl;
 @property (nonatomic, assign) NSInteger *imageId;
+@property (nonatomic, copy) NSString *imageName;
 
 @end
