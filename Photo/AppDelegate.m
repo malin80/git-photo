@@ -13,9 +13,9 @@
 #import "PersonalViewController.h"
 
 #import "StoreManager.h"
-#import "HomePageManager.h"
 #import "LoginManager.h"
 #import "ShoppingManager.h"
+#import "CameraManager.h"
 
 @interface AppDelegate ()
 
@@ -69,7 +69,7 @@
     span.image=[UIImage imageNamed:@"splash.png"];
     [self.window addSubview:span];
     [self.window bringSubviewToFront:span];
-    [UIView animateWithDuration:0.2 delay:1 options:UIViewAnimationOptionCurveLinear animations:^{
+    [UIView animateWithDuration:1 delay:1 options:UIViewAnimationOptionCurveLinear animations:^{
         span.frame=CGRectMake(0, -ScreenHieght, ScreenWidth, ScreenHieght);
     } completion:^(BOOL finished){
         [span removeFromSuperview];
@@ -79,7 +79,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [GET_SINGLETON_FOR_CLASS(StoreManager) queryAllGoodsInfo];
             [GET_SINGLETON_FOR_CLASS(StoreManager) queryGoodsClassify];
-            [GET_SINGLETON_FOR_CLASS(HomePageManager) queryCameraGroup];
+            [GET_SINGLETON_FOR_CLASS(CameraManager) queryCameraGroup];
             [GET_SINGLETON_FOR_CLASS(LoginManager) getMemberInfo];
             if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"isLogin"] length]>0) {
                 [GET_SINGLETON_FOR_CLASS(ShoppingManager) queryShoppingGoodsInfoWithSafeCodeValue:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue];

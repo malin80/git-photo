@@ -9,7 +9,7 @@
 #import "CameraManViewController.h"
 #import "CameraManDetailViewController.h"
 
-#import "HomePageManager.h"
+#import "CameraManager.h"
 #import "CameraManTableViewCell.h"
 #import "CameraManInfo.h"
 
@@ -54,7 +54,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return GET_SINGLETON_FOR_CLASS(HomePageManager).cameraMans.count;
+    return GET_SINGLETON_FOR_CLASS(CameraManager).cameraMans.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -63,7 +63,7 @@
     if (!cell) {
         cell = [[CameraManTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
     }
-    CameraManInfo *info = [GET_SINGLETON_FOR_CLASS(HomePageManager).cameraMans objectAtIndex:indexPath.row];
+    CameraManInfo *info = [GET_SINGLETON_FOR_CLASS(CameraManager).cameraMans objectAtIndex:indexPath.row];
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,info.cameraManPic]];
     UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
     cell.cameraManImage.image = imgFromUrl;
@@ -77,7 +77,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     CameraManDetailViewController *controller = [[CameraManDetailViewController alloc] init];
-    controller.cameraManInfo = [GET_SINGLETON_FOR_CLASS(HomePageManager).cameraMans objectAtIndex:indexPath.row];
+    CameraManInfo *info = [GET_SINGLETON_FOR_CLASS(CameraManager).cameraMans objectAtIndex:indexPath.row];
+    controller.cameraManInfo = info;
+    [GET_SINGLETON_FOR_CLASS(CameraManager) queryCameraManDetailWithId:info.cameraManId];
     [self.navigationController pushViewController:controller animated:NO];
 }
 

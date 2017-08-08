@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CameraManDetailViewController.h"
+#import "CameraManInfo.h"
 
-@interface CameraManDetailSecondViewController : CameraManDetailViewController
+@interface CameraManDetailSecondViewController : UIViewController
+
+@property (nonatomic, strong) CameraManInfo *cameraManInfo;
 
 @end

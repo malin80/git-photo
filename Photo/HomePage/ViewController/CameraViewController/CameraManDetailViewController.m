@@ -14,6 +14,7 @@
 
 #import "NavigationBar.h"
 #import "DLTabedSlideView.h"
+#import "CameraManager.h"
 
 @interface CameraManDetailViewController () <NavigationBarDelegate, DLTabedSlideViewDelegate>
 
@@ -41,7 +42,7 @@
     [bottomButton setTitle:@"立即预约" forState:UIControlStateNormal];
     [self.view addSubview:bottomButton];
     
-    self.tabedSlideView = [[DLTabedSlideView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHieght)];
+    self.tabedSlideView = [[DLTabedSlideView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHieght-200)];
     self.tabedSlideView.baseController = self;
     self.tabedSlideView.delegate=self;
     self.tabedSlideView.tabItemNormalColor = [UIColor blackColor];
@@ -70,6 +71,7 @@
         case 0:
         {
             CameraManDetailFirstViewController *controller = [[CameraManDetailFirstViewController alloc] init];
+            controller.cameraManInfo = GET_SINGLETON_FOR_CLASS(CameraManager).cameraManInfo;
             return controller;
         }
         case 1:

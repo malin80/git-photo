@@ -142,6 +142,8 @@
 		F4FEB0CC1F31A64B00C2F5A3 /* StoreDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FEB0CB1F31A64B00C2F5A3 /* StoreDetailTableViewCell.m */; };
 		F4FEB0CF1F31B86500C2F5A3 /* StoreDetailSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FEB0CE1F31B86500C2F5A3 /* StoreDetailSecondViewController.m */; };
 		F4FF8D911F394C2200E7739D /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = F4FF8D901F394C2200E7739D /* splash.png */; };
+		F4FF8D941F39501500E7739D /* CameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FF8D931F39501500E7739D /* CameraManager.m */; };
+		F4FF8D971F39506300E7739D /* CameraPesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FF8D961F39506300E7739D /* CameraPesRequest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -396,6 +398,10 @@
 		F4FEB0CD1F31B86500C2F5A3 /* StoreDetailSecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreDetailSecondViewController.h; sourceTree = "<group>"; };
 		F4FEB0CE1F31B86500C2F5A3 /* StoreDetailSecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreDetailSecondViewController.m; sourceTree = "<group>"; };
 		F4FF8D901F394C2200E7739D /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
+		F4FF8D921F39501500E7739D /* CameraManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraManager.h; sourceTree = "<group>"; };
+		F4FF8D931F39501500E7739D /* CameraManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraManager.m; sourceTree = "<group>"; };
+		F4FF8D951F39506300E7739D /* CameraPesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraPesRequest.h; sourceTree = "<group>"; };
+		F4FF8D961F39506300E7739D /* CameraPesRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraPesRequest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -509,6 +515,8 @@
 			children = (
 				F405756E1F2AE38D003C8AF2 /* HomePagePesRequest.h */,
 				F405756F1F2AE38D003C8AF2 /* HomePagePesRequest.m */,
+				F4FF8D951F39506300E7739D /* CameraPesRequest.h */,
+				F4FF8D961F39506300E7739D /* CameraPesRequest.m */,
 			);
 			path = PesDelegate;
 			sourceTree = "<group>";
@@ -560,6 +568,8 @@
 			children = (
 				F40E7A5C1F3014AA00FD7792 /* HomePageManager.h */,
 				F40E7A5D1F3014AA00FD7792 /* HomePageManager.m */,
+				F4FF8D921F39501500E7739D /* CameraManager.h */,
+				F4FF8D931F39501500E7739D /* CameraManager.m */,
 				F40E7A651F301F8A00FD7792 /* HomePageScrollViewInfo.h */,
 				F40E7A661F301F8A00FD7792 /* HomePageScrollViewInfo.m */,
 				F4FD30481F32C46800048DD6 /* HomePageCameraGroupInfo.h */,
@@ -1253,6 +1263,7 @@
 				F4FD30601F3304AF00048DD6 /* CameraManTableViewCell.m in Sources */,
 				F482373B1F26EC3100DDD487 /* CollectTableViewCell.m in Sources */,
 				F40E7A701F30280400FD7792 /* MemberInfo.m in Sources */,
+				F4FF8D941F39501500E7739D /* CameraManager.m in Sources */,
 				F40575691F2AE29B003C8AF2 /* PesRequest.m in Sources */,
 				F4FDD6B41F2C37CD007263D4 /* AddAddressViewController.m in Sources */,
 				F4FDD6A31F2C378E007263D4 /* ModifyPasswordViewController.m in Sources */,
@@ -1289,6 +1300,7 @@
 				F40430951F29D0FD00DDB2E7 /* LoginViewController.m in Sources */,
 				A514B10E1F290533006A765F /* FitManage.m in Sources */,
 				A520C6D01F2B89A400202622 /* DLFixedTabbarView.m in Sources */,
+				F4FF8D971F39506300E7739D /* CameraPesRequest.m in Sources */,
 				F4E83C241F385FEE003CE93E /* CameraManDetailFirstViewController.m in Sources */,
 				F4FEB0CC1F31A64B00C2F5A3 /* StoreDetailTableViewCell.m in Sources */,
 				F48237421F27078200DDD487 /* HomePageButtonView.m in Sources */,

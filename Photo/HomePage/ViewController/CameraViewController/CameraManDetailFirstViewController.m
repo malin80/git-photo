@@ -17,11 +17,33 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self addNotification];
     
 }
 
+- (void)addNotification {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryCameraManDetailWithIdSuccess) name:@"queryCameraManDetailWithIdSuccess" object:nil];
+}
+
+- (void)queryCameraManDetailWithIdSuccess {
+    [self initView];
+}
+
 - (void)initView {
-    
+    NSMutableArray *images = [NSMutableArray array];
+    NSArray *worksList = self.cameraManInfo.worksList;
+    for (NSDictionary *dict in worksList) {
+        NSString *pic = [dict objectForKey:@"worksOfCameramanPics"];
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,pic]];
+        UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
+        [images addObject:imgFromUrl];
+    }
+    for (int i = 0; i<images.count; i++) {
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, i*60, ScreenWidth, 60)];
+        imageView.image = images[i];
+        [self.view addSubview:imageView];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

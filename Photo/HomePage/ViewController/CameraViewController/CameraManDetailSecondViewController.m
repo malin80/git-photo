@@ -21,11 +21,18 @@
 }
 
 - (void)initView {
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, ScreenWidth-20, ScreenHieght-200)];
-    label.layer.borderWidth = 1;
-    label.layer.borderColor = [[UIColor redColor] CGColor];
-    label.text = self.cameraManInfo.cameraManSynopsis;
-    [self.view addSubview:label];
+    UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(10, 10, ScreenWidth-20, ScreenHieght-200)];
+    backView.layer.borderWidth = 1;
+    backView.layer.borderColor = [[UIColor redColor] CGColor];
+    [self.view addSubview:backView];
+    
+    NSArray *temp=[self.cameraManInfo.cameraManSynopsis componentsSeparatedByString:@";"];
+    for (int i = 0; i < temp.count; i++) {
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, i*40+20, 100, 100)];
+        label.text = temp[i];
+        [label sizeToFit];
+        [backView addSubview:label];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

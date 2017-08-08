@@ -23,4 +23,8 @@
 @property (nonatomic, assign) long commentCount;
 @property (nonatomic, assign) long worksOfCameraMan;
 
+@property (nonatomic, strong) NSArray *worksList;
+@property (nonatomic, strong) NSArray *commentList;
+@property (nonatomic, strong) NSArray *scheduleList;
+
 @end

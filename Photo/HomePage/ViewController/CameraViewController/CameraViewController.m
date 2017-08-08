@@ -11,7 +11,7 @@
 
 #import "HomePageScrollView.h"
 #import "NavigationBar.h"
-#import "HomePageManager.h"
+#import "CameraManager.h"
 #import "HomePageCameraGroupInfo.h"
 
 @interface CameraViewController () <NavigationBarDelegate, DLTabedSlideViewDelegate>
@@ -49,8 +49,8 @@
     self.tabedSlideView.tabbarBottomSpacing = 3.0;
 
     _slideViews = [NSMutableArray array];
-    for (int i = 0; i < GET_SINGLETON_FOR_CLASS(HomePageManager).cameraGroups.count; i++) {
-        HomePageCameraGroupInfo *info = GET_SINGLETON_FOR_CLASS(HomePageManager).cameraGroups[i];
+    for (int i = 0; i < GET_SINGLETON_FOR_CLASS(CameraManager).cameraGroups.count; i++) {
+        HomePageCameraGroupInfo *info = GET_SINGLETON_FOR_CLASS(CameraManager).cameraGroups[i];
         DLTabedbarItem *item = [DLTabedbarItem itemWithTitle:[NSString stringWithFormat:@"%@",info.cameraGroupName] image:nil selectedImage:nil];
         [_slideViews addObject:item];
     }
@@ -68,12 +68,12 @@
 }
 
 - (UIViewController *)DLTabedSlideView:(DLTabedSlideView *)sender controllerAt:(NSInteger)index {
-    HomePageCameraGroupInfo *info = [GET_SINGLETON_FOR_CLASS(HomePageManager).cameraGroups objectAtIndex:index];
+    HomePageCameraGroupInfo *info = [GET_SINGLETON_FOR_CLASS(CameraManager).cameraGroups objectAtIndex:index];
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        [GET_SINGLETON_FOR_CLASS(HomePageManager) queryCameraTeamWithGroupId:info.cameraGroupId];
+        [GET_SINGLETON_FOR_CLASS(CameraManager) queryCameraTeamWithGroupId:info.cameraGroupId];
     });
-    [GET_SINGLETON_FOR_CLASS(HomePageManager).cameraTeams removeAllObjects];
+    [GET_SINGLETON_FOR_CLASS(CameraManager).cameraTeams removeAllObjects];
     CameraDetailViewController *controller = [[CameraDetailViewController alloc] init];
     controller.groupId = info.cameraGroupId;
     return controller;

@@ -13,10 +13,4 @@
 
 + (void)loadPageScrollViewImage:(void(^)(NSDictionary *responseObject,NSString *error))finished;
 
-+ (void)queryCameraGroup:(void(^)(NSDictionary *responseObject,NSString *error))finished;
-
-+ (void)queryCameraTeamWithGroupId:(long)groupId withBlock:(void(^)(NSDictionary *responseObject,NSString *error))finished;
-
-+ (void)queryCarmeraManWithTeamId:(long)teamId withBlock:(void(^)(NSDictionary *responseObject,NSString *error))finished;
-
 @end

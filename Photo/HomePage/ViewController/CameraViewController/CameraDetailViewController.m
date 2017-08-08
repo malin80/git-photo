@@ -10,7 +10,7 @@
 #import "CameraDetailTableViewCell.h"
 #import "CameraTeamViewController.h"
 
-#import "HomePageManager.h"
+#import "CameraManager.h"
 #import "CameraTeamInfo.h"
 
 @interface CameraDetailViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -27,7 +27,7 @@
     [super viewDidLoad];
     
     [self addNotification];
-    if (GET_SINGLETON_FOR_CLASS(HomePageManager).cameraTeams.count >0) {
+    if (GET_SINGLETON_FOR_CLASS(CameraManager).cameraTeams.count >0) {
         [self createTableView];
     }
 }
@@ -55,7 +55,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return GET_SINGLETON_FOR_CLASS(HomePageManager).cameraTeams.count;
+    return GET_SINGLETON_FOR_CLASS(CameraManager).cameraTeams.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -65,7 +65,7 @@
         cell = [[CameraDetailTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
     }
     
-    CameraTeamInfo *info = [GET_SINGLETON_FOR_CLASS(HomePageManager).cameraTeams objectAtIndex:indexPath.row];
+    CameraTeamInfo *info = [GET_SINGLETON_FOR_CLASS(CameraManager).cameraTeams objectAtIndex:indexPath.row];
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,info.teamPic]];
     UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
     cell.teamImageView.image = imgFromUrl;
@@ -76,10 +76,10 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    CameraTeamInfo *info = [GET_SINGLETON_FOR_CLASS(HomePageManager).cameraTeams objectAtIndex:indexPath.row];
+    CameraTeamInfo *info = [GET_SINGLETON_FOR_CLASS(CameraManager).cameraTeams objectAtIndex:indexPath.row];
     CameraTeamViewController *controller = [[CameraTeamViewController alloc] init];
     controller.info = info;
-    [GET_SINGLETON_FOR_CLASS(HomePageManager) queryCameraManWithTeamId:info.teamId];
+    [GET_SINGLETON_FOR_CLASS(CameraManager) queryCameraManWithTeamId:info.teamId];
     [self.navigationController pushViewController:controller animated:NO];
 }
 
