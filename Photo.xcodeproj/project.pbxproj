@@ -144,6 +144,8 @@
 		F4FF8D911F394C2200E7739D /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = F4FF8D901F394C2200E7739D /* splash.png */; };
 		F4FF8D941F39501500E7739D /* CameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FF8D931F39501500E7739D /* CameraManager.m */; };
 		F4FF8D971F39506300E7739D /* CameraPesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FF8D961F39506300E7739D /* CameraPesRequest.m */; };
+		F4FF8D9A1F39645C00E7739D /* store_less.png in Resources */ = {isa = PBXBuildFile; fileRef = F4FF8D981F39645C00E7739D /* store_less.png */; };
+		F4FF8D9B1F39645C00E7739D /* store_more.png in Resources */ = {isa = PBXBuildFile; fileRef = F4FF8D991F39645C00E7739D /* store_more.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -402,6 +404,8 @@
 		F4FF8D931F39501500E7739D /* CameraManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraManager.m; sourceTree = "<group>"; };
 		F4FF8D951F39506300E7739D /* CameraPesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraPesRequest.h; sourceTree = "<group>"; };
 		F4FF8D961F39506300E7739D /* CameraPesRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraPesRequest.m; sourceTree = "<group>"; };
+		F4FF8D981F39645C00E7739D /* store_less.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = store_less.png; sourceTree = "<group>"; };
+		F4FF8D991F39645C00E7739D /* store_more.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = store_more.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -627,6 +631,8 @@
 		F41B19C51F341DE00026E483 /* Store */ = {
 			isa = PBXGroup;
 			children = (
+				F4FF8D981F39645C00E7739D /* store_less.png */,
+				F4FF8D991F39645C00E7739D /* store_more.png */,
 				F41B19C61F341DE00026E483 /* store_number_add.png */,
 				F41B19CA1F341E490026E483 /* store_number_sub.png */,
 			);
@@ -1148,6 +1154,7 @@
 				F41B19C81F341DE00026E483 /* store_number_add.png in Resources */,
 				F4A7A12F1F25A3A5009FAAEE /* tabbar_homepage_black.png in Resources */,
 				F4A7A1151F259445009FAAEE /* personal_about.png in Resources */,
+				F4FF8D9B1F39645C00E7739D /* store_more.png in Resources */,
 				F4A7A09B1F256B96009FAAEE /* Assets.xcassets in Resources */,
 				F4A7A1321F25A3A5009FAAEE /* tabbar_personal_red.png in Resources */,
 				F481E9101F283A5F00EE3D7C /* shopping_select.png in Resources */,
@@ -1172,6 +1179,7 @@
 				F48237501F27106300DDD487 /* homepage_hotel.png in Resources */,
 				F482374D1F27106300DDD487 /* homepage_car.png in Resources */,
 				F4A7A1361F25A3A5009FAAEE /* tabbar_store_red.png in Resources */,
+				F4FF8D9A1F39645C00E7739D /* store_less.png in Resources */,
 				F482374C1F27106300DDD487 /* homepage_camera.png in Resources */,
 				F481E90C1F282D1E00EE3D7C /* personal_address_selected.png in Resources */,
 				F4A7A11C1F259445009FAAEE /* personal_update.png in Resources */,

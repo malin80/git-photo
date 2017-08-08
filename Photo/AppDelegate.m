@@ -52,12 +52,6 @@
     manager.shouldResignOnTouchOutside = YES;
     manager.shouldToolbarUsesTextFieldTintColor = YES;
     manager.enableAutoToolbar = YES;
-    
-    
-    
-    
-    
-    
 }
 
 
@@ -69,13 +63,7 @@
     span.image=[UIImage imageNamed:@"splash.png"];
     [self.window addSubview:span];
     [self.window bringSubviewToFront:span];
-    [UIView animateWithDuration:1 delay:1 options:UIViewAnimationOptionCurveLinear animations:^{
-        span.frame=CGRectMake(0, -ScreenHieght, ScreenWidth, ScreenHieght);
-    } completion:^(BOOL finished){
-        [span removeFromSuperview];
-        [self createViewController];
-        [[UINavigationBar appearance] setBarTintColor:[UIColor whiteColor]];
-        
+    [UIView animateWithDuration:0.5 delay:2 options:UIViewAnimationOptionCurveLinear animations:^{
         dispatch_async(dispatch_get_main_queue(), ^{
             [GET_SINGLETON_FOR_CLASS(StoreManager) queryAllGoodsInfo];
             [GET_SINGLETON_FOR_CLASS(StoreManager) queryGoodsClassify];
@@ -85,7 +73,12 @@
                 [GET_SINGLETON_FOR_CLASS(ShoppingManager) queryShoppingGoodsInfoWithSafeCodeValue:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue];
             }
         });
-        
+
+        span.frame=CGRectMake(0, -ScreenHieght, ScreenWidth, ScreenHieght);
+    } completion:^(BOOL finished){
+        [span removeFromSuperview];
+        [self createViewController];
+        [[UINavigationBar appearance] setBarTintColor:[UIColor whiteColor]];
     }];
       return YES;  
 }

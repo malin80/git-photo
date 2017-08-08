@@ -29,4 +29,6 @@ DECLARE_SINGLETON_FOR_CLASS(StoreManager)
 //立即购买
 - (void)buyGoods;
 
+- (void)queryGoodsInfoWithGoodsType:(long)goodsType withSortName:(NSString *)sortName withSortOrder:(NSString *)sortOrder;
+
 @end

@@ -28,5 +28,9 @@
     [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"CartInfoControl/saveCartInfo.do" dic:dict finished:finished];
 }
 
++ (void)queryGoodsInfoWithGoodsType:(long)goodsType withSortName:(NSString *)sortName withSortOrder:(NSString *)sortOrder withBlock:(void(^)(NSDictionary *responseObject,NSString *error))finished {
+    NSDictionary *dict = @{@"goodstype":@(goodsType), @"sortname":sortName, @"sortorder":sortOrder};
+    [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"GoodsInfoControl/queryGoodsInfoBy.do" dic:dict finished:finished];
+}
 
 @end
