@@ -40,7 +40,7 @@
         [images addObject:imgFromUrl];
     }
     for (int i = 0; i<images.count; i++) {
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, i*60, ScreenWidth, 60)];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, i*60, ScreenWidth, 200)];
         imageView.image = images[i];
         [self.view addSubview:imageView];
     }

@@ -10,7 +10,7 @@
 
 @interface HomePageTableViewCell : UITableViewCell
 
-//@property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) UIView *scrollView;
 @property (nonatomic, strong) UILabel *colorLabel;
 @property (nonatomic, strong) UILabel *title;
 

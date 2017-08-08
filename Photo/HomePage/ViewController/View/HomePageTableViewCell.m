@@ -22,7 +22,7 @@
 }
 
 - (void)initView {
-//    [self.contentView addSubview:self.scrollView];
+    [self.contentView addSubview:self.scrollView];
     [self.contentView addSubview:self.colorLabel];
     [self.contentView addSubview:self.title];
 }
@@ -40,22 +40,21 @@
         make.left.equalTo(_colorLabel.mas_right).with.offset(10);
     }];
     
-//    [_scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.equalTo(_colorLabel);
-//        make.top.equalTo(_colorLabel.mas_bottom).with.offset(5);
-//        make.bottom.equalTo(self.contentView.mas_bottom);
-//        make.width.equalTo(@(6*ScreenWidth));
-//    }];
+    [_scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(_colorLabel);
+        make.top.equalTo(_colorLabel.mas_bottom).with.offset(5);
+        make.bottom.equalTo(self.contentView.mas_bottom);
+        make.width.equalTo(@(ScreenWidth-10));
+    }];
 }
 
 #pragma mark --- getters and setters ---
-//- (UIScrollView *)scrollView {
-//    if (!_scrollView) {
-//        _scrollView = [[UIScrollView alloc] init];
-//        _scrollView.backgroundColor = [UIColor blueColor];
-//    }
-//    return _scrollView;
-//}
+- (UIView *)scrollView {
+    if (!_scrollView) {
+        _scrollView = [[UIView alloc] init];
+    }
+    return _scrollView;
+}
 
 - (UILabel *)colorLabel {
     if (!_colorLabel) {

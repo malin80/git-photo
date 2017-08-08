@@ -19,6 +19,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(HomePageManager)
     if (self) {
         self.scrollViewImages = [NSMutableArray array];
         self.recommendImages = [NSMutableArray array];
+        self.singleRecommendImages = [NSMutableArray array];
     }
     return self;
 }
@@ -52,7 +53,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(HomePageManager)
                 info.imageName = [dict objectForKey:@"recommendSlideName"];
                 NSInteger imageId = [[dict objectForKey:@"recommendSlideId"] integerValue];
                 info.imageId = &(imageId);
-                self.singleRecommendImages = [NSMutableArray arrayWithArray:[info.imageUrl componentsSeparatedByString:@";"]];
+                NSArray *temp = [info.imageUrl componentsSeparatedByString:@";"];
+                [self.singleRecommendImages addObject:temp];
                 [self.recommendImages addObject:info];
             }
             dispatch_async(dispatch_get_main_queue(), ^{

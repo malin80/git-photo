@@ -49,7 +49,7 @@
 }
 
 - (void)createTableView {
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height) style:UITableViewStyleGrouped];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHieght - 100) style:UITableViewStyleGrouped];
     _tableView.dataSource = self;
     _tableView.delegate = self;
     _tableView.backgroundColor = [UIColor whiteColor];
@@ -72,22 +72,32 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ImageInfo *info = GET_SINGLETON_FOR_CLASS(HomePageManager).recommendImages[indexPath.section];
+    NSArray *images = GET_SINGLETON_FOR_CLASS(HomePageManager).singleRecommendImages[indexPath.section];
     NSString *cellIdentify = [NSString stringWithFormat:@"cellIdentify"];
     HomePageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
     if (!cell) {
         cell = [[HomePageTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
     }
     cell.title.text = info.imageName;
-//    NSArray *array = GET_SINGLETON_FOR_CLASS(HomePageManager).singleRecommendImages;
-//    cell.scrollView.contentSize = CGSizeMake(array.count*ScreenWidth, 140);
-//    cell.scrollView.backgroundColor = [UIColor orangeColor];
-//    for (int i = 0; i<GET_SINGLETON_FOR_CLASS(HomePageManager).singleRecommendImages.count; i++) {
-//        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i*ScreenWidth, 0, ScreenWidth, 140)];
-//        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,GET_SINGLETON_FOR_CLASS(HomePageManager).singleRecommendImages[i]]];
-//        UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
-//        imageView.image = imgFromUrl;
-//        [cell.scrollView addSubview:imageView];
-//    }
+    
+    UIScrollView *scrollView = [[UIScrollView alloc] init];
+    scrollView.frame = CGRectMake(0, 0, ScreenWidth, 140);
+    scrollView.backgroundColor = [UIColor grayColor];
+    scrollView.contentSize = CGSizeMake(images.count*ScreenWidth, 140);
+    scrollView.showsHorizontalScrollIndicator = NO;
+    scrollView.showsVerticalScrollIndicator = NO;
+    scrollView.backgroundColor = [UIColor clearColor];
+    scrollView.pagingEnabled = YES;
+    scrollView.delegate = self;
+    [cell.scrollView addSubview:scrollView];
+    
+    for (int i = 0; i < images.count; i++) {
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i*ScreenWidth, 0, ScreenWidth-20, 140)];
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,images[i]]];
+        UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
+        imageView.image = imgFromUrl;
+        [scrollView addSubview:imageView];
+    }
 
     return cell;
 }

@@ -74,7 +74,6 @@
                 [GET_SINGLETON_FOR_CLASS(ShoppingManager) queryShoppingGoodsInfoWithSafeCodeValue:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue];
             }
         });
-
         span.frame=CGRectMake(0, -ScreenHieght, ScreenWidth, ScreenHieght);
     } completion:^(BOOL finished){
         [span removeFromSuperview];
