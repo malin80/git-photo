@@ -195,7 +195,8 @@
 }
 
 - (void)gotoClearDataViewController {
-    
+    [[SDWebImageManager sharedManager].imageCache clearDisk];
+    [self showtext:@"清理成功"];
 }
 
 - (void)gotoUpdateViewController {

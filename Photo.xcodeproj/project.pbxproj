@@ -141,6 +141,7 @@
 		F4FDD6B81F2C3F86007263D4 /* personal_login.png in Resources */ = {isa = PBXBuildFile; fileRef = F4FDD6B71F2C3F86007263D4 /* personal_login.png */; };
 		F4FEB0CC1F31A64B00C2F5A3 /* StoreDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FEB0CB1F31A64B00C2F5A3 /* StoreDetailTableViewCell.m */; };
 		F4FEB0CF1F31B86500C2F5A3 /* StoreDetailSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FEB0CE1F31B86500C2F5A3 /* StoreDetailSecondViewController.m */; };
+		F4FF8D911F394C2200E7739D /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = F4FF8D901F394C2200E7739D /* splash.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -394,6 +395,7 @@
 		F4FEB0CB1F31A64B00C2F5A3 /* StoreDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreDetailTableViewCell.m; sourceTree = "<group>"; };
 		F4FEB0CD1F31B86500C2F5A3 /* StoreDetailSecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreDetailSecondViewController.h; sourceTree = "<group>"; };
 		F4FEB0CE1F31B86500C2F5A3 /* StoreDetailSecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreDetailSecondViewController.m; sourceTree = "<group>"; };
+		F4FF8D901F394C2200E7739D /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -952,6 +954,7 @@
 		F4A7A25A1F25CF3B009FAAEE /* Commom */ = {
 			isa = PBXGroup;
 			children = (
+				F4FF8D901F394C2200E7739D /* splash.png */,
 				F4A7A25D1F25D192009FAAEE /* common_back.png */,
 			);
 			path = Commom;
@@ -1163,6 +1166,7 @@
 				F481E90C1F282D1E00EE3D7C /* personal_address_selected.png in Resources */,
 				F4A7A11C1F259445009FAAEE /* personal_update.png in Resources */,
 				F40430831F29790A00DDB2E7 /* main_my_bg.jpeg in Resources */,
+				F4FF8D911F394C2200E7739D /* splash.png in Resources */,
 				F4A7A1161F259445009FAAEE /* personal_address.png in Resources */,
 				F481E9121F283B0400EE3D7C /* shopping_selected.png in Resources */,
 				F482374F1F27106300DDD487 /* homepage_flower.png in Resources */,
