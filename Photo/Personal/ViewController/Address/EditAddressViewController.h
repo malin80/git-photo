@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
+#import "AddressInfo.h"
 
 @interface EditAddressViewController : BaseViewController
+
+@property (nonatomic, strong) AddressInfo *info;
 
 @end

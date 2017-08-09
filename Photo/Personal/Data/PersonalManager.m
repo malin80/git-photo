@@ -10,6 +10,7 @@
 #import "PersonalPesRequest.h"
 #import "LoginManager.h"
 #import "CollectGoodsInfo.h"
+#import "AddressInfo.h"
 
 @implementation PersonalManager
 SYNTHESIZE_SINGLETON_FOR_CLASS(PersonalManager)
@@ -19,6 +20,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(PersonalManager)
     self = [super init];
     if (self) {
         self.collectGoodsInfos = [NSMutableArray array];
+        self.addressInfos = [NSMutableArray array];
     }
     return self;
 }
@@ -77,5 +79,83 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(PersonalManager)
         }
     }];
 }
+
+- (void)queryMemberAddressWithMemberId:(long)memberId {
+    [PersonalPesRequest queryMemberAddressWithMemberId:memberId withBlock:^(NSDictionary *response, NSString *error) {
+        if ([[response objectForKey:@"errorCode"] unsignedLongValue]== 0) {
+            if (![[response objectForKey:@"data"] isKindOfClass:[NSString class]]) {
+                [self.addressInfos removeAllObjects];
+                NSArray *array = [response objectForKey:@"data"];
+                for (NSDictionary *dict in array) {
+                    AddressInfo *info = [[AddressInfo alloc] init];
+                    info.status = [[dict objectForKey:@"deliveryStatus"] unsignedLongValue];
+                    info.name = [dict objectForKey:@"deliveryName"];
+                    info.address = [dict objectForKey:@"deliveryAddress"];
+                    info.addressId = [[dict objectForKey:@"deliveryId"] unsignedLongValue];
+                    info.phone = [dict objectForKey:@"deliveryPhone"];
+                    [self.addressInfos addObject:info];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [[NSNotificationCenter defaultCenter] postNotificationName:@"queryMemberAddressSuccess" object:nil];
+                    });
+                }
+            } else {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"queryMemberAddressWithNoAddress" object:nil];
+                });
+            }
+        }
+    }];
+}
+
+- (void)addMemberAddressWithName:(NSString *)name withPhone:(NSString *)phone withAddress:(NSString *)address withStatus:(long)status withMemberId:(long)memberId {
+    [PersonalPesRequest addMemberAddressWithName:name withPhone:phone withAddress:address withStatus:status withMemberId:memberId withBlock:^(NSDictionary *response, NSString *error) {
+        if ([[response objectForKey:@"errorCode"] unsignedLongValue]== 0) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"addMemberAddressSuccess" object:nil];
+            });
+        }
+    }];
+}
+
+- (void)updateMemberAddressWithName:(NSString *)name withPhone:(NSString *)phone withAddress:(NSString *)address withStatus:(long)status withAddressId:(long)addressId {
+    [PersonalPesRequest updateMemberAddressWithName:name withPhone:phone withAddress:address withStatus:status withAddressId:addressId withBlock:^(NSDictionary *response, NSString *error) {
+        if ([[response objectForKey:@"errorCode"] unsignedLongValue]== 0) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"updateMemberAddressSuccess" object:nil];
+            });
+        }
+    }];
+}
+
+- (void)deleteMemberAddressWithAddressId:(long)addressId {
+    [PersonalPesRequest deleteMembetAddressWithAddressId:addressId withBlock:^(NSDictionary *response, NSString *error) {
+        if ([[response objectForKey:@"errorCode"] unsignedLongValue]== 0) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"deleteMemberAddressSuccess" object:nil];
+            });
+        }
+    }];
+}
+
+- (void)makeAddressDefaultWithAddressId:(long)addressId {
+    [PersonalPesRequest makeAddressDefaultWithAddressId:addressId withBlock:^(NSDictionary *response, NSString *error) {
+        if ([[response objectForKey:@"errorCode"] unsignedLongValue]== 0) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"makeAddressDefaultSuccess" object:nil];
+            });
+        }
+    }];
+}
+
+- (void)cancelAddressDefaultWithAddressId:(long)addressId {
+    [PersonalPesRequest cancelAddressDefaultWithAddressId:addressId withBlock:^(NSDictionary *response, NSString *error) {
+        if ([[response objectForKey:@"errorCode"] unsignedLongValue]== 0) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"cancelAddressDefaultSuccess" object:nil];
+            });
+        }
+    }];
+}
+
 
 @end

@@ -13,12 +13,20 @@
 //MemberControl/updateMemberDetail.do(nickName,memberName,memberSex,memberMarry,memberBirthday,token)
 + (void)updateMemberInfoWithNickName:(NSString *)nickName withMemberName:(NSString *)memberName withMemberSex:(NSString *)memberSex withMemberMarry:(NSString *)memberMarry withMemberBirthday:(NSString *)memberBirthday withToken:(NSString *)token withBlock:(void (^)(NSDictionary *response, NSString *error))finished;
 
-//	MemberControl/updateMemberPwd.do(token,oldCode,newCode,updateType)
-//--updateType  0:根据原密码修改  1:根据验证码修改
-//--oldCode  updateType=0时为原密码  updateType=1时为验证码
-//--newCode  新密码
 + (void)updatePasswordWithToke:(NSString *)token withOldCode:(NSString *)oldCode withNewCode:(NSString *)newCode wihhUpdateType:(int)type withBlock:(void (^)(NSDictionary *response, NSString *error))finished;
 
 + (void)queryCollectGoodsInfoWithMemberId:(long)memberId withBlock:(void (^)(NSDictionary *response, NSString *error))finished;
+
++ (void)queryMemberAddressWithMemberId:(long)memberId withBlock:(void (^)(NSDictionary *response, NSString *error))finished;
+
++ (void)addMemberAddressWithName:(NSString *)name withPhone:(NSString *)phone withAddress:(NSString *)address withStatus:(long)status withMemberId:(long)memberId withBlock:(void (^)(NSDictionary *response, NSString *error))finished;
+
++ (void)updateMemberAddressWithName:(NSString *)name withPhone:(NSString *)phone withAddress:(NSString *)address withStatus:(long)status withAddressId:(long)addressId withBlock:(void (^)(NSDictionary *response, NSString *error))finished;
+
++ (void)deleteMembetAddressWithAddressId:(long)addressId withBlock:(void (^)(NSDictionary *response, NSString *error))finished;
+
++ (void)makeAddressDefaultWithAddressId:(long)addressId withBlock:(void (^)(NSDictionary *response, NSString *error))finished;
+
++ (void)cancelAddressDefaultWithAddressId:(long)addressId withBlock:(void (^)(NSDictionary *response, NSString *error))finished;
 
 @end

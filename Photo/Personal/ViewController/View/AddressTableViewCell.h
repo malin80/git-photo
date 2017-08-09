@@ -11,7 +11,10 @@
 @protocol AddressTableViewCellDelegate <NSObject>
 
 @optional
-- (void)editAddress;
+- (void)editAddressWithAddressName:(NSString *)name;
+- (void)deleteAddressWithAddressName:(NSString *)name;
+- (void)makeAddressDefaultWithAddressName:(NSString *)name;
+- (void)cancelAddressDefaultWithAddressName:(NSString *)name;
 
 @end
 
@@ -32,7 +35,5 @@
 @property (nonatomic, strong) UIView *seperateView;
 
 @property(nonatomic, weak)  id<AddressTableViewCellDelegate> delegate;
-
-- (void)changeSelectViewIconState;
 
 @end

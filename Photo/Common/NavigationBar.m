@@ -102,8 +102,8 @@
 - (UIButton *)rightButton {
     if (!_rightButton) {
         _rightButton = [[UIButton alloc] init];
-        _rightButton.backgroundColor = [UIColor redColor];
-        _rightButton.titleLabel.font = [UIFont systemFontOfSize:12];
+        _rightButton.titleLabel.font = [UIFont systemFontOfSize:14];
+        [_rightButton setTitleColor:[UIColor colorR:43 G:43 B:43 alpha:1] forState:UIControlStateNormal];
         [_rightButton addTarget:self action:@selector(completeClick) forControlEvents:UIControlEventTouchUpInside];
     }
     return _rightButton;

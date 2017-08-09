@@ -12,6 +12,10 @@
 
 #import "NavigationBar.h"
 #import "AddressTableViewCell.h"
+#import "PersonalManager.h"
+#import "LoginManager.h"
+#import "Masonry.h"
+#import "AddressInfo.h"
 
 @interface AddressViewController () <UITableViewDelegate, UITableViewDataSource, NavigationBarDelegate, AddressTableViewCellDelegate>
 
@@ -23,12 +27,80 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [GET_SINGLETON_FOR_CLASS(PersonalManager) queryMemberAddressWithMemberId:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.memberId];
 
-    NavigationBar *bar = [[NavigationBar alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 64) withTitle:@"管理收货地址"];
+    NavigationBar *bar = [[NavigationBar alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 64) withTitle:@"管理收货地址"];
     bar.delegate = self;
     [self.view addSubview:bar];
     
-    [self createTableView];
+    [self addNotifiCation];
+}
+
+- (void)addNotifiCation {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryMemberAddressWithNoAddress) name:@"queryMemberAddressWithNoAddress" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addMemberAddressSuccess) name:@"addMemberAddressSuccess" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addMemberAddressSuccess) name:@"updateMemberAddressSuccess" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryMemberAddressSuccess) name:@"queryMemberAddressSuccess" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteMemberAddressSuccess) name:@"deleteMemberAddressSuccess" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(makeAddressDefaultSuccess) name:@"makeAddressDefaultSuccess" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cancelAddressDefaultSuccess) name:@"cancelAddressDefaultSuccess" object:nil];
+}
+
+- (void)queryMemberAddressSuccess {
+    if (!_tableView) {
+        [self createTableView];
+    } else {
+        [_tableView reloadData];
+    }
+    [self createBottomButton];
+}
+
+- (void)queryMemberAddressWithNoAddress {
+    [self createNoAddressView];
+}
+
+- (void)addMemberAddressSuccess {
+    [GET_SINGLETON_FOR_CLASS(PersonalManager) queryMemberAddressWithMemberId:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.memberId];
+}
+
+- (void)updateMemberAddressSuccess {
+    [GET_SINGLETON_FOR_CLASS(PersonalManager) queryMemberAddressWithMemberId:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.memberId];
+}
+
+- (void)deleteMemberAddressSuccess {
+    [GET_SINGLETON_FOR_CLASS(PersonalManager) queryMemberAddressWithMemberId:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.memberId];
+}
+
+- (void)makeAddressDefaultSuccess {
+    [GET_SINGLETON_FOR_CLASS(PersonalManager) queryMemberAddressWithMemberId:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.memberId];
+}
+
+- (void)cancelAddressDefaultSuccess {
+    [GET_SINGLETON_FOR_CLASS(PersonalManager) queryMemberAddressWithMemberId:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.memberId];
+}
+
+- (void)createNoAddressView {
+    UIImageView *imageView = [[UIImageView alloc] init];
+    imageView.image = [UIImage imageNamed:@"personal_no_address"];
+    [self.view addSubview:imageView];
+    [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(self.view);
+        make.width.equalTo(@(60));
+        make.height.equalTo(@(80));
+    }];
+    
+    UILabel *label = [[UILabel alloc] init];
+    label.text = @"还没有收货地址哦";
+    label.font = [UIFont systemFontOfSize:16];
+    [label sizeToFit];
+    [self.view addSubview:label];
+    [label mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view);
+        make.top.equalTo(imageView.mas_bottom).with.offset(5);
+    }];
+    
     [self createBottomButton];
 }
 
@@ -57,10 +129,11 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 7;
+    return GET_SINGLETON_FOR_CLASS(PersonalManager).addressInfos.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    AddressInfo *info = GET_SINGLETON_FOR_CLASS(PersonalManager).addressInfos[indexPath.row];
     NSString *cellIdentify = [NSString stringWithFormat:@"cellIdentify"];
     AddressTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
     if (!cell) {
@@ -68,24 +141,33 @@
     }
     cell.delegate = self;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.nameLabel.text = info.name;
+    cell.phoneLabel.text = info.phone;
+    cell.addressLabel.text = info.address;
+    cell.selectedView.selected = info.status;
+    if (cell.selectedView.selected == 0) {
+        cell.normalAddressLabel.text = @"设为默认";
+    } else {
+        cell.normalAddressLabel.text = @"取消默认";
+    }
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    //之前选中的cell
-    AddressTableViewCell *lastCell = [tableView viewWithTag:1];
-    lastCell.tag = 0;
-    lastCell.normalAddressLabel.text = @"设为默认";
-    lastCell.selectedView.selected = NO;
-    //目前选中的cell
-    AddressTableViewCell *nowCell = [tableView cellForRowAtIndexPath:indexPath];
-    nowCell.tag = 1;
-    nowCell.normalAddressLabel.text = @"默认地址";
-    nowCell.selectedView.selected = YES;
+//    //之前选中的cell
+//    AddressTableViewCell *lastCell = [tableView viewWithTag:1];
+//    lastCell.tag = 0;
+//    lastCell.normalAddressLabel.text = @"设为默认";
+//    lastCell.selectedView.selected = NO;
+//    //目前选中的cell
+//    AddressTableViewCell *nowCell = [tableView cellForRowAtIndexPath:indexPath];
+//    nowCell.tag = 1;
+//    nowCell.normalAddressLabel.text = @"默认地址";
+//    nowCell.selectedView.selected = YES;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 120;
+    return 110;
 }
 
 #pragma mark --- NavigationBarDelegate ---
@@ -94,9 +176,38 @@
 }
 
 #pragma mark --- AddressTableViewCellDelegate ---
-- (void)editAddress {
-    EditAddressViewController *controller = [[EditAddressViewController alloc] init];
-    [self.navigationController pushViewController:controller animated:NO];
+- (void)editAddressWithAddressName:(NSString *)name {
+    for (AddressInfo *info in GET_SINGLETON_FOR_CLASS(PersonalManager).addressInfos) {
+        if ([info.name isEqualToString:name]) {
+            EditAddressViewController *controller = [[EditAddressViewController alloc] init];
+            controller.info = info;
+            [self.navigationController pushViewController:controller animated:NO];
+        }
+    }
+}
+
+- (void)deleteAddressWithAddressName:(NSString *)name {
+    for (AddressInfo *info in GET_SINGLETON_FOR_CLASS(PersonalManager).addressInfos) {
+        if ([info.name isEqualToString:name]) {
+            [GET_SINGLETON_FOR_CLASS(PersonalManager) deleteMemberAddressWithAddressId:info.addressId];
+        }
+    }
+}
+
+- (void)makeAddressDefaultWithAddressName:(NSString *)name {
+    for (AddressInfo *info in GET_SINGLETON_FOR_CLASS(PersonalManager).addressInfos) {
+        if ([info.name isEqualToString:name]) {
+            [GET_SINGLETON_FOR_CLASS(PersonalManager) makeAddressDefaultWithAddressId:info.addressId];
+        }
+    }
+}
+
+- (void)cancelAddressDefaultWithAddressName:(NSString *)name {
+    for (AddressInfo *info in GET_SINGLETON_FOR_CLASS(PersonalManager).addressInfos) {
+        if ([info.name isEqualToString:name]) {
+            [GET_SINGLETON_FOR_CLASS(PersonalManager) cancelAddressDefaultWithAddressId:info.addressId];
+        }
+    }
 }
 
 - (void)gotoAddAddress {

@@ -30,10 +30,44 @@
     [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"MemberControl/updateMemberPwd.do" dic:dict finished:finished];
 }
 
-
 + (void)queryCollectGoodsInfoWithMemberId:(long)memberId withBlock:(void (^)(NSDictionary *response, NSString *error))finished {
     NSDictionary *dict = @{@"memberId":@(memberId)};
     [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"CollectionInfoControl/queryCollectionInfo.do" dic:dict finished:finished];
+}
+
++ (void)queryMemberAddressWithMemberId:(long)memberId withBlock:(void (^)(NSDictionary *, NSString *))finished {
+    NSDictionary *dict = @{@"memberId":@(memberId)};
+    [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"DeliveryControl/queryDelivery.do" dic:dict finished:finished];
+}
+
++ (void)addMemberAddressWithName:(NSString *)name
+                       withPhone:(NSString *)phone
+                     withAddress:(NSString *)address
+                      withStatus:(long)status
+                    withMemberId:(long)memberId
+                       withBlock:(void (^)(NSDictionary *response, NSString *error))finished {
+    NSDictionary *dict = @{@"deliveryName":name, @"deliveryAddress":address, @"deliveryPhone":phone, @"deliveryStatus":@(status), @"memberId":@(memberId)};
+    [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"DeliveryControl/saveDelivery.do" dic:dict finished:finished];
+}
+
++ (void)updateMemberAddressWithName:(NSString *)name withPhone:(NSString *)phone withAddress:(NSString *)address withStatus:(long)status withAddressId:(long)addressId withBlock:(void (^)(NSDictionary *response, NSString *error))finished {
+    NSDictionary *dict = @{@"deliveryName":name, @"deliveryAddress":address, @"deliveryPhone":phone, @"deliveryStatus":@(status), @"deliveryId":@(addressId)};
+    [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"DeliveryControl/updateDelivery.do" dic:dict finished:finished];
+}
+
++ (void)deleteMembetAddressWithAddressId:(long)addressId withBlock:(void (^)(NSDictionary *, NSString *))finished {
+    NSDictionary *dict = @{@"deliveryId":@(addressId)};
+    [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"DeliveryControl/deleteDelivery.do" dic:dict finished:finished];
+}
+
++ (void)makeAddressDefaultWithAddressId:(long)addressId withBlock:(void (^)(NSDictionary *, NSString *))finished {
+    NSDictionary *dict = @{@"deliveryId":@(addressId)};
+    [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"DeliveryControl/updateDeliveryStatus.do" dic:dict finished:finished];
+}
+
++ (void)cancelAddressDefaultWithAddressId:(long)addressId withBlock:(void (^)(NSDictionary *, NSString *))finished {
+    NSDictionary *dict = @{@"deliveryId":@(addressId)};
+    [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"DeliveryControl/cancleDeliveryStatus.do" dic:dict finished:finished];
 }
 
 @end
