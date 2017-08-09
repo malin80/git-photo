@@ -27,6 +27,7 @@
     [self addSubview:self.avatarView];
     [self addSubview:self.userNameLabel];
     [self addSubview:self.phoneNunberLabel];
+    [self addSubview:self.arrowView];
 }
 
 - (void)setImmutableConstraints {
@@ -36,18 +37,26 @@
     
     [_avatarView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self);
-        make.left.equalTo(self.mas_left).with.offset(15);
-        make.width.equalTo(@(54));
-        make.height.equalTo(@(54));
+        make.left.equalTo(self.mas_left).with.offset(18);
+        make.width.equalTo(@(68));
+        make.height.equalTo(@(68));
     }];
     
     [_userNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.equalTo(self);
+        make.left.equalTo(_avatarView.mas_right).with.offset(14);
+        make.centerY.equalTo(self).with.offset(-15);
     }];
     
     [_phoneNunberLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_userNameLabel.mas_bottom).with.offset(20);
+        make.top.equalTo(_userNameLabel.mas_bottom).with.offset(6);
         make.left.equalTo(_userNameLabel.mas_left);
+    }];
+    
+    [_arrowView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self);
+        make.right.equalTo(self.mas_right).with.offset(-20);
+        make.height.equalTo(@(15));
+        make.width.equalTo(@(15));
     }];
 }
 
@@ -67,7 +76,7 @@
         UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
         _avatarView.image = imgFromUrl;
         _avatarView.layer.masksToBounds = YES;
-        _avatarView.layer.cornerRadius = 54/2;
+        _avatarView.layer.cornerRadius = 68/2;
     }
     return _avatarView;
 }
@@ -90,6 +99,14 @@
         [_phoneNunberLabel sizeToFit];
     }
     return _phoneNunberLabel;
+}
+
+- (UIImageView *)arrowView {
+    if (!_arrowView) {
+        _arrowView = [[UIImageView alloc] init];
+        _arrowView.image = [UIImage imageNamed:@"personal_forward"];
+    }
+    return _arrowView;
 }
 
 @end

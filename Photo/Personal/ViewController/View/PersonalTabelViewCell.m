@@ -44,8 +44,8 @@
     [_arrow mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.contentView.mas_right).with.offset(-15);
         make.centerY.equalTo(self.contentView);
-        make.width.equalTo(@(20));
-        make.height.equalTo(@(20));
+        make.width.equalTo(@(15));
+        make.height.equalTo(@(15));
     }];
 }
 
@@ -60,6 +60,8 @@
 - (UILabel *)titleLabel {
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc] init];
+        _titleLabel.font = [UIFont systemFontOfSize:12];
+        _titleLabel.textColor = [UIColor colorR:73 G:73 B:73 alpha:1];
     }
     return _titleLabel;
 }

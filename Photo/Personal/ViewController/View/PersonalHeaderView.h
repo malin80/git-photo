@@ -16,6 +16,7 @@
 @property (nonatomic ,strong) AvatarView *avatarView;
 @property (nonatomic, strong) UILabel *userNameLabel;
 @property (nonatomic, strong) UILabel *phoneNunberLabel;
+@property (nonatomic, strong) UIImageView *arrowView;
 
 @property (nonatomic, strong) MemberInfo *info;
 

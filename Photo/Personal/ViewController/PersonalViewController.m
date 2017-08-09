@@ -74,25 +74,25 @@
     
     // 订单
     _orderEntryItem = [EntryItem iconName:@"personal_order"
-                                      title:@"订单"
+                                      title:@"订  单"
                                    selector:@selector(gotoOrderViewController)];
     [_section.items addObject:_orderEntryItem];
     
     //分享
     _shareEntryItem = [EntryItem iconName:@"personal_shareapp"
-                                    title:@"分享"
+                                    title:@"分  享"
                                  selector:@selector(gotoShareViewController)];
     [_section.items addObject:_shareEntryItem];
     
     //关于
     _aboutEntryItem = [EntryItem iconName:@"personal_about"
-                                    title:@"关于"
+                                    title:@"关  于"
                                  selector:@selector(gotoAboutViewController)];
     [_section.items addObject:_aboutEntryItem];
 
     // 收藏
     _collectEntryItem = [EntryItem iconName:@"personal_shoucang"
-                                    title:@"收藏"
+                                    title:@"收  藏"
                                  selector:@selector(gotoCollectViewController)];
     [_section.items addObject:_collectEntryItem];
 
