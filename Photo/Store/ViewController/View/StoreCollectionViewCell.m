@@ -26,6 +26,7 @@
     [self.contentView addSubview:self.imageView];
     [self.contentView addSubview:self.goodsName];
     [self.contentView addSubview:self.goodsPrice];
+    [self.contentView addSubview:self.line];
 }
 
 - (void)setImmutableConstraints{
@@ -44,13 +45,19 @@
         make.centerX.equalTo(self.contentView);
         make.top.equalTo(_goodsName.mas_bottom).with.offset(5);
     }];
+    
+    [_line mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_goodsPrice.mas_bottom).with.offset(5);
+        make.width.equalTo(_imageView);
+        make.height.equalTo(@(0.5));
+        make.left.equalTo(_imageView.mas_left);
+    }];
 }
 
 #pragma mark --- getters and setters ---
 - (UIImageView *)imageView {
     if (!_imageView) {
         _imageView = [[UIImageView alloc] init];
-        _imageView.backgroundColor = [UIColor orangeColor];
     }
     return _imageView;
 }
@@ -58,7 +65,8 @@
 - (UILabel *)goodsName {
     if (!_goodsName) {
         _goodsName = [[UILabel alloc] init];
-        _goodsName.backgroundColor = [UIColor blueColor];
+        _goodsName.textColor = [UIColor colorR:76 G:77 B:79 alpha:1];
+        _goodsName.font = [UIFont systemFontOfSize:14];
         [_goodsName sizeToFit];
     }
     return _goodsName;
@@ -67,10 +75,19 @@
 - (UILabel *)goodsPrice {
     if (!_goodsPrice) {
         _goodsPrice = [[UILabel alloc] init];
-        _goodsPrice.backgroundColor = [UIColor greenFont];
+        _goodsPrice.textColor = [UIColor colorR:255 G:122 B:1 alpha:1];
+        _goodsPrice.font = [UIFont systemFontOfSize:14];
         [_goodsPrice sizeToFit];
     }
     return _goodsPrice;
+}
+
+- (UILabel *)line {
+    if (!_line) {
+        _line = [[UILabel alloc] init];
+        _line.backgroundColor = [UIColor darkGrayColor];
+    }
+    return _line;
 }
 
 @end

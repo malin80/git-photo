@@ -102,10 +102,19 @@
     
     UIButton *reloadBtn = [[UIButton alloc] initWithFrame:CGRectMake((ScreenWidth/3)*2, 0, ScreenWidth/3, 30)];
     [reloadBtn setTitle:@"重置参数" forState:UIControlStateNormal];
+    reloadBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     reloadBtn.backgroundColor = [UIColor whiteColor];
     [reloadBtn setTitleColor:[UIColor colorR:83 G:87 B:85 alpha:1] forState:UIControlStateNormal];
     [reloadBtn addTarget:self action:@selector(clickReloadBtn) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:reloadBtn];
+    
+    UILabel *line1 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 0.5)];
+    line1.backgroundColor = [UIColor darkGrayColor];
+    [self.view addSubview:line1];
+    
+    UILabel *line2 = [[UILabel alloc] initWithFrame:CGRectMake(0, 30, ScreenWidth, 0.5)];
+    line2.backgroundColor = [UIColor darkGrayColor];
+    [self.view addSubview:line2];
 }
 
 - (void)clickClassifyBtn {
@@ -382,6 +391,7 @@
         _classifyLabel.text = @"商品分类";
         [_classifyLabel sizeToFit];
         _classifyLabel.textColor = [UIColor colorR:83 G:87 B:85 alpha:1];
+        _classifyLabel.font = [UIFont systemFontOfSize:14];
     }
     return _classifyLabel;
 }
@@ -401,6 +411,7 @@
         _sortLabel.text = @"产品销量";
         [_sortLabel sizeToFit];
         _sortLabel.textColor = [UIColor colorR:83 G:87 B:85 alpha:1];
+        _sortLabel.font = [UIFont systemFontOfSize:14];
     }
     return _sortLabel;
 }

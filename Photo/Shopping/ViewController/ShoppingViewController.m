@@ -63,6 +63,7 @@
 - (void)queryShoppingGoodsInfoWithNoData {
     if (_tableView) {
         [_tableView removeFromSuperview];
+        [_bottomView removeFromSuperview];
     }
     [self createNoGoodsView];
 }
