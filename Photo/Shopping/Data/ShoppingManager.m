@@ -28,6 +28,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ShoppingManager)
         if ([[responseObject objectForKey:@"errorCode"] unsignedLongValue]== 0) {
             if (![[responseObject objectForKey:@"data"] isKindOfClass:[NSString class]]) {
                 NSArray *array = [responseObject objectForKey:@"data"];
+                [self.shoppingGoodsInfos removeAllObjects];
                 for (NSDictionary *dict in array) {
                     ShoppingGoodsInfo *info = [[ShoppingGoodsInfo alloc] init];
                     info.goodsCartId = [[dict objectForKey:@"cartId"] unsignedLongValue];
@@ -46,6 +47,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ShoppingManager)
                     info.goodsParamValue = temp[1];
                     [self.shoppingGoodsInfos addObject:info];
                 }
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"queryShoppingGoodsInfoSuccess" object:nil];
+                });
             }
         }
     }];

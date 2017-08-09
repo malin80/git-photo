@@ -76,7 +76,8 @@
     if (!_selectAll) {
         _selectAll = [[UILabel alloc] init];
         _selectAll.text = @"全选";
-        _selectAll.textColor = [UIColor colorWithRed:40/255.0 green:44/255.0 blue:42/255.0 alpha:1.0];
+        _selectAll.textColor = [UIColor colorR:65 G:67 B:66 alpha:1];
+        _selectAll.font = [UIFont systemFontOfSize:15];
         [_selectAll sizeToFit];
     }
     return _selectAll;
@@ -86,7 +87,8 @@
     if (!_total) {
         _total = [[UILabel alloc] init];
         _total.text = @"合计";
-        _total.textColor = [UIColor colorWithRed:40/255.0 green:44/255.0 blue:42/255.0 alpha:1.0];
+        _total.textColor = [UIColor colorR:65 G:67 B:66 alpha:1];
+        _total.font = [UIFont systemFontOfSize:15];
         [_total sizeToFit];
     }
     return _total;
@@ -97,6 +99,7 @@
         _price = [[UILabel alloc] init];
         _price.text = [NSString stringWithFormat:@"¥：%ld",self.info.goodsCartPrice];
         _price.textColor = [UIColor colorWithRed:246/255.0 green:118/255.0 blue:2/255.0 alpha:1.0];
+        _price.font = [UIFont systemFontOfSize:15];
         [_price sizeToFit];
     }
     return _price;

@@ -27,6 +27,7 @@
 @property (nonatomic, strong) UIView *deleteBackView;
 @property (nonatomic, strong) UIImageView *deleteView;
 @property (nonatomic, strong) UILabel *deleteLabel;
+@property (nonatomic, strong) UILabel *line;
 
 - (void)changeSelectViewIconState;
 

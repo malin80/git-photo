@@ -30,6 +30,7 @@
     [self.contentView addSubview:self.deleteBackView];
     [self.deleteBackView addSubview:self.deleteView];
     [self.deleteBackView addSubview:self.deleteLabel];
+    [self.contentView addSubview:self.line];
 }
 
 - (void)setImmutableConstraints {
@@ -43,12 +44,12 @@
     [_goodsImage mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.contentView);
         make.left.equalTo(_selectedView.mas_right).with.offset(10);
-        make.height.equalTo(@(80));
-        make.width.equalTo(@(80));
+        make.height.equalTo(@(90));
+        make.width.equalTo(@(90));
     }];
     
     [_goodsName mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_goodsImage.mas_top).with.offset(-5);
+        make.top.equalTo(_goodsImage.mas_top).with.offset(5);
         make.left.equalTo(_goodsImage.mas_right).with.offset(10);
     }];
     
@@ -68,9 +69,9 @@
     }];
     
     [_deleteBackView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_goodsPrice);
+        make.top.equalTo(_goodsPrice).with.offset(4);
         make.right.equalTo(self.contentView.mas_right).with.offset(-15);
-        make.height.equalTo(@(30));
+        make.height.equalTo(@(20));
         make.width.equalTo(@(80));
     }];
     
@@ -84,6 +85,13 @@
     [_deleteLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(_deleteBackView.mas_right).with.offset(-10);
         make.centerY.equalTo(_deleteBackView);
+    }];
+    
+    [_line mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.contentView.mas_bottom);
+        make.width.equalTo(@(ScreenWidth));
+        make.height.equalTo(@(1));
+        make.left.equalTo(self.contentView.mas_left);
     }];
 }
 
@@ -172,6 +180,14 @@
         [_deleteLabel sizeToFit];
     }
     return _deleteLabel;
+}
+
+- (UILabel *)line {
+    if (!_line) {
+        _line = [[UILabel alloc] init];
+        _line.backgroundColor = [UIColor colorR:242 G:242 B:242 alpha:1];
+    }
+    return _line;
 }
 
 #pragma mark --- gestuer ---
