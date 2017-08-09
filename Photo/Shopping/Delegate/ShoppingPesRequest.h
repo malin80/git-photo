@@ -13,4 +13,6 @@
 
 + (void)queryShoppingGoodsInfoWithSafeCodeValue:(NSString *)safeCodeValue withBlock:(void(^)(NSDictionary *responseObject,NSString *error))finished;
 
++ (void)deleteShoppingGoodsInfoWithCartId:(long)cartId withToken:(NSString *)token withBlock:(void(^)(NSDictionary *responseObject,NSString *error))finished;
+
 @end

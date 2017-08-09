@@ -158,6 +158,8 @@
 - (UIView *)deleteBackView {
     if (!_deleteBackView) {
         _deleteBackView = [[UIView alloc] init];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(deleteGoodsInfo)];
+        [_deleteBackView addGestureRecognizer:tap];
     }
     return _deleteBackView;
 }
@@ -205,6 +207,12 @@
             _selectedView.selected = YES;
             [self.delegate selectGoodsInfo];
         }
+    }
+}
+
+- (void)deleteGoodsInfo {
+    if ([self.delegate respondsToSelector:@selector(deleteGoodsInfo)]) {
+        [self.delegate deleteGoodsInfo];
     }
 }
 

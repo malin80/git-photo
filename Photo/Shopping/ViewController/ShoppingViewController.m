@@ -11,6 +11,8 @@
 #import "ShoppingBottomView.h"
 #import "ShoppingGoodsInfo.h"
 #import "ShoppingManager.h"
+#import "Masonry.h"
+#import "LoginManager.h"
 
 @interface ShoppingViewController () <UITableViewDelegate, UITableViewDataSource, ShoppingTableViewCellDelegate, ShoppingBottomViewDelegate>
 {
@@ -29,21 +31,61 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if (GET_SINGLETON_FOR_CLASS(ShoppingManager).shoppingGoodsInfos.count > 0) {
-        [self createTableView];
-        [self createBottomView];
-    }
+
     [self addNotification];
     _selectedArray = [NSMutableArray array];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [GET_SINGLETON_FOR_CLASS(ShoppingManager) queryShoppingGoodsInfoWithSafeCodeValue:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue];
 }
 
 - (void)addNotification {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryShoppingGoodsInfoSuccess) name:@"queryShoppingGoodsInfoSuccess" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteShoppingGoodsInfoSuccess) name:@"deleteShoppingGoodsInfoSuccess" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryShoppingGoodsInfoWithNoData) name:@"queryShoppingGoodsInfoWithNoData" object:nil];
 }
 
 - (void)queryShoppingGoodsInfoSuccess {
-    [_tableView reloadData];
+    if (!_tableView) {
+        [self createTableView];
+        [self createBottomView];
+    } else {
+        [_tableView reloadData];
+    }
+}
+
+- (void)deleteShoppingGoodsInfoSuccess {
+    [GET_SINGLETON_FOR_CLASS(ShoppingManager) queryShoppingGoodsInfoWithSafeCodeValue:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue];
+}
+
+- (void)queryShoppingGoodsInfoWithNoData {
+    if (_tableView) {
+        [_tableView removeFromSuperview];
+    }
+    [self createNoGoodsView];
+}
+
+- (void)createNoGoodsView {
+    UIImageView *imageView = [[UIImageView alloc] init];
+    imageView.image = [UIImage imageNamed:@"shopping_no_goods"];
+    [self.view addSubview:imageView];
+    [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(self.view);
+        make.width.equalTo(@(60));
+        make.height.equalTo(@(80));
+    }];
+    
+    UILabel *label = [[UILabel alloc] init];
+    label.text = @"购物车没有商品，去逛逛";
+    label.font = [UIFont systemFontOfSize:16];
+    [label sizeToFit];
+    [self.view addSubview:label];
+    [label mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view);
+        make.top.equalTo(imageView.mas_bottom).with.offset(5);
+    }];
 }
 
 - (void)createBottomView {
@@ -114,6 +156,11 @@
     if (_selectedArray.count != GET_SINGLETON_FOR_CLASS(ShoppingManager).shoppingGoodsInfos.count) {
         [_bottomView changeSelectViewIconWithSelected:YES];
     }
+}
+
+- (void)deleteGoodsInfo {
+    ShoppingGoodsInfo *info = [GET_SINGLETON_FOR_CLASS(ShoppingManager).shoppingGoodsInfos objectAtIndex:_index];
+    [GET_SINGLETON_FOR_CLASS(ShoppingManager) deleteShoppingGoodsInfoWithCartId:info.goodsCartId withToken:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue];
 }
 
 #pragma mark --- ShoppingTableViewCellDelegate --- 

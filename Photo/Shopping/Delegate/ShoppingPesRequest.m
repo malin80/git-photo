@@ -15,4 +15,9 @@
     [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"CartInfoControl/queryCartInfo.do" dic:dict finished:finished];
 }
 
++ (void)deleteShoppingGoodsInfoWithCartId:(long)cartId withToken:(NSString *)token withBlock:(void(^)(NSDictionary *responseObject,NSString *error))finished {
+    NSDictionary *dict = @{@"cartId":@(cartId), @"token":token};
+    [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"CartInfoControl/deleteCartInfo.do" dic:dict finished:finished];
+}
+
 @end

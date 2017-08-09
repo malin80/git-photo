@@ -81,7 +81,6 @@
         make.centerX.equalTo(self.view);
         make.top.equalTo(imageView.mas_bottom).with.offset(5);
     }];
-    
 }
 
 - (void)createTableView {

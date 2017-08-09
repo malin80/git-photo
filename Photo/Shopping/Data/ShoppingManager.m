@@ -50,9 +50,22 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ShoppingManager)
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"queryShoppingGoodsInfoSuccess" object:nil];
                 });
+            } else {
+                //空了
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"queryShoppingGoodsInfoWithNoData" object:nil];
+                });
             }
         }
     }];
+}
+
+- (void)deleteShoppingGoodsInfoWithCartId:(long)cartId withToken:(NSString *)token {
+   [ShoppingPesRequest deleteShoppingGoodsInfoWithCartId:cartId withToken:token withBlock:^(NSDictionary *responseObject, NSString *error) {
+           dispatch_async(dispatch_get_main_queue(), ^{
+               [[NSNotificationCenter defaultCenter] postNotificationName:@"deleteShoppingGoodsInfoSuccess" object:nil];
+           });
+   }];
 }
 
 @end

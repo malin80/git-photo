@@ -16,4 +16,6 @@ DECLARE_SINGLETON_FOR_CLASS(ShoppingManager)
 
 - (void)queryShoppingGoodsInfoWithSafeCodeValue:(NSString *)value;
 
+- (void)deleteShoppingGoodsInfoWithCartId:(long)cartId withToken:(NSString *)token;
+
 @end

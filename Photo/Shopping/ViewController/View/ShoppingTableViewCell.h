@@ -13,6 +13,7 @@
 @optional
 - (void)selectGoodsInfo;
 - (void)selectedGoodsInfo;
+- (void)deleteGoodsInfo;
 
 @end
 
