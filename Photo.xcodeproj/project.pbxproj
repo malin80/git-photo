@@ -118,6 +118,7 @@
 		F4C618621F3AB89C004A76B3 /* AddressInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C618611F3AB89C004A76B3 /* AddressInfo.m */; };
 		F4C618641F3AE2B7004A76B3 /* shopping_no_collection.png in Resources */ = {isa = PBXBuildFile; fileRef = F4C618631F3AE2B7004A76B3 /* shopping_no_collection.png */; };
 		F4C618661F3AE64D004A76B3 /* shopping_no_goods.png in Resources */ = {isa = PBXBuildFile; fileRef = F4C618651F3AE64D004A76B3 /* shopping_no_goods.png */; };
+		F4C618691F3B025F004A76B3 /* CameraManDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C618681F3B025F004A76B3 /* CameraManDetailTableViewCell.m */; };
 		F4E83C1E1F38471A003CE93E /* CameraManInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E83C1D1F38471A003CE93E /* CameraManInfo.m */; };
 		F4E83C211F3854C2003CE93E /* CameraManDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E83C201F3854C2003CE93E /* CameraManDetailViewController.m */; };
 		F4E83C241F385FEE003CE93E /* CameraManDetailFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E83C231F385FEE003CE93E /* CameraManDetailFirstViewController.m */; };
@@ -356,6 +357,8 @@
 		F4C618611F3AB89C004A76B3 /* AddressInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressInfo.m; sourceTree = "<group>"; };
 		F4C618631F3AE2B7004A76B3 /* shopping_no_collection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shopping_no_collection.png; sourceTree = "<group>"; };
 		F4C618651F3AE64D004A76B3 /* shopping_no_goods.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shopping_no_goods.png; sourceTree = "<group>"; };
+		F4C618671F3B025F004A76B3 /* CameraManDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraManDetailTableViewCell.h; sourceTree = "<group>"; };
+		F4C618681F3B025F004A76B3 /* CameraManDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraManDetailTableViewCell.m; sourceTree = "<group>"; };
 		F4E83C1C1F38471A003CE93E /* CameraManInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraManInfo.h; sourceTree = "<group>"; };
 		F4E83C1D1F38471A003CE93E /* CameraManInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraManInfo.m; sourceTree = "<group>"; };
 		F4E83C1F1F3854C2003CE93E /* CameraManDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraManDetailViewController.h; sourceTree = "<group>"; };
@@ -677,6 +680,8 @@
 				F4FD30521F32D35800048DD6 /* CameraDetailTableViewCell.m */,
 				F4FD305E1F3304AF00048DD6 /* CameraManTableViewCell.h */,
 				F4FD305F1F3304AF00048DD6 /* CameraManTableViewCell.m */,
+				F4C618671F3B025F004A76B3 /* CameraManDetailTableViewCell.h */,
+				F4C618681F3B025F004A76B3 /* CameraManDetailTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1359,6 +1364,7 @@
 				F40E7A611F30197F00FD7792 /* PersonalPesRequest.m in Sources */,
 				F4A7A2591F25C3D0009FAAEE /* UserDataTableViewCell.m in Sources */,
 				F482375A1F2725AA00DDD487 /* ShoppingTableViewCell.m in Sources */,
+				F4C618691F3B025F004A76B3 /* CameraManDetailTableViewCell.m in Sources */,
 				F4FDD6A51F2C378E007263D4 /* PhoneNumberViewController.m in Sources */,
 				F4FD30471F32C1B200048DD6 /* ShoppingPesRequest.m in Sources */,
 				F40E7A641F301BF300FD7792 /* LoginManager.m in Sources */,

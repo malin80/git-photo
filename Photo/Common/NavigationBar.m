@@ -26,7 +26,7 @@
     [self addSubview:self.rightButton];
     [_rightButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.mas_right).with.offset(-20);
-        make.centerY.equalTo(self);
+        make.centerY.equalTo(self).with.offset(5);
         make.width.equalTo(@(50));
         make.height.equalTo(@(20));
     }];
@@ -45,7 +45,7 @@
     }];
     
     [_backView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self);
+        make.centerY.equalTo(self).with.offset(5);
         make.left.equalTo(self.mas_left).with.offset(15);
         make.width.equalTo(@(20));
         make.height.equalTo(@(20));

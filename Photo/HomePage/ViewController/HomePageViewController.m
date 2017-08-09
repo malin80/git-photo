@@ -57,6 +57,7 @@
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.tableHeaderView = _headerView;
     _tableView.showsVerticalScrollIndicator = NO;
+//    self.tableView.estimatedRowHeight = 100;//很重要保障滑动流畅性
 
     [self.view addSubview:_tableView];
 }
@@ -116,14 +117,14 @@
 - (UIView *)headerView {
     if (!_headerView) {
         _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 410)];
-        _headerView.backgroundColor = [UIColor yellowColor];
+        _headerView.backgroundColor = [UIColor whiteColor];
     }
     return _headerView;
 }
 
 - (HomePageScrollView *)scrollView {
     if (!_scrollView) {
-        _scrollView = [[HomePageScrollView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 250) withIsHomePage:YES];
+        _scrollView = [[HomePageScrollView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 200) withIsHomePage:YES];
     }
     return _scrollView;
 }
