@@ -50,7 +50,6 @@
 }
 
 - (void)createImageView {
-//    [self stopTimer];
     for (int i = 0; i < self.info.goodsSlideUrls.count; i++) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i*ScreenWidth+10, 0, ScreenWidth-20, kScrollViewHeight)];
         NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,self.info.goodsSlideUrls[i]]];
@@ -58,8 +57,6 @@
         imageView.image = imgFromUrl;
         [_scrollView addSubview:imageView];
     }
-//    _currentPage = 0;
-//    [self startTimer];
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {

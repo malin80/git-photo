@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol CollectTableViewCellDelegate <NSObject>
+
+@optional
+- (void)cancelColletGoodsInfo:(UIButton *)sender;
+- (void)lookUpButtonClick:(UIButton *)sender;
+
+@end
+
 @interface CollectTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) UIImageView *goodsImage;
@@ -17,6 +25,9 @@
 @property (nonatomic, strong) UILabel *time;
 @property (nonatomic, strong) UIButton *lookUpButton;
 @property (nonatomic, strong) UIButton *buyButton;
-@property (nonatomic, strong) UIButton *cancelColletButton;
+@property (nonatomic, strong) UIButton *cancelCollectButton;
+
+@property(nonatomic, weak)  id<CollectTableViewCellDelegate> delegate;
+
 
 @end

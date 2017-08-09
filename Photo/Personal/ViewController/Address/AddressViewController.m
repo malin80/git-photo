@@ -58,6 +58,9 @@
 }
 
 - (void)queryMemberAddressWithNoAddress {
+    if (_tableView) {
+        [_tableView removeFromSuperview];
+    }
     [self createNoAddressView];
 }
 

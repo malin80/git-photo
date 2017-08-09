@@ -35,6 +35,11 @@
     [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"CollectionInfoControl/queryCollectionInfo.do" dic:dict finished:finished];
 }
 
++ (void)deleteCollectGoodsInfoWithColletId:(long)collectId withBlock:(void (^)(NSDictionary *response, NSString *error))finished {
+    NSDictionary *dict = @{@"collectionId":@(collectId)};
+    [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"CollectionInfoControl/deleteCollectionInfo.do" dic:dict finished:finished];
+}
+
 + (void)queryMemberAddressWithMemberId:(long)memberId withBlock:(void (^)(NSDictionary *, NSString *))finished {
     NSDictionary *dict = @{@"memberId":@(memberId)};
     [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"DeliveryControl/queryDelivery.do" dic:dict finished:finished];

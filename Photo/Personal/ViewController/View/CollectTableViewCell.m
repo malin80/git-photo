@@ -29,7 +29,7 @@
     [self.contentView addSubview:self.time];
     [self.contentView addSubview:self.lookUpButton];
     [self.contentView addSubview:self.buyButton];
-    [self.contentView addSubview:self.cancelColletButton];
+    [self.contentView addSubview:self.cancelCollectButton];
 }
 
 - (void)setImmutableConstraints {
@@ -74,7 +74,7 @@
         make.height.equalTo(@(30));
     }];
     
-    [_cancelColletButton mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_cancelCollectButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_goodsNamme);
         make.right.equalTo(self.contentView.mas_right).with.offset(-40);
         make.width.equalTo(@(90));
@@ -136,6 +136,7 @@
 //        _lookUpButton.titleLabel.font = [UIFont systemFontOfSize:15];
         _lookUpButton.backgroundColor = [UIColor colorR:240 G:240 B:240 alpha:1];
         _lookUpButton.layer.cornerRadius = 8;
+        [_lookUpButton addTarget:self action:@selector(lookUpButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _lookUpButton;
 }
@@ -154,16 +155,29 @@
     return _buyButton;
 }
 
-- (UIButton *)cancelColletButton {
-    if (!_cancelColletButton) {
-        _cancelColletButton = [[UIButton alloc] init];
-        [_cancelColletButton setTitle:@"取消收藏" forState:UIControlStateNormal];
-        _cancelColletButton.backgroundColor = [UIColor colorR:240 G:240 B:240 alpha:1];
-        _cancelColletButton.layer.cornerRadius = 8;
-        [_cancelColletButton setTitleColor:[UIColor colorR:84 G:84 B:86 alpha:1] forState:UIControlStateNormal];
-
+- (UIButton *)cancelCollectButton {
+    if (!_cancelCollectButton) {
+        _cancelCollectButton = [[UIButton alloc] init];
+        [_cancelCollectButton setTitle:@"取消收藏" forState:UIControlStateNormal];
+        _cancelCollectButton.backgroundColor = [UIColor colorR:240 G:240 B:240 alpha:1];
+        _cancelCollectButton.layer.cornerRadius = 8;
+        [_cancelCollectButton setTitleColor:[UIColor colorR:84 G:84 B:86 alpha:1] forState:UIControlStateNormal];
+        [_cancelCollectButton addTarget:self action:@selector(cancelCollectButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     }
-    return _cancelColletButton;
+    return _cancelCollectButton;
+}
+
+#pragma mark --- getters and setters ---
+- (void)cancelCollectButtonClick:(UIButton *)sender {
+    if ([self.delegate respondsToSelector:@selector(cancelColletGoodsInfo:)]) {
+        [self.delegate cancelColletGoodsInfo:sender];
+    }
+}
+
+- (void)lookUpButtonClick:(UIButton *)sender {
+    if ([self.delegate respondsToSelector:@selector(lookUpButtonClick:)]) {
+        [self.delegate lookUpButtonClick:sender];
+    }
 }
 
 @end

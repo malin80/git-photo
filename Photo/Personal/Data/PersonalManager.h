@@ -25,6 +25,8 @@ DECLARE_SINGLETON_FOR_CLASS(PersonalManager)
 
 - (void)queryCollectGoodsInfo;
 
+- (void)deleteCollectGoodsInfoWithCollectId:(long)collectId;
+
 - (void)queryMemberAddressWithMemberId:(long)memberId;
 
 - (void)addMemberAddressWithName:(NSString *)name withPhone:(NSString *)phone withAddress:(NSString *)address withStatus:(long)status withMemberId:(long)memberId;

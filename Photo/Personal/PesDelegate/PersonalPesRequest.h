@@ -17,6 +17,8 @@
 
 + (void)queryCollectGoodsInfoWithMemberId:(long)memberId withBlock:(void (^)(NSDictionary *response, NSString *error))finished;
 
++ (void)deleteCollectGoodsInfoWithColletId:(long)collectId withBlock:(void (^)(NSDictionary *response, NSString *error))finished;
+
 + (void)queryMemberAddressWithMemberId:(long)memberId withBlock:(void (^)(NSDictionary *response, NSString *error))finished;
 
 + (void)addMemberAddressWithName:(NSString *)name withPhone:(NSString *)phone withAddress:(NSString *)address withStatus:(long)status withMemberId:(long)memberId withBlock:(void (^)(NSDictionary *response, NSString *error))finished;

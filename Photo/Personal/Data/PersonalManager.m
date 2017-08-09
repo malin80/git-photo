@@ -56,6 +56,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(PersonalManager)
     [PersonalPesRequest queryCollectGoodsInfoWithMemberId:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.memberId withBlock:^(NSDictionary *response, NSString *error) {
         if ([[response objectForKey:@"errorCode"] unsignedLongValue]== 0) {
             if (![[response objectForKey:@"data"] isKindOfClass:[NSString class]]) {
+                [self.collectGoodsInfos removeAllObjects];
                 NSArray *array = [response objectForKey:@"data"];
                 for (NSDictionary *dict in array) {
                     CollectGoodsInfo *info = [[CollectGoodsInfo alloc] init];
@@ -71,11 +72,26 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(PersonalManager)
                     info.goodsCount = [[subDict objectForKey:@"goodsCount"] unsignedLongValue];
                     [self.collectGoodsInfos addObject:info];
                 }
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"queryCollectGoodsInfoSuccess" object:nil];
+                });
             } else {
-                //没数据
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"queryCollectGoodsInfoWithNoData" object:nil];
+                });
             }
         } else {
             //请求失败
+        }
+    }];
+}
+
+- (void)deleteCollectGoodsInfoWithCollectId:(long)collectId {
+    [PersonalPesRequest deleteCollectGoodsInfoWithColletId:collectId withBlock:^(NSDictionary *response, NSString *error) {
+        if ([[response objectForKey:@"errorCode"] unsignedLongValue]== 0) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"deleteCollectGoodsInfoSuccess" object:nil];
+            });
         }
     }];
 }

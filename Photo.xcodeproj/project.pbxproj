@@ -116,6 +116,7 @@
 		F4C6185D1F3A9ED3004A76B3 /* personal_forward.png in Resources */ = {isa = PBXBuildFile; fileRef = F4C6185C1F3A9ED3004A76B3 /* personal_forward.png */; };
 		F4C6185F1F3AAAF9004A76B3 /* personal_no_address.png in Resources */ = {isa = PBXBuildFile; fileRef = F4C6185E1F3AAAF9004A76B3 /* personal_no_address.png */; };
 		F4C618621F3AB89C004A76B3 /* AddressInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C618611F3AB89C004A76B3 /* AddressInfo.m */; };
+		F4C618641F3AE2B7004A76B3 /* shopping_no_collection.png in Resources */ = {isa = PBXBuildFile; fileRef = F4C618631F3AE2B7004A76B3 /* shopping_no_collection.png */; };
 		F4E83C1E1F38471A003CE93E /* CameraManInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E83C1D1F38471A003CE93E /* CameraManInfo.m */; };
 		F4E83C211F3854C2003CE93E /* CameraManDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E83C201F3854C2003CE93E /* CameraManDetailViewController.m */; };
 		F4E83C241F385FEE003CE93E /* CameraManDetailFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E83C231F385FEE003CE93E /* CameraManDetailFirstViewController.m */; };
@@ -352,6 +353,7 @@
 		F4C6185E1F3AAAF9004A76B3 /* personal_no_address.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personal_no_address.png; sourceTree = "<group>"; };
 		F4C618601F3AB89C004A76B3 /* AddressInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressInfo.h; sourceTree = "<group>"; };
 		F4C618611F3AB89C004A76B3 /* AddressInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressInfo.m; sourceTree = "<group>"; };
+		F4C618631F3AE2B7004A76B3 /* shopping_no_collection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shopping_no_collection.png; sourceTree = "<group>"; };
 		F4E83C1C1F38471A003CE93E /* CameraManInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraManInfo.h; sourceTree = "<group>"; };
 		F4E83C1D1F38471A003CE93E /* CameraManInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraManInfo.m; sourceTree = "<group>"; };
 		F4E83C1F1F3854C2003CE93E /* CameraManDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraManDetailViewController.h; sourceTree = "<group>"; };
@@ -651,6 +653,7 @@
 		F481E90E1F283A5F00EE3D7C /* Shopping */ = {
 			isa = PBXGroup;
 			children = (
+				F4C618631F3AE2B7004A76B3 /* shopping_no_collection.png */,
 				F481E9131F283DD600EE3D7C /* shopping_delete.png */,
 				F481E9111F283B0400EE3D7C /* shopping_selected.png */,
 				F481E90F1F283A5F00EE3D7C /* shopping_select.png */,
@@ -1173,6 +1176,7 @@
 				F4A7A1191F259445009FAAEE /* personal_order.png in Resources */,
 				F4A7A1171F259445009FAAEE /* personal_celercacher.png in Resources */,
 				F4A7A11E1F2594D1009FAAEE /* personal_arrow.png in Resources */,
+				F4C618641F3AE2B7004A76B3 /* shopping_no_collection.png in Resources */,
 				F4FDD6AC1F2C379D007263D4 /* OrderManageViewController.xib in Resources */,
 				F4A7A1311F25A3A5009FAAEE /* tabbar_personal_black.png in Resources */,
 				F4A7A25E1F25D192009FAAEE /* common_back.png in Resources */,
