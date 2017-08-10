@@ -17,15 +17,11 @@
 #import "EntrySection.h"
 #import "EntryItem.h"
 #import "UserDataTableViewCell.h"
-#import "DatePickerView.h"
-#import "SexPickerView.h"
 #import "AppDelegate.h"
 #import "LoginManager.h"
+#import "PersonalManager.h"
 
-#define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
-#define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
-
-@interface UserDataViewController () <UITableViewDelegate, UITableViewDataSource, NavigationBarDelegate, DatePickerViewDelegate>
+@interface UserDataViewController () <UITableViewDelegate, UITableViewDataSource, NavigationBarDelegate>
 {
     NSMutableArray<EntrySection *> *_sections;
     
@@ -42,8 +38,7 @@
 }
 
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) DatePickerView *datePickerView;
-@property (nonatomic, strong) SexPickerView *sexPickerView;
+
 
 @end
 
@@ -55,13 +50,14 @@
     NavigationBar *bar = [[NavigationBar alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 64) withTitle:@"个人信息"];
     bar.delegate = self;
     [self.view addSubview:bar];
-    
+    self.DQBirthView = [DQBirthDateView new];
+    self.DQBirthView.delegate = self;
     [self addNotification];
     [self updateSections];
     [self createTableView];
     [self createBottomButton];
     
-    _maskForDatePicker = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    _maskForDatePicker = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHieght)];
     _maskForDatePicker.backgroundColor = [UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:0.5];
     UITapGestureRecognizer *tapForDatePicker = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapForDatePicker)];
     [_maskForDatePicker addGestureRecognizer:tapForDatePicker];
@@ -137,7 +133,7 @@
 }
 
 - (void)createTableView {
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64) style:UITableViewStyleGrouped];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHieght - 64) style:UITableViewStyleGrouped];
     _tableView.dataSource = self;
     _tableView.delegate = self;
     _tableView.backgroundColor = [UIColor whiteColor];
@@ -219,13 +215,30 @@
 }
 
 - (void)gotoSetBirthDay {
-    [self createDatePicker];
-    [self datePickerShow];
+   [self.DQBirthView startAnimationFunction];
 }
+//点击选中哪一行 的代理方法
+- (void)clickDQBirthDateViewEnsureBtnActionAgeModel:(DQAgeModel *)ageModel andConstellation:(NSString *)str{
+    NSString *stra = [NSString stringWithFormat:@"%@年 %@月 %@日 ",ageModel.year,ageModel.month,ageModel.day];
 
+}
 - (void)gotoSetSex {
-    [self createSexPicker];
-    [self sexPickerShow];
+    LTPickerView* pickerView = [LTPickerView new];
+    pickerView.dataSource = @[@"女",@"男"];//设置要显示的数据
+    pickerView.defaultStr = @"女";//默认选择的数据
+    [pickerView show];//显示
+    //回调block
+    pickerView.block = ^(LTPickerView* obj,NSString* str,int num){
+//        //obj:LTPickerView对象
+//        //str:选中的字符串
+//        //num:选中了第几行
+//        NSLog(@"选择了第%d行的%@",num,str);
+//        UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"LTPickerView" message:[NSString stringWithFormat:@"选择了第%d行的%@",num,str] delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
+//        [alert show];
+        LoginManager *manager = GET_SINGLETON_FOR_CLASS(LoginManager);
+        [GET_SINGLETON_FOR_CLASS(PersonalManager) updateMemberInfoWithNickName:manager.memberInfo.memberNickName withMemberName:manager.memberInfo.memberName withMemberSex:str withMemberMarry:manager.memberInfo.memberMarry withMemberBirthday:manager.memberInfo.memberBirthday withToken:manager.memberInfo.safeCodeValue];
+    };
+    
 }
 
 - (void)gotoModifyPasswordViewController {
@@ -245,88 +258,7 @@
     }];
 }
 
-#pragma mark --- 性别选择器 ---
-- (void)createSexPicker {
-    if (!_sexPickerView) {
-        _sexPickerView = [[SexPickerView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 180)];
-        [self.view addSubview:self.sexPickerView];
-    }
-}
 
-- (void)sexPickerShow
-{
-    [self.view insertSubview:_maskForDatePicker belowSubview:_sexPickerView];
-    
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    [UIView beginAnimations:nil context:context];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-    [UIView setAnimationDuration:0.3];//动画时间长度，单位秒，浮点数
-    _sexPickerView.frame = CGRectMake(0, SCREEN_HEIGHT - 60 - 160, SCREEN_WIDTH, 180);
-    [UIView setAnimationDelegate:self];
-    [UIView commitAnimations];
-}
-
-- (void)sexPickerShowDismiss
-{
-    [_sexPickerView removeFromSuperview];
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    [UIView beginAnimations:nil context:context];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-    [UIView setAnimationDuration:0.3];//动画时间长度，单位秒，浮点数
-    _sexPickerView.frame = CGRectMake(0, SCREEN_HEIGHT - 60, SCREEN_WIDTH, 180);
-    [UIView setAnimationDelegate:self];
-    [UIView commitAnimations];
-}
-
-#pragma mark --- 日期选择器 ---
-- (void)createDatePicker
-{
-    if (!_datePickerView) {
-        _datePickerView = [[DatePickerView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 216+46)];
-        _datePickerView.delegate = self;
-        NSString* dateDefault = [NSString stringWithFormat:@"%d-%d-%d", 1994,1,1];
-        [_datePickerView setDatePickerDefault:dateDefault];
-        [self.view addSubview:self.datePickerView];
-    }
-}
-
-- (void)datePickerShow
-{
-    [self.view insertSubview:_maskForDatePicker belowSubview:_datePickerView];
-    
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    [UIView beginAnimations:nil context:context];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-    [UIView setAnimationDuration:0.3];//动画时间长度，单位秒，浮点数
-    _datePickerView.frame = CGRectMake(0, SCREEN_HEIGHT - 60 - 180 - 46, SCREEN_WIDTH, 262);
-    [UIView setAnimationDelegate:self];
-    [UIView commitAnimations];
-}
-
-- (void)datePickerDismiss
-{
-    [_maskForDatePicker removeFromSuperview];
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    [UIView beginAnimations:nil context:context];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-    [UIView setAnimationDuration:0.3];//动画时间长度，单位秒，浮点数
-    _datePickerView.frame = CGRectMake(0, SCREEN_HEIGHT - 60, SCREEN_WIDTH, 262);
-    [UIView setAnimationDelegate:self];
-    [UIView commitAnimations];
-}
-
-- (void)tapForDatePicker {
-    [self datePickerDismiss];
-    [self sexPickerShowDismiss];
-}
-
-- (void)cancelDatePicker {
-    [self tapForDatePicker];
-}
-
-- (void)completeDatePicker:(NSString *)dateString {
-    [self datePickerDismiss];
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

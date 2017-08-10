@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
+#import "DQBirthDateView.h"
+#import "DQAgeModel.h"
+#import "LTPickerView.h"
 
-@interface UserDataViewController : BaseViewController
+@interface UserDataViewController : BaseViewController <DQBirthDateViewDelegate>
+
+@property (nonatomic, strong) DQBirthDateView *DQBirthView;
 
 @end
