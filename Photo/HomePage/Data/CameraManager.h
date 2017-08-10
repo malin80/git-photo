@@ -20,6 +20,7 @@ DECLARE_SINGLETON_FOR_CLASS(CameraManager)
 @property (nonatomic, strong) NSMutableArray *cameraMans;
 @property (nonatomic, strong) CameraManInfo *cameraManInfo;
 
+@property (nonatomic, copy) NSString *commentImages;
 
 - (void)queryCameraGroup;
 

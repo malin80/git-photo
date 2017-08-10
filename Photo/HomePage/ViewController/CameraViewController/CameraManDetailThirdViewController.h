@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CameraManInfo.h"
 
 @interface CameraManDetailThirdViewController : UIViewController
+
+@property (nonatomic, strong) CameraManInfo *cameraManInfo;
 
 @end

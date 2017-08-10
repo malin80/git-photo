@@ -15,4 +15,7 @@
 @property (nonatomic, strong) UILabel *commentContent;
 @property (nonatomic, strong) UIView *backView;
 
+
+- (CGFloat)calculateCellHeight:(NSDictionary *)dict;
+
 @end

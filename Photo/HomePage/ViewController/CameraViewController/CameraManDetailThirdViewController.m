@@ -9,9 +9,13 @@
 #import "CameraManDetailThirdViewController.h"
 #import "CameraManDetailTableViewCell.h"
 
+#import "CameraManInfo.h"
+#import "CameraManager.h"
+
 @interface CameraManDetailThirdViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) CameraManDetailTableViewCell *tableViewCell;
 
 @end
 
@@ -24,13 +28,13 @@
 }
 
 - (void)createTableView {
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 140, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height - 64.0f - 80.0f) style:UITableViewStyleGrouped];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHieght) style:UITableViewStyleGrouped];
     _tableView.dataSource = self;
     _tableView.delegate = self;
     _tableView.backgroundColor = [UIColor whiteColor];
     _tableView.separatorColor = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1.0];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-    _tableView.contentInset = UIEdgeInsetsMake(-40, 0, 0, 0);
+    _tableView.contentInset = UIEdgeInsetsMake(-35, 0, 0, 0);
     [self.view addSubview:_tableView];
 }
 
@@ -40,21 +44,38 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 7;
+    return self.cameraManInfo.commentList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSDictionary *dict = [self.cameraManInfo.commentList objectAtIndex:indexPath.row];
+    GET_SINGLETON_FOR_CLASS(CameraManager).commentImages = [dict objectForKey:@"commentImgs"];
     NSString *cellIdentify = [NSString stringWithFormat:@"cellIdentify"];
     CameraManDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
     if (!cell) {
         cell = [[CameraManDetailTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
     }
-    
+    self.tableViewCell = cell;
+//    cell.commentContent.text = [dict objectForKey:@"commentText"];
+//    cell.commentContent.text = @"本店于十一期间特推出一系列！";
+    NSDictionary *memberDetail = [dict objectForKey:@"memberDetail"];
+    cell.memberName.text = [memberDetail objectForKey:@"pickName"];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,[memberDetail objectForKey:@"memberPic"]]];
+    UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
+    cell.memberView.image = imgFromUrl;
+
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    CameraManDetailTableViewCell *cell = self.tableViewCell;
+    NSDictionary *dict = [self.cameraManInfo.commentList objectAtIndex:indexPath.row];
+    CGFloat height = [cell calculateCellHeight:dict];
+    return height;
 }
 
 

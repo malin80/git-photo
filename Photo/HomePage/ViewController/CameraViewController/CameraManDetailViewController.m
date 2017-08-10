@@ -83,6 +83,7 @@
         case 2:
         {
             CameraManDetailThirdViewController *controller = [[CameraManDetailThirdViewController alloc] init];
+            controller.cameraManInfo = GET_SINGLETON_FOR_CLASS(CameraManager).cameraManInfo;
             return controller;
         }
         case 3:
