@@ -103,6 +103,7 @@
 - (UIImageView *)memberView {
     if (!_memberView) {
         _memberView = [[UIImageView alloc] init];
+        _memberView.backgroundColor = [UIColor redColor];
         _memberView.layer.cornerRadius = 15;
     }
     return _memberView;
@@ -119,7 +120,6 @@
 - (UILabel *)commentContent {
     if (!_commentContent) {
         _commentContent = [[UILabel alloc] init];
-        _commentContent.backgroundColor = [UIColor redColor];
         _commentContent.lineBreakMode = NSLineBreakByWordWrapping;
         _commentContent.numberOfLines = 10;
         _commentContent.textAlignment = NSTextAlignmentLeft;

@@ -80,6 +80,7 @@
     CameraTeamViewController *controller = [[CameraTeamViewController alloc] init];
     controller.info = info;
     [GET_SINGLETON_FOR_CLASS(CameraManager) queryCameraManWithTeamId:info.teamId];
+    [GET_SINGLETON_FOR_CLASS(CameraManager) queryDressManWithTeamId:info.teamId];
     [self.navigationController pushViewController:controller animated:NO];
 }
 

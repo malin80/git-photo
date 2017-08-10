@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "CameraPesRequest.h"
 #import "CameraManInfo.h"
+#import "DressManInfo.h"
 
 @interface CameraManager : NSObject
 
@@ -18,7 +19,9 @@ DECLARE_SINGLETON_FOR_CLASS(CameraManager)
 @property (nonatomic, strong) NSMutableArray *cameraGroups;
 @property (nonatomic, strong) NSMutableArray *cameraTeams;
 @property (nonatomic, strong) NSMutableArray *cameraMans;
+@property (nonatomic, strong) NSMutableArray *dressMans;
 @property (nonatomic, strong) CameraManInfo *cameraManInfo;
+@property (nonatomic, strong) DressManInfo *dressManInfo;
 
 @property (nonatomic, copy) NSString *commentImages;
 
@@ -29,5 +32,9 @@ DECLARE_SINGLETON_FOR_CLASS(CameraManager)
 - (void)queryCameraManWithTeamId:(long)teamId;
 
 - (void)queryCameraManDetailWithId:(long)cameraManId;
+
+- (void)queryDressManWithTeamId:(long)teamId;
+
+- (void)queryDressManDetailWithId:(long)dressManId;
 
 @end

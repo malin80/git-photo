@@ -19,4 +19,8 @@
 
 + (void)queryCameraManDetailWithId:(long)cameraManId withBlock:(void(^)(NSDictionary *responseObject,NSString *error))finished;
 
++ (void)queryDressManWithTeamId:(long)teamId withBlock:(void(^)(NSDictionary *responseObject,NSString *error))finished;
+
++ (void)queryDressManDetailWithId:(long)dressManId withBlock:(void(^)(NSDictionary *responseObject,NSString *error))finished;
+
 @end

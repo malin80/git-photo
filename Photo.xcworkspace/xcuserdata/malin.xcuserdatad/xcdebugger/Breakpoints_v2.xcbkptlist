@@ -67,5 +67,53 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Photo/HomePage/Data/CameraManager.m"
+            timestampString = "524044141.732861"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
+            landmarkName = "-queryDressManDetailWithId:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__43-[CameraManager queryDressManDetailWithId:]_block_invoke"
+                  moduleName = "Photo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/malin/Desktop/Photo/Photo/HomePage/Data/CameraManager.m"
+                  timestampString = "524044412.677349"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "157"
+                  endingLineNumber = "157"
+                  offsetFromSymbolStart = "591">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__43-[CameraManager queryDressManDetailWithId:]_block_invoke_2"
+                  moduleName = "Photo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/malin/Desktop/Photo/Photo/HomePage/Data/CameraManager.m"
+                  timestampString = "524044412.680062"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "158"
+                  endingLineNumber = "158"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

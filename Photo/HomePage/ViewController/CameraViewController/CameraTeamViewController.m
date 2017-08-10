@@ -8,6 +8,7 @@
 
 #import "CameraTeamViewController.h"
 #import "CameraManViewController.h"
+#import "DressManViewController.h"
 
 #import "DLTabedSlideView.h"
 #import "NavigationBar.h"
@@ -78,7 +79,7 @@
         }
         case 1:
         {
-            CameraManViewController *controller = [[CameraManViewController alloc] init];
+            DressManViewController *controller = [[DressManViewController alloc] init];
             return controller;
         }
             

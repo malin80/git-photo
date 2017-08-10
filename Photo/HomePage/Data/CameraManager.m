@@ -10,6 +10,7 @@
 #import "HomePageCameraGroupInfo.h"
 #import "CameraTeamInfo.h"
 #import "CameraManInfo.h"
+#import "DressManInfo.h"
 
 @implementation CameraManager
 
@@ -22,7 +23,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(CameraManager)
         self.cameraGroups = [NSMutableArray array];
         self.cameraTeams = [NSMutableArray array];
         self.cameraMans = [NSMutableArray array];
+        self.dressMans = [NSMutableArray array];
         self.cameraManInfo = [[CameraManInfo alloc] init];
+        self.dressManInfo = [[DressManInfo alloc] init];
     }
     return self;
 }
@@ -70,30 +73,34 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(CameraManager)
 - (void)queryCameraManWithTeamId:(long)teamId {
     [CameraPesRequest queryCarmeraManWithTeamId:teamId withBlock:^(NSDictionary *responseObject, NSString *error) {
         if ([[responseObject objectForKey:@"errorCode"] unsignedLongValue]== 0) {
-            NSArray *array = [responseObject objectForKey:@"data"];
-            [self.cameraMans removeAllObjects];
-            if (array.count > 0) {
-                for (NSDictionary *dict in array) {
-                    CameraManInfo *info = [[CameraManInfo alloc] init];
-                    info.cameraManPic = [dict objectForKey:@"cameramanPic"];
-                    info.subscribeCount = [[dict objectForKey:@"subscribeCount"] unsignedLongValue];
-                    info.cameraManName = [dict objectForKey:@"cameramanName"];
-                    info.cameraManSynopsis = [dict objectForKey:@"cameramanSynopsis"];
-                    info.cameraManId = [[dict objectForKey:@"cameramanId"] unsignedLongValue];
-                    info.cameraManNum = [dict objectForKey:@"cameramanNum"];
-                    info.cameraManPwd = [dict objectForKey:@"cameramanPwd"];
-                    info.cameraManContent = [dict objectForKey:@"cameramanContent"];
-                    info.worksOfCameraMan = [[dict objectForKey:@"worksOfCameramanCount"] unsignedLongValue];
-                    info.isSubscribe = [[dict objectForKey:@"isSubscribe"] unsignedLongValue];
-                    info.commentCount = [[dict objectForKey:@"commentCount"] unsignedLongValue];
-                    info.cameraManComment = [dict objectForKey:@"cameramanComment"];
-                    [self.cameraMans addObject:info];
+            if (![[responseObject objectForKey:@"data"] isKindOfClass:[NSString class]]) {
+                [self.cameraMans removeAllObjects];
+                NSArray *array = [responseObject objectForKey:@"data"];
+                [self.cameraMans removeAllObjects];
+                if (array.count > 0) {
+                    for (NSDictionary *dict in array) {
+                        CameraManInfo *info = [[CameraManInfo alloc] init];
+                        info.cameraManPic = [dict objectForKey:@"cameramanPic"];
+                        info.subscribeCount = [[dict objectForKey:@"subscribeCount"] unsignedLongValue];
+                        info.cameraManName = [dict objectForKey:@"cameramanName"];
+                        info.cameraManSynopsis = [dict objectForKey:@"cameramanSynopsis"];
+                        info.cameraManId = [[dict objectForKey:@"cameramanId"] unsignedLongValue];
+                        info.cameraManNum = [dict objectForKey:@"cameramanNum"];
+                        info.cameraManPwd = [dict objectForKey:@"cameramanPwd"];
+                        info.cameraManContent = [dict objectForKey:@"cameramanContent"];
+                        info.worksOfCameraMan = [[dict objectForKey:@"worksOfCameramanCount"] unsignedLongValue];
+                        info.isSubscribe = [[dict objectForKey:@"isSubscribe"] unsignedLongValue];
+                        info.commentCount = [[dict objectForKey:@"commentCount"] unsignedLongValue];
+                        info.cameraManComment = [dict objectForKey:@"cameramanComment"];
+                        [self.cameraMans addObject:info];
+                    }
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [[NSNotificationCenter defaultCenter] postNotificationName:@"queryCameraManSuccess" object:nil];
+                    });
                 }
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [[NSNotificationCenter defaultCenter] postNotificationName:@"queryCameraManSuccess" object:nil];
-                });
             }
         }
+
     }];
 }
 
@@ -106,6 +113,49 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(CameraManager)
             self.cameraManInfo.scheduleList = [dict objectForKey:@"scheduleList"];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"queryCameraManDetailWithIdSuccess" object:nil];
+            });
+        }
+    }];
+}
+
+- (void)queryDressManWithTeamId:(long)teamId {
+    [CameraPesRequest queryDressManWithTeamId:teamId withBlock:^(NSDictionary *responseObject, NSString *error) {
+        if ([[responseObject objectForKey:@"errorCode"] unsignedLongValue]== 0) {
+            if (![[responseObject objectForKey:@"data"] isKindOfClass:[NSString class]]) {
+                [self.dressMans removeAllObjects];
+                NSArray *array = [responseObject objectForKey:@"data"];
+                [self.cameraMans removeAllObjects];
+                if (array.count > 0) {
+                    for (NSDictionary *dict in array) {
+                        DressManInfo *info = [[DressManInfo alloc] init];
+                        info.dressManPic = [dict objectForKey:@"dresserPic"];
+                        info.subscribeCount = [[dict objectForKey:@"dresserSubscribeCount"] unsignedLongValue];
+                        info.dressManName = [dict objectForKey:@"dresserName"];
+                        info.dressManSynopsis = [dict objectForKey:@"dresserSynopsis"];
+                        info.dressManId = [[dict objectForKey:@"dresserId"] unsignedLongValue];
+                        info.dressManNum = [dict objectForKey:@"dresserNum"];
+                        info.dressManPwd = [dict objectForKey:@"dresserPwd"];
+                        info.dressManContent = [dict objectForKey:@"dresserContent"];
+                        info.worksOfDressMan = [[dict objectForKey:@"worksOfDresserCount"] unsignedLongValue];
+                        info.commentCount = [[dict objectForKey:@"commentCount"] unsignedLongValue];
+                        info.dressManComment = [dict objectForKey:@"dresserComment"];
+                        [self.dressMans addObject:info];
+                    }
+                }
+            }
+        }
+    }];
+}
+
+- (void)queryDressManDetailWithId:(long)dressManId {
+    [CameraPesRequest queryDressManDetailWithId:dressManId withBlock:^(NSDictionary *responseObject, NSString *error) {
+        if ([[responseObject objectForKey:@"errorCode"] unsignedLongValue]== 0) {
+            NSDictionary *dict = [responseObject objectForKey:@"data"];
+            self.dressManInfo.worksList = [dict objectForKey:@"worksOfDresserList"];
+            self.dressManInfo.commentList = [dict objectForKey:@"commentList"];
+            self.dressManInfo.scheduleList = [dict objectForKey:@"scheduleList"];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"queryDressManDetailWithIdSuccess" object:nil];
             });
         }
     }];

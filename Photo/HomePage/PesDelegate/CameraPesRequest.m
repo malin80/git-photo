@@ -29,4 +29,15 @@
     [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"CameramanControl/queryCameramanById.do" dic:dict finished:finished];
 }
 
++ (void)queryDressManWithTeamId:(long)teamId withBlock:(void (^)(NSDictionary *, NSString *))finished {
+    NSDictionary *dict = @{@"teamId":@(teamId)};
+    [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"DresserControl/queryDresserByTeam.do" dic:dict finished:finished];
+}
+
++ (void)queryDressManDetailWithId:(long)dressManId withBlock:(void(^)(NSDictionary *responseObject,NSString *error))finished {
+    NSDictionary *dict = @{@"dresserId":@(dressManId)};
+    [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"DresserControl/queryDresserById.do" dic:dict finished:finished];
+}
+
+
 @end
