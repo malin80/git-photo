@@ -9,6 +9,7 @@
 #import "ShoppingManager.h"
 #import "ShoppingPesRequest.h"
 #import "ShoppingGoodsInfo.h"
+#import "LoginManager.h"
 
 @implementation ShoppingManager
 
@@ -26,6 +27,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ShoppingManager)
 - (void)queryShoppingGoodsInfoWithSafeCodeValue:(NSString *)value {
     [ShoppingPesRequest queryShoppingGoodsInfoWithSafeCodeValue:value withBlock:^(NSDictionary *responseObject, NSString *error) {
         if ([[responseObject objectForKey:@"errorCode"] unsignedLongValue]== 0) {
+            GET_SINGLETON_FOR_CLASS(LoginManager).loginOut = NO;
             if (![[responseObject objectForKey:@"data"] isKindOfClass:[NSString class]]) {
                 NSArray *array = [responseObject objectForKey:@"data"];
                 [self.shoppingGoodsInfos removeAllObjects];
@@ -56,6 +58,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ShoppingManager)
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"queryShoppingGoodsInfoWithNoData" object:nil];
                 });
             }
+        } else {
+            GET_SINGLETON_FOR_CLASS(LoginManager).loginOut = YES;
         }
     }];
 }

@@ -21,6 +21,7 @@
     UIButton *_loginButton;
     UILabel *_orLabel;
     UIButton *_passwordLoginButton;
+    UIImageView *_backView;
 }
 
 @property (nonatomic, strong) LoginInfo *loginInfo;
@@ -87,6 +88,22 @@
     [_passwordLoginButton setTitleColor:UIColorFromRGB(71, 177, 215, 1) forState:UIControlStateNormal];
     [_passwordLoginButton addTarget:self action:@selector(loginWithPassword) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_passwordLoginButton];
+    
+    _backView = [[UIImageView alloc] init];
+    _backView.image = [UIImage imageNamed:@"common_back"];
+    _backView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(loginViewControllerGoBack)];
+    [_backView addGestureRecognizer:tap];
+    if (GET_SINGLETON_FOR_CLASS(LoginManager).loginOut) {
+        [self.view addSubview:_backView];
+
+        [_backView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.view.mas_top).with.offset(20);
+            make.left.equalTo(self.view.mas_left).with.offset(15);
+            make.width.equalTo(@(20));
+            make.height.equalTo(@(20));
+        }];
+    }
 }
 
 - (void)setImmutableConstraints {
@@ -173,6 +190,12 @@
 - (void)getIdentifyCode {
     self.loginInfo.loginType = LoginTypeIdentifyCode;
     [self.loginManager getLoginIdentifyCodeWithPhoneNumber:_phoneTextField.text];
+}
+
+- (void)loginViewControllerGoBack {
+    if ([self.delegate respondsToSelector:@selector(loginViewControllerGoBack)]) {
+        [self.delegate loginViewControllerGoBack];
+    }
 }
 
 #pragma mark --- LoginManagerDelegate ---

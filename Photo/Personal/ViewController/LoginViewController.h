@@ -9,10 +9,20 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 
+@protocol LoginViewControllerDelegate <NSObject>
+
+@optional
+- (void)loginViewControllerGoBack;
+
+@end
+
 typedef void(^loginBlock)();
 
 @interface LoginViewController : BaseViewController
 
 @property (nonatomic, copy)loginBlock block;
+
+@property(nonatomic, weak)  id<LoginViewControllerDelegate> delegate;
+
 
 @end

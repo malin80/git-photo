@@ -37,6 +37,7 @@
 		F405D19D1F2EBC110015A8E6 /* OrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F405D19C1F2EBC110015A8E6 /* OrderTableViewCell.m */; };
 		F405D1A41F2EC6480015A8E6 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F405D1A31F2EC6480015A8E6 /* CameraViewController.m */; };
 		F405D1A81F2ED06E0015A8E6 /* LoginInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F405D1A71F2ED06E0015A8E6 /* LoginInfo.m */; };
+		F407330C1F3BF5420006F1F6 /* common_no_login.png in Resources */ = {isa = PBXBuildFile; fileRef = F407330B1F3BF5420006F1F6 /* common_no_login.png */; };
 		F40A2AE01F315F5700BEDFFB /* StoreCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F40A2ADF1F315F5700BEDFFB /* StoreCollectionViewCell.m */; };
 		F40A2AE51F31650700BEDFFB /* StorePesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F40A2AE41F31650700BEDFFB /* StorePesRequest.m */; };
 		F40A2AE81F3165D600BEDFFB /* StoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F40A2AE71F3165D600BEDFFB /* StoreManager.m */; };
@@ -237,6 +238,7 @@
 		F405D1A31F2EC6480015A8E6 /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
 		F405D1A61F2ED06E0015A8E6 /* LoginInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginInfo.h; sourceTree = "<group>"; };
 		F405D1A71F2ED06E0015A8E6 /* LoginInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginInfo.m; sourceTree = "<group>"; };
+		F407330B1F3BF5420006F1F6 /* common_no_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = common_no_login.png; sourceTree = "<group>"; };
 		F40A2ADE1F315F5700BEDFFB /* StoreCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreCollectionViewCell.h; sourceTree = "<group>"; };
 		F40A2ADF1F315F5700BEDFFB /* StoreCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreCollectionViewCell.m; sourceTree = "<group>"; };
 		F40A2AE31F31650700BEDFFB /* StorePesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorePesRequest.h; sourceTree = "<group>"; };
@@ -1027,6 +1029,7 @@
 		F4A7A25A1F25CF3B009FAAEE /* Commom */ = {
 			isa = PBXGroup;
 			children = (
+				F407330B1F3BF5420006F1F6 /* common_no_login.png */,
 				F4FF8D901F394C2200E7739D /* splash.png */,
 				F4A7A25D1F25D192009FAAEE /* common_back.png */,
 			);
@@ -1250,6 +1253,7 @@
 				F481E9121F283B0400EE3D7C /* shopping_selected.png in Resources */,
 				F4C6185F1F3AAAF9004A76B3 /* personal_no_address.png in Resources */,
 				F482374F1F27106300DDD487 /* homepage_flower.png in Resources */,
+				F407330C1F3BF5420006F1F6 /* common_no_login.png in Resources */,
 				F41B19CB1F341E490026E483 /* store_number_sub.png in Resources */,
 				F482372E1F26CC4D00DDD487 /* personal_address_delete.png in Resources */,
 				F4A7A13D1F25AAE4009FAAEE /* tabbar_shopping_black.png in Resources */,

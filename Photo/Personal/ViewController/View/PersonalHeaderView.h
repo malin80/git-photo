@@ -18,6 +18,14 @@
 @property (nonatomic, strong) UILabel *phoneNunberLabel;
 @property (nonatomic, strong) UIImageView *arrowView;
 
+@property (nonatomic, strong) UILabel *title;
+@property (nonatomic, strong) UILabel *subTitle;
+@property (nonatomic, strong) UIButton *loginButton;
+
 @property (nonatomic, strong) MemberInfo *info;
+
+@property (nonatomic, assign) BOOL loginOut;
+
+-(id)initWithFrame:(CGRect)frame withIsLoginOut:(BOOL)loginOut;
 
 @end

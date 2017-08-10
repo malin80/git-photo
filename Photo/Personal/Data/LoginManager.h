@@ -23,7 +23,7 @@ DECLARE_SINGLETON_FOR_CLASS(LoginManager)
 
 @property (nonatomic, weak)  id<LoginManagerDelegate> delegate;
 @property (nonatomic, strong) MemberInfo *memberInfo;
-
+@property (nonatomic, assign) BOOL loginOut;
 
 - (void)getLoginIdentifyCodeWithPhoneNumber:(NSString *)number;
 

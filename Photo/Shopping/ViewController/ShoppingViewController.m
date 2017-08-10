@@ -38,6 +38,30 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [GET_SINGLETON_FOR_CLASS(ShoppingManager) queryShoppingGoodsInfoWithSafeCodeValue:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue];
+    if (GET_SINGLETON_FOR_CLASS(LoginManager).loginOut == YES) {
+        [self createLoginOutView];
+    }
+}
+
+- (void)createLoginOutView {
+    UIImageView *imageView = [[UIImageView alloc] init];
+    imageView.image = [UIImage imageNamed:@"common_no_login"];
+    [self.view addSubview:imageView];
+    [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(self.view);
+        make.width.equalTo(@(60));
+        make.height.equalTo(@(80));
+    }];
+    
+    UILabel *label = [[UILabel alloc] init];
+    label.text = @"你还没有登录哦！";
+    label.font = [UIFont systemFontOfSize:16];
+    [label sizeToFit];
+    [self.view addSubview:label];
+    [label mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view);
+        make.top.equalTo(imageView.mas_bottom).with.offset(5);
+    }];
 }
 
 - (void)addNotification {

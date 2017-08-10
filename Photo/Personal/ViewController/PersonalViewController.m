@@ -11,6 +11,7 @@
 #import "OrderManageViewController.h"
 #import "AddressViewController.h"
 #import "CollectViewController.h"
+#import "LoginViewController.h"
 
 #import "Masonry.h"
 #import "PersonalTabelViewCell.h"
@@ -23,7 +24,7 @@
 #import "LoginManager.h"
 #import "PersonalManager.h"
 
-@interface PersonalViewController () <UITableViewDelegate, UITableViewDataSource, CustomActionSheetDelegate>
+@interface PersonalViewController () <UITableViewDelegate, UITableViewDataSource, CustomActionSheetDelegate, LoginViewControllerDelegate>
 {
     EntrySection *_section;
 
@@ -115,9 +116,11 @@
 
 
 - (void)createHeaderView {
-    _headerView = [[PersonalHeaderView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 140)];
-    UITapGestureRecognizer *tapGesturRecognizer=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(clickHeaderView)];
-    [_headerView addGestureRecognizer:tapGesturRecognizer];
+    _headerView = [[PersonalHeaderView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 140) withIsLoginOut:GET_SINGLETON_FOR_CLASS(LoginManager).loginOut];
+    if (!GET_SINGLETON_FOR_CLASS(LoginManager).loginOut) {
+        UITapGestureRecognizer *tapGesturRecognizer=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(clickHeaderView)];
+        [_headerView addGestureRecognizer:tapGesturRecognizer];
+    }
     [self.view addSubview:_headerView];
 }
 
@@ -169,8 +172,14 @@
 }
 
 - (void)gotoOrderViewController {
-    OrderManageViewController *viewController = [[OrderManageViewController alloc] init];
-    [self.navigationController pushViewController:viewController animated:NO];
+    if (GET_SINGLETON_FOR_CLASS(LoginManager).loginOut) {
+        LoginViewController *controller = [[LoginViewController alloc] init];
+        controller.delegate = self;
+        [self.navigationController pushViewController:controller animated:NO];
+    } else {
+        OrderManageViewController *viewController = [[OrderManageViewController alloc] init];
+        [self.navigationController pushViewController:viewController animated:NO];
+    }
 }
 
 - (void)gotoShareViewController {
@@ -183,13 +192,25 @@
 }
 
 - (void)gotoCollectViewController {
-    CollectViewController *controller = [[CollectViewController alloc] init];
-    [self.navigationController pushViewController:controller animated:NO];
+    if (GET_SINGLETON_FOR_CLASS(LoginManager).loginOut) {
+        LoginViewController *controller = [[LoginViewController alloc] init];
+        controller.delegate = self;
+        [self.navigationController pushViewController:controller animated:NO];
+    } else {
+        CollectViewController *controller = [[CollectViewController alloc] init];
+        [self.navigationController pushViewController:controller animated:NO];
+    }
 }
 
 - (void)gotoAddressViewController {
-    AddressViewController *controller = [[AddressViewController alloc] init];
-    [self.navigationController pushViewController:controller animated:NO];
+    if (GET_SINGLETON_FOR_CLASS(LoginManager).loginOut) {
+        LoginViewController *controller = [[LoginViewController alloc] init];
+        controller.delegate = self;
+        [self.navigationController pushViewController:controller animated:NO];
+    } else {
+        AddressViewController *controller = [[AddressViewController alloc] init];
+        [self.navigationController pushViewController:controller animated:NO];
+    }
 }
 
 - (void)gotoClearDataViewController {
@@ -201,13 +222,14 @@
     
 }
 
+#pragma loginViewControllerDelegate ---
+- (void)loginViewControllerGoBack {
+    [self.navigationController popViewControllerAnimated:NO];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)showActionSheet {
-    
 }
 
 /*
