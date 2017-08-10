@@ -1,8 +1,8 @@
 //
-//  AddGoodsToShoppingViewController.h
+//  ConfirmOrderViewController.h
 //  Photo
 //
-//  Created by malin  on 2017/8/4.
+//  Created by malin  on 2017/8/10.
 //  Copyright © 2017年 malin . All rights reserved.
 //
 
@@ -10,9 +10,8 @@
 #import "BaseViewController.h"
 #import "GoodsInfo.h"
 
-@interface AddGoodsToShoppingViewController : BaseViewController
+@interface ConfirmOrderViewController : BaseViewController
 
 @property (nonatomic, strong) GoodsInfo *info;
-@property (nonatomic, assign) BOOL isBuy;
 
 @end

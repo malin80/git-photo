@@ -21,6 +21,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(PersonalManager)
     if (self) {
         self.collectGoodsInfos = [NSMutableArray array];
         self.addressInfos = [NSMutableArray array];
+        self.normalAddressInfo = [[AddressInfo alloc] init];
     }
     return self;
 }

@@ -7,6 +7,7 @@
 //
 
 #import "AddGoodsToShoppingViewController.h"
+#import "ConfirmOrderViewController.h"
 
 #import "StoreManager.h"
 #import "LoginManager.h"
@@ -39,7 +40,13 @@
     [super viewDidLoad];
 
     self.navigationController.navigationBarHidden = YES;
-    NavigationBar *bar = [[NavigationBar alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 64) withTitle:@"添加到购物车"];
+    NSString *string = @"";
+    if (self.isBuy) {
+        string = @"购买商品";
+    } else {
+        string = @"添加到购物车";
+    }
+    NavigationBar *bar = [[NavigationBar alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 64) withTitle:string];
     bar.delegate = self;
     [self.view addSubview:bar];
     
@@ -262,9 +269,15 @@
 
 #pragma mark --- button method ---
 - (void)addGoodsToShopping {
-    NSString *string = [NSString stringWithFormat:@"%@:%@",self.info.goodsParamKey,self.info.goodsParamValue];
-    [GET_SINGLETON_FOR_CLASS(StoreManager) addGoodsToShoppingWithGoodsCount:_count.text withGoodParam:string withSafeCodeValue:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue withGoodsId:self.info.goodsId];
-    [self goBack];
+    if (self.isBuy) {
+        ConfirmOrderViewController *controller = [[ConfirmOrderViewController alloc] init];
+        controller.info = self.info;
+        [self.navigationController pushViewController:controller animated:NO];
+    } else {
+        NSString *string = [NSString stringWithFormat:@"%@:%@",self.info.goodsParamKey,self.info.goodsParamValue];
+        [GET_SINGLETON_FOR_CLASS(StoreManager) addGoodsToShoppingWithGoodsCount:_count.text withGoodParam:string withSafeCodeValue:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue withGoodsId:self.info.goodsId];
+        [self goBack];
+    }
 }
 
 - (void)addCount {

@@ -51,6 +51,7 @@
 		F40733711F3C440E0006F1F6 /* DressManDetailSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F40733701F3C440E0006F1F6 /* DressManDetailSecondViewController.m */; };
 		F40733741F3C49400006F1F6 /* DressManDetailThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F40733731F3C49400006F1F6 /* DressManDetailThirdViewController.m */; };
 		F40733771F3C4A380006F1F6 /* DressManDetailFourViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F40733761F3C4A380006F1F6 /* DressManDetailFourViewController.m */; };
+		F407337A1F3C51D20006F1F6 /* ConfirmOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F40733791F3C51D20006F1F6 /* ConfirmOrderViewController.m */; };
 		F40A2AE01F315F5700BEDFFB /* StoreCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F40A2ADF1F315F5700BEDFFB /* StoreCollectionViewCell.m */; };
 		F40A2AE51F31650700BEDFFB /* StorePesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F40A2AE41F31650700BEDFFB /* StorePesRequest.m */; };
 		F40A2AE81F3165D600BEDFFB /* StoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F40A2AE71F3165D600BEDFFB /* StoreManager.m */; };
@@ -272,6 +273,8 @@
 		F40733731F3C49400006F1F6 /* DressManDetailThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DressManDetailThirdViewController.m; sourceTree = "<group>"; };
 		F40733751F3C4A380006F1F6 /* DressManDetailFourViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DressManDetailFourViewController.h; sourceTree = "<group>"; };
 		F40733761F3C4A380006F1F6 /* DressManDetailFourViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DressManDetailFourViewController.m; sourceTree = "<group>"; };
+		F40733781F3C51D20006F1F6 /* ConfirmOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmOrderViewController.h; sourceTree = "<group>"; };
+		F40733791F3C51D20006F1F6 /* ConfirmOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmOrderViewController.m; sourceTree = "<group>"; };
 		F40A2ADE1F315F5700BEDFFB /* StoreCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreCollectionViewCell.h; sourceTree = "<group>"; };
 		F40A2ADF1F315F5700BEDFFB /* StoreCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreCollectionViewCell.m; sourceTree = "<group>"; };
 		F40A2AE31F31650700BEDFFB /* StorePesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorePesRequest.h; sourceTree = "<group>"; };
@@ -933,6 +936,8 @@
 				F4FEB0CE1F31B86500C2F5A3 /* StoreDetailSecondViewController.m */,
 				F41B19C21F3416120026E483 /* AddGoodsToShoppingViewController.h */,
 				F41B19C31F3416120026E483 /* AddGoodsToShoppingViewController.m */,
+				F40733781F3C51D20006F1F6 /* ConfirmOrderViewController.h */,
+				F40733791F3C51D20006F1F6 /* ConfirmOrderViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1464,6 +1469,7 @@
 				F4FD30471F32C1B200048DD6 /* ShoppingPesRequest.m in Sources */,
 				F40E7A641F301BF300FD7792 /* LoginManager.m in Sources */,
 				A5109C0E1F3B655200DD32C3 /* DQAgeModel.m in Sources */,
+				F407337A1F3C51D20006F1F6 /* ConfirmOrderViewController.m in Sources */,
 				A5109C101F3B655200DD32C3 /* DQCanCerEnsureView.m in Sources */,
 				F40733771F3C4A380006F1F6 /* DressManDetailFourViewController.m in Sources */,
 				F4FDD6B51F2C37CD007263D4 /* AddressViewController.m in Sources */,

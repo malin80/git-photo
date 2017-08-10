@@ -87,11 +87,15 @@
 - (void)addCarBtnClick {
     AddGoodsToShoppingViewController *controller = [[AddGoodsToShoppingViewController alloc] init];
     controller.info = self.info;
+    controller.isBuy = NO;
     [self.navigationController pushViewController:controller animated:NO];
 }
 
 - (void)buyBtnClick {
-    
+    AddGoodsToShoppingViewController *controller = [[AddGoodsToShoppingViewController alloc] init];
+    controller.info = self.info;
+    controller.isBuy = YES;
+    [self.navigationController pushViewController:controller animated:NO];
 }
 
 #pragma mark --- DLTabedSlideViewDelegate ---

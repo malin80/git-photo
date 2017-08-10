@@ -32,5 +32,22 @@
     NSDictionary *dict = @{@"goodstype":@(goodsType), @"sortname":sortName, @"sortorder":sortOrder};
     [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"GoodsInfoControl/queryGoodsInfoBy.do" dic:dict finished:finished];
 }
+//	OrderOfGoodsControl/saveOrderOfGoods.do(token,deliveryName,deliveryPhone,deliveryAddress,goodsId,goodsPrice,goodsCount,goodsParam,cartIds,isCart,cartCount)
+
++ (void)buyGoodsWithToken:(NSString *)token
+           withMemberName:(NSString *)name
+          withMemberPhone:(NSString *)phone
+        withMemberAddress:(NSString *)address
+              withGoodsId:(long)goodsId
+           withGoodsPrice:(long)goodsPrice
+            withGoodCount:(long)goodsCount
+           withGoodsParam:(NSString *)goodsParam
+              withCartIds:(NSString *)cartIds
+               withIsCart:(long)isCart
+            withCartCount:(long)cartCount
+                withBlock:(void(^)(NSDictionary *responseObject,NSString *error))finished {
+    NSDictionary *dict = @{@"token":token, @"deliveryName":name, @"deliveryPhone":phone, @"deliveryAddress":address, @"goodsId":@(goodsId), @"goodsPrice":@(goodsPrice), @"goodsCount":@(goodsCount), @"goodsParam":goodsParam, @"cartIds":cartIds, @"isCart":@(isCart), @"cartCount":@(cartCount)};
+    [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"OrderOfGoodsControl/saveOrderOfGoods.do" dic:dict finished:finished];
+}
 
 @end

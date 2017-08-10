@@ -152,6 +152,7 @@
         cell.normalAddressLabel.text = @"设为默认";
     } else {
         cell.normalAddressLabel.text = @"取消默认";
+        GET_SINGLETON_FOR_CLASS(PersonalManager).normalAddressInfo = info;
     }
     return cell;
 }

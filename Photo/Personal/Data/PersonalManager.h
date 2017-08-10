@@ -7,12 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AddressInfo.h"
 
 @interface PersonalManager : NSObject
 DECLARE_SINGLETON_FOR_CLASS(PersonalManager)
 
 @property (nonatomic, strong) NSMutableArray *collectGoodsInfos;
 @property (nonatomic, strong) NSMutableArray *addressInfos;
+@property (nonatomic, strong) AddressInfo *normalAddressInfo;
 
 - (void)updateMemberInfoWithNickName:(NSString *)nickName
                       withMemberName:(NSString *)memberName
