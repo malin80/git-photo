@@ -13,7 +13,6 @@
 @property (nonatomic, strong) UIImageView *memberView;
 @property (nonatomic, strong) UILabel *memberName;
 @property (nonatomic, strong) UILabel *commentContent;
-@property (nonatomic, strong) UIView *backView;
 
 
 - (CGFloat)calculateCellHeight:(NSDictionary *)dict;

@@ -11,6 +11,7 @@
 #import "GoodsInfo.h"
 #import "ShoppingManager.h"
 #import "LoginManager.h"
+#import "StoreCommentInfo.h"
 
 @interface StoreManager ()
 
@@ -26,6 +27,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(StoreManager)
     if (self) {
         self.goodsInfoArray = [NSMutableArray array];
         self.goodsClassifyArray = [NSMutableArray array];
+        self.storeComments = [NSMutableArray array];
     }
     return self;
 }
@@ -135,6 +137,27 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(StoreManager)
     [StorePesRequest buyGoodsWithToken:token withMemberName:name withMemberPhone:phone withMemberAddress:address withGoodsId:goodsId withGoodsPrice:goodsPrice withGoodCount:goodsCount withGoodsParam:goodsParam withCartIds:cartIds withIsCart:isCart withCartCount:cartCount withBlock:^(NSDictionary *responseObject, NSString *error) {
         //用这个ID调支付接口
         NSString *payId = [responseObject objectForKey:@"data"];
+    }];
+}
+
+- (void)queryGoodsDetailInfoWithGoodsId:(long)goodsId {
+    [StorePesRequest queryGoodsDetailInfoWithGoodsId:goodsId withBlock:^(NSDictionary *responseObject, NSString *error) {
+        if ([[responseObject objectForKey:@"errorCode"] unsignedLongValue] == 0) {
+            if (![[responseObject objectForKey:@"data"] isKindOfClass:[NSString class]]) {
+                [self.storeComments removeAllObjects];
+                NSArray *array = [responseObject objectForKey:@"data"];
+                for (NSDictionary *dict in array) {
+                    StoreCommentInfo *info = [[StoreCommentInfo alloc] init];
+                    info.commentText = [dict objectForKey:@"commentOfGoodsText"];
+                    info.commentImageUrl = [dict objectForKey:@"commentOfGoodsImgUrl"];
+                    info.commentTime = [dict objectForKey:@"commentOfGoodsTime"];
+                    NSDictionary *memberDetail = [dict objectForKey:@"memberDetail"];
+                    info.commentName = [memberDetail objectForKey:@"pickName"];
+                    info.commentImage = [memberDetail objectForKey:@"memberPic"];
+                    [self.storeComments addObject:info];
+                }
+            }
+        }
     }];
 }
 

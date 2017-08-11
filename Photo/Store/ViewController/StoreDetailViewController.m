@@ -9,6 +9,7 @@
 #import "StoreDetailViewController.h"
 #import "StoreDetailFirstViewController.h"
 #import "StoreDetailSecondViewController.h"
+#import "StoreDetailThirdViewController.h"
 #import "AddGoodsToShoppingViewController.h"
 
 #import "StoreManager.h"
@@ -31,6 +32,7 @@
 
     [self addNotification];
     [GET_SINGLETON_FOR_CLASS(PersonalManager) queryMemberAddressWithMemberId:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.memberId];
+    [GET_SINGLETON_FOR_CLASS(StoreManager) queryGoodsDetailInfoWithGoodsId:self.info.goodsId];
 
     self.navigationController.navigationBarHidden = YES;
     NavigationBar *bar = [[NavigationBar alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 64) withTitle:[NSString stringWithFormat:@"%@ 详情",self.info.goodsName]];
@@ -137,7 +139,7 @@
         }
         case 2:
         {
-            StoreDetailFirstViewController *controller = [[StoreDetailFirstViewController alloc] init];
+            StoreDetailThirdViewController *controller = [[StoreDetailThirdViewController alloc] init];
             return controller;
         }
             
