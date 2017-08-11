@@ -9,6 +9,8 @@
 #import "GoodsOrderViewController.h"
 
 #import "OrderTableViewCell.h"
+#import "PersonalManager.h"
+#import "GoodsInfo.h"
 
 @interface GoodsOrderViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -21,11 +23,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self addNotification];
+}
+
+- (void)addNotification {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryMemberOrderGoodsInfoSuccess) name:@"queryMemberOrderGoodsInfoSuccess" object:nil];
+}
+
+- (void)queryMemberOrderGoodsInfoSuccess {
     [self createTableView];
 }
 
 - (void)createTableView {
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height - 64) style:UITableViewStyleGrouped];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHieght - 70) style:UITableViewStyleGrouped];
     _tableView.dataSource = self;
     _tableView.delegate = self;
     _tableView.backgroundColor = [UIColor whiteColor];
@@ -41,7 +52,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return GET_SINGLETON_FOR_CLASS(PersonalManager).orderGoodsInfos.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -50,9 +61,19 @@
     if (!cell) {
         cell = [[OrderTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
     }
+    GoodsInfo *info = [GET_SINGLETON_FOR_CLASS(PersonalManager).orderGoodsInfos objectAtIndex:indexPath.row];
+    cell.goodsNamme.text = info.goodsName;
+    cell.goodsParameter.text = info.goodsParamValue;
+    cell.goodsNumber.text = info.goodsOrderNum;
+    cell.time.text = info.goodsDate;
+    cell.goodsCount.text = [NSString stringWithFormat:@"数量：%ld",info.goodsCount];
+    cell.goodsPrice.text = [NSString stringWithFormat:@"总价：%ld",info.goodsPrice];
+    cell.goodsState.text = info.goodsOrderStatus;
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,info.goodsPic]];
+    UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
+    cell.goodsImage.image = imgFromUrl;
     cell.layer.borderWidth = 1;
     cell.layer.borderColor = [[UIColor colorWithRed:247/255.0 green:247/255.0 blue:247/255.0 alpha:1.0] CGColor];
-    
     return cell;
 }
 

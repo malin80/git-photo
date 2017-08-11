@@ -15,6 +15,7 @@ DECLARE_SINGLETON_FOR_CLASS(PersonalManager)
 @property (nonatomic, strong) NSMutableArray *collectGoodsInfos;
 @property (nonatomic, strong) NSMutableArray *addressInfos;
 @property (nonatomic, strong) AddressInfo *normalAddressInfo;
+@property (nonatomic, strong) NSMutableArray *orderGoodsInfos;
 
 - (void)updateMemberInfoWithNickName:(NSString *)nickName
                       withMemberName:(NSString *)memberName
@@ -40,5 +41,7 @@ DECLARE_SINGLETON_FOR_CLASS(PersonalManager)
 - (void)makeAddressDefaultWithAddressId:(long)addressId;
 
 - (void)cancelAddressDefaultWithAddressId:(long)addressId;
+
+- (void)queryMemberOrderGoodsInfoWithToken:(NSString *)token;
 
 @end

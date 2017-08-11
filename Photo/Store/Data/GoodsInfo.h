@@ -26,4 +26,8 @@
 @property (nonatomic, strong)   NSString    *goodsTypeName;
 @property (nonatomic, assign)   long         goodsTypeId;
 
+@property (nonatomic, assign)   long         goodsOrderId;          //订单id
+@property (nonatomic, copy)     NSString    *goodsOrderNum;
+@property (nonatomic, copy)     NSString    *goodsOrderStatus;
+
 @end

@@ -31,4 +31,6 @@
 
 + (void)cancelAddressDefaultWithAddressId:(long)addressId withBlock:(void (^)(NSDictionary *response, NSString *error))finished;
 
++ (void)queryMemberOrderGoodsInfoWithToken:(NSString *)token withBlock:(void (^)(NSDictionary *response, NSString *error))finished;
+
 @end

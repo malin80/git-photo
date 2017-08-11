@@ -75,4 +75,9 @@
     [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"DeliveryControl/cancleDeliveryStatus.do" dic:dict finished:finished];
 }
 
++ (void)queryMemberOrderGoodsInfoWithToken:(NSString *)token withBlock:(void (^)(NSDictionary *, NSString *))finished {
+    NSDictionary *dict = @{@"token":token};
+    [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"OrderOfGoodsDetailControl/queryOrderOfGoods.do" dic:dict finished:finished];
+}
+
 @end

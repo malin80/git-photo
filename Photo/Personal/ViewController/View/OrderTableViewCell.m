@@ -88,7 +88,6 @@
 - (UILabel *)goodsNamme {
     if (!_goodsNamme) {
         _goodsNamme = [[UILabel alloc] init];
-        _goodsNamme.text = @"摆台8寸";
         _goodsNamme.textColor = [UIColor colorWithRed:51/255.0 green:52/255.0 blue:59/255.0 alpha:1.0];
         [_goodsNamme sizeToFit];
     }
@@ -98,7 +97,6 @@
 - (UILabel *)goodsParameter {
     if (!_goodsParameter) {
         _goodsParameter = [[UILabel alloc] init];
-        _goodsParameter.text = [NSString stringWithFormat:@"产品参数:zzzxas"];
         _goodsParameter.textColor = [UIColor colorWithRed:148/255.0 green:149/255.0 blue:151/255.0 alpha:1.0];
         [_goodsParameter sizeToFit];
     }
@@ -108,7 +106,6 @@
 - (UILabel *)goodsNumber {
     if (!_goodsNumber) {
         _goodsNumber = [[UILabel alloc] init];
-        _goodsNumber.text = [NSString stringWithFormat:@"订单号 GD23423534534514"];
         _goodsNumber.textColor = [UIColor colorWithRed:148/255.0 green:149/255.0 blue:151/255.0 alpha:1.0];
         [_goodsNumber sizeToFit];
 
@@ -120,7 +117,6 @@
 - (UILabel *)time {
     if (!_time) {
         _time = [[UILabel alloc] init];
-        _time.text = [NSString stringWithFormat:@"2017-07-19"];
         _time.textColor = [UIColor colorWithRed:148/255.0 green:149/255.0 blue:151/255.0 alpha:1.0];
         [_time sizeToFit];
     }
@@ -130,7 +126,6 @@
 - (UILabel *)goodsCount {
     if (!_goodsCount) {
         _goodsCount = [[UILabel alloc] init];
-        _goodsCount.text = [NSString stringWithFormat:@"数量：%d",1];
         _goodsCount.textColor = [UIColor colorWithRed:148/255.0 green:149/255.0 blue:151/255.0 alpha:1.0];
         [_goodsCount sizeToFit];
     }
@@ -140,7 +135,6 @@
 - (UILabel *)goodsPrice {
     if (!_goodsPrice) {
         _goodsPrice = [[UILabel alloc] init];
-        _goodsPrice.text = [NSString stringWithFormat:@"总价 ¥%u",12345];
         _goodsPrice.textColor = [UIColor colorWithRed:148/255.0 green:149/255.0 blue:151/255.0 alpha:1.0];
         [_goodsPrice sizeToFit];
     }
@@ -150,7 +144,6 @@
 - (UILabel *)goodsState {
     if (!_goodsState) {
         _goodsState = [[UILabel alloc] init];
-        _goodsState.text = [NSString stringWithFormat:@"等待商家同意"];
         _goodsState.textColor = [UIColor colorWithRed:148/255.0 green:149/255.0 blue:151/255.0 alpha:1.0];
         [_goodsState sizeToFit];
     }

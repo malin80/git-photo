@@ -22,6 +22,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(PersonalManager)
         self.collectGoodsInfos = [NSMutableArray array];
         self.addressInfos = [NSMutableArray array];
         self.normalAddressInfo = [[AddressInfo alloc] init];
+        self.orderGoodsInfos = [NSMutableArray array];
     }
     return self;
 }
@@ -174,5 +175,35 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(PersonalManager)
     }];
 }
 
+- (void)queryMemberOrderGoodsInfoWithToken:(NSString *)token {
+    [PersonalPesRequest queryMemberOrderGoodsInfoWithToken:token withBlock:^(NSDictionary *response, NSString *error) {
+        if ([[response objectForKey:@"errorCode"] unsignedLongValue]== 0) {
+            if (![[response objectForKey:@"data"] isKindOfClass:[NSString class]]) {
+                [self.orderGoodsInfos removeAllObjects];
+                NSArray *array = [response objectForKey:@"data"];
+                for (NSDictionary *dict in array) {
+                    GoodsInfo *info = [[GoodsInfo alloc] init];
+                    info.goodsParamValue = [dict objectForKey:@"goodsParameter"];
+                    info.goodsOrderId = [[dict objectForKey:@"orderOfGoodsDetailId"] unsignedLongValue];
+                    info.goodsCount = [[dict objectForKey:@"goodsCount"] unsignedLongValue];
+                    info.goodsPrice = [[dict objectForKey:@"goodsPrice"] unsignedLongValue];
+                    info.goodsOrderNum = [dict objectForKey:@"orderOfGoodsNum"];
+                    
+                    NSDictionary *goodsInfo = [dict objectForKey:@"goodsInfo"];
+                    info.goodsName = [goodsInfo objectForKey:@"goodsName"];
+                    info.goodsPic = [goodsInfo objectForKey:@"goodsPic"];
+                    NSDictionary *goodsOrder = [dict objectForKey:@"orderOfGoods"];
+                    info.goodsDate = [goodsOrder objectForKey:@"orderOfGoodsTime"];
+                    NSDictionary *orderGoodsStatu = [dict objectForKey:@"orderInfoStatus"];
+                    info.goodsOrderStatus = [orderGoodsStatu objectForKey:@"orderInfoStatusDetail"];
+                    [self.orderGoodsInfos addObject:info];
+                }
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"queryMemberOrderGoodsInfoSuccess" object:nil];
+                });
+            }
+        }
+    }];
+}
 
 @end

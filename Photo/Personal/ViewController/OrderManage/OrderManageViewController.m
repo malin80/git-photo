@@ -7,6 +7,8 @@
 //
 
 #import "OrderManageViewController.h"
+#import "PersonalManager.h"
+#import "LoginManager.h"
 
 @interface OrderManageViewController ()
 
@@ -16,8 +18,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    NavigationBar *bar = [[NavigationBar alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 64) withTitle:@"订单管理"];
+    
+    [GET_SINGLETON_FOR_CLASS(PersonalManager) queryMemberOrderGoodsInfoWithToken:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue];
+    
+    NavigationBar *bar = [[NavigationBar alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 64) withTitle:@"订单管理"];
     bar.delegate = self;
     bar.line.hidden=YES;
     [self.view addSubview:bar];
