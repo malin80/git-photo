@@ -9,11 +9,18 @@
 #import "ShoppingTableViewCell.h"
 #import "Masonry.h"
 
+@interface ShoppingTableViewCell ()
+
+@property (nonatomic, copy) NSString *identifier;
+
+@end
+
 @implementation ShoppingTableViewCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        self.identifier = reuseIdentifier;
         [self initView];
         [self setImmutableConstraints];
     }
@@ -21,70 +28,98 @@
 }
 
 - (void)initView {
-    [self.contentView addSubview:self.selectedView];
+    if ([self.identifier isEqualToString:@"confirmOrderTabelView"]) {
+        
+    } else {
+        [self.contentView addSubview:self.selectedView];
+        [self.contentView addSubview:self.deleteBackView];
+        [self.deleteBackView addSubview:self.deleteView];
+        [self.deleteBackView addSubview:self.deleteLabel];
+    }
     [self.contentView addSubview:self.goodsImage];
     [self.contentView addSubview:self.goodsName];
     [self.contentView addSubview:self.goodsParameter];
     [self.contentView addSubview:self.goodsPrice];
     [self.contentView addSubview:self.goodsCount];
-    [self.contentView addSubview:self.deleteBackView];
-    [self.deleteBackView addSubview:self.deleteView];
-    [self.deleteBackView addSubview:self.deleteLabel];
     [self.contentView addSubview:self.line];
 }
 
 - (void)setImmutableConstraints {
-    [_selectedView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self.contentView);
-        make.left.equalTo(self.mas_left).with.offset(5);
-        make.width.equalTo(@(20));
-        make.height.equalTo(@(20));
-    }];
-    
-    [_goodsImage mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self.contentView);
-        make.left.equalTo(_selectedView.mas_right).with.offset(10);
-        make.height.equalTo(@(90));
-        make.width.equalTo(@(90));
-    }];
+    if ([self.identifier isEqualToString:@"confirmOrderTabelView"]) {
+        [_goodsImage mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(self.contentView);
+            make.left.equalTo(self.mas_left).with.offset(5);
+            make.height.equalTo(@(90));
+            make.width.equalTo(@(90));
+        }];
+        
+        [_goodsCount mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.bottom.equalTo(self.contentView.mas_bottom).with.offset(-15);
+            make.right.equalTo(self.contentView.mas_right).with.offset(-15);
+        }];
+        
+        [_goodsParameter mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(_goodsImage);
+            make.left.equalTo(_goodsName);
+        }];
+        
+        [_goodsPrice mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.bottom.equalTo(_goodsImage.mas_bottom);
+            make.left.equalTo(_goodsName);
+        }];
+    } else {
+        [_selectedView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(self.contentView);
+            make.left.equalTo(self.mas_left).with.offset(5);
+            make.width.equalTo(@(20));
+            make.height.equalTo(@(20));
+        }];
+        
+        [_goodsImage mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(self.contentView);
+            make.left.equalTo(_selectedView.mas_right).with.offset(10);
+            make.height.equalTo(@(90));
+            make.width.equalTo(@(90));
+        }];
+        
+        [_deleteBackView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(_goodsPrice).with.offset(4);
+            make.right.equalTo(self.contentView.mas_right).with.offset(-15);
+            make.height.equalTo(@(20));
+            make.width.equalTo(@(80));
+        }];
+        
+        [_deleteView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(_deleteBackView.mas_left).with.offset(5);
+            make.height.equalTo(_deleteBackView);
+            make.width.equalTo(@(20));
+            make.top.equalTo(_deleteBackView.mas_top);
+        }];
+        
+        [_deleteLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(_deleteBackView.mas_right).with.offset(-10);
+            make.centerY.equalTo(_deleteBackView);
+        }];
+        
+        [_goodsCount mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(_goodsPrice.mas_bottom).with.offset(5);
+            make.left.equalTo(_goodsName);
+        }];
+
+        [_goodsParameter mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(_goodsName.mas_bottom).with.offset(5);
+            make.left.equalTo(_goodsName);
+        }];
+        
+        [_goodsPrice mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(_goodsParameter.mas_bottom).with.offset(5);
+            make.left.equalTo(_goodsName);
+        }];
+    }
     
     [_goodsName mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_goodsImage.mas_top).with.offset(5);
         make.left.equalTo(_goodsImage.mas_right).with.offset(10);
-    }];
-    
-    [_goodsParameter mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_goodsName.mas_bottom).with.offset(5);
-        make.left.equalTo(_goodsName);
-    }];
-    
-    [_goodsPrice mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_goodsParameter.mas_bottom).with.offset(5);
-        make.left.equalTo(_goodsName);
-    }];
-    
-    [_goodsCount mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_goodsPrice.mas_bottom).with.offset(5);
-        make.left.equalTo(_goodsName);
-    }];
-    
-    [_deleteBackView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_goodsPrice).with.offset(4);
-        make.right.equalTo(self.contentView.mas_right).with.offset(-15);
-        make.height.equalTo(@(20));
-        make.width.equalTo(@(80));
-    }];
-    
-    [_deleteView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_deleteBackView.mas_left).with.offset(5);
-        make.height.equalTo(_deleteBackView);
-        make.width.equalTo(@(20));
-        make.top.equalTo(_deleteBackView.mas_top);
-    }];
-    
-    [_deleteLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(_deleteBackView.mas_right).with.offset(-10);
-        make.centerY.equalTo(_deleteBackView);
     }];
     
     [_line mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -149,7 +184,11 @@
     if (!_goodsCount) {
         _goodsCount = [[UILabel alloc] init];
         _goodsParameter.textColor = [UIColor colorWithRed:82/255.0 green:86/255.0 blue:85/255.0 alpha:1.0];
-        _goodsCount.font = [UIFont systemFontOfSize:15];
+        if ([self.identifier isEqualToString:@"confirmOrderTabelView"]) {
+            _goodsCount.font = [UIFont systemFontOfSize:18];
+        } else {
+            _goodsCount.font = [UIFont systemFontOfSize:15];
+        }
         [_goodsCount sizeToFit];
     }
     return _goodsCount;

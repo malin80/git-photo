@@ -271,7 +271,7 @@
 - (void)addGoodsToShopping {
     if (self.isBuy) {
         ConfirmOrderViewController *controller = [[ConfirmOrderViewController alloc] init];
-        controller.info = self.info;
+        controller.goodsInfos = [NSArray arrayWithObject:self.info];
         [self.navigationController pushViewController:controller animated:NO];
     } else {
         NSString *string = [NSString stringWithFormat:@"%@:%@",self.info.goodsParamKey,self.info.goodsParamValue];

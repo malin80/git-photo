@@ -12,6 +12,6 @@
 
 @interface ConfirmOrderViewController : BaseViewController
 
-@property (nonatomic, strong) GoodsInfo *info;
+@property (nonatomic, strong) NSArray *goodsInfos;
 
 @end

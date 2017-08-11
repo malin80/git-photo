@@ -15,6 +15,8 @@
 #import "LoginManager.h"
 #import "NavigationBar.h"
 #import "DLTabedSlideView.h"
+#import "PersonalManager.h"
+#import "AddressInfo.h"
 
 @interface StoreDetailViewController () <NavigationBarDelegate, DLTabedSlideViewDelegate>
 
@@ -27,12 +29,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    [self addNotification];
+    [GET_SINGLETON_FOR_CLASS(PersonalManager) queryMemberAddressWithMemberId:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.memberId];
+
     self.navigationController.navigationBarHidden = YES;
     NavigationBar *bar = [[NavigationBar alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 64) withTitle:[NSString stringWithFormat:@"%@ 详情",self.info.goodsName]];
     bar.delegate = self;
     [self.view addSubview:bar];
     
     [self initView];
+}
+
+- (void)addNotification {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryMemberAddressSuccess) name:@"queryMemberAddressSuccess" object:nil];
+}
+
+- (void)queryMemberAddressSuccess {
+    for (AddressInfo *info in GET_SINGLETON_FOR_CLASS(PersonalManager).addressInfos) {
+        if (info.status == 1) {
+            GET_SINGLETON_FOR_CLASS(PersonalManager).normalAddressInfo = info;
+        }
+    }
 }
 
 - (void)initView {

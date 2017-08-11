@@ -8,15 +8,20 @@
 
 #import "ConfirmOrderViewController.h"
 #import "ShoppingTableViewCell.h"
-
+#import "SelectAddressViewController.h"
 #import "PersonalManager.h"
 #import "AddressInfo.h"
 #import "Masonry.h"
 #import "NavigationBar.h"
+#import "StoreManager.h"
+#import "LoginManager.h"
 
 @interface ConfirmOrderViewController () <NavigationBarDelegate,UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) GoodsInfo *goodsInfo;
+@property (nonatomic, strong) AddressInfo *addressInfo;
+@property (nonatomic, strong) UIView *addressView;
 
 @end
 
@@ -25,31 +30,55 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    NavigationBar *bar = [[NavigationBar alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 64) withTitle:@"确认订单"];
+    NavigationBar *bar = [[NavigationBar alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 64) withTitle:@"确认订单"];
     bar.delegate = self;
     [self.view addSubview:bar];
 
-    [self createAddressView];
     [self createTableView];
+    [self createBottomView];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self createAddressView];
 }
 
 - (void)createAddressView {
-    AddressInfo *info = GET_SINGLETON_FOR_CLASS(PersonalManager).normalAddressInfo;
+    self.addressInfo = GET_SINGLETON_FOR_CLASS(PersonalManager).normalAddressInfo;
+    if (self.addressView) {
+        [self.addressView removeFromSuperview];
+    }
+    self.addressView = [[UIView alloc] init];
+    self.addressView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gotoEditAddress)];
+    [self.addressView addGestureRecognizer:tap];
+    [self.view addSubview:self.addressView];
+    
+    [self.addressView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view.mas_top).with.offset(70);
+        make.left.equalTo(self.view.mas_left);
+        make.width.equalTo(@(ScreenWidth));
+        make.height.equalTo(@(100));
+    }];
+    
     UILabel *nameLabel = [[UILabel alloc] init];
-    nameLabel.text = [NSString stringWithFormat:@"收货人：%@",info.name];
-    [self.view addSubview:nameLabel];
+    nameLabel.text = [NSString stringWithFormat:@"收货人：%@",self.addressInfo.name];
+    [self.addressView addSubview:nameLabel];
     
     UILabel *phoneLabel = [[UILabel alloc] init];
-    phoneLabel.text = [NSString stringWithFormat:@"%@",info.phone];
-    [self.view addSubview:phoneLabel];
+    phoneLabel.text = [NSString stringWithFormat:@"%@",self.addressInfo.phone];
+    [self.addressView addSubview:phoneLabel];
     
     UILabel *addressLabel = [[UILabel alloc] init];
-    addressLabel.text = [NSString stringWithFormat:@"收货地址：%@",info.address];
-    [self.view addSubview:addressLabel];
+    addressLabel.text = [NSString stringWithFormat:@"收货地址：%@",self.addressInfo.address];
+    [self.addressView addSubview:addressLabel];
+    
+    UIImageView *arrow = [[UIImageView alloc] init];
+    arrow.image = [UIImage imageNamed:@"personal_forward"];
+    [self.addressView addSubview:arrow];
     
     [nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view.mas_left).with.offset(10);
-        make.top.equalTo(self.view.mas_top).with.offset(80);
+        make.left.equalTo(self.addressView.mas_left).with.offset(10);
+        make.top.equalTo(self.addressView.mas_top).with.offset(10);
     }];
     
     [phoneLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -61,6 +90,58 @@
         make.left.equalTo(nameLabel);
         make.top.equalTo(nameLabel.mas_bottom).with.offset(20);
     }];
+    
+    [arrow mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(addressLabel);
+        make.right.equalTo(self.addressView.mas_right).with.offset(-10);
+        make.width.equalTo(@(20));
+        make.height.equalTo(@(20));
+    }];
+}
+
+- (void)gotoEditAddress {
+    SelectAddressViewController *controller = [[SelectAddressViewController alloc] init];
+    [self.navigationController pushViewController:controller animated:NO];
+}
+
+- (void)createBottomView {
+    UIView *bottomView = [[UIView alloc] initWithFrame:CGRectMake(-1, ScreenHieght-40, ScreenWidth+2, 40)];
+    bottomView.layer.borderWidth = 0.5;
+    bottomView.layer.borderColor = [[UIColor colorR:246 G:246 B:246 alpha:1] CGColor];
+    [self.view addSubview:bottomView];
+    
+    long goodsPrice = 0;
+    for (GoodsInfo *info in self.goodsInfos) {
+        goodsPrice = goodsPrice + info.goodsPrice;
+    }
+    UILabel *totalLabel = [[UILabel alloc] init];
+    totalLabel.text = [NSString stringWithFormat:@"合计：%ld",goodsPrice];
+    [bottomView addSubview:totalLabel];
+    
+    [totalLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(bottomView).with.offset(10);
+        make.centerY.equalTo(bottomView);
+    }];
+    
+    UIButton *confirmButton = [[UIButton alloc] init];
+    [confirmButton setTitle:@"提交订单" forState:UIControlStateNormal];
+    [confirmButton addTarget:self action:@selector(confirmOrder) forControlEvents:UIControlEventTouchUpInside];
+    confirmButton.backgroundColor = [UIColor colorR:255 G:101 B:0 alpha:1];
+    [bottomView addSubview:confirmButton];
+    
+    [confirmButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(bottomView.mas_right);
+        make.height.equalTo(bottomView);
+        make.top.equalTo(bottomView.mas_top);
+        make.width.equalTo(@(80));
+    }];
+}
+
+- (void)confirmOrder {
+    if (self.goodsInfos.count == 1) {
+        self.goodsInfo = [self.goodsInfos objectAtIndex:0];
+        [GET_SINGLETON_FOR_CLASS(StoreManager) buyGoodsWithToken:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue withMemberName:self.addressInfo.name withMemberPhone:self.addressInfo.phone withMemberAddress:self.addressInfo.address withGoodsId:self.goodsInfo.goodsId withGoodsPrice:self.goodsInfo.goodsPrice withGoodCount:self.goodsInfo.goodsCount withGoodsParam:self.goodsInfo.goodsParamValue withCartIds:@"" withIsCart:0 withCartCount:0];
+    }
 }
 
 - (void)createTableView {
@@ -80,21 +161,22 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return self.goodsInfos.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *cellIdentify = [NSString stringWithFormat:@"cellIdentify"];
+    NSString *cellIdentify = [NSString stringWithFormat:@"confirmOrderTabelView"];
     ShoppingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
     if (!cell) {
         cell = [[ShoppingTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
     }
+    GoodsInfo *info = [self.goodsInfos objectAtIndex:indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.goodsName.text = self.info.goodsName;
-    cell.goodsParameter.text = self.info.goodsParamValue;
-    cell.goodsPrice.text = [NSString stringWithFormat:@"%ld",self.info.goodsPrice];
-    cell.goodsCount.text = [NSString stringWithFormat:@"×%ld",self.info.goodsCount];
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,self.info.goodsPic]];
+    cell.goodsName.text = info.goodsName;
+    cell.goodsParameter.text = info.goodsParamValue;
+    cell.goodsPrice.text = [NSString stringWithFormat:@"%ld",info.goodsPrice];
+    cell.goodsCount.text = [NSString stringWithFormat:@"×%ld",info.goodsCount];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,info.goodsPic]];
     UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
     cell.goodsImage.image = imgFromUrl;
 

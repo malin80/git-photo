@@ -95,6 +95,8 @@
 		F48237561F27179700DDD487 /* HomePageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F48237551F27179700DDD487 /* HomePageTableViewCell.m */; };
 		F482375A1F2725AA00DDD487 /* ShoppingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F48237591F2725AA00DDD487 /* ShoppingTableViewCell.m */; };
 		F482375D1F27395100DDD487 /* ShoppingBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = F482375C1F27395100DDD487 /* ShoppingBottomView.m */; };
+		F486792A1F3D51A500612E27 /* SelectAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F48679291F3D51A500612E27 /* SelectAddressViewController.m */; };
+		F486792D1F3D523200612E27 /* SelectAddressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F486792C1F3D523200612E27 /* SelectAddressTableViewCell.m */; };
 		F4A7A0901F256B96009FAAEE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7A08F1F256B96009FAAEE /* main.m */; };
 		F4A7A0931F256B96009FAAEE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7A0921F256B96009FAAEE /* AppDelegate.m */; };
 		F4A7A0961F256B96009FAAEE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7A0951F256B96009FAAEE /* ViewController.m */; };
@@ -344,6 +346,10 @@
 		F48237591F2725AA00DDD487 /* ShoppingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingTableViewCell.m; sourceTree = "<group>"; };
 		F482375B1F27395100DDD487 /* ShoppingBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingBottomView.h; sourceTree = "<group>"; };
 		F482375C1F27395100DDD487 /* ShoppingBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingBottomView.m; sourceTree = "<group>"; };
+		F48679281F3D51A500612E27 /* SelectAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectAddressViewController.h; sourceTree = "<group>"; };
+		F48679291F3D51A500612E27 /* SelectAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectAddressViewController.m; sourceTree = "<group>"; };
+		F486792B1F3D523200612E27 /* SelectAddressTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectAddressTableViewCell.h; sourceTree = "<group>"; };
+		F486792C1F3D523200612E27 /* SelectAddressTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectAddressTableViewCell.m; sourceTree = "<group>"; };
 		F4A7A08B1F256B96009FAAEE /* Photo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4A7A08F1F256B96009FAAEE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F4A7A0911F256B96009FAAEE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -713,6 +719,8 @@
 				F40A2ADF1F315F5700BEDFFB /* StoreCollectionViewCell.m */,
 				F4FEB0CA1F31A64B00C2F5A3 /* StoreDetailTableViewCell.h */,
 				F4FEB0CB1F31A64B00C2F5A3 /* StoreDetailTableViewCell.m */,
+				F486792B1F3D523200612E27 /* SelectAddressTableViewCell.h */,
+				F486792C1F3D523200612E27 /* SelectAddressTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -938,6 +946,8 @@
 				F41B19C31F3416120026E483 /* AddGoodsToShoppingViewController.m */,
 				F40733781F3C51D20006F1F6 /* ConfirmOrderViewController.h */,
 				F40733791F3C51D20006F1F6 /* ConfirmOrderViewController.m */,
+				F48679281F3D51A500612E27 /* SelectAddressViewController.h */,
+				F48679291F3D51A500612E27 /* SelectAddressViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1463,9 +1473,11 @@
 				F40E7A611F30197F00FD7792 /* PersonalPesRequest.m in Sources */,
 				F4A7A2591F25C3D0009FAAEE /* UserDataTableViewCell.m in Sources */,
 				A5109C161F3B710400DD32C3 /* LTPickerView.m in Sources */,
+				F486792A1F3D51A500612E27 /* SelectAddressViewController.m in Sources */,
 				F482375A1F2725AA00DDD487 /* ShoppingTableViewCell.m in Sources */,
 				F4C618691F3B025F004A76B3 /* CameraManDetailTableViewCell.m in Sources */,
 				F4FDD6A51F2C378E007263D4 /* PhoneNumberViewController.m in Sources */,
+				F486792D1F3D523200612E27 /* SelectAddressTableViewCell.m in Sources */,
 				F4FD30471F32C1B200048DD6 /* ShoppingPesRequest.m in Sources */,
 				F40E7A641F301BF300FD7792 /* LoginManager.m in Sources */,
 				A5109C0E1F3B655200DD32C3 /* DQAgeModel.m in Sources */,
