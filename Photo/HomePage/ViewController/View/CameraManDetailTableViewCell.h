@@ -15,6 +15,9 @@
 @property (nonatomic, strong) UILabel *commentContent;
 
 
-- (CGFloat)calculateCellHeight:(NSDictionary *)dict;
+//给用户介绍赋值并且实现自动换行
+- (void)setCommentContentText:(NSString*)text withCommentImageUrl:(NSString *)url;
+
+- (void)createCommentImageWithUrl:(NSString *)url;
 
 @end

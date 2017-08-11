@@ -55,12 +55,14 @@
         cell = [[CameraManDetailTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
     }
     self.tableViewCell = cell;
+    [cell setCommentContentText:[dict objectForKey:@"commentText"] withCommentImageUrl:[dict objectForKey:@"commentImgs"]];
     NSDictionary *memberDetail = [dict objectForKey:@"memberDetail"];
     cell.memberName.text = [memberDetail objectForKey:@"pickName"];
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,[memberDetail objectForKey:@"memberPic"]]];
     UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
     cell.memberView.image = imgFromUrl;
-    
+    [cell createCommentImageWithUrl:[dict objectForKey:@"commentImgs"]];
+
     return cell;
 }
 
@@ -69,10 +71,8 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CameraManDetailTableViewCell *cell = self.tableViewCell;
-    NSDictionary *dict = [self.dressManInfo.commentList objectAtIndex:indexPath.row];
-    CGFloat height = [cell calculateCellHeight:dict];
-    return height;
+    CameraManDetailTableViewCell *cell = [self tableView:_tableView cellForRowAtIndexPath:indexPath];
+    return cell.frame.size.height;
 }
 
 

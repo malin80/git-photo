@@ -10,6 +10,9 @@
 #import "Masonry.h"
 #import "CameraManager.h"
 
+#define kImageViewWidth  (ScreenWidth - 60)/3
+
+
 @implementation CameraManDetailTableViewCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
@@ -26,22 +29,6 @@
     [self.contentView addSubview:self.memberView];
     [self.contentView addSubview:self.memberName];
     [self.contentView addSubview:self.commentContent];
-    
-    NSArray *temp=[GET_SINGLETON_FOR_CLASS(CameraManager).commentImages componentsSeparatedByString:@";"];
-    for (int i = 0; i<temp.count; i++) {
-        UIImageView *imageView = [[UIImageView alloc] init];
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,temp[i]]];
-        UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
-        imageView.image = imgFromUrl;
-        [self.contentView addSubview:imageView];
-        
-        [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(_commentContent.mas_bottom).with.offset(10);
-            make.left.equalTo(_commentContent.mas_left).with.offset(i*120);
-            make.height.equalTo(@(100));
-            make.width.equalTo(@(100));
-        }];
-    }
 }
 
 - (void)setImmutableConstraints {
@@ -56,48 +43,72 @@
         make.centerY.equalTo(_memberView);
         make.left.equalTo(_memberView.mas_right).with.offset(10);
     }];
-    
-    [_commentContent mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_memberView.mas_left);
-        make.top.equalTo(_memberView.mas_bottom).with.offset(10);
-        make.height.equalTo(@(100));
-        make.width.equalTo(@(ScreenWidth-20));
-    }];
 }
 
-- (CGFloat)calculateCellHeight:(NSDictionary *)dict {
-    CGFloat height = 0.0f;
-    CGFloat randomHeight = 0.0f;
-    NSString *commentText = [dict objectForKey:@"commentText"];
-    _commentContent.text = commentText;
-    if (commentText.length < 20) {
-        randomHeight = 80.0f;
-        [_commentContent mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.height.equalTo(@(20));
-        }];
-    } else if (commentText.length >=20 && commentText.length < 40) {
-        randomHeight = 100.0f;
-        [_commentContent mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.height.equalTo(@(50));
-        }];
-    } else if (commentText.length >=40 && commentText.length < 60) {
-        randomHeight = 120.0f;
-        [_commentContent mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.height.equalTo(@(80));
-        }];
-
-    }
+-(void)setCommentContentText:(NSString*)text withCommentImageUrl:(NSString *)url {
+    //获得当前cell高度
+    CGRect frame = [self frame];
+    //文本赋值
+    self.commentContent.text = text;
+    //设置label的最大行数
+    self.commentContent.lineBreakMode = NSLineBreakByWordWrapping;
     
-    NSString *commentImgs = [dict objectForKey:@"commentImgs"];
-    NSArray *temp=[commentImgs componentsSeparatedByString:@";"];
+    NSAttributedString *attrStr = [[NSAttributedString alloc] initWithString:text];
+    self.commentContent.attributedText = attrStr;
+    NSRange range = NSMakeRange(0, attrStr.length);
+    NSDictionary *dic = [attrStr attributesAtIndex:0 effectiveRange:&range];   // 获取该段attributedString的属性字典
+    // 计算文本的大小
+    CGSize labelSize = [self.commentContent.text boundingRectWithSize:self.commentContent.bounds.size // 用于计算文本绘制时占据的矩形块
+                                                              options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading // 文本绘制时的附加选项
+                                                           attributes:dic        // 文字的属性
+                                                              context:nil].size; // context上下文。包括一些信息，例如如何调整字间距以及缩放。该对象包含的信息将用于文本绘制。该参数可为nil
+    int lines = labelSize.width/ScreenWidth;
     
-    if (temp.count > 0) {
-        height = 140 + randomHeight;
+    self.commentContent.frame = CGRectMake(20, 45, ScreenWidth-20, labelSize.height*(lines+3));
+    self.commentContent.numberOfLines = 10;
+    
+    NSArray *temp=[url componentsSeparatedByString:@";"];
+    if (temp.count == 1) {
+        frame.size.height = labelSize.height*(lines+3)+40;
+        self.frame = frame;
+        return;
+    } else if (temp.count <= 3) {
+        frame.size.height = labelSize.height*(lines+3)+160;
+        self.frame = frame;
+        return;
+    } else if (temp.count <= 6) {
+        frame.size.height = labelSize.height*(lines+3)+280;
+        self.frame = frame;
+        return;
     } else {
-        height = randomHeight;
+        frame.size.height = labelSize.height*(lines+3)+280;
+        self.frame = frame;
+        return;
     }
-    return height;
+    //计算出自适应的高度
 }
+
+- (void)createCommentImageWithUrl:(NSString *)url {
+    NSArray *temp=[url componentsSeparatedByString:@";"];
+    if (temp.count > 0) {
+        for (int i = 0; i<temp.count; i++) {
+            UIImageView *imageView = [[UIImageView alloc] init];
+            NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,temp[i]]];
+            UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
+            imageView.image = imgFromUrl;
+            [self.contentView addSubview:imageView];
+            
+            [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(_commentContent.mas_bottom).with.offset(i/3 * (kImageViewWidth + 10));
+                make.left.equalTo(self.contentView.mas_left).with.offset(20+i%3*(kImageViewWidth+10));
+                make.height.equalTo(@(kImageViewWidth));
+                make.width.equalTo(@(kImageViewWidth));
+            }];
+            
+        }
+    }
+}
+
 
 #pragma mark --- getters and setters ---
 - (UIImageView *)memberView {
