@@ -111,7 +111,7 @@
         _buyButton.backgroundColor = [UIColor colorWithRed:255/255.0 green:102/255.0 blue:1/255.0 alpha:1.0];
         NSString *str = [NSString stringWithFormat:@"结算（0）"];
         [_buyButton setTitle:str forState:UIControlStateNormal];
-        
+        [_buyButton addTarget:self action:@selector(buyButtonClick) forControlEvents:UIControlEventTouchUpInside];
     }
     return _buyButton;
 }
@@ -139,6 +139,12 @@
             [self.delegate changeSelectedArrayWith:_selectedView.selected];
         }
         _selectedView.selected = YES;
+    }
+}
+
+- (void)buyButtonClick {
+    if ([self.delegate respondsToSelector:@selector(buyButtonClick)]) {
+        [self.delegate buyButtonClick];
     }
 }
 

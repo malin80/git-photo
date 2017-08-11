@@ -15,6 +15,7 @@
 #import "NavigationBar.h"
 #import "StoreManager.h"
 #import "LoginManager.h"
+#import "ShoppingGoodsInfo.h"
 
 @interface ConfirmOrderViewController () <NavigationBarDelegate,UITableViewDelegate, UITableViewDataSource>
 
@@ -30,6 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.navigationController.navigationBar.hidden = YES;
     NavigationBar *bar = [[NavigationBar alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 64) withTitle:@"确认订单"];
     bar.delegate = self;
     [self.view addSubview:bar];
@@ -137,10 +139,29 @@
     }];
 }
 
+//OrderOfGoodsControl/saveOrderOfGoods.do(token,deliveryName,deliveryPhone,deliveryAddress,goodsId,goodsPrice,goodsCount,goodsParam,cartIds,isCart,cartCount)
+//--deliveryName 收货人
+//--deliveryPhone  联系方式
+//--deliveryAddress  收货地址
+//--goodsParam是用户选择的商品参数连接的字符串
+//--cartIds 用户选择的购物车id连接的字符串 用;隔开  如:  1;2;3
+//--isCart 用户提交订单的方式  必填  0:直接购买 1:通过购物车购买
+//--cartCount  用户选择的购物车id的数量 通过购物车提交时必填
+
+//--直接下单时 传memberId,deliveryName,deliveryPhone,deliveryAddress,goodsId,goodsPrice,goodsCount,goodsParam,isCart
+//--购物车下单时传 memberId,deliveryName,deliveryPhone,deliveryAddress,cartIds,isCart,cartCount
+
 - (void)confirmOrder {
     if (self.goodsInfos.count == 1) {
         self.goodsInfo = [self.goodsInfos objectAtIndex:0];
         [GET_SINGLETON_FOR_CLASS(StoreManager) buyGoodsWithToken:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue withMemberName:self.addressInfo.name withMemberPhone:self.addressInfo.phone withMemberAddress:self.addressInfo.address withGoodsId:self.goodsInfo.goodsId withGoodsPrice:self.goodsInfo.goodsPrice withGoodCount:self.goodsInfo.goodsCount withGoodsParam:self.goodsInfo.goodsParamValue withCartIds:@"" withIsCart:0 withCartCount:0];
+    } else {
+        NSString *cartIds = @"";
+        for (ShoppingGoodsInfo *info in self.goodsInfos) {
+            cartIds = [NSString stringWithFormat:@"%@;%ld",cartIds,info.goodsCartId];
+        }
+        cartIds = [cartIds substringWithRange:NSMakeRange(1, cartIds.length - 1)];
+        [GET_SINGLETON_FOR_CLASS(StoreManager) buyGoodsWithToken:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue withMemberName:self.addressInfo.name withMemberPhone:self.addressInfo.phone withMemberAddress:self.addressInfo.address withGoodsId:0 withGoodsPrice:0 withGoodCount:0 withGoodsParam:@"" withCartIds:cartIds withIsCart:1 withCartCount:self.goodsInfos.count];
     }
 }
 

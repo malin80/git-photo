@@ -13,5 +13,6 @@
 @property (nonatomic, assign) long goodsCartId;
 @property (nonatomic, assign) long goodsCartCount;
 @property (nonatomic, assign) long goodsCartPrice;
+@property (nonatomic, assign) BOOL isSelected;
 
 @end

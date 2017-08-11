@@ -136,7 +136,7 @@
         _selectedView = [[UIButton alloc] init];
         [_selectedView setBackgroundImage:[UIImage imageNamed:@"shopping_select"] forState:UIControlStateNormal];
         [_selectedView setBackgroundImage:[UIImage imageNamed:@"shopping_selected"] forState:UIControlStateSelected];
-        [_selectedView addTarget:self action:@selector(changeSelectViewIconState) forControlEvents:UIControlEventTouchUpInside];
+        [_selectedView addTarget:self action:@selector(changeSelectViewIconState:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _selectedView;
 }
@@ -197,7 +197,7 @@
 - (UIView *)deleteBackView {
     if (!_deleteBackView) {
         _deleteBackView = [[UIView alloc] init];
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(deleteGoodsInfo)];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(deleteGoodsInfo:)];
         [_deleteBackView addGestureRecognizer:tap];
     }
     return _deleteBackView;
@@ -233,25 +233,25 @@
 
 #pragma mark --- gestuer ---
 //勾选按钮状态的改变
-- (void)changeSelectViewIconState
+- (void)changeSelectViewIconState:(UIButton *)sender
 {
     //标识选中的状态
     if (_selectedView.selected) {
-        if ([self.delegate respondsToSelector:@selector(selectGoodsInfo)]) {
+        if ([self.delegate respondsToSelector:@selector(selectGoodsInfo:)]) {
             _selectedView.selected = NO;
-            [self.delegate selectedGoodsInfo];
+            [self.delegate selectedGoodsInfo:sender];
         }
     } else {
-        if ([self.delegate respondsToSelector:@selector(selectGoodsInfo)]) {
+        if ([self.delegate respondsToSelector:@selector(selectGoodsInfo:)]) {
             _selectedView.selected = YES;
-            [self.delegate selectGoodsInfo];
+            [self.delegate selectGoodsInfo:sender];
         }
     }
 }
 
-- (void)deleteGoodsInfo {
-    if ([self.delegate respondsToSelector:@selector(deleteGoodsInfo)]) {
-        [self.delegate deleteGoodsInfo];
+- (void)deleteGoodsInfo:(UIButton *)sender {
+    if ([self.delegate respondsToSelector:@selector(deleteGoodsInfo:)]) {
+        [self.delegate deleteGoodsInfo:sender];
     }
 }
 

@@ -13,6 +13,7 @@
 
 @optional
 - (void)changeSelectedArrayWith:(BOOL)allSelected;
+- (void)buyButtonClick;
 
 @end
 

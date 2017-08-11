@@ -13,12 +13,15 @@
 #import "ShoppingManager.h"
 #import "Masonry.h"
 #import "LoginManager.h"
+#import "ConfirmOrderViewController.h"
+#import "AddressInfo.h"
+#import "PersonalManager.h"
 
 @interface ShoppingViewController () <UITableViewDelegate, UITableViewDataSource, ShoppingTableViewCellDelegate, ShoppingBottomViewDelegate>
 {
     NSArray *_array;
-    NSInteger _index;
     NSMutableArray *_selectedArray;
+    long _goodsPrice;
 }
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -31,7 +34,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-
+    [GET_SINGLETON_FOR_CLASS(PersonalManager) queryMemberAddressWithMemberId:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.memberId];
     [self addNotification];
     _selectedArray = [NSMutableArray array];
 }
@@ -69,6 +72,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryShoppingGoodsInfoSuccess) name:@"queryShoppingGoodsInfoSuccess" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteShoppingGoodsInfoSuccess) name:@"deleteShoppingGoodsInfoSuccess" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryShoppingGoodsInfoWithNoData) name:@"queryShoppingGoodsInfoWithNoData" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryMemberAddressSuccess) name:@"queryMemberAddressSuccess" object:nil];
 }
 
 - (void)queryShoppingGoodsInfoSuccess {
@@ -90,6 +94,14 @@
         [_bottomView removeFromSuperview];
     }
     [self createNoGoodsView];
+}
+
+- (void)queryMemberAddressSuccess {
+    for (AddressInfo *info in GET_SINGLETON_FOR_CLASS(PersonalManager).addressInfos) {
+        if (info.status == 1) {
+            GET_SINGLETON_FOR_CLASS(PersonalManager).normalAddressInfo = info;
+        }
+    }
 }
 
 - (void)createNoGoodsView {
@@ -156,6 +168,8 @@
     cell.goodsParameter.text = info.goodsParamValue;
     cell.goodsPrice.text = [NSString stringWithFormat:@"%ld",info.goodsPrice];
     cell.goodsCount.text = [NSString stringWithFormat:@"×%ld",info.goodsCount];
+    cell.selectedView.selected = info.isSelected;
+    cell.selectedView.tag = indexPath.row;
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,info.goodsPic]];
     UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
     cell.goodsImage.image = imgFromUrl;
@@ -167,30 +181,58 @@
 }
 
 #pragma mark --- ShoppingTableViewCellDelegate ---
-- (void)selectGoodsInfo {
-    ShoppingGoodsInfo *info = [GET_SINGLETON_FOR_CLASS(ShoppingManager).shoppingGoodsInfos objectAtIndex:_index];
+- (void)selectGoodsInfo:(UIButton *)sender {
+    ShoppingGoodsInfo *info = [GET_SINGLETON_FOR_CLASS(ShoppingManager).shoppingGoodsInfos objectAtIndex:sender.tag];
     [_selectedArray addObject:info];
     if (_selectedArray.count == GET_SINGLETON_FOR_CLASS(ShoppingManager).shoppingGoodsInfos.count) {
         [_bottomView changeSelectViewIconWithSelected:NO];
     }
+    _goodsPrice = _goodsPrice + info.goodsPrice;
+    _bottomView.price.text = [NSString stringWithFormat:@"%ld",_goodsPrice];
 }
 
-- (void)selectedGoodsInfo {
-    ShoppingGoodsInfo *info = [GET_SINGLETON_FOR_CLASS(ShoppingManager).shoppingGoodsInfos objectAtIndex:_index];
+- (void)selectedGoodsInfo:(UIButton *)sender {
+    ShoppingGoodsInfo *info = [GET_SINGLETON_FOR_CLASS(ShoppingManager).shoppingGoodsInfos objectAtIndex:sender.tag];
     [_selectedArray removeObject:info];
     if (_selectedArray.count != GET_SINGLETON_FOR_CLASS(ShoppingManager).shoppingGoodsInfos.count) {
         [_bottomView changeSelectViewIconWithSelected:YES];
     }
+ 
+    _goodsPrice = _goodsPrice - info.goodsPrice;
+    _bottomView.price.text = [NSString stringWithFormat:@"%ld",_goodsPrice];
 }
 
-- (void)deleteGoodsInfo {
-    ShoppingGoodsInfo *info = [GET_SINGLETON_FOR_CLASS(ShoppingManager).shoppingGoodsInfos objectAtIndex:_index];
+- (void)deleteGoodsInfo:(UIButton *)sender {
+    ShoppingGoodsInfo *info = [GET_SINGLETON_FOR_CLASS(ShoppingManager).shoppingGoodsInfos objectAtIndex:sender.tag];
     [GET_SINGLETON_FOR_CLASS(ShoppingManager) deleteShoppingGoodsInfoWithCartId:info.goodsCartId withToken:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue];
 }
 
-#pragma mark --- ShoppingTableViewCellDelegate --- 
+#pragma mark --- ShoppingBottomViewDelegate ---
 - (void)changeSelectedArrayWith:(BOOL)allSelected {
+    if (allSelected) {
+        for (ShoppingGoodsInfo *info in GET_SINGLETON_FOR_CLASS(ShoppingManager).shoppingGoodsInfos) {
+            info.isSelected = NO;
+            [_tableView reloadData];
+            _goodsPrice = 0;
+            _bottomView.price.text = [NSString stringWithFormat:@"%ld",_goodsPrice];
+            [_selectedArray removeAllObjects];
+        }
+    } else {
+        _goodsPrice = 0;
+        for (ShoppingGoodsInfo *info in GET_SINGLETON_FOR_CLASS(ShoppingManager).shoppingGoodsInfos) {
+            info.isSelected = YES;
+            [_tableView reloadData];
+            _goodsPrice = _goodsPrice+info.goodsPrice;
+            _bottomView.price.text = [NSString stringWithFormat:@"%ld",_goodsPrice];
+            [_selectedArray addObject:info];
+        }
+    }
+}
 
+- (void)buyButtonClick {
+    ConfirmOrderViewController *controller = [[ConfirmOrderViewController alloc] init];
+    controller.goodsInfos = _selectedArray;
+    [self.navigationController pushViewController:controller animated:NO];
 }
 
 @end

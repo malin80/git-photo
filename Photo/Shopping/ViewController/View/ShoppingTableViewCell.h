@@ -11,9 +11,9 @@
 @protocol ShoppingTableViewCellDelegate <NSObject>
 
 @optional
-- (void)selectGoodsInfo;
-- (void)selectedGoodsInfo;
-- (void)deleteGoodsInfo;
+- (void)selectGoodsInfo:(UIButton *)sender;
+- (void)selectedGoodsInfo:(UIButton *)sender;
+- (void)deleteGoodsInfo:(UIButton *)sender;
 
 @end
 
@@ -32,7 +32,7 @@
 
 - (void)changeSelectViewIconState;
 
-@property(nonatomic, weak)  id<ShoppingTableViewCellDelegate> delegate;
+@property(nonatomic, weak) id<ShoppingTableViewCellDelegate> delegate;
 
 
 @end
