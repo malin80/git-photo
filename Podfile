@@ -9,4 +9,6 @@ target ‘Photo’ do
   pod 'YPTabBarController'
   pod 'IQKeyboardManager'
   pod 'Masonry', '~> 1.0.2'
+  pod ‘UMengUShare/Social/ReducedWeChat'
+ pod ‘UMengUShare/UI’
 end

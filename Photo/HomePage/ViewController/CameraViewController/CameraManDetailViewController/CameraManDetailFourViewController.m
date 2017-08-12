@@ -16,9 +16,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    FDCalendar *calendar = [[FDCalendar alloc] initWithCurrentDate:[NSDate date]];
+    calendar.daili=self;
+    calendar.frame=CGRectMake(0, 0, ScreenWidth, 400);
+    [self.view addSubview:calendar];
 }
-
+-(void)showData:(NSString *)riqi{
+    NSLog(@"%@",riqi);
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

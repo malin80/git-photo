@@ -156,6 +156,11 @@ THE SOFTWARE.
 
 
 
+## UMengUShare
+
+Copyright 2011 - 2017 UMeng.com. All rights reserved.
+
+
 ## YPTabBarController
 
 Copyright (c) 2015-2016 Yu Ping - https://github.com/yuping1989

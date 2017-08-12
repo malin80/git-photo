@@ -43,6 +43,11 @@
         LeadViewController *lead=[[LeadViewController alloc]init];
         lead.block = ^{
             LoginViewController *login=[[LoginViewController alloc]init];
+            login.block = ^{
+                TabbarViewController *controller = [[TabbarViewController alloc] init];
+                UINavigationController *na=[[UINavigationController alloc]initWithRootViewController:controller];
+                self.window.rootViewController = na;
+            };
             self.window.rootViewController =login;
             [[NSUserDefaults standardUserDefaults] setObject:@"sss" forKey:@"isfirst"];
         };
@@ -55,11 +60,24 @@
     manager.enableAutoToolbar = YES;
 }
 
-
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+    {
+        BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url];
+        if (!result) {
+            // 其他如支付等SDK的回调
+        }
+        return result;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [self.window makeKeyAndVisible];
+    [[UMSocialManager defaultManager] openLog:YES];
+    
+    /* 设置友盟appkey */
+    [[UMSocialManager defaultManager] setUmSocialAppkey:@"598dc8df310c936e870019f3"];
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:@"wxdc1e388c3822c80b" appSecret:@"3baf1193c85774b3fd9d18447d76cab0" redirectURL:@"http://mobile.umeng.com/social"];
+    
     UIImageView *span=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHieght)];
     span.image=[UIImage imageNamed:@"splash.png"];
     [self.window addSubview:span];

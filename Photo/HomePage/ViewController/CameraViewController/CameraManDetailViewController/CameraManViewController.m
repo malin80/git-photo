@@ -77,10 +77,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     CameraManDetailViewController *controller = [[CameraManDetailViewController alloc] init];
-    CameraManInfo *info = [GET_SINGLETON_FOR_CLASS(CameraManager).cameraMans objectAtIndex:indexPath.row];
-    controller.cameraManInfo = info;
-    [GET_SINGLETON_FOR_CLASS(CameraManager) queryCameraManDetailWithId:info.cameraManId];
-    [self.navigationController pushViewController:controller animated:NO];
+    if (GET_SINGLETON_FOR_CLASS(CameraManager).cameraMans.count > 0) {
+        CameraManInfo *info = [GET_SINGLETON_FOR_CLASS(CameraManager).cameraMans objectAtIndex:indexPath.row];
+        controller.cameraManInfo = info;
+        [GET_SINGLETON_FOR_CLASS(CameraManager) queryCameraManDetailWithId:info.cameraManId];
+        [self.navigationController pushViewController:controller animated:NO];
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

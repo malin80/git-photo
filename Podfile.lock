@@ -22,6 +22,13 @@ PODS:
   - SDWebImage (3.7.6):
     - SDWebImage/Core (= 3.7.6)
   - SDWebImage/Core (3.7.6)
+  - UMengUShare/Core (6.4.5):
+    - UMengUShare/Network
+  - UMengUShare/Network (6.4.5)
+  - UMengUShare/Social/ReducedWeChat (6.4.5):
+    - UMengUShare/Core
+  - UMengUShare/UI (6.4.5):
+    - UMengUShare/Core
   - YPTabBarController (2.2.3)
 
 DEPENDENCIES:
@@ -32,6 +39,8 @@ DEPENDENCIES:
   - MJRefresh (~> 3.1.10)
   - RMMapper (~> 1.1.5)
   - SDWebImage (~> 3.7.3)
+  - UMengUShare/Social/ReducedWeChat
+  - UMengUShare/UI
   - YPTabBarController
 
 SPEC CHECKSUMS:
@@ -42,8 +51,9 @@ SPEC CHECKSUMS:
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   RMMapper: 21122d753c736d975f6c61e674afce8db73579af
   SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
+  UMengUShare: a5711c54e640b04e3048e931d2b88d50f9cfa55c
   YPTabBarController: 2e0e97b2d9d4b28b722ecb57700b7cd4d1b38a47
 
-PODFILE CHECKSUM: f246b52dcad14fba8999aefd18d1fcc73deca6e4
+PODFILE CHECKSUM: 0bd16f00e10eec156dc0975a8f323a0e85397818
 
 COCOAPODS: 1.2.1

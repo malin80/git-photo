@@ -47,19 +47,20 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(CameraManager)
 - (void)queryCameraTeamWithGroupId:(long)groupId {
     [CameraPesRequest queryCameraTeamWithGroupId:groupId withBlock:^(NSDictionary *responseObject, NSString *error) {
         if ([[responseObject objectForKey:@"errorCode"] unsignedLongValue]== 0) {
-            NSArray *array = [responseObject objectForKey:@"data"];
-            
-            if (array.count > 0) {
-                for (NSDictionary *dict in array) {
-                    CameraTeamInfo *info = [[CameraTeamInfo alloc] init];
-                    info.teamPic = [dict objectForKey:@"teamPic"];
-                    info.teamName = [dict objectForKey:@"teamName"];
-                    info.teamDetail = [dict objectForKey:@"teamDetail"];
-                    info.teamServieInfo = [dict objectForKey:@"teamServiceInfo"];
-                    info.teamId = [[dict objectForKey:@"teamId"] unsignedLongValue];
-                    info.teamPrice = [[dict objectForKey:@"teamPrice"] unsignedLongValue];
-                    [self.cameraTeams addObject:info];
-                }
+            if (![[responseObject objectForKey:@"data"] isKindOfClass:[NSString class]]) {
+                NSArray *array = [responseObject objectForKey:@"data"];
+                if (array.count > 0) {
+                    for (NSDictionary *dict in array) {
+                        CameraTeamInfo *info = [[CameraTeamInfo alloc] init];
+                        info.teamPic = [dict objectForKey:@"teamPic"];
+                        info.teamName = [dict objectForKey:@"teamName"];
+                        info.teamDetail = [dict objectForKey:@"teamDetail"];
+                        info.teamServieInfo = [dict objectForKey:@"teamServiceInfo"];
+                        info.teamId = [[dict objectForKey:@"teamId"] unsignedLongValue];
+                        info.teamPrice = [[dict objectForKey:@"teamPrice"] unsignedLongValue];
+                        [self.cameraTeams addObject:info];
+                    }
+            }
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"queryCameraTeamWithGroupIdSuccess" object:nil];
                 });

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface CameraManDetailFourViewController : UIViewController
+#import "FDCalendar.h"
+@interface CameraManDetailFourViewController : UIViewController<showDataDelegate>
 
 @end

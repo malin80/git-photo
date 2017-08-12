@@ -8,12 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		33BE91EAF0A94AB73B65E9D1 /* libPods-Photo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD7508C1BC4827C026564603 /* libPods-Photo.a */; };
-		A5109C0E1F3B655200DD32C3 /* DQAgeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A5109C051F3B655200DD32C3 /* DQAgeModel.m */; };
-		A5109C0F1F3B655200DD32C3 /* DQBirthDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5109C071F3B655200DD32C3 /* DQBirthDateView.m */; };
-		A5109C101F3B655200DD32C3 /* DQCanCerEnsureView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5109C091F3B655200DD32C3 /* DQCanCerEnsureView.m */; };
-		A5109C111F3B655200DD32C3 /* DQconstellationView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5109C0B1F3B655200DD32C3 /* DQconstellationView.m */; };
-		A5109C161F3B710400DD32C3 /* LTPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5109C141F3B710400DD32C3 /* LTPickerView.m */; };
-		A5109C171F3B710400DD32C3 /* LTPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5109C151F3B710400DD32C3 /* LTPickerView.xib */; };
+		A50BB4121F3DAF3700F6158B /* FDCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = A50BB3FC1F3DAF3700F6158B /* FDCalendar.m */; };
+		A50BB4131F3DAF3700F6158B /* FDCalendarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A50BB3FE1F3DAF3700F6158B /* FDCalendarItem.m */; };
+		A50BB4141F3DAF3700F6158B /* icon_next@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A50BB4001F3DAF3700F6158B /* icon_next@2x.png */; };
+		A50BB4151F3DAF3700F6158B /* icon_previous@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A50BB4011F3DAF3700F6158B /* icon_previous@2x.png */; };
+		A50BB4161F3DAF3700F6158B /* CalculateTool.m in Sources */ = {isa = PBXBuildFile; fileRef = A50BB4041F3DAF3700F6158B /* CalculateTool.m */; };
+		A50BB4171F3DAF3700F6158B /* DQAgeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A50BB4061F3DAF3700F6158B /* DQAgeModel.m */; };
+		A50BB4181F3DAF3700F6158B /* DQBirthDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = A50BB4081F3DAF3700F6158B /* DQBirthDateView.m */; };
+		A50BB4191F3DAF3700F6158B /* DQCanCerEnsureView.m in Sources */ = {isa = PBXBuildFile; fileRef = A50BB40A1F3DAF3700F6158B /* DQCanCerEnsureView.m */; };
+		A50BB41A1F3DAF3700F6158B /* DQconstellationView.m in Sources */ = {isa = PBXBuildFile; fileRef = A50BB40C1F3DAF3700F6158B /* DQconstellationView.m */; };
+		A50BB41B1F3DAF3700F6158B /* LTPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A50BB4101F3DAF3700F6158B /* LTPickerView.m */; };
+		A50BB41C1F3DAF3700F6158B /* LTPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A50BB4111F3DAF3700F6158B /* LTPickerView.xib */; };
 		A514B0F21F2901A1006A765F /* LeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A514B0F11F2901A1006A765F /* LeadViewController.m */; };
 		A514B1041F2903D3006A765F /* TabbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A514B1031F2903D3006A765F /* TabbarViewController.m */; };
 		A514B10E1F290533006A765F /* FitManage.m in Sources */ = {isa = PBXBuildFile; fileRef = A514B1071F290533006A765F /* FitManage.m */; };
@@ -192,17 +197,25 @@
 
 /* Begin PBXFileReference section */
 		1974EED19EF6BC33D1481465 /* Pods-Photo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Photo/Pods-Photo.debug.xcconfig"; sourceTree = "<group>"; };
-		A5109C041F3B655200DD32C3 /* DQAgeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQAgeModel.h; sourceTree = "<group>"; };
-		A5109C051F3B655200DD32C3 /* DQAgeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQAgeModel.m; sourceTree = "<group>"; };
-		A5109C061F3B655200DD32C3 /* DQBirthDateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQBirthDateView.h; sourceTree = "<group>"; };
-		A5109C071F3B655200DD32C3 /* DQBirthDateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQBirthDateView.m; sourceTree = "<group>"; };
-		A5109C081F3B655200DD32C3 /* DQCanCerEnsureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQCanCerEnsureView.h; sourceTree = "<group>"; };
-		A5109C091F3B655200DD32C3 /* DQCanCerEnsureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQCanCerEnsureView.m; sourceTree = "<group>"; };
-		A5109C0A1F3B655200DD32C3 /* DQconstellationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQconstellationView.h; sourceTree = "<group>"; };
-		A5109C0B1F3B655200DD32C3 /* DQconstellationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQconstellationView.m; sourceTree = "<group>"; };
-		A5109C131F3B710400DD32C3 /* LTPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTPickerView.h; sourceTree = "<group>"; };
-		A5109C141F3B710400DD32C3 /* LTPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTPickerView.m; sourceTree = "<group>"; };
-		A5109C151F3B710400DD32C3 /* LTPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LTPickerView.xib; sourceTree = "<group>"; };
+		A50BB3FB1F3DAF3700F6158B /* FDCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDCalendar.h; sourceTree = "<group>"; };
+		A50BB3FC1F3DAF3700F6158B /* FDCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDCalendar.m; sourceTree = "<group>"; };
+		A50BB3FD1F3DAF3700F6158B /* FDCalendarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDCalendarItem.h; sourceTree = "<group>"; };
+		A50BB3FE1F3DAF3700F6158B /* FDCalendarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDCalendarItem.m; sourceTree = "<group>"; };
+		A50BB4001F3DAF3700F6158B /* icon_next@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_next@2x.png"; sourceTree = "<group>"; };
+		A50BB4011F3DAF3700F6158B /* icon_previous@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_previous@2x.png"; sourceTree = "<group>"; };
+		A50BB4031F3DAF3700F6158B /* CalculateTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculateTool.h; sourceTree = "<group>"; };
+		A50BB4041F3DAF3700F6158B /* CalculateTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculateTool.m; sourceTree = "<group>"; };
+		A50BB4051F3DAF3700F6158B /* DQAgeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQAgeModel.h; sourceTree = "<group>"; };
+		A50BB4061F3DAF3700F6158B /* DQAgeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQAgeModel.m; sourceTree = "<group>"; };
+		A50BB4071F3DAF3700F6158B /* DQBirthDateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQBirthDateView.h; sourceTree = "<group>"; };
+		A50BB4081F3DAF3700F6158B /* DQBirthDateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQBirthDateView.m; sourceTree = "<group>"; };
+		A50BB4091F3DAF3700F6158B /* DQCanCerEnsureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQCanCerEnsureView.h; sourceTree = "<group>"; };
+		A50BB40A1F3DAF3700F6158B /* DQCanCerEnsureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQCanCerEnsureView.m; sourceTree = "<group>"; };
+		A50BB40B1F3DAF3700F6158B /* DQconstellationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQconstellationView.h; sourceTree = "<group>"; };
+		A50BB40C1F3DAF3700F6158B /* DQconstellationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQconstellationView.m; sourceTree = "<group>"; };
+		A50BB40F1F3DAF3700F6158B /* LTPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTPickerView.h; sourceTree = "<group>"; };
+		A50BB4101F3DAF3700F6158B /* LTPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTPickerView.m; sourceTree = "<group>"; };
+		A50BB4111F3DAF3700F6158B /* LTPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LTPickerView.xib; sourceTree = "<group>"; };
 		A514B0EF1F28FC91006A765F /* hong.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hong.pch; sourceTree = "<group>"; };
 		A514B0F01F2901A1006A765F /* LeadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeadViewController.h; sourceTree = "<group>"; };
 		A514B0F11F2901A1006A765F /* LeadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeadViewController.m; sourceTree = "<group>"; };
@@ -520,29 +533,59 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		A5109C011F3B652400DD32C3 /* 生日选择器 */ = {
+		A50BB3FA1F3DAF3700F6158B /* 档期选择器 */ = {
 			isa = PBXGroup;
 			children = (
-				A5109C041F3B655200DD32C3 /* DQAgeModel.h */,
-				A5109C051F3B655200DD32C3 /* DQAgeModel.m */,
-				A5109C061F3B655200DD32C3 /* DQBirthDateView.h */,
-				A5109C071F3B655200DD32C3 /* DQBirthDateView.m */,
-				A5109C081F3B655200DD32C3 /* DQCanCerEnsureView.h */,
-				A5109C091F3B655200DD32C3 /* DQCanCerEnsureView.m */,
-				A5109C0A1F3B655200DD32C3 /* DQconstellationView.h */,
-				A5109C0B1F3B655200DD32C3 /* DQconstellationView.m */,
+				A50BB3FB1F3DAF3700F6158B /* FDCalendar.h */,
+				A50BB3FC1F3DAF3700F6158B /* FDCalendar.m */,
+				A50BB3FD1F3DAF3700F6158B /* FDCalendarItem.h */,
+				A50BB3FE1F3DAF3700F6158B /* FDCalendarItem.m */,
+				A50BB3FF1F3DAF3700F6158B /* Resource */,
 			);
-			name = "生日选择器";
+			path = "档期选择器";
 			sourceTree = "<group>";
 		};
-		A5109C121F3B710400DD32C3 /* 性别选择器 */ = {
+		A50BB3FF1F3DAF3700F6158B /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				A5109C131F3B710400DD32C3 /* LTPickerView.h */,
-				A5109C141F3B710400DD32C3 /* LTPickerView.m */,
-				A5109C151F3B710400DD32C3 /* LTPickerView.xib */,
+				A50BB4001F3DAF3700F6158B /* icon_next@2x.png */,
+				A50BB4011F3DAF3700F6158B /* icon_previous@2x.png */,
 			);
-			name = "性别选择器";
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		A50BB4021F3DAF3700F6158B /* 生日选择器 */ = {
+			isa = PBXGroup;
+			children = (
+				A50BB4031F3DAF3700F6158B /* CalculateTool.h */,
+				A50BB4041F3DAF3700F6158B /* CalculateTool.m */,
+				A50BB4051F3DAF3700F6158B /* DQAgeModel.h */,
+				A50BB4061F3DAF3700F6158B /* DQAgeModel.m */,
+				A50BB4071F3DAF3700F6158B /* DQBirthDateView.h */,
+				A50BB4081F3DAF3700F6158B /* DQBirthDateView.m */,
+				A50BB4091F3DAF3700F6158B /* DQCanCerEnsureView.h */,
+				A50BB40A1F3DAF3700F6158B /* DQCanCerEnsureView.m */,
+				A50BB40B1F3DAF3700F6158B /* DQconstellationView.h */,
+				A50BB40C1F3DAF3700F6158B /* DQconstellationView.m */,
+			);
+			path = "生日选择器";
+			sourceTree = "<group>";
+		};
+		A50BB40D1F3DAF3700F6158B /* 性别选择器 */ = {
+			isa = PBXGroup;
+			children = (
+				A50BB40E1F3DAF3700F6158B /* LTPickerView */,
+			);
+			path = "性别选择器";
+			sourceTree = "<group>";
+		};
+		A50BB40E1F3DAF3700F6158B /* LTPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				A50BB40F1F3DAF3700F6158B /* LTPickerView.h */,
+				A50BB4101F3DAF3700F6158B /* LTPickerView.m */,
+				A50BB4111F3DAF3700F6158B /* LTPickerView.xib */,
+			);
 			path = LTPickerView;
 			sourceTree = "<group>";
 		};
@@ -1011,8 +1054,9 @@
 		F4A7A0D81F257F14009FAAEE /* ThirdParties */ = {
 			isa = PBXGroup;
 			children = (
-				A5109C121F3B710400DD32C3 /* 性别选择器 */,
-				A5109C011F3B652400DD32C3 /* 生日选择器 */,
+				A50BB3FA1F3DAF3700F6158B /* 档期选择器 */,
+				A50BB4021F3DAF3700F6158B /* 生日选择器 */,
+				A50BB40D1F3DAF3700F6158B /* 性别选择器 */,
 				A520C6BA1F2B89A400202622 /* DLSlideView */,
 				A514B1011F2903D3006A765F /* Tabbar */,
 			);
@@ -1323,12 +1367,13 @@
 				F48237531F27106300DDD487 /* homepage_wedding.png in Resources */,
 				F4A7A1341F25A3A5009FAAEE /* tabbar_shopping_red.png in Resources */,
 				F4A7A11A1F259445009FAAEE /* personal_shareapp.png in Resources */,
+				A50BB4141F3DAF3700F6158B /* icon_next@2x.png in Resources */,
 				F40575661F2AD29F003C8AF2 /* personal_update_pwd.png in Resources */,
-				A5109C171F3B710400DD32C3 /* LTPickerView.xib in Resources */,
 				F4A7A1301F25A3A5009FAAEE /* tabbar_homepage_red.png in Resources */,
 				F48237501F27106300DDD487 /* homepage_hotel.png in Resources */,
 				F482374D1F27106300DDD487 /* homepage_car.png in Resources */,
 				F4A7A1361F25A3A5009FAAEE /* tabbar_store_red.png in Resources */,
+				A50BB41C1F3DAF3700F6158B /* LTPickerView.xib in Resources */,
 				F4FF8D9A1F39645C00E7739D /* store_less.png in Resources */,
 				F482374C1F27106300DDD487 /* homepage_camera.png in Resources */,
 				F481E90C1F282D1E00EE3D7C /* personal_address_selected.png in Resources */,
@@ -1346,6 +1391,7 @@
 				F482374E1F27106300DDD487 /* homepage_cloth.png in Resources */,
 				F48237521F27106300DDD487 /* homepage_video.png in Resources */,
 				F4A7A1181F259445009FAAEE /* personal_header_image.jpg in Resources */,
+				A50BB4151F3DAF3700F6158B /* icon_previous@2x.png in Resources */,
 				F4A7A0991F256B96009FAAEE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1433,10 +1479,10 @@
 				F405D1A81F2ED06E0015A8E6 /* LoginInfo.m in Sources */,
 				F405D19D1F2EBC110015A8E6 /* OrderTableViewCell.m in Sources */,
 				F4A7A1051F258449009FAAEE /* PersonalTabelViewCell.m in Sources */,
+				A50BB4131F3DAF3700F6158B /* FDCalendarItem.m in Sources */,
 				F40A2AE51F31650700BEDFFB /* StorePesRequest.m in Sources */,
 				F4FD305A1F32F7C700048DD6 /* CameraTeamViewController.m in Sources */,
 				F4A7A1081F2588BF009FAAEE /* PersonalHeaderView.m in Sources */,
-				A5109C0F1F3B655200DD32C3 /* DQBirthDateView.m in Sources */,
 				F407335E1F3C3A300006F1F6 /* CameraManDetailViewController.m in Sources */,
 				F4A7A0CE1F256D8B009FAAEE /* ShoppingViewController.m in Sources */,
 				F4A7A2561F25BC22009FAAEE /* NavigationBar.m in Sources */,
@@ -1450,9 +1496,11 @@
 				F41B19C41F3416120026E483 /* AddGoodsToShoppingViewController.m in Sources */,
 				F4FDD6A71F2C378E007263D4 /* UserNameViewController.m in Sources */,
 				F4A7A0961F256B96009FAAEE /* ViewController.m in Sources */,
+				A50BB41A1F3DAF3700F6158B /* DQconstellationView.m in Sources */,
 				F41B19D11F343EE70026E483 /* ShoppingGoodsInfo.m in Sources */,
 				F41B19C11F3411660026E483 /* PersonalManager.m in Sources */,
 				F40E7A6A1F3023F100FD7792 /* LoginPesRequest.m in Sources */,
+				A50BB4191F3DAF3700F6158B /* DQCanCerEnsureView.m in Sources */,
 				F48237381F26EA1100DDD487 /* CollectViewController.m in Sources */,
 				F48679391F3D831A00612E27 /* StoreCommentInfo.m in Sources */,
 				F4FDD6B61F2C37CD007263D4 /* EditAddressViewController.m in Sources */,
@@ -1463,7 +1511,6 @@
 				F40430951F29D0FD00DDB2E7 /* LoginViewController.m in Sources */,
 				A514B10E1F290533006A765F /* FitManage.m in Sources */,
 				A520C6D01F2B89A400202622 /* DLFixedTabbarView.m in Sources */,
-				A5109C111F3B655200DD32C3 /* DQconstellationView.m in Sources */,
 				F4FF8D971F39506300E7739D /* CameraPesRequest.m in Sources */,
 				F4FEB0CC1F31A64B00C2F5A3 /* StoreDetailTableViewCell.m in Sources */,
 				F40733741F3C49400006F1F6 /* DressManDetailThirdViewController.m in Sources */,
@@ -1486,6 +1533,7 @@
 				F482375D1F27395100DDD487 /* ShoppingBottomView.m in Sources */,
 				F482372B1F2606BC00DDD487 /* AddressTableViewCell.m in Sources */,
 				F40733651F3C3BC00006F1F6 /* DressManViewController.m in Sources */,
+				A50BB4161F3DAF3700F6158B /* CalculateTool.m in Sources */,
 				F405D1A41F2EC6480015A8E6 /* CameraViewController.m in Sources */,
 				F4FD30531F32D35800048DD6 /* CameraDetailTableViewCell.m in Sources */,
 				F4FDD6A41F2C378E007263D4 /* NickNameViewController.m in Sources */,
@@ -1494,18 +1542,17 @@
 				F40A2AF41F3176A100BEDFFB /* StoreDetailFirstViewController.m in Sources */,
 				F40E7A611F30197F00FD7792 /* PersonalPesRequest.m in Sources */,
 				F4A7A2591F25C3D0009FAAEE /* UserDataTableViewCell.m in Sources */,
-				A5109C161F3B710400DD32C3 /* LTPickerView.m in Sources */,
 				F486792A1F3D51A500612E27 /* SelectAddressViewController.m in Sources */,
 				F482375A1F2725AA00DDD487 /* ShoppingTableViewCell.m in Sources */,
+				A50BB4121F3DAF3700F6158B /* FDCalendar.m in Sources */,
 				F4C618691F3B025F004A76B3 /* CameraManDetailTableViewCell.m in Sources */,
 				F4FDD6A51F2C378E007263D4 /* PhoneNumberViewController.m in Sources */,
 				F486792D1F3D523200612E27 /* SelectAddressTableViewCell.m in Sources */,
 				F4FD30471F32C1B200048DD6 /* ShoppingPesRequest.m in Sources */,
 				F48679331F3D7B0900612E27 /* TableViewCellCalculator.m in Sources */,
+				A50BB4181F3DAF3700F6158B /* DQBirthDateView.m in Sources */,
 				F40E7A641F301BF300FD7792 /* LoginManager.m in Sources */,
-				A5109C0E1F3B655200DD32C3 /* DQAgeModel.m in Sources */,
 				F407337A1F3C51D20006F1F6 /* ConfirmOrderViewController.m in Sources */,
-				A5109C101F3B655200DD32C3 /* DQCanCerEnsureView.m in Sources */,
 				F40733771F3C4A380006F1F6 /* DressManDetailFourViewController.m in Sources */,
 				F4FDD6B51F2C37CD007263D4 /* AddressViewController.m in Sources */,
 				A520C6CE1F2B89A400202622 /* DLCustomSlideView.m in Sources */,
@@ -1516,6 +1563,7 @@
 				F40A2AE01F315F5700BEDFFB /* StoreCollectionViewCell.m in Sources */,
 				A514B1101F290533006A765F /* SvUDIDTools.m in Sources */,
 				F4A7A0931F256B96009FAAEE /* AppDelegate.m in Sources */,
+				A50BB41B1F3DAF3700F6158B /* LTPickerView.m in Sources */,
 				A514B1041F2903D3006A765F /* TabbarViewController.m in Sources */,
 				F41B19BE1F340EC00026E483 /* ShoppingManager.m in Sources */,
 				F4A7A0D41F256DC3009FAAEE /* StoreViewController.m in Sources */,
@@ -1526,6 +1574,7 @@
 				F40A2AF11F31727800BEDFFB /* StoreDetailViewController.m in Sources */,
 				F48679361F3D7BF700612E27 /* StoreCommentTableViewCell.m in Sources */,
 				A514B10F1F290533006A765F /* NSString+Category.m in Sources */,
+				A50BB4171F3DAF3700F6158B /* DQAgeModel.m in Sources */,
 				F4A7A0901F256B96009FAAEE /* main.m in Sources */,
 				F48237561F27179700DDD487 /* HomePageTableViewCell.m in Sources */,
 				F40E7A5E1F3014AA00FD7792 /* HomePageManager.m in Sources */,
