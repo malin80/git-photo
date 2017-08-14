@@ -28,8 +28,20 @@
     [super viewDidLoad];
     
     [self addNotification];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [GET_SINGLETON_FOR_CLASS(CameraManager) queryCameraTeamWithGroupId:self.groupId];
+    });
     if (GET_SINGLETON_FOR_CLASS(CameraManager).cameraTeams.count >0) {
         [self createTableView];
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    if (!_tableView) {
+        [_tableView removeFromSuperview];
     }
 }
 
@@ -39,10 +51,11 @@
 }
 
 - (void)createTableView {
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 300, ScreenWidth, ScreenHieght) style:UITableViewStyleGrouped];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 250, ScreenWidth, ScreenHieght-360) style:UITableViewStyleGrouped];
     _tableView.dataSource = self;
     _tableView.delegate = self;
     _tableView.backgroundColor = [UIColor whiteColor];
+    _tableView.showsVerticalScrollIndicator = NO;
     _tableView.separatorColor = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1.0];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     _tableView.contentInset = UIEdgeInsetsMake(-40, 0, 0, 0);

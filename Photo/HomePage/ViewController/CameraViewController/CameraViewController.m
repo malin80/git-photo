@@ -69,10 +69,6 @@
 
 - (UIViewController *)DLTabedSlideView:(DLTabedSlideView *)sender controllerAt:(NSInteger)index {
     HomePageCameraGroupInfo *info = [GET_SINGLETON_FOR_CLASS(CameraManager).cameraGroups objectAtIndex:index];
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [GET_SINGLETON_FOR_CLASS(CameraManager) queryCameraTeamWithGroupId:info.cameraGroupId];
-    });
     [GET_SINGLETON_FOR_CLASS(CameraManager).cameraTeams removeAllObjects];
     CameraDetailViewController *controller = [[CameraDetailViewController alloc] init];
     controller.groupId = info.cameraGroupId;
