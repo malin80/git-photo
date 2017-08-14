@@ -12,6 +12,7 @@
 #import "CameraManager.h"
 #import "CameraManTableViewCell.h"
 #import "CameraManInfo.h"
+#import "SDWebImageCache.h"
 
 @interface CameraManViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -64,9 +65,10 @@
         cell = [[CameraManTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
     }
     CameraManInfo *info = [GET_SINGLETON_FOR_CLASS(CameraManager).cameraMans objectAtIndex:indexPath.row];
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,info.cameraManPic]];
-    UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
-    cell.cameraManImage.image = imgFromUrl;
+    [SDWebImageCache getImageFromSDWebImageWithUrlString:[NSString stringWithFormat:@"%@%@",baseUrl,info.cameraManPic] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+        cell.cameraManImage.image = image;
+    }];
+
     cell.name.text = info.cameraManName;
     cell.content.text = info.cameraManContent;
     cell.works.text = [NSString stringWithFormat:@"作品 %ld",info.worksOfCameraMan];

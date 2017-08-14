@@ -16,6 +16,7 @@
 #import "StoreManager.h"
 #import "LoginManager.h"
 #import "ShoppingGoodsInfo.h"
+#import "SDWebImageCache.h"
 
 @interface ConfirmOrderViewController () <NavigationBarDelegate,UITableViewDelegate, UITableViewDataSource>
 
@@ -197,10 +198,9 @@
     cell.goodsParameter.text = info.goodsParamValue;
     cell.goodsPrice.text = [NSString stringWithFormat:@"%ld",info.goodsPrice];
     cell.goodsCount.text = [NSString stringWithFormat:@"×%ld",info.goodsCount];
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,info.goodsPic]];
-    UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
-    cell.goodsImage.image = imgFromUrl;
-
+    [SDWebImageCache getImageFromSDWebImageWithUrlString:[NSString stringWithFormat:@"%@%@",baseUrl,info.goodsPic] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+        cell.goodsImage.image = image;
+    }];
     return cell;
 }
 

@@ -14,6 +14,7 @@
 #import "HomePageTableViewCell.h"
 #import "HomePageManager.h"
 #import "ImageInfo.h"
+#import "SDWebImageCache.h"
 
 @interface HomePageViewController () <UITableViewDelegate, UITableViewDataSource, HomePageButtonViewDelegate>
 {
@@ -92,13 +93,13 @@
     scrollView.delegate = self;
     [cell.scrollView addSubview:scrollView];
     
-//    for (int i = 0; i < images.count; i++) {
-//        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i*ScreenWidth, 0, ScreenWidth-20, 140)];
-//        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,images[i]]];
-//        UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
-//        imageView.image = imgFromUrl;
-//        [scrollView addSubview:imageView];
-//    }
+    for (int i = 0; i < images.count; i++) {
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i*ScreenWidth, 0, ScreenWidth-20, 140)];
+        [SDWebImageCache getImageFromSDWebImageWithUrlString:[NSString stringWithFormat:@"%@%@",baseUrl,images[i]] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+            imageView.image = image;
+        }];
+        [scrollView addSubview:imageView];
+    }
 
     return cell;
 }

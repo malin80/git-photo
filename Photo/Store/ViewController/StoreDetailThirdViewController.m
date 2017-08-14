@@ -11,6 +11,7 @@
 #import "StoreManager.h"
 #import "TableViewCellCalculator.h"
 #import "StoreCommentTableViewCell.h"
+#import "SDWebImageCache.h"
 
 @interface StoreDetailThirdViewController () <UITableViewDelegate, UITableViewDataSource>
 {
@@ -61,9 +62,9 @@
     self.prototypeCell = cell;
     [cell setCommentContentText:info.commentText withCommentImageUrl:info.commentImageUrl];
     cell.memberName.text = info.commentName;
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,info.commentImage]];
-    UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
-    cell.memberView.image = imgFromUrl;
+    [SDWebImageCache getImageFromSDWebImageWithUrlString:[NSString stringWithFormat:@"%@%@",baseUrl,info.commentImage] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+        cell.memberView.image = image;
+    }];
     cell.backgroundColor = [UIColor darkGrayColor];
     [cell createCommentImageWithUrl:info.commentImageUrl];
     return cell;

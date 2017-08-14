@@ -59,7 +59,7 @@
     self.tabedSlideView.selectedIndex = 0;
     [self.view addSubview:self.tabedSlideView];
 
-//    [self.view addSubview:self.scrollView];
+    [self.view addSubview:self.scrollView];
 }
 
 #pragma mark --- DLTabedSlideViewDelegate ---

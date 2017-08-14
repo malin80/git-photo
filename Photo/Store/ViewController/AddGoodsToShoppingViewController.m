@@ -14,6 +14,7 @@
 
 #import "NavigationBar.h"
 #import "Masonry.h"
+#import "SDWebImageCache.h"
 
 @interface AddGoodsToShoppingViewController () <NavigationBarDelegate>
 
@@ -160,9 +161,9 @@
 - (UIImageView *)imageView {
     if (!_imageView) {
         _imageView = [[UIImageView alloc] init];
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,self.info.goodsPic]];
-        UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
-        _imageView.image = imgFromUrl;
+        [SDWebImageCache getImageFromSDWebImageWithUrlString:[NSString stringWithFormat:@"%@%@",baseUrl,self.info.goodsPic] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+            _imageView.image = image;
+        }];
     }
     return _imageView;
 }

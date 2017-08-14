@@ -11,6 +11,7 @@
 #import "CameraManager.h"
 #import "DressManInfo.h"
 #import "DressManDetailViewController.h"
+#import "SDWebImageCache.h"
 
 @interface DressManViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -64,8 +65,9 @@
     }
     DressManInfo *info = [GET_SINGLETON_FOR_CLASS(CameraManager).dressMans objectAtIndex:indexPath.row];
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,info.dressManPic]];
-    UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
-    cell.cameraManImage.image = imgFromUrl;
+    [SDWebImageCache getImageFromSDWebImageWithUrlString:[NSString stringWithFormat:@"%@%@",baseUrl,info.dressManPic] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+        cell.cameraManImage.image = image;
+    }];
     cell.name.text = info.dressManName;
     cell.content.text = info.dressManContent;
     cell.works.text = [NSString stringWithFormat:@"作品 %ld",info.worksOfDressMan];

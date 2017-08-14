@@ -7,6 +7,7 @@
 //
 
 #import "CameraManDetailFirstViewController.h"
+#import "SDWebImageCache.h"
 
 @interface CameraManDetailFirstViewController ()
 
@@ -36,9 +37,10 @@
     if (worksList.count > 0) {
         for (NSDictionary *dict in worksList) {
             NSString *pic = [dict objectForKey:@"worksOfCameramanPics"];
-            NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,pic]];
-            UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
-            [images addObject:imgFromUrl];
+            [SDWebImageCache getImageFromSDWebImageWithUrlString:[NSString stringWithFormat:@"%@%@",baseUrl,pic] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                [images addObject:image];
+            }];
+
         }
         for (int i = 0; i<images.count; i++) {
             UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, i*60, ScreenWidth, 200)];

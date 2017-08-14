@@ -9,6 +9,7 @@
 #import "PersonalHeaderView.h"
 #import "Masonry.h"
 #import "LoginManager.h"
+#import "SDWebImageCache.h"
 
 @implementation PersonalHeaderView
 
@@ -98,9 +99,9 @@
 - (UIImageView *)avatarView {
     if (!_avatarView) {
         _avatarView = [[AvatarView alloc] init];
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,self.info.memberPic]];
-        UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
-        _avatarView.image = imgFromUrl;
+        [SDWebImageCache getImageFromSDWebImageWithUrlString:[NSString stringWithFormat:@"%@%@",baseUrl,self.info.memberPic] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+            _avatarView.image = image;
+        }];
         _avatarView.layer.masksToBounds = YES;
         _avatarView.layer.cornerRadius = 68/2;
     }

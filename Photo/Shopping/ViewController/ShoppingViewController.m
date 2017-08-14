@@ -16,6 +16,7 @@
 #import "ConfirmOrderViewController.h"
 #import "AddressInfo.h"
 #import "PersonalManager.h"
+#import "SDWebImageCache.h"
 
 @interface ShoppingViewController () <UITableViewDelegate, UITableViewDataSource, ShoppingTableViewCellDelegate, ShoppingBottomViewDelegate>
 {
@@ -170,9 +171,9 @@
     cell.goodsCount.text = [NSString stringWithFormat:@"×%ld",info.goodsCount];
     cell.selectedView.selected = info.isSelected;
     cell.selectedView.tag = indexPath.row;
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,info.goodsPic]];
-    UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
-    cell.goodsImage.image = imgFromUrl;
+    [SDWebImageCache getImageFromSDWebImageWithUrlString:[NSString stringWithFormat:@"%@%@",baseUrl,info.goodsPic] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+        cell.goodsImage.image = image;
+    }];
     return cell;
 }
 

@@ -11,6 +11,7 @@
 
 #import "CameraManInfo.h"
 #import "CameraManager.h"
+#import "SDWebImageCache.h"
 
 @interface CameraManDetailThirdViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -59,9 +60,9 @@
     [cell setCommentContentText:[dict objectForKey:@"commentText"] withCommentImageUrl:[dict objectForKey:@"commentImgs"]];
     NSDictionary *memberDetail = [dict objectForKey:@"memberDetail"];
     cell.memberName.text = [memberDetail objectForKey:@"pickName"];
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,[memberDetail objectForKey:@"memberPic"]]];
-    UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
-    cell.memberView.image = imgFromUrl;
+    [SDWebImageCache getImageFromSDWebImageWithUrlString:[NSString stringWithFormat:@"%@%@",baseUrl,[memberDetail objectForKey:@"memberPic"]] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+        cell.memberView.image = image;
+    }];
     [cell createCommentImageWithUrl:[dict objectForKey:@"commentImgs"]];
 
     return cell;

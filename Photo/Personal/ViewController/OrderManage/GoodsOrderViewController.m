@@ -11,6 +11,7 @@
 #import "OrderTableViewCell.h"
 #import "PersonalManager.h"
 #import "GoodsInfo.h"
+#import "SDWebImageCache.h"
 
 @interface GoodsOrderViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -69,9 +70,9 @@
     cell.goodsCount.text = [NSString stringWithFormat:@"数量：%ld",info.goodsCount];
     cell.goodsPrice.text = [NSString stringWithFormat:@"总价：%ld",info.goodsPrice];
     cell.goodsState.text = info.goodsOrderStatus;
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,info.goodsPic]];
-    UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
-    cell.goodsImage.image = imgFromUrl;
+    [SDWebImageCache getImageFromSDWebImageWithUrlString:[NSString stringWithFormat:@"%@%@",baseUrl,info.goodsPic] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+        cell.goodsImage.image = image;
+    }];
     cell.layer.borderWidth = 1;
     cell.layer.borderColor = [[UIColor colorWithRed:247/255.0 green:247/255.0 blue:247/255.0 alpha:1.0] CGColor];
     return cell;

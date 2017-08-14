@@ -9,6 +9,7 @@
 #define kImageViewWidth  (ScreenWidth - 60)/3
 
 #import "StoreCommentTableViewCell.h"
+#import "SDWebImageCache.h"
 
 @implementation StoreCommentTableViewCell
 
@@ -90,9 +91,9 @@
     if (temp.count > 0) {
         for (int i = 0; i<temp.count; i++) {
             UIImageView *imageView = [[UIImageView alloc] init];
-            NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,temp[i]]];
-            UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
-            imageView.image = imgFromUrl;
+            [SDWebImageCache getImageFromSDWebImageWithUrlString:[NSString stringWithFormat:@"%@%@",baseUrl,temp[i]] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                imageView.image = image;
+            }];
             [self.contentView addSubview:imageView];
             
             [imageView mas_makeConstraints:^(MASConstraintMaker *make) {

@@ -7,6 +7,7 @@
 //
 
 #import "DressManDetailFirstViewController.h"
+#import "SDWebImageCache.h"
 
 @interface DressManDetailFirstViewController ()
 
@@ -35,9 +36,10 @@
     NSArray *worksList = self.dressManInfo.worksList;
     for (NSDictionary *dict in worksList) {
         NSString *pic = [dict objectForKey:@"worksOfDresserPics"];
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,pic]];
-        UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
-        [images addObject:imgFromUrl];
+        [SDWebImageCache getImageFromSDWebImageWithUrlString:[NSString stringWithFormat:@"%@%@",baseUrl,pic] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+            [images addObject:image];
+        }];
+
     }
     if (images.count > 0) {
         for (int i = 0; i<images.count; i++) {

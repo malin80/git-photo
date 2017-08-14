@@ -13,6 +13,7 @@
 #import "StoreManager.h"
 #import "GoodsInfo.h"
 #import "Masonry.h"
+#import "SDWebImageCache.h"
 
 @interface StoreViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource>
 {
@@ -189,13 +190,11 @@
     static NSString * CellIdentifier = @"MedalCell";
     StoreCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
     GoodsInfo *info = GET_SINGLETON_FOR_CLASS(StoreManager).goodsInfoArray[indexPath.item];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,info.goodsPic]];
-        UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
-        cell.imageView.image = imgFromUrl;
-        cell.goodsName.text = info.goodsName;
-        cell.goodsPrice.text = [NSString stringWithFormat:@"特价：¥%ld",info.goodsPrice];
-    });
+    [SDWebImageCache getImageFromSDWebImageWithUrlString:[NSString stringWithFormat:@"%@%@",baseUrl,info.goodsPic] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+        cell.imageView.image = image;
+    }];
+    cell.goodsName.text = info.goodsName;
+    cell.goodsPrice.text = [NSString stringWithFormat:@"特价：¥%ld",info.goodsPrice];
     return cell;
 }
 

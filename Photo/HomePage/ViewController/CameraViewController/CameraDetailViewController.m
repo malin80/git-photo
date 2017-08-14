@@ -12,6 +12,7 @@
 
 #import "CameraManager.h"
 #import "CameraTeamInfo.h"
+#import "SDWebImageCache.h"
 
 @interface CameraDetailViewController () <UITableViewDelegate, UITableViewDataSource>
 {
@@ -66,9 +67,10 @@
     }
     
     CameraTeamInfo *info = [GET_SINGLETON_FOR_CLASS(CameraManager).cameraTeams objectAtIndex:indexPath.row];
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,info.teamPic]];
-    UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
-    cell.teamImageView.image = imgFromUrl;
+    [SDWebImageCache getImageFromSDWebImageWithUrlString:[NSString stringWithFormat:@"%@%@",baseUrl,info.teamPic] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+        cell.teamImageView.image = image;
+    }];
+
     cell.teamNameLabel.text = info.teamName;
     cell.teamDetailLabel.text = info.teamDetail;
     cell.teamPriceLabel.text = [NSString stringWithFormat:@"服务费¥%ld起",info.teamPrice];

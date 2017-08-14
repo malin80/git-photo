@@ -15,6 +15,7 @@
 #import "Masonry.h"
 #import "StoreDetailViewController.h"
 #import "StoreManager.h"
+#import "SDWebImageCache.h"
 
 @interface CollectViewController () <UITableViewDelegate, UITableViewDataSource, NavigationBarDelegate, CollectTableViewCellDelegate>
 
@@ -114,9 +115,10 @@
     cell.layer.borderWidth = 1;
     cell.layer.borderColor = [[UIColor colorWithRed:247/255.0 green:247/255.0 blue:247/255.0 alpha:1.0] CGColor];
     
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,info.goodsPic]];
-    UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
-    cell.goodsImage.image = imgFromUrl;
+    [SDWebImageCache getImageFromSDWebImageWithUrlString:[NSString stringWithFormat:@"%@%@",baseUrl,info.goodsPic] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+        cell.goodsImage.image = image;
+    }];
+
     cell.goodsNamme.text = info.goodsName;
     cell.goodsSales.text = [NSString stringWithFormat:@"产品销量 %ld",info.goodsCount];
     cell.goodsPrice.text = [NSString stringWithFormat:@"产品价格 ¥%ld",info.goodsPrice];

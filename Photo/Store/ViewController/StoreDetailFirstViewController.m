@@ -9,6 +9,7 @@
 #import "StoreDetailFirstViewController.h"
 
 #import "StoreDetailTableViewCell.h"
+#import "SDWebImageCache.h"
 
 #define kScrollViewHeight 230
 
@@ -52,9 +53,9 @@
 - (void)createImageView {
     for (int i = 0; i < self.info.goodsSlideUrls.count; i++) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i*ScreenWidth+10, 0, ScreenWidth-20, kScrollViewHeight)];
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,self.info.goodsSlideUrls[i]]];
-        UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
-        imageView.image = imgFromUrl;
+        [SDWebImageCache getImageFromSDWebImageWithUrlString:[NSString stringWithFormat:@"%@%@",baseUrl,self.info.goodsSlideUrls[i]] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+            imageView.image = image;
+        }];
         [_scrollView addSubview:imageView];
     }
 }

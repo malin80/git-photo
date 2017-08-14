@@ -10,6 +10,7 @@
 #import "HomePagePesRequest.h"
 #import "HomePageManager.h"
 #import "ImageInfo.h"
+#import "SDWebImageCache.h"
 
 #define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
 
@@ -71,9 +72,9 @@
     for (int i = 0; i < _dataSource.count; i++) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i*ScreenWidth, 0, ScreenWidth, 250)];
         info = _dataSource[i];
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,info.imageUrl]];
-        UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
-        imageView.image = imgFromUrl;
+        [SDWebImageCache getImageFromSDWebImageWithUrlString:[NSString stringWithFormat:@"%@%@",baseUrl,info.imageUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+            imageView.image = image;
+        }];
         [_scrollView addSubview:imageView];
     }
     _currentPage = 0;
