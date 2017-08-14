@@ -18,13 +18,12 @@
 #import "PersonalHeaderView.h"
 #import "EntrySection.h"
 #import "EntryItem.h"
-#import "CustomActionSheet.h"
 #import "MemberInfo.h"
 
 #import "LoginManager.h"
 #import "PersonalManager.h"
 
-@interface PersonalViewController () <UITableViewDelegate, UITableViewDataSource, CustomActionSheetDelegate, LoginViewControllerDelegate>
+@interface PersonalViewController () <UITableViewDelegate, UITableViewDataSource, LoginViewControllerDelegate>
 {
     EntrySection *_section;
 
@@ -110,7 +109,7 @@
     // 检查更新
     _updateEntryItem = [EntryItem iconName:@"personal_update"
                                     title:@"软件检查更新"
-                                 selector:@selector(gotoUpdateViewController)];
+                                 selector:@selector(updateApp)];
     [_section.items addObject:_updateEntryItem];
 }
 
@@ -215,8 +214,6 @@
             }
         }];
     }];
-//    CustomActionSheet *action = [CustomActionSheet createShareActionSheet];
-//    action.delegate = self;
 }
 
 - (void)gotoAboutViewController {
@@ -250,8 +247,11 @@
     [self showtext:@"清理成功"];
 }
 
-- (void)gotoUpdateViewController {
-    
+- (void)updateApp {
+//    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+//    NSString *app_Version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+
+    [GET_SINGLETON_FOR_CLASS(PersonalManager) updateApp];
 }
 
 #pragma loginViewControllerDelegate ---

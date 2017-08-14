@@ -75,7 +75,6 @@
 		F41B19CB1F341E490026E483 /* store_number_sub.png in Resources */ = {isa = PBXBuildFile; fileRef = F41B19CA1F341E490026E483 /* store_number_sub.png */; };
 		F41B19D11F343EE70026E483 /* ShoppingGoodsInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F41B19D01F343EE70026E483 /* ShoppingGoodsInfo.m */; };
 		F41B19D71F3462070026E483 /* CollectGoodsInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F41B19D61F3462070026E483 /* CollectGoodsInfo.m */; };
-		F48185241F25E25800349143 /* CustomActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = F48185231F25E25800349143 /* CustomActionSheet.m */; };
 		F481E90C1F282D1E00EE3D7C /* personal_address_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = F481E90A1F282D1E00EE3D7C /* personal_address_selected.png */; };
 		F481E90D1F282D1E00EE3D7C /* personal_address_unselect.png in Resources */ = {isa = PBXBuildFile; fileRef = F481E90B1F282D1E00EE3D7C /* personal_address_unselect.png */; };
 		F481E9101F283A5F00EE3D7C /* shopping_select.png in Resources */ = {isa = PBXBuildFile; fileRef = F481E90F1F283A5F00EE3D7C /* shopping_select.png */; };
@@ -332,8 +331,6 @@
 		F41B19D01F343EE70026E483 /* ShoppingGoodsInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingGoodsInfo.m; sourceTree = "<group>"; };
 		F41B19D51F3462070026E483 /* CollectGoodsInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectGoodsInfo.h; sourceTree = "<group>"; };
 		F41B19D61F3462070026E483 /* CollectGoodsInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectGoodsInfo.m; sourceTree = "<group>"; };
-		F48185221F25E25800349143 /* CustomActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomActionSheet.h; sourceTree = "<group>"; };
-		F48185231F25E25800349143 /* CustomActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomActionSheet.m; sourceTree = "<group>"; };
 		F481E90A1F282D1E00EE3D7C /* personal_address_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personal_address_selected.png; sourceTree = "<group>"; };
 		F481E90B1F282D1E00EE3D7C /* personal_address_unselect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personal_address_unselect.png; sourceTree = "<group>"; };
 		F481E90F1F283A5F00EE3D7C /* shopping_select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shopping_select.png; sourceTree = "<group>"; };
@@ -1149,8 +1146,6 @@
 				F4A7A1381F25A779009FAAEE /* AvatarView.m */,
 				F4A7A2541F25BC22009FAAEE /* NavigationBar.h */,
 				F4A7A2551F25BC22009FAAEE /* NavigationBar.m */,
-				F48185221F25E25800349143 /* CustomActionSheet.h */,
-				F48185231F25E25800349143 /* CustomActionSheet.m */,
 				F40575671F2AE29B003C8AF2 /* PesRequest.h */,
 				F40575681F2AE29B003C8AF2 /* PesRequest.m */,
 				F48679311F3D7B0900612E27 /* TableViewCellCalculator.h */,
@@ -1508,7 +1503,6 @@
 				F4A7A0CE1F256D8B009FAAEE /* ShoppingViewController.m in Sources */,
 				F4A7A2561F25BC22009FAAEE /* NavigationBar.m in Sources */,
 				A520C6D31F2B89A400202622 /* DLUtility.m in Sources */,
-				F48185241F25E25800349143 /* CustomActionSheet.m in Sources */,
 				F405D1971F2EBAFD0015A8E6 /* GoodsOrderViewController.m in Sources */,
 				F4A7A0D71F2574A1009FAAEE /* PersonalViewController.m in Sources */,
 				F4FEB0CF1F31B86500C2F5A3 /* StoreDetailSecondViewController.m in Sources */,

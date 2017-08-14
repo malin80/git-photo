@@ -206,4 +206,12 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(PersonalManager)
     }];
 }
 
+- (void)updateApp {
+    [PersonalPesRequest updateAppWithBlock:^(NSDictionary *response, NSString *error) {
+        if ([[response objectForKey:@"errorCode"] unsignedLongValue]== 0) {
+//            NSString *data = [response objectForKey:@"data"];
+        }
+    }];
+}
+
 @end

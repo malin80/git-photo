@@ -80,4 +80,8 @@
     [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"OrderOfGoodsDetailControl/queryOrderOfGoods.do" dic:dict finished:finished];
 }
 
++ (void)updateAppWithBlock:(void (^)(NSDictionary *, NSString *))finished {
+    [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"MarryVersionControl/queryMarryVersion.do" dic:nil finished:finished];
+}
+
 @end

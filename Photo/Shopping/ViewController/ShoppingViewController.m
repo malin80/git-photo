@@ -110,8 +110,9 @@
     imageView.image = [UIImage imageNamed:@"shopping_no_goods"];
     [self.view addSubview:imageView];
     [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.equalTo(self.view);
-        make.width.equalTo(@(60));
+        make.centerX.equalTo(self.view);
+        make.centerY.equalTo(self.view).with.offset(-30);
+        make.width.equalTo(@(80));
         make.height.equalTo(@(80));
     }];
     

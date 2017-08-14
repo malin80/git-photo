@@ -44,4 +44,6 @@ DECLARE_SINGLETON_FOR_CLASS(PersonalManager)
 
 - (void)queryMemberOrderGoodsInfoWithToken:(NSString *)token;
 
+- (void)updateApp;
+
 @end
