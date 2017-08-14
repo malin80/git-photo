@@ -40,7 +40,7 @@
     [self.view addSubview:bar];
 
     self.bottomButton = [[UIButton alloc] initWithFrame:CGRectMake(0, ScreenHieght-60, ScreenWidth, 60)];
-    self.bottomButton.backgroundColor = [UIColor clearColor];
+    self.bottomButton.backgroundColor = [UIColor redColor];
     if (self.isSelectController) {
         [self.bottomButton setTitle:@"确定预约" forState:UIControlStateNormal];
         [self.bottomButton addTarget:self action:@selector(confirmOrder) forControlEvents:UIControlEventTouchUpInside];

@@ -26,9 +26,9 @@
     [self.hub1 hideAnimated:YES afterDelay:1.5];
 }
 - (void)showlongtext:(NSString *)str{
-    self.hub1.labelText = str;
+    self.hub1.label.text = str;
     self.hub1.mode=MBProgressHUDModeIndeterminate;
-    [self.hub1 show:YES];
+    [self.hub1 showAnimated:YES];
     [[UIApplication sharedApplication].keyWindow addSubview:_hub1];
     //[self.view addSubview:_hub1];
 }

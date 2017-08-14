@@ -253,6 +253,10 @@
         _goodsSubType.layer.cornerRadius = 10.0f;
         [_goodsSubType setTitle:[NSString stringWithFormat:@"%@",self.info.goodsParamValue] forState:UIControlStateNormal];
         [_goodsSubType setTitleColor:[UIColor colorR:114 G:114 B:114 alpha:1] forState:UIControlStateNormal];
+        _goodsSubType.layer.borderWidth = 0.5;
+        _goodsSubType.layer.borderColor = [[UIColor colorR:224 G:224 B:224 alpha:1] CGColor];
+        _goodsSubType.backgroundColor = [UIColor colorR:250 G:250 B:250 alpha:1];
+        [_goodsSubType addTarget:self action:@selector(selectGoodsSubType) forControlEvents:UIControlEventTouchUpInside];
     }
     return _goodsSubType;
 }
@@ -275,6 +279,10 @@
         controller.goodsInfos = [NSArray arrayWithObject:self.info];
         [self.navigationController pushViewController:controller animated:NO];
     } else {
+        if (_goodsSubType.selected == NO) {
+            [self showtext:@"请选择类型"];
+            return;
+        }
         NSString *string = [NSString stringWithFormat:@"%@:%@",self.info.goodsParamKey,self.info.goodsParamValue];
         [GET_SINGLETON_FOR_CLASS(StoreManager) addGoodsToShoppingWithGoodsCount:_count.text withGoodParam:string withSafeCodeValue:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue withGoodsId:self.info.goodsId];
         [self goBack];
@@ -289,6 +297,17 @@
 - (void)minusCount {
     self.countNumber--;
     _count.text = [NSString stringWithFormat:@"%ld",(long)self.countNumber];
+}
+
+- (void)selectGoodsSubType {
+    //标识选中的状态
+    if (_goodsSubType.selected) {
+        _goodsSubType.selected = NO;
+        _goodsSubType.backgroundColor = [UIColor colorR:250 G:250 B:250 alpha:1];
+    } else {
+        _goodsSubType.selected = YES;
+        _goodsSubType.backgroundColor = [UIColor redColor];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

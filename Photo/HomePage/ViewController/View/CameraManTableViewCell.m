@@ -14,7 +14,7 @@
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.contentView.backgroundColor = [UIColor colorR:229 G:229 B:229 alpha:1];
+        self.contentView.backgroundColor = [UIColor colorR:250 G:250 B:250 alpha:1];
         [self initView];
         [self setImmutableConstraints];
     }

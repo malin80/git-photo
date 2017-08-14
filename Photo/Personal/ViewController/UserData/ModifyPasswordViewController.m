@@ -137,7 +137,7 @@
     [_getIdentifyButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(_identifyTextField);
         make.height.equalTo(@(30));
-        make.width.equalTo(@(60));
+        make.width.equalTo(@(80));
         make.right.equalTo(_identifyTextField.mas_right).with.offset(-20);
     }];
     

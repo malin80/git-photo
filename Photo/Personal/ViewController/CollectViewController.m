@@ -35,7 +35,6 @@
     [self.view addSubview:bar];
     
     [self addNotification];
-    [self createTableView];
 }
 
 - (void)addNotification {

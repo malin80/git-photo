@@ -45,6 +45,12 @@
 - (void)addNotification {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryMemberAddressSuccess) name:@"queryMemberAddressSuccess" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(collectGoodsSuccess) name:@"collectGoodsSuccess" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addGoodsToShoppingSuccess) name:@"addGoodsToShoppingSuccess" object:nil];
+}
+
+- (void)addGoodsToShoppingSuccess {
+    [self showtext:@"添加成功"];
 }
 
 - (void)queryMemberAddressSuccess {
@@ -53,6 +59,10 @@
             GET_SINGLETON_FOR_CLASS(PersonalManager).normalAddressInfo = info;
         }
     }
+}
+
+- (void)collectGoodsSuccess {
+    [self showtext:@"收藏成功"];
 }
 
 - (void)initView {
