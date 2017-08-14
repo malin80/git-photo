@@ -11,6 +11,7 @@
 #import "HomePageManager.h"
 #import "ImageInfo.h"
 #import "SDWebImageCache.h"
+#import "CameraManager.h"
 
 #define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
 
@@ -21,6 +22,7 @@
     UIPageControl *_pageControl;
     NSTimer *_timer;
     NSInteger _currentPage;
+    BOOL _isHomePage;
 }
 
 @end
@@ -31,10 +33,11 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self addNotification];
-        if (isHomePage) {
+        _isHomePage = isHomePage;
+        if (_isHomePage) {
             [GET_SINGLETON_FOR_CLASS(HomePageManager) loadScrollViewImages];
         } else {
-            [self loadScrollViewImagesSuccess];
+            [GET_SINGLETON_FOR_CLASS(CameraManager) loadCameraRecommendImages];
         }
     }
     return self;
@@ -46,7 +49,12 @@
 }
 
 - (void)loadScrollViewImagesSuccess {
-    _dataSource = GET_SINGLETON_FOR_CLASS(HomePageManager).scrollViewImages;
+    if (_isHomePage) {
+        _dataSource = GET_SINGLETON_FOR_CLASS(HomePageManager).scrollViewImages;
+    } else {
+        _dataSource = GET_SINGLETON_FOR_CLASS(CameraManager).scrollViewImages;
+    }
+    
     [self createScrollView];
 }
 

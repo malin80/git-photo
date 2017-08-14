@@ -25,6 +25,7 @@ DECLARE_SINGLETON_FOR_CLASS(CameraManager)
 @property (nonatomic, strong) CameraManInfo *selectedCameraManInfo;
 @property (nonatomic, strong) DressManInfo *selectedDressManInfo;
 @property (nonatomic, copy)   NSString *selectedTime;
+@property (nonatomic, strong) NSMutableArray *scrollViewImages;
 
 @property (nonatomic, copy) NSString *commentImages;
 
@@ -41,5 +42,7 @@ DECLARE_SINGLETON_FOR_CLASS(CameraManager)
 - (void)queryDressManDetailWithId:(long)dressManId;
 
 - (void)orderCameraManWithCameraId:(long)cameraId withToken:(NSString *)token withDressId:(long)dressId withTime:(NSString *)time withType:(NSString *)type withGroupName:(NSString *)groupName;
+
+- (void)loadCameraRecommendImages;
 
 @end

@@ -11,6 +11,7 @@
 #import "CameraTeamInfo.h"
 #import "CameraManInfo.h"
 #import "DressManInfo.h"
+#import "ImageInfo.h"
 
 @implementation CameraManager
 
@@ -26,6 +27,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(CameraManager)
         self.dressMans = [NSMutableArray array];
         self.cameraManInfo = [[CameraManInfo alloc] init];
         self.dressManInfo = [[DressManInfo alloc] init];
+        self.scrollViewImages = [NSMutableArray array];
     }
     return self;
 }
@@ -164,10 +166,29 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(CameraManager)
 - (void)orderCameraManWithCameraId:(long)cameraId withToken:(NSString *)token withDressId:(long)dressId withTime:(NSString *)time withType:(NSString *)type withGroupName:(NSString *)groupName {
     [CameraPesRequest orderCameraManOrderWithCameraId:cameraId withToken:token withDressId:dressId withTime:time withType:type withCamerGroupName:groupName withBlock:^(NSDictionary *responseObject, NSString *error) {
         if ([[responseObject objectForKey:@"errorCode"] unsignedLongValue]== 0) {
+            //支付id
             long payId = [[responseObject objectForKey:@"data"] unsignedLongValue];
         }
     }];
-    
+}
+
+- (void)loadCameraRecommendImages {
+    [CameraPesRequest loadCameraRecommendImagesWithBlock:^(NSDictionary *responseObject, NSString *error) {
+        if ([[responseObject objectForKey:@"errorCode"] unsignedLongValue]== 0) {
+            NSArray *urlArray = [responseObject objectForKey:@"data"];
+            for (NSDictionary *dict in urlArray) {
+                ImageInfo *info = [[ImageInfo alloc] init];
+                NSString *urlString = [dict objectForKey:@"camerSlideImgUrl"];
+                NSInteger imageId = [[dict objectForKey:@"camerSlideId"] integerValue];
+                info.imageUrl = urlString;
+                info.imageId = &(imageId);
+                [self.scrollViewImages addObject:info];
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"loadScrollViewImagesSuccess" object:nil];
+            });
+        }
+    }];
 }
 
 @end

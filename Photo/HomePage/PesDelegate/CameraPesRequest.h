@@ -23,7 +23,8 @@
 
 + (void)queryDressManDetailWithId:(long)dressManId withBlock:(void(^)(NSDictionary *responseObject,NSString *error))finished;
 
-//	OrderInfoControl/saveOrderInfo.do(cameramanId,token,dresserId,time,type,camerGroupName)
 + (void)orderCameraManOrderWithCameraId:(long)cameraManId withToken:(NSString *)token withDressId:(long)dressId withTime:(NSString *)time withType:(NSString *)type withCamerGroupName:(NSString *)groupName withBlock:(void(^)(NSDictionary *responseObject,NSString *error))finished;
+
++ (void)loadCameraRecommendImagesWithBlock:(void(^)(NSDictionary *responseObject,NSString *error))finished;
 
 @end
