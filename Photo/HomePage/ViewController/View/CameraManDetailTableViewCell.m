@@ -115,7 +115,7 @@
 - (UIImageView *)memberView {
     if (!_memberView) {
         _memberView = [[UIImageView alloc] init];
-        _memberView.backgroundColor = [UIColor redColor];
+        _memberView.backgroundColor = [UIColor clearColor];
         _memberView.layer.cornerRadius = 15;
     }
     return _memberView;

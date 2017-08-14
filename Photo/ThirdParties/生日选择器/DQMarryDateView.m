@@ -1,30 +1,31 @@
 //
-//  DQBirthDateView.m
-//  YBCommunity
+//  DQMarryDateView.m
+//  Photo
 //
-//  Created by 邓琪 dengqi on 16/9/9.
-//  Copyright © 2016年 com.NiceMoment. All rights reserved.
+//  Created by malin  on 2017/8/14.
+//  Copyright © 2017年 malin . All rights reserved.
 //
 
-#import "DQBirthDateView.h"
+#import "DQMarryDateView.h"
 #import "DQCanCerEnsureView.h"
 #import "CalculateTool.h"
-#import "DQAgeModel.h"  
+#import "DQAgeModel.h"
 
-static NSString *EditPath = @"/api/user/edit";
-
-@interface DQBirthDateView ()<DQCanCerEnsureViewDelegate>
+@interface DQMarryDateView ()<DQCanCerEnsureViewDelegate>
 @property (nonatomic, strong) DQCanCerEnsureView *CancerEnsure;
 @property (strong,nonatomic) UIPickerView * pickerView;
 @property (nonatomic, strong) NSMutableArray *yearArr;
 @property (nonatomic, copy) NSMutableArray *monthArr;
 @property (nonatomic, strong) NSMutableArray *dayArr;
-@property (nonatomic, copy) NSString *BirthStr;//保存出生年月日的时间戳
+@property (nonatomic, copy) NSString *MarryStr;//保存出生年月日的时间戳
 @property (nonatomic, strong) UITapGestureRecognizer *ges;
 @property (nonatomic, strong) UIView *backView;
 
 @end
-@implementation DQBirthDateView
+
+
+@implementation DQMarryDateView
+
 - (instancetype)init{
     self = [super init];
     if (self) {
@@ -70,7 +71,7 @@ static NSString *EditPath = @"/api/user/edit";
 }
 - (void)creadtionSub{
     _CancerEnsure = [[DQCanCerEnsureView alloc]init];//WithFrame:CGRectMake(0, 0, nc_ScreenWidth, 45)];
-    [_CancerEnsure setTitleText:@"设置生日"];
+    [_CancerEnsure setTitleText:@"设置婚期"];
     _CancerEnsure.delegate = self;
     UIView *sub = self.backView;
     [sub  addSubview:_CancerEnsure];
@@ -95,7 +96,7 @@ static NSString *EditPath = @"/api/user/edit";
         make.right.equalTo(sub);
         make.bottom.equalTo(sub);
     }];
-
+    
     for (NSInteger i=0; i<12*100; i++) {
         NSString *monthStr = [NSString stringWithFormat:@"%.2zd月",(i)%12+1];
         [self.monthArr addObject:monthStr];
@@ -116,8 +117,8 @@ static NSString *EditPath = @"/api/user/edit";
     [self.pickerView selectRow:660 inComponent:1 animated:YES];
     [self.pickerView selectRow:15+3100/2 inComponent:2 animated:YES];
 }
-- (void)setBirthDateStatusFromString:(NSString *)timStr{
-
+- (void)setMarryDateStatusFromString:(NSString *)timStr{
+    
     if (![timStr isKindOfClass:[NSNull class]]) {
         NSTimeInterval _interval = [timStr longLongValue];
         NSDate *date = [NSDate dateWithTimeIntervalSince1970:_interval/1000];
@@ -138,14 +139,14 @@ static NSString *EditPath = @"/api/user/edit";
             [self.pickerView selectRow:brithDateDay-1+1550 inComponent:2 animated:YES];
         }
         [self.pickerView reloadAllComponents];
-
+        
     }
 }
 - (void)ClickCancerDelegateFunction{
     [self CloseAnimationFunction];
 }
 - (void)ClickEnsureDelegateFunction{
-
+    
     DQAgeModel *model = [DQAgeModel new];
     NSString *YearStr = self.yearArr[[self.pickerView selectedRowInComponent:0]];
     NSInteger monthRow = [self.pickerView selectedRowInComponent:1]%(self.monthArr.count);
@@ -160,12 +161,12 @@ static NSString *EditPath = @"/api/user/edit";
     model.month = [NSString stringWithFormat:@"%zd",month];
     model.day = [NSString stringWithFormat:@"%zd",day];
     NSString *constellationStr = [CalculateTool calculateConstellationWithMonth:month day:day];
-    if ([self.delegate respondsToSelector:@selector(clickDQBirthDateViewEnsureBtnActionAgeModel:andConstellation:)]) {
+    if ([self.delegate respondsToSelector:@selector(clickDQMarryDateViewEnsureBtnActionAgeModel:andConstellation:)]) {
         
-        [self.delegate clickDQBirthDateViewEnsureBtnActionAgeModel:model andConstellation:constellationStr];
+        [self.delegate clickDQMarryDateViewEnsureBtnActionAgeModel:model andConstellation:constellationStr];
     }
     [self CloseAnimationFunction];
- 
+    
 }
 #pragma mark - UIPicker Delegate
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
@@ -304,4 +305,13 @@ static NSString *EditPath = @"/api/user/edit";
     self.ges = nil;
     
 }
+
+/*
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect {
+    // Drawing code
+}
+*/
+
 @end

@@ -23,7 +23,7 @@
 - (void)initView {
     UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(10, 10, ScreenWidth-20, ScreenHieght-200)];
     backView.layer.borderWidth = 1;
-    backView.layer.borderColor = [[UIColor redColor] CGColor];
+    backView.layer.borderColor = [[UIColor colorR:235 G:235 B:235 alpha:1] CGColor];
     [self.view addSubview:backView];
     
     NSArray *temp=[self.dressManInfo.dressManSynopsis componentsSeparatedByString:@";"];

@@ -38,7 +38,7 @@
 
 - (void)initView {
     _topLine = [[UIView alloc] init];
-    _topLine.backgroundColor = [UIColor redColor];
+    _topLine.backgroundColor = [UIColor colorR:235 G:235 B:235 alpha:1];
     [self.view addSubview:_topLine];
     
     _nameTextField = [[UITextField alloc] init];
@@ -55,7 +55,7 @@
     [self.view addSubview:_nameTextField];
     
     _bottomLine = [[UIView alloc] init];
-    _bottomLine.backgroundColor = [UIColor darkGrayColor];
+    _bottomLine.backgroundColor = [UIColor colorR:235 G:235 B:235 alpha:1];
     [self.view addSubview:_bottomLine];
 }
 

@@ -55,7 +55,7 @@
 - (UIImageView *)teamImageView {
     if (!_teamImageView) {
         _teamImageView = [[UIImageView alloc] init];
-        _teamImageView.backgroundColor = [UIColor redColor];
+        _teamImageView.backgroundColor = [UIColor clearColor];
     }
     return _teamImageView;
 }

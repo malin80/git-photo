@@ -146,6 +146,7 @@
 		F4B67C731F413A9300DA8E4E /* SelectDressManViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B67C721F413A9300DA8E4E /* SelectDressManViewController.m */; };
 		F4B67C761F41443900DA8E4E /* SelectCameraManViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B67C751F41443900DA8E4E /* SelectCameraManViewController.m */; };
 		F4B67CAB1F415F0100DA8E4E /* SDWebImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B67CAA1F415F0100DA8E4E /* SDWebImageCache.m */; };
+		F4B67CAE1F41755F00DA8E4E /* DQMarryDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B67CAD1F41755F00DA8E4E /* DQMarryDateView.m */; };
 		F4C6185D1F3A9ED3004A76B3 /* personal_forward.png in Resources */ = {isa = PBXBuildFile; fileRef = F4C6185C1F3A9ED3004A76B3 /* personal_forward.png */; };
 		F4C6185F1F3AAAF9004A76B3 /* personal_no_address.png in Resources */ = {isa = PBXBuildFile; fileRef = F4C6185E1F3AAAF9004A76B3 /* personal_no_address.png */; };
 		F4C618621F3AB89C004A76B3 /* AddressInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C618611F3AB89C004A76B3 /* AddressInfo.m */; };
@@ -440,6 +441,8 @@
 		F4B67C751F41443900DA8E4E /* SelectCameraManViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectCameraManViewController.m; path = ../SelectCameraManViewController.m; sourceTree = "<group>"; };
 		F4B67CA91F415F0100DA8E4E /* SDWebImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImageCache.h; sourceTree = "<group>"; };
 		F4B67CAA1F415F0100DA8E4E /* SDWebImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebImageCache.m; sourceTree = "<group>"; };
+		F4B67CAC1F41755F00DA8E4E /* DQMarryDateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQMarryDateView.h; sourceTree = "<group>"; };
+		F4B67CAD1F41755F00DA8E4E /* DQMarryDateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQMarryDateView.m; sourceTree = "<group>"; };
 		F4C6185C1F3A9ED3004A76B3 /* personal_forward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personal_forward.png; sourceTree = "<group>"; };
 		F4C6185E1F3AAAF9004A76B3 /* personal_no_address.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personal_no_address.png; sourceTree = "<group>"; };
 		F4C618601F3AB89C004A76B3 /* AddressInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressInfo.h; sourceTree = "<group>"; };
@@ -572,6 +575,8 @@
 				A50BB4061F3DAF3700F6158B /* DQAgeModel.m */,
 				A50BB4071F3DAF3700F6158B /* DQBirthDateView.h */,
 				A50BB4081F3DAF3700F6158B /* DQBirthDateView.m */,
+				F4B67CAC1F41755F00DA8E4E /* DQMarryDateView.h */,
+				F4B67CAD1F41755F00DA8E4E /* DQMarryDateView.m */,
 				A50BB4091F3DAF3700F6158B /* DQCanCerEnsureView.h */,
 				A50BB40A1F3DAF3700F6158B /* DQCanCerEnsureView.m */,
 				A50BB40B1F3DAF3700F6158B /* DQconstellationView.h */,
@@ -1575,6 +1580,7 @@
 				F4FDD6B51F2C37CD007263D4 /* AddressViewController.m in Sources */,
 				A520C6CE1F2B89A400202622 /* DLCustomSlideView.m in Sources */,
 				F407336E1F3C43E80006F1F6 /* DressManDetailFirstViewController.m in Sources */,
+				F4B67CAE1F41755F00DA8E4E /* DQMarryDateView.m in Sources */,
 				F4A7A0D11F256DB1009FAAEE /* HomePageViewController.m in Sources */,
 				F4FD304A1F32C46800048DD6 /* HomePageCameraGroupInfo.m in Sources */,
 				F40733681F3C3DF00006F1F6 /* DressManInfo.m in Sources */,

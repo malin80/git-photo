@@ -33,8 +33,6 @@
     EntryItem *_userNameEntryItem;
     EntryItem *_timeEntryItem;
     EntryItem *_passwordEntryItem;
-    
-    UIView *_maskForDatePicker;
 }
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -52,15 +50,12 @@
     [self.view addSubview:bar];
     self.DQBirthView = [DQBirthDateView new];
     self.DQBirthView.delegate = self;
+    self.DQMarryView = [DQMarryDateView new];
+    self.DQMarryView.delegate = self;
     [self addNotification];
     [self updateSections];
     [self createTableView];
     [self createBottomButton];
-    
-    _maskForDatePicker = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHieght)];
-    _maskForDatePicker.backgroundColor = [UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:0.5];
-    UITapGestureRecognizer *tapForDatePicker = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapForDatePicker)];
-    [_maskForDatePicker addGestureRecognizer:tapForDatePicker];
 }
 
 - (void)addNotification {
@@ -120,7 +115,7 @@
     [section2.items addObject:_userNameEntryItem];
     
     //婚期
-    _timeEntryItem = [EntryItem title:@"婚期" content:nil subtitle:@"设置" selector:@selector(gotoAvatarViewController)];
+    _timeEntryItem = [EntryItem title:@"婚期" content:nil subtitle:@"设置" selector:@selector(gotoSetMarryDay)];
     [section2.items addObject:_timeEntryItem];
     
     //密码
@@ -217,6 +212,11 @@
 - (void)gotoSetBirthDay {
    [self.DQBirthView startAnimationFunction];
 }
+
+- (void)gotoSetMarryDay {
+    [self.DQMarryView startAnimationFunction];
+}
+
 //点击选中哪一行 的代理方法
 - (void)clickDQBirthDateViewEnsureBtnActionAgeModel:(DQAgeModel *)ageModel andConstellation:(NSString *)str{
     NSString *stra = [NSString stringWithFormat:@"%@年 %@月 %@日 ",ageModel.year,ageModel.month,ageModel.day];

@@ -86,7 +86,7 @@
 - (UIImageView *)goodsImage {
     if (!_goodsImage) {
         _goodsImage = [[UIImageView alloc] init];
-        _goodsImage.backgroundColor = [UIColor redColor];
+        _goodsImage.backgroundColor = [UIColor clearColor];
     }
     return _goodsImage;
 }

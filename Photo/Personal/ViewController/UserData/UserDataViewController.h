@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 #import "DQBirthDateView.h"
+#import "DQMarryDateView.h"
 #import "DQAgeModel.h"
 #import "LTPickerView.h"
 
-@interface UserDataViewController : BaseViewController <DQBirthDateViewDelegate>
+@interface UserDataViewController : BaseViewController <DQBirthDateViewDelegate, DQMarryDateViewDelegate>
 
 @property (nonatomic, strong) DQBirthDateView *DQBirthView;
+@property (nonatomic, strong) DQMarryDateView *DQMarryView;
 
 @end

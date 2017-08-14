@@ -155,7 +155,6 @@
     title.textColor = [UIColor colorR:149 G:149 B:151 alpha:1];
     title.font = [UIFont systemFontOfSize:14];
     [title sizeToFit];
-//    title.backgroundColor = [UIColor redColor];
     [view addSubview:title];
     return view;
 }

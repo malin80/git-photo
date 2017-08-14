@@ -59,7 +59,7 @@
 - (UILabel *)colorLabel {
     if (!_colorLabel) {
         _colorLabel = [[UILabel alloc] init];
-        _colorLabel.backgroundColor = [UIColor redColor];
+        _colorLabel.backgroundColor = [UIColor clearColor];
     }
     return _colorLabel;
 }
