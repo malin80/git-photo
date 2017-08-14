@@ -11,14 +11,16 @@
 #import "CameraManDetailSecondViewController.h"
 #import "CameraManDetailThirdViewController.h"
 #import "CameraManDetailFourViewController.h"
-
+#import "SelectDressManViewController.h"
 #import "NavigationBar.h"
 #import "DLTabedSlideView.h"
 #import "CameraManager.h"
+#import "LoginManager.h"
 
 @interface CameraManDetailViewController () <NavigationBarDelegate, DLTabedSlideViewDelegate>
 
 @property (nonatomic, strong) DLTabedSlideView *tabedSlideView;
+@property (nonatomic, strong) UIButton *bottomButton;
 
 @end
 
@@ -27,6 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    [self addNotification];
     [self initView];
 }
 
@@ -36,10 +39,16 @@
     bar.line.hidden=YES;
     [self.view addSubview:bar];
 
-    UIButton *bottomButton = [[UIButton alloc] initWithFrame:CGRectMake(0, ScreenHieght-60, ScreenWidth, 60)];
-    bottomButton.backgroundColor = [UIColor redColor];
-    [bottomButton setTitle:@"立即预约" forState:UIControlStateNormal];
-    [self.view addSubview:bottomButton];
+    self.bottomButton = [[UIButton alloc] initWithFrame:CGRectMake(0, ScreenHieght-60, ScreenWidth, 60)];
+    self.bottomButton.backgroundColor = [UIColor redColor];
+    if (self.isSelectController) {
+        [self.bottomButton setTitle:@"确定预约" forState:UIControlStateNormal];
+        [self.bottomButton addTarget:self action:@selector(confirmOrder) forControlEvents:UIControlEventTouchUpInside];
+    } else {
+        [self.bottomButton setTitle:@"立即预约" forState:UIControlStateNormal];
+        [self.bottomButton addTarget:self action:@selector(immediatelyOrder) forControlEvents:UIControlEventTouchUpInside];
+    }
+    [self.view addSubview:self.bottomButton];
     
     self.tabedSlideView = [[DLTabedSlideView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHieght-200)];
     self.tabedSlideView.baseController = self;
@@ -53,46 +62,98 @@
     DLTabedbarItem *item2 = [DLTabedbarItem itemWithTitle:@"简介" image:nil selectedImage:nil];
     DLTabedbarItem *item3 = [DLTabedbarItem itemWithTitle:@"评价" image:nil selectedImage:nil];
     DLTabedbarItem *item4 = [DLTabedbarItem itemWithTitle:@"档期" image:nil selectedImage:nil];
-
-    self.tabedSlideView.tabbarItems = @[item1, item2, item3, item4];
+    if (self.isSelectController) {
+        self.tabedSlideView.tabbarItems = @[item1, item2, item3];
+    } else {
+        self.tabedSlideView.tabbarItems = @[item1, item2, item3, item4];
+    }
     [self.tabedSlideView buildTabbar];
     self.tabedSlideView.selectedIndex = 0;
     [self.view addSubview:self.tabedSlideView];
 }
 
+- (void)addNotification {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectDaySuccess:) name:@"selectDaySuccess" object:nil];
+}
+
+- (void)selectDaySuccess:(NSNotification *)notify {
+    NSString *time = notify.object;
+    GET_SINGLETON_FOR_CLASS(CameraManager).selectedTime = time;
+    [self.bottomButton setTitle:[NSString stringWithFormat:@"立即预约 %@",time] forState:UIControlStateNormal];
+}
+
+- (void)immediatelyOrder {
+    SelectDressManViewController *controller = [[SelectDressManViewController alloc] init];
+    [self.navigationController pushViewController:controller animated:NO];
+}
+
+- (void)confirmOrder {
+    //支付
+    [GET_SINGLETON_FOR_CLASS(CameraManager) orderCameraManWithCameraId:self.cameraManInfo.cameraManId withToken:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue withDressId:GET_SINGLETON_FOR_CLASS(CameraManager).selectedDressManInfo.dressManId withTime:GET_SINGLETON_FOR_CLASS(CameraManager).selectedTime withType:@"marry" withGroupName:@"摄影"];
+}
+
 #pragma mark --- DLTabedSlideViewDelegate ---
 - (NSInteger)numberOfTabsInDLTabedSlideView:(DLTabedSlideView *)sender {
-    return 4;
+    if (self.isSelectController) {
+        return 3;
+    } else {
+        return 4;
+    }
 }
 
 - (UIViewController *)DLTabedSlideView:(DLTabedSlideView *)sender controllerAt:(NSInteger)index {
-    switch (index) {
-        case 0:
-        {
-            CameraManDetailFirstViewController *controller = [[CameraManDetailFirstViewController alloc] init];
-            controller.cameraManInfo = GET_SINGLETON_FOR_CLASS(CameraManager).cameraManInfo;
-            return controller;
+    if (self.isSelectController) {
+        switch (index) {
+            case 0:
+            {
+                CameraManDetailFirstViewController *controller = [[CameraManDetailFirstViewController alloc] init];
+                controller.cameraManInfo = GET_SINGLETON_FOR_CLASS(CameraManager).cameraManInfo;
+                return controller;
+            }
+            case 1:
+            {
+                CameraManDetailSecondViewController *controller = [[CameraManDetailSecondViewController alloc] init];
+                controller.cameraManInfo = self.cameraManInfo;
+                return controller;
+            }
+            case 2:
+            {
+                CameraManDetailThirdViewController *controller = [[CameraManDetailThirdViewController alloc] init];
+                controller.cameraManInfo = GET_SINGLETON_FOR_CLASS(CameraManager).cameraManInfo;
+                return controller;
+            }
+            default:
+                return nil;
         }
-        case 1:
-        {
-            CameraManDetailSecondViewController *controller = [[CameraManDetailSecondViewController alloc] init];
-            controller.cameraManInfo = self.cameraManInfo;
-            return controller;
+    } else {
+        switch (index) {
+            case 0:
+            {
+                CameraManDetailFirstViewController *controller = [[CameraManDetailFirstViewController alloc] init];
+                controller.cameraManInfo = GET_SINGLETON_FOR_CLASS(CameraManager).cameraManInfo;
+                return controller;
+            }
+            case 1:
+            {
+                CameraManDetailSecondViewController *controller = [[CameraManDetailSecondViewController alloc] init];
+                controller.cameraManInfo = self.cameraManInfo;
+                return controller;
+            }
+            case 2:
+            {
+                CameraManDetailThirdViewController *controller = [[CameraManDetailThirdViewController alloc] init];
+                controller.cameraManInfo = GET_SINGLETON_FOR_CLASS(CameraManager).cameraManInfo;
+                return controller;
+            }
+            case 3:
+            {
+                CameraManDetailFourViewController *controller = [[CameraManDetailFourViewController alloc] init];
+                return controller;
+            }
+            default:
+                return nil;
         }
-        case 2:
-        {
-            CameraManDetailThirdViewController *controller = [[CameraManDetailThirdViewController alloc] init];
-            controller.cameraManInfo = GET_SINGLETON_FOR_CLASS(CameraManager).cameraManInfo;
-            return controller;
-        }
-        case 3:
-        {
-            CameraManDetailFourViewController *controller = [[CameraManDetailFourViewController alloc] init];
-            return controller;
-        }
-            
-        default:
-            return nil;
     }
 }
 

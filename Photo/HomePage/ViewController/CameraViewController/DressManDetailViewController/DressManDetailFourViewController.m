@@ -7,8 +7,9 @@
 //
 
 #import "DressManDetailFourViewController.h"
+#import "FDCalendar.h"
 
-@interface DressManDetailFourViewController ()
+@interface DressManDetailFourViewController () <showDataDelegate>
 
 @end
 
@@ -16,7 +17,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
+    FDCalendar *calendar = [[FDCalendar alloc] initWithCurrentDate:[NSDate date]];
+    calendar.daili=self;
+    calendar.frame=CGRectMake(0, 0, ScreenWidth, 400);
+    [self.view addSubview:calendar];
+}
+
+-(void)showData:(NSString *)riqi{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"selectDaySuccess" object:riqi];
 }
 
 - (void)didReceiveMemoryWarning {

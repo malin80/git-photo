@@ -124,7 +124,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(CameraManager)
             if (![[responseObject objectForKey:@"data"] isKindOfClass:[NSString class]]) {
                 [self.dressMans removeAllObjects];
                 NSArray *array = [responseObject objectForKey:@"data"];
-                [self.cameraMans removeAllObjects];
+                [self.dressMans removeAllObjects];
                 if (array.count > 0) {
                     for (NSDictionary *dict in array) {
                         DressManInfo *info = [[DressManInfo alloc] init];
@@ -159,6 +159,15 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(CameraManager)
             });
         }
     }];
+}
+
+- (void)orderCameraManWithCameraId:(long)cameraId withToken:(NSString *)token withDressId:(long)dressId withTime:(NSString *)time withType:(NSString *)type withGroupName:(NSString *)groupName {
+    [CameraPesRequest orderCameraManOrderWithCameraId:cameraId withToken:token withDressId:dressId withTime:time withType:type withCamerGroupName:groupName withBlock:^(NSDictionary *responseObject, NSString *error) {
+        if ([[responseObject objectForKey:@"errorCode"] unsignedLongValue]== 0) {
+            long payId = [[responseObject objectForKey:@"data"] unsignedLongValue];
+        }
+    }];
+    
 }
 
 @end

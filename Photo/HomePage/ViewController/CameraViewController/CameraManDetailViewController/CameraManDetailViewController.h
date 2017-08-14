@@ -13,5 +13,6 @@
 @interface CameraManDetailViewController : BaseViewController
 
 @property (nonatomic, strong) CameraManInfo *cameraManInfo;
+@property (nonatomic, assign) BOOL isSelectController;
 
 @end

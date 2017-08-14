@@ -39,5 +39,12 @@
     [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"DresserControl/queryDresserById.do" dic:dict finished:finished];
 }
 
+//	OrderInfoControl/saveOrderInfo.do(cameramanId,token,dresserId,time,type,camerGroupName)
+
++ (void)orderCameraManOrderWithCameraId:(long)cameraManId withToken:(NSString *)token withDressId:(long)dressId withTime:(NSString *)time withType:(NSString *)type withCamerGroupName:(NSString *)groupName withBlock:(void (^)(NSDictionary *, NSString *))finished {
+    NSDictionary *dict = @{@"cameramanId":@(cameraManId), @"token":token, @"dresserId":@(dressId), @"time":time, @"type":type, @"camerGroupName":groupName};
+    [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"OrderInfoControl/saveOrderInfo.do" dic:dict finished:finished];
+}
+
 
 @end

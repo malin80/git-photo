@@ -143,6 +143,8 @@
 		F4A7A2561F25BC22009FAAEE /* NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7A2551F25BC22009FAAEE /* NavigationBar.m */; };
 		F4A7A2591F25C3D0009FAAEE /* UserDataTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7A2581F25C3D0009FAAEE /* UserDataTableViewCell.m */; };
 		F4A7A25E1F25D192009FAAEE /* common_back.png in Resources */ = {isa = PBXBuildFile; fileRef = F4A7A25D1F25D192009FAAEE /* common_back.png */; };
+		F4B67C731F413A9300DA8E4E /* SelectDressManViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B67C721F413A9300DA8E4E /* SelectDressManViewController.m */; };
+		F4B67C761F41443900DA8E4E /* SelectCameraManViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B67C751F41443900DA8E4E /* SelectCameraManViewController.m */; };
 		F4C6185D1F3A9ED3004A76B3 /* personal_forward.png in Resources */ = {isa = PBXBuildFile; fileRef = F4C6185C1F3A9ED3004A76B3 /* personal_forward.png */; };
 		F4C6185F1F3AAAF9004A76B3 /* personal_no_address.png in Resources */ = {isa = PBXBuildFile; fileRef = F4C6185E1F3AAAF9004A76B3 /* personal_no_address.png */; };
 		F4C618621F3AB89C004A76B3 /* AddressInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C618611F3AB89C004A76B3 /* AddressInfo.m */; };
@@ -431,6 +433,10 @@
 		F4A7A2571F25C3D0009FAAEE /* UserDataTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDataTableViewCell.h; sourceTree = "<group>"; };
 		F4A7A2581F25C3D0009FAAEE /* UserDataTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDataTableViewCell.m; sourceTree = "<group>"; };
 		F4A7A25D1F25D192009FAAEE /* common_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = common_back.png; sourceTree = "<group>"; };
+		F4B67C711F413A9300DA8E4E /* SelectDressManViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectDressManViewController.h; path = ../SelectDressManViewController.h; sourceTree = "<group>"; };
+		F4B67C721F413A9300DA8E4E /* SelectDressManViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectDressManViewController.m; path = ../SelectDressManViewController.m; sourceTree = "<group>"; };
+		F4B67C741F41443900DA8E4E /* SelectCameraManViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectCameraManViewController.h; path = ../SelectCameraManViewController.h; sourceTree = "<group>"; };
+		F4B67C751F41443900DA8E4E /* SelectCameraManViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectCameraManViewController.m; path = ../SelectCameraManViewController.m; sourceTree = "<group>"; };
 		F4C6185C1F3A9ED3004A76B3 /* personal_forward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personal_forward.png; sourceTree = "<group>"; };
 		F4C6185E1F3AAAF9004A76B3 /* personal_no_address.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personal_no_address.png; sourceTree = "<group>"; };
 		F4C618601F3AB89C004A76B3 /* AddressInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressInfo.h; sourceTree = "<group>"; };
@@ -744,6 +750,8 @@
 				F40733571F3C397B0006F1F6 /* CameraManDetailThirdViewController.m */,
 				F40733521F3C397B0006F1F6 /* CameraManDetailFourViewController.h */,
 				F40733531F3C397B0006F1F6 /* CameraManDetailFourViewController.m */,
+				F4B67C711F413A9300DA8E4E /* SelectDressManViewController.h */,
+				F4B67C721F413A9300DA8E4E /* SelectDressManViewController.m */,
 			);
 			path = CameraManDetailViewController;
 			sourceTree = "<group>";
@@ -763,6 +771,8 @@
 				F40733731F3C49400006F1F6 /* DressManDetailThirdViewController.m */,
 				F40733751F3C4A380006F1F6 /* DressManDetailFourViewController.h */,
 				F40733761F3C4A380006F1F6 /* DressManDetailFourViewController.m */,
+				F4B67C741F41443900DA8E4E /* SelectCameraManViewController.h */,
+				F4B67C751F41443900DA8E4E /* SelectCameraManViewController.m */,
 			);
 			path = DressManDetailViewController;
 			sourceTree = "<group>";
@@ -1496,6 +1506,7 @@
 				F41B19C41F3416120026E483 /* AddGoodsToShoppingViewController.m in Sources */,
 				F4FDD6A71F2C378E007263D4 /* UserNameViewController.m in Sources */,
 				F4A7A0961F256B96009FAAEE /* ViewController.m in Sources */,
+				F4B67C731F413A9300DA8E4E /* SelectDressManViewController.m in Sources */,
 				A50BB41A1F3DAF3700F6158B /* DQconstellationView.m in Sources */,
 				F41B19D11F343EE70026E483 /* ShoppingGoodsInfo.m in Sources */,
 				F41B19C11F3411660026E483 /* PersonalManager.m in Sources */,
@@ -1548,6 +1559,7 @@
 				F4C618691F3B025F004A76B3 /* CameraManDetailTableViewCell.m in Sources */,
 				F4FDD6A51F2C378E007263D4 /* PhoneNumberViewController.m in Sources */,
 				F486792D1F3D523200612E27 /* SelectAddressTableViewCell.m in Sources */,
+				F4B67C761F41443900DA8E4E /* SelectCameraManViewController.m in Sources */,
 				F4FD30471F32C1B200048DD6 /* ShoppingPesRequest.m in Sources */,
 				F48679331F3D7B0900612E27 /* TableViewCellCalculator.m in Sources */,
 				A50BB4181F3DAF3700F6158B /* DQBirthDateView.m in Sources */,

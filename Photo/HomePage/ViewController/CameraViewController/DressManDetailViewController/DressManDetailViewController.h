@@ -13,5 +13,6 @@
 @interface DressManDetailViewController : BaseViewController
 
 @property (nonatomic, strong) DressManInfo *dressManInfo;
+@property (nonatomic, assign) BOOL isSelectController;
 
 @end

@@ -1,48 +1,44 @@
 //
-//  CameraManViewController.m
+//  SelectCameraManViewController.m
 //  Photo
 //
-//  Created by malin  on 2017/8/3.
+//  Created by malin  on 2017/8/14.
 //  Copyright © 2017年 malin . All rights reserved.
 //
 
-#import "CameraManViewController.h"
-#import "CameraManDetailViewController.h"
-
+#import "SelectCameraManViewController.h"
+#import "NavigationBar.h"
 #import "CameraManager.h"
 #import "CameraManTableViewCell.h"
-#import "CameraManInfo.h"
+#import "DressManDetailViewController.h"
+#import "DressManInfo.h"
 
-@interface CameraManViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface SelectCameraManViewController () <NavigationBarDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
 
 @end
 
-@implementation CameraManViewController
+@implementation SelectCameraManViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self addNotification];
+    self.navigationController.navigationBar.hidden = YES;
+    NavigationBar *bar = [[NavigationBar alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 64) withTitle:@"选择摄影师"];
+    bar.delegate = self;
+    [self.view addSubview:bar];
+    
     [self createTableView];
 }
 
-- (void)addNotification {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryCameraManSuccess) name:@"queryCameraManSuccess" object:nil];
-}
-
-- (void)queryCameraManSuccess {
-    [_tableView reloadData];
-}
 
 - (void)createTableView {
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(10, 0, ScreenWidth-20, ScreenHieght) style:UITableViewStyleGrouped];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHieght) style:UITableViewStyleGrouped];
     _tableView.dataSource = self;
     _tableView.delegate = self;
     _tableView.backgroundColor = [UIColor whiteColor];
-    _tableView.separatorColor = [UIColor clearColor];
+    _tableView.separatorColor = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1.0];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     _tableView.contentInset = UIEdgeInsetsMake(-40, 0, 0, 0);
     [self.view addSubview:_tableView];
@@ -54,7 +50,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return GET_SINGLETON_FOR_CLASS(CameraManager).cameraMans.count;
+    return GET_SINGLETON_FOR_CLASS(CameraManager).dressMans.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -63,6 +59,7 @@
     if (!cell) {
         cell = [[CameraManTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
     }
+    
     CameraManInfo *info = [GET_SINGLETON_FOR_CLASS(CameraManager).cameraMans objectAtIndex:indexPath.row];
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,info.cameraManPic]];
     UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
@@ -76,19 +73,23 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    CameraManDetailViewController *controller = [[CameraManDetailViewController alloc] init];
-    NSArray *array = GET_SINGLETON_FOR_CLASS(CameraManager).cameraMans;
-    if (GET_SINGLETON_FOR_CLASS(CameraManager).cameraMans.count > 0) {
-        CameraManInfo *info = [GET_SINGLETON_FOR_CLASS(CameraManager).cameraMans objectAtIndex:indexPath.row];
-        controller.cameraManInfo = info;
-        controller.isSelectController = NO;
-        [GET_SINGLETON_FOR_CLASS(CameraManager) queryCameraManDetailWithId:info.cameraManId];
-        [self.navigationController pushViewController:controller animated:NO];
-    }
+    CameraManInfo *cameraManinfo = [GET_SINGLETON_FOR_CLASS(CameraManager).cameraMans objectAtIndex:indexPath.row];
+    GET_SINGLETON_FOR_CLASS(CameraManager).selectedCameraManInfo = cameraManinfo;
+    DressManDetailViewController *controller = [[DressManDetailViewController alloc] init];
+    DressManInfo *dressManInfo = [GET_SINGLETON_FOR_CLASS(CameraManager).dressMans objectAtIndex:indexPath.row];
+    controller.dressManInfo = dressManInfo;
+    controller.isSelectController = YES;
+    [self.navigationController pushViewController:controller animated:NO];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 100;
+}
+
+
+#pragma mark --- NavigationBarDelegate ---
+- (void)goBack {
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 - (void)didReceiveMemoryWarning {

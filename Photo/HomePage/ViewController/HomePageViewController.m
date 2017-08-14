@@ -92,13 +92,13 @@
     scrollView.delegate = self;
     [cell.scrollView addSubview:scrollView];
     
-    for (int i = 0; i < images.count; i++) {
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i*ScreenWidth, 0, ScreenWidth-20, 140)];
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,images[i]]];
-        UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
-        imageView.image = imgFromUrl;
-        [scrollView addSubview:imageView];
-    }
+//    for (int i = 0; i < images.count; i++) {
+//        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i*ScreenWidth, 0, ScreenWidth-20, 140)];
+//        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",baseUrl,images[i]]];
+//        UIImage *imgFromUrl =[[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:url]];
+//        imageView.image = imgFromUrl;
+//        [scrollView addSubview:imageView];
+//    }
 
     return cell;
 }

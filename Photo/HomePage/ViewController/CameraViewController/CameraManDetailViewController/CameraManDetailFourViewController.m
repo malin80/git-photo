@@ -21,9 +21,11 @@
     calendar.frame=CGRectMake(0, 0, ScreenWidth, 400);
     [self.view addSubview:calendar];
 }
+
 -(void)showData:(NSString *)riqi{
-    NSLog(@"%@",riqi);
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"selectDaySuccess" object:riqi];
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
