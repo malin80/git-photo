@@ -164,7 +164,7 @@
     
     flowLayout.headerReferenceSize = CGSizeMake(ScreenWidth, 30);
     
-    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHieght-80) collectionViewLayout:flowLayout];
+    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHieght-100) collectionViewLayout:flowLayout];
     _collectionView.dataSource = self;
     _collectionView.delegate = self;
     _collectionView.backgroundColor = [UIColor clearColor];

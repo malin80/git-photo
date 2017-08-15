@@ -13,7 +13,7 @@
 #import "SDWebImageCache.h"
 #import "CameraManager.h"
 
-#define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
+#define ScrollViewHeght 210
 
 @interface HomePageScrollView() <UIScrollViewDelegate>
 {
@@ -61,9 +61,9 @@
 - (void)createScrollView
 {
     _scrollView = [[UIScrollView alloc] init];
-    _scrollView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 250);
+    _scrollView.frame = CGRectMake(0, 0, ScreenWidth, ScrollViewHeght);
     _scrollView.backgroundColor = [UIColor grayColor];
-    _scrollView.contentSize = CGSizeMake(_dataSource.count*SCREEN_WIDTH, 250);
+    _scrollView.contentSize = CGSizeMake(_dataSource.count*ScreenWidth, ScrollViewHeght);
     _scrollView.showsHorizontalScrollIndicator = NO;
     _scrollView.showsVerticalScrollIndicator = NO;
     _scrollView.backgroundColor = [UIColor clearColor];
@@ -78,7 +78,7 @@
     [self stopTimer];
     ImageInfo *info = [[ImageInfo alloc] init];
     for (int i = 0; i < _dataSource.count; i++) {
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i*ScreenWidth, 0, ScreenWidth, 250)];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i*ScreenWidth, 0, ScreenWidth, ScrollViewHeght)];
         info = _dataSource[i];
         [SDWebImageCache getImageFromSDWebImageWithUrlString:[NSString stringWithFormat:@"%@%@",baseUrl,info.imageUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
             imageView.image = image;

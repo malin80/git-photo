@@ -21,7 +21,7 @@
 #import "LoginManager.h"
 #import "PersonalManager.h"
 
-@interface UserDataViewController () <UITableViewDelegate, UITableViewDataSource, NavigationBarDelegate>
+@interface UserDataViewController () <UITableViewDelegate, UITableViewDataSource, NavigationBarDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
     NSMutableArray<EntrySection *> *_sections;
     
@@ -194,6 +194,158 @@
 }
 
 #pragma mark --- cell method ---
+- (void)gotoAvatarViewController {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    __weak typeof(self) weakSelf = self;
+    UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"打开相机" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [weakSelf takePhoto];
+    }];
+    UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"打开相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [weakSelf localPhoto];
+    }];
+    UIAlertAction *action3 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [alert dismissViewControllerAnimated:YES completion:^{
+            NSLog(@"取消准备照片");
+        }];
+    }];
+    [alert addAction:action1];
+    [alert addAction:action2];
+    [alert addAction:action3];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+//打开相机
+- (void)takePhoto
+{
+    UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])//相机
+    {
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+        picker.allowsEditing = YES;
+        picker.sourceType = sourceType;
+        
+        [self presentViewController:picker animated:YES completion:^{
+            NSLog(@"调取相机成功");
+        }];
+    }
+    else{
+        NSLog(@"模拟器情况下无法打开");
+    }
+}
+//打开相册
+- (void)localPhoto
+{
+    UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])//相册
+    {
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+        picker.allowsEditing = YES;
+        picker.sourceType = sourceType;
+        [self presentViewController:picker animated:YES completion:^{
+            NSLog(@"调取相册成功");
+        }];
+    }
+    else{
+        NSLog(@"相册打不开应该是出问题了");
+    }
+}
+
+//当选择一张图片后进入到这个协议方法里
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
+{
+    NSString *type = [info objectForKey:UIImagePickerControllerMediaType];
+    //当选择的类型是图片
+    if ([type isEqualToString:@"public.image"])
+    {
+        //先把图片转成NSData
+        UIImage* image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+        
+        NSData *data1;
+        if (UIImagePNGRepresentation(image) == nil)
+        {
+            data1 = UIImageJPEGRepresentation(image, 1);
+        }
+        else
+        {
+            data1 = UIImagePNGRepresentation(image);
+        }
+        //图片保存的路径
+        //这里将图片放在沙盒的documents文件夹中
+        NSString * DocumentsPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+        //文件管理器
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        //把刚刚图片转换的data对象拷贝至沙盒中 并保存为image.png
+        [fileManager createDirectoryAtPath:DocumentsPath withIntermediateDirectories:YES attributes:nil error:nil];
+        [fileManager createFileAtPath:[DocumentsPath stringByAppendingString:@"/image.png"] contents:data1 attributes:nil];
+        //得到选择后沙盒中图片的完整路径
+        NSString *filePath = [[NSString alloc]initWithFormat:@"%@%@",DocumentsPath,  @"/image.png"];
+//        long long abc = [self fileSizeAtPath:filePath];
+//        if (abc < 1024000) {
+//            _headerImage = image;
+//        }
+//        else {
+//            //如果图片尺寸过大则压缩
+//            UIImage *small = [Help imageWithImageSimple:image scaledToSize:CGSizeMake(image.size.width/4, image.size.height/4)];
+//            NSData *data;
+//            if (UIImagePNGRepresentation(small) == nil)
+//            {
+//                data = UIImageJPEGRepresentation(small, 0.25);
+//            }
+//            else
+//            {
+//                data = UIImagePNGRepresentation(small);
+//            }
+//            [fileManager createFileAtPath:[DocumentsPath stringByAppendingString:@"/image.png"] contents:data attributes:nil];
+//            _headerImage = small;
+//        }
+        //关闭相册界面
+        [picker dismissViewControllerAnimated:YES completion:^{
+            NSLog(@"关闭相册界面");
+        }];
+        [self postData];
+        [self.tableView reloadData];
+    }
+}
+
+- (void)postData
+{
+    [GET_SINGLETON_FOR_CLASS(PersonalManager) updateMemberAvatarWithToken:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue];
+//    AFHTTPRequestOperationManager *manage = [AFHTTPRequestOperationManager manager];
+//    manage.responseSerializer = [AFHTTPResponseSerializer serializer];
+//    __weak typeof(self) weakSelf = self;
+//    [MBProgressHUD showHUDAddedTo:self.tableView animated:YES];
+//    [manage POST:Health_GetReportPic parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+//        //上传图片
+//        NSData *data = UIImageJPEGRepresentation(_headerImage, 1.0);
+//        [formData appendPartWithFileData:data name:@"report_pic_path" fileName:@"image.png" mimeType:@"png"];
+//        //name-->对应数据库存储的字段
+//    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+//        if ([dict[@"message"] isEqualToString:@"数据插入成功"])
+//        {
+//            [MBProgressHUD hideHUDForView:self.tableView animated:YES];
+//            [weakSelf addAlertControllerWithMessage:@"上传成功"];
+//            //沙盒中图片的完整路径
+//            NSString *string1 = [NSHomeDirectory() stringByAppendingString:@"/Documents/image.jpg"];
+//            NSFileManager *fileManage = [NSFileManager defaultManager];
+//            [fileManage removeItemAtPath:string1 error:nil];
+//        }
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        NSLog(@"%@",error.localizedDescription);
+//        [MBProgressHUD hideHUDForView:self.tableView animated:YES];
+//        [weakSelf addAlertControllerWithMessage:@"上传失败"];
+//    }];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [picker dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"您取消了选择图片222");
+    }];
+}
+
 - (void)gotoPhoneNumberViewController {
     PhoneNumberViewController *controller = [[PhoneNumberViewController alloc] init];
     [self.navigationController pushViewController:controller animated:NO];

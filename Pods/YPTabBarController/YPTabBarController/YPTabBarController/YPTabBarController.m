@@ -9,7 +9,7 @@
 #import "YPTabBarController.h"
 #import <objc/runtime.h>
 
-#define TAB_BAR_HEIGHT 50
+#define TAB_BAR_HEIGHT 60
 
 #pragma mark - YPTabContentScrollView
 

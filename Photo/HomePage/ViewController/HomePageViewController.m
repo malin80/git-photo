@@ -50,7 +50,7 @@
 }
 
 - (void)createTableView {
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHieght - 100) style:UITableViewStyleGrouped];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHieght - 120) style:UITableViewStyleGrouped];
     _tableView.dataSource = self;
     _tableView.delegate = self;
     _tableView.backgroundColor = [UIColor whiteColor];
@@ -58,7 +58,6 @@
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.tableHeaderView = _headerView;
     _tableView.showsVerticalScrollIndicator = NO;
-//    self.tableView.estimatedRowHeight = 100;//很重要保障滑动流畅性
 
     [self.view addSubview:_tableView];
 }
@@ -125,7 +124,7 @@
 
 - (HomePageScrollView *)scrollView {
     if (!_scrollView) {
-        _scrollView = [[HomePageScrollView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 200) withIsHomePage:YES];
+        _scrollView = [[HomePageScrollView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 160) withIsHomePage:YES];
     }
     return _scrollView;
 }

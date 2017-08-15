@@ -142,7 +142,7 @@
 }
 
 - (void)createBottomView {
-    _bottomView = [[ShoppingBottomView alloc] initWithFrame:CGRectMake(0, ScreenHieght-160, ScreenWidth, 50)];
+    _bottomView = [[ShoppingBottomView alloc] initWithFrame:CGRectMake(0, ScreenHieght-180, ScreenWidth, 50)];
     _bottomView.backgroundColor = [UIColor whiteColor];
     _bottomView.layer.borderWidth = 1;
     _bottomView.layer.borderColor = [[UIColor colorWithRed:241/255.0 green:241/255.0 blue:241/255.0 alpha:1.0] CGColor];
@@ -151,7 +151,7 @@
 }
 
 - (void)createTableView {
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHieght-115) style:UITableViewStyleGrouped];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHieght-135) style:UITableViewStyleGrouped];
     _tableView.dataSource = self;
     _tableView.delegate = self;
     _tableView.backgroundColor = [UIColor whiteColor];

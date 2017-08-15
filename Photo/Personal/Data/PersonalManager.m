@@ -214,4 +214,10 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(PersonalManager)
     }];
 }
 
+- (void)updateMemberAvatarWithToken:(NSString *)token {
+    [PersonalPesRequest updateMemberAvatarWithToken:token withBlock:^(NSDictionary *response, NSString *error) {
+        
+    }];
+}
+
 @end

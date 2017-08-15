@@ -46,4 +46,6 @@ DECLARE_SINGLETON_FOR_CLASS(PersonalManager)
 
 - (void)updateApp;
 
+- (void)updateMemberAvatarWithToken:(NSString *)token;
+
 @end
