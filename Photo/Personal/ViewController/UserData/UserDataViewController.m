@@ -252,8 +252,11 @@
 }
 
 - (void)closeAccount {
-    LoginViewController *controller = [[LoginViewController alloc] init];
-    [self.navigationController presentViewController:controller animated:NO completion:^{
+    LoginViewController *login=[[LoginViewController alloc]init];
+    login.block = ^{
+        [login dismissViewControllerAnimated:YES completion:nil];
+    };
+    [self presentViewController:login animated:NO completion:^{
         
     }];
 }

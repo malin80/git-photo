@@ -29,6 +29,7 @@ PODS:
     - UMengUShare/Core
   - UMengUShare/UI (6.4.5):
     - UMengUShare/Core
+  - WechatOpenSDK (1.7.8)
   - YPTabBarController (2.2.3)
 
 DEPENDENCIES:
@@ -41,6 +42,7 @@ DEPENDENCIES:
   - SDWebImage (~> 3.7.3)
   - UMengUShare/Social/ReducedWeChat
   - UMengUShare/UI
+  - WechatOpenSDK
   - YPTabBarController
 
 SPEC CHECKSUMS:
@@ -52,8 +54,9 @@ SPEC CHECKSUMS:
   RMMapper: 21122d753c736d975f6c61e674afce8db73579af
   SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
   UMengUShare: a5711c54e640b04e3048e931d2b88d50f9cfa55c
+  WechatOpenSDK: ad1e7be1b66416df847ac50830c798b70c9e365e
   YPTabBarController: 2e0e97b2d9d4b28b722ecb57700b7cd4d1b38a47
 
-PODFILE CHECKSUM: 0bd16f00e10eec156dc0975a8f323a0e85397818
+PODFILE CHECKSUM: 8471ae33dbd779363c4fd396e849d7e3d7ca1299
 
 COCOAPODS: 1.2.1

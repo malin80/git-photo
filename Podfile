@@ -11,4 +11,5 @@ target ‘Photo’ do
   pod 'Masonry', '~> 1.0.2'
   pod ‘UMengUShare/Social/ReducedWeChat'
  pod ‘UMengUShare/UI’
+  pod 'WechatOpenSDK'
 end

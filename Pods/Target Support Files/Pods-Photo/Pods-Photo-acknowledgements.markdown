@@ -161,6 +161,11 @@ THE SOFTWARE.
 Copyright 2011 - 2017 UMeng.com. All rights reserved.
 
 
+## WechatOpenSDK
+
+Copyright 2017 tencent.com. All rights reserved.
+
+
 ## YPTabBarController
 
 Copyright (c) 2015-2016 Yu Ping - https://github.com/yuping1989
