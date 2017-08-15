@@ -214,8 +214,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(PersonalManager)
     }];
 }
 
-- (void)updateMemberAvatarWithToken:(NSString *)token {
-    [PersonalPesRequest updateMemberAvatarWithToken:token withBlock:^(NSDictionary *response, NSString *error) {
+- (void)updateMemberAvatarWithToken:(NSString *)token withUpFile:(NSData *)data {
+    [PersonalPesRequest updateMemberAvatarWithToken:token withUpfile:data withBlock:^(NSDictionary *response, NSString *error) {
         
     }];
 }

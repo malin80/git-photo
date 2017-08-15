@@ -62,6 +62,13 @@
     }    
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    if (_headerView) {
+        [_headerView removeFromSuperview];
+    }
+    [self createHeaderView];
+}
+
 - (void)addNotification {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess) name:@"loginSuccess" object:nil];

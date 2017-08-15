@@ -84,8 +84,8 @@
     [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"MarryVersionControl/queryMarryVersion.do" dic:nil finished:finished];
 }
 
-+ (void)updateMemberAvatarWithToken:(NSString *)token withBlock:(void (^)(NSDictionary *, NSString *))finished {
-    NSDictionary*dict = @{@"token":token};
++ (void)updateMemberAvatarWithToken:(NSString *)token withUpfile:(NSData *)data withBlock:(void (^)(NSDictionary *, NSString *))finished {
+    NSDictionary*dict = @{@"token":token, @"upfile":data};
     [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"MemberControl/updateMemberPic.do" dic:dict finished:finished];
 }
 

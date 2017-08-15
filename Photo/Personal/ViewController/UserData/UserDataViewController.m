@@ -261,7 +261,6 @@
     {
         //先把图片转成NSData
         UIImage* image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
-        
         NSData *data1;
         if (UIImagePNGRepresentation(image) == nil)
         {
@@ -281,6 +280,7 @@
         [fileManager createFileAtPath:[DocumentsPath stringByAppendingString:@"/image.png"] contents:data1 attributes:nil];
         //得到选择后沙盒中图片的完整路径
         NSString *filePath = [[NSString alloc]initWithFormat:@"%@%@",DocumentsPath,  @"/image.png"];
+        NSData *imageData = UIImagePNGRepresentation(image);
 //        long long abc = [self fileSizeAtPath:filePath];
 //        if (abc < 1024000) {
 //            _headerImage = image;
@@ -297,21 +297,20 @@
 //            {
 //                data = UIImagePNGRepresentation(small);
 //            }
-//            [fileManager createFileAtPath:[DocumentsPath stringByAppendingString:@"/image.png"] contents:data attributes:nil];
 //            _headerImage = small;
 //        }
         //关闭相册界面
         [picker dismissViewControllerAnimated:YES completion:^{
             NSLog(@"关闭相册界面");
         }];
-        [self postData];
+        [self postDataWithData:imageData];
         [self.tableView reloadData];
     }
 }
 
-- (void)postData
+- (void)postDataWithData:(NSData *)data
 {
-    [GET_SINGLETON_FOR_CLASS(PersonalManager) updateMemberAvatarWithToken:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue];
+    [GET_SINGLETON_FOR_CLASS(PersonalManager) updateMemberAvatarWithToken:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue withUpFile:data];
 //    AFHTTPRequestOperationManager *manage = [AFHTTPRequestOperationManager manager];
 //    manage.responseSerializer = [AFHTTPResponseSerializer serializer];
 //    __weak typeof(self) weakSelf = self;

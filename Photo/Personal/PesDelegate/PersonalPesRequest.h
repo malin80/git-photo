@@ -35,6 +35,6 @@
 
 + (void)updateAppWithBlock:(void (^)(NSDictionary *response, NSString *error))finished;
 
-+ (void)updateMemberAvatarWithToken:(NSString *)token withBlock:(void (^)(NSDictionary *response, NSString *error))finished;
++ (void)updateMemberAvatarWithToken:(NSString *)token withUpfile:(NSData *)data withBlock:(void (^)(NSDictionary *response, NSString *error))finished;
 
 @end
