@@ -57,9 +57,13 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(LoginManager)
             info.safeCodeValue = [safeCode objectForKey:@"safeCodeValue"];
             [[NSUserDefaults standardUserDefaults] setObject:info.safeCodeValue forKey:@"safeCodeValue"];
 
-            
+            GET_SINGLETON_FOR_CLASS(LoginManager).loginOut = NO;
+            [self getMemberInfo];
             if ([self.delegate respondsToSelector:@selector(loginSuccess)]) {
                 [self.delegate loginSuccess];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"loginsuccess" object:nil];
+                });
             }
         }
     }];

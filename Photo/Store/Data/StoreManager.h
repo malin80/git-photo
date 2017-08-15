@@ -18,6 +18,8 @@ DECLARE_SINGLETON_FOR_CLASS(StoreManager)
 
 @property (nonatomic, strong) NSMutableArray *storeComments;
 
+@property (nonatomic, copy) NSString *payIdString;
+
 - (void)queryAllGoodsInfo;
 
 - (void)queryGoodsClassify;
@@ -34,5 +36,7 @@ DECLARE_SINGLETON_FOR_CLASS(StoreManager)
 - (void)buyGoodsWithToken:(NSString *)token withMemberName:(NSString *)name withMemberPhone:(NSString *)phone withMemberAddress:(NSString *)address withGoodsId:(long)goodsId withGoodsPrice:(long)goodsPrice withGoodCount:(long)goodsCount withGoodsParam:(NSString *)goodsParam withCartIds:(NSString *)cartIds withIsCart:(long)isCart withCartCount:(long)cartCount;
 
 - (void)queryGoodsDetailInfoWithGoodsId:(long)goodsId;
+
+- (void)payByAliWithToken:(NSString *)token withGoodsPayId:(NSString *)goodsPayId withOrderPayId:(NSString *)orderPayId;
 
 @end

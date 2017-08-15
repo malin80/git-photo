@@ -54,4 +54,14 @@
     [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"CommentOfGoodsControl/queryCommentOfGoods.do" dic:dict finished:finished];
 }
 
++ (void)payByAliWithToken:(NSString *)token withGoodsPayId:(NSString *)goodsPayId withOrderPayId:(NSString *)orderPayId withBlock:(void (^)(NSDictionary *, NSString *))finished {
+    NSDictionary *dict = @{@"token":token, @"orderOfGoodsDetailIds":goodsPayId, @"orderInfoId":orderPayId};
+    [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"AlipayControl/alipayTo.do" dic:dict finished:finished];
+}
+
++ (void)payByWechatWithToken:(NSString *)token withGoodsPayId:(NSString *)goodsPayId withOrderPayId:(NSString *)orderPayId withBlock:(void (^)(NSDictionary *, NSString *))finished {
+    NSDictionary *dict = @{@"token":token, @"orderOfGoodsDetailIds":goodsPayId, @"orderInfoId":orderPayId};
+    [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"WxpayControl/WxpayTo.do" dic:dict finished:finished];
+}
+
 @end

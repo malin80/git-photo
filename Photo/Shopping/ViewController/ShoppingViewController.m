@@ -41,6 +41,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [GET_SINGLETON_FOR_CLASS(LoginManager) getMemberInfo];
     [GET_SINGLETON_FOR_CLASS(ShoppingManager) queryShoppingGoodsInfoWithSafeCodeValue:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue];
     if (GET_SINGLETON_FOR_CLASS(LoginManager).loginOut == YES) {
         [self createLoginOutView];

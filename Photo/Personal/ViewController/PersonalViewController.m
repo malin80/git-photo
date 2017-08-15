@@ -37,6 +37,8 @@
 }
 @property (nonatomic, strong) PersonalHeaderView *headerView;
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, copy) loginBlock block;
+@property (nonatomic, strong) LoginViewController *controller;
 
 @end
 
@@ -45,6 +47,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    [self addNotification];
     self.view.backgroundColor = [UIColor whiteColor];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     [self createHeaderView];
@@ -57,6 +60,18 @@
     if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
         [self.tableView setLayoutMargins:UIEdgeInsetsZero];
     }    
+}
+
+- (void)addNotification {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess) name:@"loginSuccess" object:nil];
+}
+
+- (void)loginSuccess {
+    if (_headerView) {
+        [_headerView removeFromSuperview];
+    }
+    [self createHeaderView];
 }
 
 - (void)updateSections
@@ -172,9 +187,18 @@
 
 - (void)gotoOrderViewController {
     if (GET_SINGLETON_FOR_CLASS(LoginManager).loginOut) {
-        LoginViewController *controller = [[LoginViewController alloc] init];
-        controller.delegate = self;
-        [self.navigationController pushViewController:controller animated:NO];
+        self.controller = [[LoginViewController alloc] init];
+        self.controller.delegate = self;
+        self.controller.block = ^{
+            [self.controller dismissViewControllerAnimated:YES completion:nil];
+            if (_headerView) {
+                [_headerView removeFromSuperview];
+            }
+            [self createHeaderView];
+        };
+        [self presentViewController:self.controller animated:NO completion:^{
+            
+        }];
     } else {
         OrderManageViewController *viewController = [[OrderManageViewController alloc] init];
         [self.navigationController pushViewController:viewController animated:NO];
@@ -222,9 +246,18 @@
 
 - (void)gotoCollectViewController {
     if (GET_SINGLETON_FOR_CLASS(LoginManager).loginOut) {
-        LoginViewController *controller = [[LoginViewController alloc] init];
-        controller.delegate = self;
-        [self.navigationController pushViewController:controller animated:NO];
+        self.controller = [[LoginViewController alloc] init];
+        self.controller.delegate = self;
+        self.controller.block = ^{
+            [self.controller dismissViewControllerAnimated:YES completion:nil];
+            if (_headerView) {
+                [_headerView removeFromSuperview];
+            }
+            [self createHeaderView];
+        };
+        [self presentViewController:self.controller animated:NO completion:^{
+            
+        }];
     } else {
         CollectViewController *controller = [[CollectViewController alloc] init];
         [self.navigationController pushViewController:controller animated:NO];
@@ -233,9 +266,18 @@
 
 - (void)gotoAddressViewController {
     if (GET_SINGLETON_FOR_CLASS(LoginManager).loginOut) {
-        LoginViewController *controller = [[LoginViewController alloc] init];
-        controller.delegate = self;
-        [self.navigationController pushViewController:controller animated:NO];
+        self.controller = [[LoginViewController alloc] init];
+        self.controller.delegate = self;
+        self.controller.block = ^{
+            [self.controller dismissViewControllerAnimated:YES completion:nil];
+            if (_headerView) {
+                [_headerView removeFromSuperview];
+            }
+            [self createHeaderView];
+        };
+        [self presentViewController:self.controller animated:NO completion:^{
+            
+        }];
     } else {
         AddressViewController *controller = [[AddressViewController alloc] init];
         [self.navigationController pushViewController:controller animated:NO];
@@ -256,7 +298,9 @@
 
 #pragma loginViewControllerDelegate ---
 - (void)loginViewControllerGoBack {
-    [self.navigationController popViewControllerAnimated:NO];
+    [self.controller dismissViewControllerAnimated:NO completion:^{
+
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -25,4 +25,20 @@
 
 + (void)queryGoodsDetailInfoWithGoodsId:(long)goodsId withBlock:(void(^)(NSDictionary *responseObject,NSString *error))finished;
 
+//支付宝支付接口
+//AlipayControl/alipayTo.do(token,orderOfGoodsDetailIds,orderInfoId)
+//--token 用户的安全码
+//--orderOfGoodsDetailIds  订单详细id  多条用 ; 分隔  商品订单支付时必传
+//--orderInfoId  预约订单id  预约订单支付时必传
+//
+//微信支付接口
+//WxpayControl/WxpayTo.do(token,orderOfGoodsDetailIds,orderInfoId)
+//--token 用户的安全码
+//--orderOfGoodsDetailIds  订单详细id  多条用 ; 分隔  商品订单支付时必传
+//--orderInfoId  预约订单id  预约订单支付时必传
++ (void)payByAliWithToken:(NSString *)token withGoodsPayId:(NSString *)goodsPayId withOrderPayId:(NSString *)orderPayId withBlock:(void(^)(NSDictionary *responseObject,NSString *error))finished;
+
+
++ (void)payByWechatWithToken:(NSString *)token withGoodsPayId:(NSString *)goodsPayId withOrderPayId:(NSString *)orderPayId withBlock:(void(^)(NSDictionary *responseObject,NSString *error))finished;
+
 @end
