@@ -76,7 +76,7 @@
     
     /* 设置友盟appkey */
     [[UMSocialManager defaultManager] setUmSocialAppkey:@"598dc8df310c936e870019f3"];
-    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:@"wx746c4853f57d7697" appSecret:@"3baf1193c85774b3fd9d18447d76cab0" redirectURL:@"http://mobile.umeng.com/social"];
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:@"wx746c4853f57d7697" appSecret:@"afc14e12f94bf68aaf5fcc3bd0a0b349" redirectURL:nil];
     
     UIImageView *span=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHieght)];
     span.image=[UIImage imageNamed:@"splash.png"];

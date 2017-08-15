@@ -35,6 +35,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(StoreManager)
 - (void)queryAllGoodsInfo {
     [StorePesRequest queryAllGoodsInfo:^(NSDictionary *responseObject, NSString *error) {
         if ([[responseObject objectForKey:@"errorCode"] unsignedLongValue] == 0) {
+            [_goodsInfoArray removeAllObjects];
             NSArray *dataArray = [responseObject objectForKey:@"data"];
             for (NSDictionary *dict in dataArray) {
                 GoodsInfo *info = [[GoodsInfo alloc] init];

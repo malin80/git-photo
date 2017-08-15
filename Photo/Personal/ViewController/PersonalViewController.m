@@ -218,13 +218,9 @@
         // 根据获取的platformType确定所选平台进行下一步操作
         UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
         
-        //创建网页内容对象
-        NSString* thumbURL =  @"https://mobile.umeng.com/images/pic/home/social/img-1.png";
-        UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"欢迎使用【友盟+】社会化组件U-Share" descr:@"欢迎使用【友盟+】社会化组件U-Share，SDK包最小，集成成本最低，助力您的产品开发、运营与推广！" thumImage:thumbURL];
+        UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"彩虹集" descr:@"推荐一款很好用的软件给你！" thumImage:[UIImage imageNamed:@"personal_login"]];
         //设置网页地址
-        shareObject.webpageUrl = @"http://mobile.umeng.com/social";
-        
-        //分享消息对象设置分享内容对象
+        shareObject.webpageUrl = @"https://itunes.apple.com/cn/app/id1196626479?mt=8";
         messageObject.shareObject = shareObject;
         
         //调用分享接口
@@ -246,7 +242,6 @@
         }];
     }];
 }
-
 - (void)gotoAboutViewController {
     
 }
@@ -306,10 +301,9 @@
 #pragma loginViewControllerDelegate ---
 - (void)loginViewControllerGoBack {
     [self.controller dismissViewControllerAnimated:NO completion:^{
-
+        [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"isLogin"];
     }];
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
