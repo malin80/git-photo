@@ -179,6 +179,7 @@
 		F4FF8D9A1F39645C00E7739D /* store_less.png in Resources */ = {isa = PBXBuildFile; fileRef = F4FF8D981F39645C00E7739D /* store_less.png */; };
 		F4FF8D9B1F39645C00E7739D /* store_more.png in Resources */ = {isa = PBXBuildFile; fileRef = F4FF8D991F39645C00E7739D /* store_more.png */; };
 		F4FF8D9E1F39935600E7739D /* ImageInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FF8D9D1F39935600E7739D /* ImageInfo.m */; };
+		F4FF9E651F42A395009ABECA /* AlertDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FF9E641F42A395009ABECA /* AlertDialog.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -497,6 +498,8 @@
 		F4FF8D991F39645C00E7739D /* store_more.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = store_more.png; sourceTree = "<group>"; };
 		F4FF8D9C1F39935600E7739D /* ImageInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageInfo.h; sourceTree = "<group>"; };
 		F4FF8D9D1F39935600E7739D /* ImageInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageInfo.m; sourceTree = "<group>"; };
+		F4FF9E631F42A395009ABECA /* AlertDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertDialog.h; sourceTree = "<group>"; };
+		F4FF9E641F42A395009ABECA /* AlertDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertDialog.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1138,6 +1141,8 @@
 		F4A7A11F1F2595E5009FAAEE /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				F4FF9E631F42A395009ABECA /* AlertDialog.h */,
+				F4FF9E641F42A395009ABECA /* AlertDialog.m */,
 				F4A7A1201F2595FF009FAAEE /* EntrySection.h */,
 				F4A7A1211F2595FF009FAAEE /* EntrySection.m */,
 				F4A7A1231F259629009FAAEE /* EntryItem.h */,
@@ -1528,6 +1533,7 @@
 				A514B10E1F290533006A765F /* FitManage.m in Sources */,
 				A520C6D01F2B89A400202622 /* DLFixedTabbarView.m in Sources */,
 				F4FF8D971F39506300E7739D /* CameraPesRequest.m in Sources */,
+				F4FF9E651F42A395009ABECA /* AlertDialog.m in Sources */,
 				F4FEB0CC1F31A64B00C2F5A3 /* StoreDetailTableViewCell.m in Sources */,
 				F40733741F3C49400006F1F6 /* DressManDetailThirdViewController.m in Sources */,
 				F48237421F27078200DDD487 /* HomePageButtonView.m in Sources */,

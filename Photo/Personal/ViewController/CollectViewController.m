@@ -123,6 +123,7 @@
     cell.goodsPrice.text = [NSString stringWithFormat:@"产品价格 ¥%ld",info.goodsPrice];
     cell.time.text = [NSString stringWithFormat:@"收藏时间 %@",info.colletDate];
     cell.cancelCollectButton.tag = indexPath.row;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 

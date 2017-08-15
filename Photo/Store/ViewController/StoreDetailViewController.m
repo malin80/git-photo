@@ -47,6 +47,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryMemberAddressSuccess) name:@"queryMemberAddressSuccess" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(collectGoodsSuccess) name:@"collectGoodsSuccess" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addGoodsToShoppingSuccess) name:@"addGoodsToShoppingSuccess" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryMemberAddressWithNoAddress) name:@"queryMemberAddressWithNoAddress" object:nil];
 }
 
 - (void)addGoodsToShoppingSuccess {
@@ -59,6 +60,10 @@
             GET_SINGLETON_FOR_CLASS(PersonalManager).normalAddressInfo = info;
         }
     }
+}
+
+- (void)queryMemberAddressWithNoAddress {
+    GET_SINGLETON_FOR_CLASS(PersonalManager).normalAddressInfo = nil;
 }
 
 - (void)collectGoodsSuccess {

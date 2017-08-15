@@ -40,6 +40,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    [self addNotification];
     self.navigationController.navigationBarHidden = YES;
     NSString *string = @"";
     if (self.isBuy) {
@@ -55,6 +56,15 @@
     [self setImmutableConstraints];
     
     self.countNumber = 1;
+}
+
+- (void)addNotification {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cancelAddDress) name:@"cancelAddDress" object:nil];
+}
+
+- (void)cancelAddDress {
+    [self showtext:@"下单失败，请添加收货地址"];
 }
 
 - (void)initView {
@@ -274,15 +284,16 @@
 
 #pragma mark --- button method ---
 - (void)addGoodsToShopping {
+    if (_goodsSubType.selected == NO) {
+        [self showtext:@"请选择类型"];
+        return;
+    }
     if (self.isBuy) {
         ConfirmOrderViewController *controller = [[ConfirmOrderViewController alloc] init];
         controller.goodsInfos = [NSArray arrayWithObject:self.info];
         [self.navigationController pushViewController:controller animated:NO];
     } else {
-        if (_goodsSubType.selected == NO) {
-            [self showtext:@"请选择类型"];
-            return;
-        }
+ 
         NSString *string = [NSString stringWithFormat:@"%@:%@",self.info.goodsParamKey,self.info.goodsParamValue];
         [GET_SINGLETON_FOR_CLASS(StoreManager) addGoodsToShoppingWithGoodsCount:_count.text withGoodParam:string withSafeCodeValue:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue withGoodsId:self.info.goodsId];
         [self goBack];
@@ -306,7 +317,7 @@
         _goodsSubType.backgroundColor = [UIColor colorR:250 G:250 B:250 alpha:1];
     } else {
         _goodsSubType.selected = YES;
-        _goodsSubType.backgroundColor = [UIColor redColor];
+        _goodsSubType.backgroundColor = [UIColor colorR:254 G:102 B:0 alpha:1];
     }
 }
 

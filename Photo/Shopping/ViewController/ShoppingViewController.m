@@ -23,6 +23,8 @@
     NSArray *_array;
     NSMutableArray *_selectedArray;
     long _goodsPrice;
+    UIView *_noGoodsBackView;
+    UIView *_loginOutBackView;
 }
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -46,27 +48,6 @@
     if (GET_SINGLETON_FOR_CLASS(LoginManager).loginOut == YES) {
         [self createLoginOutView];
     }
-}
-
-- (void)createLoginOutView {
-    UIImageView *imageView = [[UIImageView alloc] init];
-    imageView.image = [UIImage imageNamed:@"common_no_login"];
-    [self.view addSubview:imageView];
-    [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.equalTo(self.view);
-        make.width.equalTo(@(60));
-        make.height.equalTo(@(80));
-    }];
-    
-    UILabel *label = [[UILabel alloc] init];
-    label.text = @"你还没有登录哦！";
-    label.font = [UIFont systemFontOfSize:16];
-    [label sizeToFit];
-    [self.view addSubview:label];
-    [label mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.view);
-        make.top.equalTo(imageView.mas_bottom).with.offset(5);
-    }];
 }
 
 - (void)addNotification {
@@ -106,10 +87,42 @@
     }
 }
 
+- (void)createLoginOutView {
+    if (_noGoodsBackView) {
+        [_noGoodsBackView removeFromSuperview];
+    }
+    _loginOutBackView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHieght)];
+    [self.view addSubview:_loginOutBackView];
+    UIImageView *imageView = [[UIImageView alloc] init];
+    imageView.image = [UIImage imageNamed:@"common_no_login"];
+    [_loginOutBackView addSubview:imageView];
+    [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view);
+        make.centerY.equalTo(self.view).with.offset(-30);
+        make.width.equalTo(@(80));
+        make.height.equalTo(@(80));
+    }];
+    
+    UILabel *label = [[UILabel alloc] init];
+    label.text = @"你还没有登录哦！";
+    label.font = [UIFont systemFontOfSize:16];
+    [label sizeToFit];
+    [_loginOutBackView addSubview:label];
+    [label mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view);
+        make.top.equalTo(imageView.mas_bottom).with.offset(5);
+    }];
+}
+
 - (void)createNoGoodsView {
+    if (_loginOutBackView) {
+        [_loginOutBackView removeFromSuperview];
+    }
+    _noGoodsBackView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHieght)];
+    [self.view addSubview:_noGoodsBackView];
     UIImageView *imageView = [[UIImageView alloc] init];
     imageView.image = [UIImage imageNamed:@"shopping_no_goods"];
-    [self.view addSubview:imageView];
+    [_noGoodsBackView addSubview:imageView];
     [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.view);
         make.centerY.equalTo(self.view).with.offset(-30);
@@ -121,7 +134,7 @@
     label.text = @"购物车没有商品，去逛逛";
     label.font = [UIFont systemFontOfSize:16];
     [label sizeToFit];
-    [self.view addSubview:label];
+    [_noGoodsBackView addSubview:label];
     [label mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.view);
         make.top.equalTo(imageView.mas_bottom).with.offset(5);

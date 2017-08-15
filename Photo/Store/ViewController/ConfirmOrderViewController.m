@@ -17,6 +17,8 @@
 #import "LoginManager.h"
 #import "ShoppingGoodsInfo.h"
 #import "SDWebImageCache.h"
+#import "AlertDialog.h"
+#import "AddAddressViewController.h"
 
 @interface ConfirmOrderViewController () <NavigationBarDelegate,UITableViewDelegate, UITableViewDataSource>
 
@@ -47,59 +49,75 @@
 
 - (void)createAddressView {
     self.addressInfo = GET_SINGLETON_FOR_CLASS(PersonalManager).normalAddressInfo;
-    if (self.addressView) {
-        [self.addressView removeFromSuperview];
+    if (self.addressInfo) {
+        if (self.addressView) {
+            [self.addressView removeFromSuperview];
+        }
+        self.addressView = [[UIView alloc] init];
+        self.addressView.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gotoEditAddress)];
+        [self.addressView addGestureRecognizer:tap];
+        [self.view addSubview:self.addressView];
+        
+        [self.addressView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.view.mas_top).with.offset(70);
+            make.left.equalTo(self.view.mas_left);
+            make.width.equalTo(@(ScreenWidth));
+            make.height.equalTo(@(100));
+        }];
+        
+        UILabel *nameLabel = [[UILabel alloc] init];
+        nameLabel.text = [NSString stringWithFormat:@"收货人：%@",self.addressInfo.name];
+        [self.addressView addSubview:nameLabel];
+        
+        UILabel *phoneLabel = [[UILabel alloc] init];
+        phoneLabel.text = [NSString stringWithFormat:@"%@",self.addressInfo.phone];
+        [self.addressView addSubview:phoneLabel];
+        
+        UILabel *addressLabel = [[UILabel alloc] init];
+        addressLabel.text = [NSString stringWithFormat:@"收货地址：%@",self.addressInfo.address];
+        [self.addressView addSubview:addressLabel];
+        
+        UIImageView *arrow = [[UIImageView alloc] init];
+        arrow.image = [UIImage imageNamed:@"personal_forward"];
+        [self.addressView addSubview:arrow];
+        
+        [nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.addressView.mas_left).with.offset(10);
+            make.top.equalTo(self.addressView.mas_top).with.offset(10);
+        }];
+        
+        [phoneLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(nameLabel.mas_right).with.offset(30);
+            make.top.equalTo(nameLabel);
+        }];
+        
+        [addressLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(nameLabel);
+            make.top.equalTo(nameLabel.mas_bottom).with.offset(20);
+        }];
+        
+        [arrow mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(addressLabel);
+            make.right.equalTo(self.addressView.mas_right).with.offset(-10);
+            make.width.equalTo(@(20));
+            make.height.equalTo(@(20));
+        }];
+    } else {
+        AlertDialog *dialog = [AlertDialog style:AlertDialogStyleAlert];
+        dialog.title = @"设置收货地址";
+        dialog.message = @"你还没有收货地址，请先添加收货地址！";
+        [dialog addAction:[AlertAction title:@"添加地址" style:AlertActionStyleDefault handler:^{
+            AddAddressViewController *controller = [[AddAddressViewController alloc] init];
+            [self.navigationController pushViewController:controller animated:NO];
+        }]];
+        [dialog addAction:[AlertAction title:@"取消" style:AlertActionStyleCancel handler:^{
+            [self.navigationController popViewControllerAnimated:NO];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"cancelAddDress" object:nil];
+        }]];
+        [dialog show:self];
+
     }
-    self.addressView = [[UIView alloc] init];
-    self.addressView.userInteractionEnabled = YES;
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gotoEditAddress)];
-    [self.addressView addGestureRecognizer:tap];
-    [self.view addSubview:self.addressView];
-    
-    [self.addressView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view.mas_top).with.offset(70);
-        make.left.equalTo(self.view.mas_left);
-        make.width.equalTo(@(ScreenWidth));
-        make.height.equalTo(@(100));
-    }];
-    
-    UILabel *nameLabel = [[UILabel alloc] init];
-    nameLabel.text = [NSString stringWithFormat:@"收货人：%@",self.addressInfo.name];
-    [self.addressView addSubview:nameLabel];
-    
-    UILabel *phoneLabel = [[UILabel alloc] init];
-    phoneLabel.text = [NSString stringWithFormat:@"%@",self.addressInfo.phone];
-    [self.addressView addSubview:phoneLabel];
-    
-    UILabel *addressLabel = [[UILabel alloc] init];
-    addressLabel.text = [NSString stringWithFormat:@"收货地址：%@",self.addressInfo.address];
-    [self.addressView addSubview:addressLabel];
-    
-    UIImageView *arrow = [[UIImageView alloc] init];
-    arrow.image = [UIImage imageNamed:@"personal_forward"];
-    [self.addressView addSubview:arrow];
-    
-    [nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.addressView.mas_left).with.offset(10);
-        make.top.equalTo(self.addressView.mas_top).with.offset(10);
-    }];
-    
-    [phoneLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(nameLabel.mas_right).with.offset(30);
-        make.top.equalTo(nameLabel);
-    }];
-    
-    [addressLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(nameLabel);
-        make.top.equalTo(nameLabel.mas_bottom).with.offset(20);
-    }];
-    
-    [arrow mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(addressLabel);
-        make.right.equalTo(self.addressView.mas_right).with.offset(-10);
-        make.width.equalTo(@(20));
-        make.height.equalTo(@(20));
-    }];
 }
 
 - (void)gotoEditAddress {
