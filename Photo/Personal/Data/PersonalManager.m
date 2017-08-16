@@ -202,8 +202,41 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(PersonalManager)
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"queryMemberOrderGoodsInfoSuccess" object:nil];
                 });
             }
+        } else {
+            //请求失败
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"queryMemberOrderGoodsInfoFaild" object:nil];
+            });
         }
     }];
+}
+
+- (void)cancelMemberOrderGoodsInfoWithToken:(NSString *)token withOrderId:(long)orderId {
+    [PersonalPesRequest cancelMemberOrderWithToken:token withOrderId:orderId withBlock:^(NSDictionary *response, NSString *error) {
+        if ([[response objectForKey:@"errorCode"] unsignedLongValue]== 0) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"cancelMemberOrderGoodsInfoSuccess" object:nil];
+            });
+        }
+    }];
+}
+
+- (void)backMemberOrderGoodsInfoWithToken:(NSString *)token withOrderId:(long)orderId {
+    [PersonalPesRequest backMemberOrderWithToken:token withOrderId:orderId withBlock:^(NSDictionary *response, NSString *error) {
+        if ([[response objectForKey:@"errorCode"] unsignedLongValue]== 0) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"backMemberOrderGoodsInfoSuccess" object:nil];
+            });
+        }    }];
+}
+
+- (void)deleteMemberOrderGoodsInfoWithToken:(NSString *)token withOrderId:(long)orderId {
+    [PersonalPesRequest deleteMemberOrderWithToken:token withOrderId:orderId withBlock:^(NSDictionary *response, NSString *error) {
+        if ([[response objectForKey:@"errorCode"] unsignedLongValue]== 0) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"deleteMemberOrderGoodsInfoSuccess" object:nil];
+            });
+        }    }];
 }
 
 - (void)updateApp {

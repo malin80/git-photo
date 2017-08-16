@@ -80,6 +80,21 @@
     [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"OrderOfGoodsDetailControl/queryOrderOfGoods.do" dic:dict finished:finished];
 }
 
++ (void)cancelMemberOrderWithToken:(NSString *)token withOrderId:(long)orderId withBlock:(void (^)(NSDictionary *, NSString *))finished {
+    NSDictionary *dict = @{@"token":token, @"orderOfGoodsDetailId":@(orderId)};
+    [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"OrderOfGoodsDetailControl/cancleOrderOfGoods.do" dic:dict finished:finished];
+}
+
++ (void)backMemberOrderWithToken:(NSString *)token withOrderId:(long)orderId withBlock:(void (^)(NSDictionary *, NSString *))finished {
+    NSDictionary *dict = @{@"token":token, @"orderOfGoodsDetailId":@(orderId)};
+    [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"OrderOfGoodsDetailControl/applyOrderOfGoods.do" dic:dict finished:finished];
+}
+
++ (void)deleteMemberOrderWithToken:(NSString *)token withOrderId:(long)orderId withBlock:(void (^)(NSDictionary *, NSString *))finished {
+    NSDictionary *dict = @{@"token":token, @"orderOfGoodsDetailId":@(orderId)};
+    [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"OrderOfGoodsDetailControl/removeOrderOfGoods.do" dic:dict finished:finished];
+}
+
 + (void)updateAppWithBlock:(void (^)(NSDictionary *, NSString *))finished {
     [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"MarryVersionControl/queryMarryVersion.do" dic:nil finished:finished];
 }

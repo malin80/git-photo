@@ -16,6 +16,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(PesRequest)
 - (void)pesRequestWithFunctionName:(NSString *)functionName withParameter:(NSDictionary *)parameter requestCallBack:(RequestCallBack)block {
     NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:parameter];
     [self requestWithMethod:RequestMethodPOST urlString:functionName parames:dic finished:block];
+    NSLog(@"functionName = %@",functionName);
 }
 
 #pragma mark - AFN 网络封装

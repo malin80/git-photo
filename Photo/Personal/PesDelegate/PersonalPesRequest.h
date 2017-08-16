@@ -33,6 +33,12 @@
 
 + (void)queryMemberOrderGoodsInfoWithToken:(NSString *)token withBlock:(void (^)(NSDictionary *response, NSString *error))finished;
 
++ (void)cancelMemberOrderWithToken:(NSString *)token withOrderId:(long)orderId withBlock:(void (^)(NSDictionary *response, NSString *error))finished;
+
++ (void)backMemberOrderWithToken:(NSString *)token withOrderId:(long)orderId withBlock:(void (^)(NSDictionary *response, NSString *error))finished;
+
++ (void)deleteMemberOrderWithToken:(NSString *)token withOrderId:(long)orderId withBlock:(void (^)(NSDictionary *response, NSString *error))finished;
+
 + (void)updateAppWithBlock:(void (^)(NSDictionary *response, NSString *error))finished;
 
 + (void)updateMemberAvatarWithToken:(NSString *)token withUpfile:(NSData *)data withBlock:(void (^)(NSDictionary *response, NSString *error))finished;

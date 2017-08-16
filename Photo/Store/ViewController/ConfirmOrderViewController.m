@@ -173,6 +173,17 @@
 
 - (void)confirmOrder {
     [self.actionSheetImg showGGActionSheet];
+    if (self.goodsInfos.count == 1) {
+        self.goodsInfo = [self.goodsInfos objectAtIndex:0];
+        [GET_SINGLETON_FOR_CLASS(StoreManager) buyGoodsWithToken:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue withMemberName:self.addressInfo.name withMemberPhone:self.addressInfo.phone withMemberAddress:self.addressInfo.address withGoodsId:self.goodsInfo.goodsId withGoodsPrice:self.goodsInfo.goodsPrice withGoodCount:self.goodsInfo.goodsCount withGoodsParam:self.goodsInfo.goodsParamValue withCartIds:@"" withIsCart:0 withCartCount:0];
+    } else {
+        NSString *cartIds = @"";
+        for (ShoppingGoodsInfo *info in self.goodsInfos) {
+            cartIds = [NSString stringWithFormat:@"%@;%ld",cartIds,info.goodsCartId];
+        }
+        cartIds = [cartIds substringWithRange:NSMakeRange(1, cartIds.length - 1)];
+        [GET_SINGLETON_FOR_CLASS(StoreManager) buyGoodsWithToken:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue withMemberName:self.addressInfo.name withMemberPhone:self.addressInfo.phone withMemberAddress:self.addressInfo.address withGoodsId:0 withGoodsPrice:0 withGoodCount:0 withGoodsParam:@"" withCartIds:cartIds withIsCart:1 withCartCount:self.goodsInfos.count];
+    }
 }
 
 - (void)createTableView {

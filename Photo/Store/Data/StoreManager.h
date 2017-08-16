@@ -35,6 +35,7 @@ DECLARE_SINGLETON_FOR_CLASS(StoreManager)
 //立即购买
 - (void)buyGoodsWithToken:(NSString *)token withMemberName:(NSString *)name withMemberPhone:(NSString *)phone withMemberAddress:(NSString *)address withGoodsId:(long)goodsId withGoodsPrice:(long)goodsPrice withGoodCount:(long)goodsCount withGoodsParam:(NSString *)goodsParam withCartIds:(NSString *)cartIds withIsCart:(long)isCart withCartCount:(long)cartCount;
 
+
 - (void)queryGoodsDetailInfoWithGoodsId:(long)goodsId;
 
 - (void)payByAliWithToken:(NSString *)token withGoodsPayId:(NSString *)goodsPayId withOrderPayId:(NSString *)orderPayId;

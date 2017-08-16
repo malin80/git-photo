@@ -16,7 +16,7 @@
     if (self) {
         [self initView];
         [self setImmutableConstraints];
-        self.contentView.backgroundColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1.0];
+        self.contentView.backgroundColor = [UIColor colorR:250 G:250 B:250 alpha:1];
     }
     return self;
 }
@@ -30,6 +30,11 @@
     [self.contentView addSubview:self.goodsCount];
     [self.contentView addSubview:self.goodsPrice];
     [self.contentView addSubview:self.goodsState];
+    [self.contentView addSubview:self.buttonBackView];
+    [self.buttonBackView addSubview:self.payButton];
+    [self.buttonBackView addSubview:self.cancelButton];
+    [self.buttonBackView addSubview:self.backButton];
+    [self.buttonBackView addSubview:self.deleteButton];
 }
 
 - (void)setImmutableConstraints {
@@ -73,6 +78,41 @@
     [_goodsState mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_goodsNamme);
         make.right.equalTo(self.contentView.mas_right).with.offset(-40);
+    }];
+    
+    [_buttonBackView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(self.contentView);
+        make.left.equalTo(self.contentView.mas_left);
+        make.height.equalTo(@(30));
+        make.bottom.equalTo(self.contentView.mas_bottom);
+    }];
+    
+    [_payButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(_buttonBackView.mas_right).with.offset(-10);
+        make.height.equalTo(@(30));
+        make.width.equalTo(@(60));
+        make.bottom.equalTo(_buttonBackView.mas_bottom);
+    }];
+    
+    [_cancelButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(_payButton.mas_left);
+        make.height.equalTo(@(30));
+        make.width.equalTo(@(80));
+        make.bottom.equalTo(_buttonBackView.mas_bottom);
+    }];
+
+    [_backButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(_buttonBackView.mas_right);
+        make.height.equalTo(@(30));
+        make.width.equalTo(@(80));
+        make.bottom.equalTo(_buttonBackView.mas_bottom);
+    }];
+
+    [_deleteButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(_buttonBackView.mas_right);
+        make.height.equalTo(@(30));
+        make.width.equalTo(@(80));
+        make.bottom.equalTo(_buttonBackView.mas_bottom);
     }];
 }
 
@@ -144,11 +184,103 @@
 - (UILabel *)goodsState {
     if (!_goodsState) {
         _goodsState = [[UILabel alloc] init];
-        _goodsState.textColor = [UIColor colorWithRed:148/255.0 green:149/255.0 blue:151/255.0 alpha:1.0];
+        _goodsState.textColor = [UIColor colorWithRed:206/255.0 green:84/255.0 blue:95/255.0 alpha:1.0];
         [_goodsState sizeToFit];
     }
     return _goodsState;
 }
 
+- (UIView *)buttonBackView {
+    if (!_buttonBackView) {
+        _buttonBackView = [[UIView alloc] init];
+        _buttonBackView.backgroundColor = [UIColor whiteColor];
+    }
+    return _buttonBackView;
+}
+
+- (UIButton *)backButton {
+    if (!_backButton) {
+        _backButton = [[UIButton alloc] init];
+        _backButton.layer.borderWidth = 0.5;
+        _backButton.layer.borderColor = [[UIColor colorR:247 G:223 B:200 alpha:1] CGColor];
+        _backButton.layer.cornerRadius = 10;
+        [_backButton setTitle:@"申请退单" forState:UIControlStateNormal];
+        _backButton.titleLabel.font = [UIFont systemFontOfSize:16];
+        [_backButton setTitleColor:[UIColor colorR:241 G:111 B:0 alpha:1] forState:UIControlStateNormal];
+        _backButton.hidden = YES;
+        [_backButton addTarget:self action:@selector(backButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _backButton;
+}
+
+- (UIButton *)cancelButton {
+    if (!_cancelButton) {
+        _cancelButton = [[UIButton alloc] init];
+        _cancelButton.layer.borderWidth = 0.5;
+        _cancelButton.layer.borderColor = [[UIColor colorR:243 G:243 B:243 alpha:1] CGColor];
+        _cancelButton.layer.cornerRadius = 10;
+        [_cancelButton setTitle:@"取消订单" forState:UIControlStateNormal];
+        _cancelButton.titleLabel.font = [UIFont systemFontOfSize:16];
+        [_cancelButton setTitleColor:[UIColor colorR:60 G:63 B:61 alpha:1] forState:UIControlStateNormal];
+        _cancelButton.hidden = YES;
+        [_cancelButton addTarget:self action:@selector(cancelButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _cancelButton;
+}
+
+- (UIButton *)payButton {
+    if (!_payButton) {
+        _payButton = [[UIButton alloc] init];
+        _payButton.layer.borderWidth = 0.5;
+        _payButton.layer.borderColor = [[UIColor colorR:247 G:223 B:200 alpha:1] CGColor];
+        _payButton.layer.cornerRadius = 10;
+        [_payButton setTitle:@"付款" forState:UIControlStateNormal];
+        _payButton.titleLabel.font = [UIFont systemFontOfSize:16];
+        [_payButton setTitleColor:[UIColor colorR:241 G:111 B:0 alpha:1] forState:UIControlStateNormal];
+        _payButton.hidden = YES;
+        [_payButton addTarget:self action:@selector(payButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _payButton;
+}
+
+- (UIButton *)deleteButton {
+    if (!_deleteButton) {
+        _deleteButton = [[UIButton alloc] init];
+        _deleteButton.layer.borderWidth = 0.5;
+        _deleteButton.layer.borderColor = [[UIColor colorR:243 G:243 B:243 alpha:1] CGColor];
+        _deleteButton.layer.cornerRadius = 10;
+        [_deleteButton setTitle:@"删除订单" forState:UIControlStateNormal];
+        _deleteButton.titleLabel.font = [UIFont systemFontOfSize:16];
+        [_deleteButton setTitleColor:[UIColor colorR:60 G:63 B:61 alpha:1] forState:UIControlStateNormal];
+        _deleteButton.hidden = YES;
+        [_deleteButton addTarget:self action:@selector(deleteButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _deleteButton;
+}
+
+#pragma mark --- button method ---
+- (void)backButtonClick:(UIButton *)sender {
+    if ([self.delegate respondsToSelector:@selector(backButtonClick:)]) {
+        [self.delegate backButtonClick:sender];
+    }
+}
+
+- (void)cancelButtonClick:(UIButton *)sender {
+    if ([self.delegate respondsToSelector:@selector(cancelButtonClick:)]) {
+        [self.delegate cancelButtonClick:sender];
+    }
+}
+
+- (void)payButtonClick:(UIButton *)sender {
+    if ([self.delegate respondsToSelector:@selector(payButtonClick:)]) {
+        [self.delegate payButtonClick:sender];
+    }
+}
+
+- (void)deleteButtonClick:(UIButton *)sender {
+    if ([self.delegate respondsToSelector:@selector(deleteButtonClick:)]) {
+        [self.delegate deleteButtonClick:sender];
+    }
+}
 
 @end
