@@ -10,19 +10,24 @@
 
 @interface CameraManInfo : NSObject
 
-@property (nonatomic, strong) NSString *cameraManPic;
-@property (nonatomic, strong) NSString *cameraManName;
-@property (nonatomic, strong) NSString *cameraManSynopsis;
-@property (nonatomic, strong) NSString *cameraManPwd;
-@property (nonatomic, strong) NSString *cameraManNum;
-@property (nonatomic, strong) NSString *cameraManContent;
-@property (nonatomic, strong) NSString *cameraManComment;
+@property (nonatomic, copy) NSString *cameraManPic;
+@property (nonatomic, copy) NSString *cameraManName;
+@property (nonatomic, copy) NSString *cameraManSynopsis;
+@property (nonatomic, copy) NSString *cameraManPwd;
+@property (nonatomic, copy) NSString *cameraManNum;
+@property (nonatomic, copy) NSString *cameraManContent;
+@property (nonatomic, copy) NSString *cameraManComment;
+@property (nonatomic, copy) NSString *cameraManGroupName;
+@property (nonatomic, copy) NSString *cameraManOrderNum;
+@property (nonatomic, copy) NSString *cameraManCreatDate;
+@property (nonatomic, copy) NSString *cameraManOrderDate;
+@property (nonatomic, copy) NSString *cameraManOrderStatus;
 @property (nonatomic, assign) long cameraManId;
 @property (nonatomic, assign) long isSubscribe;
 @property (nonatomic, assign) long subscribeCount;
 @property (nonatomic, assign) long commentCount;
 @property (nonatomic, assign) long worksOfCameraMan;
-
+@property (nonatomic, assign) long cameraManOrderId;
 @property (nonatomic, strong) NSArray *worksList;
 @property (nonatomic, strong) NSArray *commentList;
 @property (nonatomic, strong) NSArray *scheduleList;

@@ -7,14 +7,13 @@
 //
 
 #import "BookOrderViewController.h"
-#import "OrderTableViewCell.h"
+#import "CameraManOrderTableViewCell.h"
 #import "PersonalManager.h"
-#import "GoodsInfo.h"
-#import "SDWebImageCache.h"
+#import "CameraManInfo.h"
 #import "Masonry.h"
 #import "LoginManager.h"
 
-@interface BookOrderViewController () <UITableViewDelegate, UITableViewDataSource, OrderTableViewCellDelegate>
+@interface BookOrderViewController () <UITableViewDelegate, UITableViewDataSource, CameraManOrderTableViewCellDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -26,35 +25,42 @@
     [super viewDidLoad];
     
     [self addNotification];
+    [GET_SINGLETON_FOR_CLASS(PersonalManager) queryCameraManOrderInfoWithToken:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue];
 }
 
 - (void)addNotification {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryMemberOrderGoodsInfoSuccess) name:@"queryMemberOrderGoodsInfoSuccess" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cancelMemberOrderGoodsInfoSuccess) name:@"cancelMemberOrderGoodsInfoSuccess" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backMemberOrderGoodsInfoSuccess) name:@"backMemberOrderGoodsInfoSuccess" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteMemberOrderGoodsInfoSuccess) name:@"deleteMemberOrderGoodsInfoSuccess" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryMemberOrderGoodsInfoFaild) name:@"queryMemberOrderGoodsInfoFaild" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryCameraManOrderInfoSuccess) name:@"queryCameraManOrderInfoSuccess" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cancelCameraManOrderInfoSuccess) name:@"cancelCameraManOrderInfoSuccess" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backCameraManOrderInfoSuccess) name:@"backCameraManOrderInfoSuccess" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteCameraManOrderInfoSuccess) name:@"deleteCameraManOrderInfoSuccess" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryMemberOrderGoodsInfoFaild) name:@"dCameraManOrderInfoSuccess" object:nil];
 }
 
-- (void)queryMemberOrderGoodsInfoSuccess {
-    if (self.tableView) {
-        [self.tableView reloadData];
+- (void)queryCameraManOrderInfoSuccess {
+    if (GET_SINGLETON_FOR_CLASS(PersonalManager).cameraManOrderInfos.count == 0) {
+        if (self.tableView) {
+            [self.tableView removeFromSuperview];
+        }
     } else {
-        [self createTableView];
+        if (self.tableView) {
+            [self.tableView reloadData];
+        } else {
+            [self createTableView];
+        }
     }
 }
 
-- (void)cancelMemberOrderGoodsInfoSuccess {
-    [GET_SINGLETON_FOR_CLASS(PersonalManager) queryMemberOrderGoodsInfoWithToken:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue];
+- (void)cancelCameraManOrderInfoSuccess {
+    [GET_SINGLETON_FOR_CLASS(PersonalManager) queryCameraManOrderInfoWithToken:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue];
 }
 
-- (void)backMemberOrderGoodsInfoSuccess {
-    [GET_SINGLETON_FOR_CLASS(PersonalManager) queryMemberOrderGoodsInfoWithToken:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue];
+- (void)backCameraManOrderInfoSuccess {
+    [GET_SINGLETON_FOR_CLASS(PersonalManager) queryCameraManOrderInfoWithToken:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue];
 }
 
-- (void)deleteMemberOrderGoodsInfoSuccess {
-    [GET_SINGLETON_FOR_CLASS(PersonalManager) queryMemberOrderGoodsInfoWithToken:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue];
+- (void)deleteCameraManOrderInfoSuccess {
+    [GET_SINGLETON_FOR_CLASS(PersonalManager) queryCameraManOrderInfoWithToken:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue];
 }
 
 - (void)queryMemberOrderGoodsInfoFaild {
@@ -77,35 +83,35 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return GET_SINGLETON_FOR_CLASS(PersonalManager).orderGoodsInfos.count;
+    return GET_SINGLETON_FOR_CLASS(PersonalManager).cameraManOrderInfos.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *cellIdentify = [NSString stringWithFormat:@"cellIdentify"];
-    OrderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
+    CameraManOrderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
     if (!cell) {
-        cell = [[OrderTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
+        cell = [[CameraManOrderTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
     }
     cell.delegate = self;
-    GoodsInfo *info = [GET_SINGLETON_FOR_CLASS(PersonalManager).orderGoodsInfos objectAtIndex:indexPath.row];
-    cell.goodsNamme.text = info.goodsName;
-    cell.goodsParameter.text = info.goodsParamValue;
-    cell.goodsNumber.text = info.goodsOrderNum;
-    cell.time.text = info.goodsDate;
-    cell.goodsCount.text = [NSString stringWithFormat:@"数量：%ld",info.goodsCount];
-    cell.goodsPrice.text = [NSString stringWithFormat:@"总价：%ld",info.goodsPrice];
-    cell.goodsState.text = info.goodsOrderStatus;
-    if ([info.goodsOrderStatus isEqualToString:@"待支付"]) {
+    CameraManInfo *info = [GET_SINGLETON_FOR_CLASS(PersonalManager).cameraManOrderInfos objectAtIndex:indexPath.row];
+    cell.groupNameLabel.text = info.cameraManGroupName;
+    cell.orderNumLabel.text = [NSString stringWithFormat:@"订单号 %@",info.cameraManOrderNum];
+    cell.orderCameraManNameLabel.text = [NSString stringWithFormat:@"摄影师 %@",info.cameraManName];
+    NSString *str = [info.cameraManCreatDate substringWithRange:NSMakeRange(0, 10)];
+    cell.orderCreatDateLabel.text = [NSString stringWithFormat:@"下单时间 %@",str];
+    cell.orderDateLabel.text = [NSString stringWithFormat:@"拍摄时间 %@",info.cameraManOrderDate];
+    cell.orderStatusLabel.text = info.cameraManOrderStatus;
+    if ([info.cameraManOrderStatus isEqualToString:@"待支付"]) {
         cell.payButton.hidden = NO;
         cell.cancelButton.hidden = NO;
         cell.backButton.hidden = YES;
         cell.deleteButton.hidden = YES;
-    } else if ([info.goodsOrderStatus isEqualToString:@"代发货"]) {
+    } else if ([info.cameraManOrderStatus isEqualToString:@"代发货"]) {
         cell.payButton.hidden = YES;
         cell.cancelButton.hidden = YES;
         cell.deleteButton.hidden = YES;
         cell.backButton.hidden = NO;
-    } else if ([info.goodsOrderStatus isEqualToString:@"交易关闭"]) {
+    } else if ([info.cameraManOrderStatus isEqualToString:@"交易关闭"]) {
         cell.deleteButton.hidden = NO;
         cell.payButton.hidden = YES;
         cell.cancelButton.hidden = YES;
@@ -116,17 +122,14 @@
         cell.backButton.hidden = YES;
         cell.deleteButton.hidden = YES;
     }
-    
-    [SDWebImageCache getImageFromSDWebImageWithUrlString:[NSString stringWithFormat:@"%@%@",baseUrl,info.goodsPic] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-        cell.goodsImage.image = image;
-    }];
+
     cell.layer.borderWidth = 1;
     cell.layer.borderColor = [[UIColor colorWithRed:247/255.0 green:247/255.0 blue:247/255.0 alpha:1.0] CGColor];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 200;
+    return 160;
 }
 
 #pragma mark --- OrderTableViewCellDelegate ---
@@ -135,18 +138,18 @@
 }
 
 - (void)cancelButtonClick:(UIButton *)sender {
-    GoodsInfo *info = [GET_SINGLETON_FOR_CLASS(PersonalManager).orderGoodsInfos objectAtIndex:sender.tag];
-    [GET_SINGLETON_FOR_CLASS(PersonalManager) cancelMemberOrderGoodsInfoWithToken:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue withOrderId:info.goodsOrderId];
+    CameraManInfo *info = [GET_SINGLETON_FOR_CLASS(PersonalManager).cameraManOrderInfos objectAtIndex:sender.tag];
+    [GET_SINGLETON_FOR_CLASS(PersonalManager) cancelCameraManOrderInfoWithToken:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue withOrderId:info.cameraManOrderId];
 }
 
 - (void)backButtionClick:(UIButton *)sender {
-    GoodsInfo *info = [GET_SINGLETON_FOR_CLASS(PersonalManager).orderGoodsInfos objectAtIndex:sender.tag];
-    [GET_SINGLETON_FOR_CLASS(PersonalManager) backMemberOrderGoodsInfoWithToken:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue withOrderId:info.goodsOrderId];
+    CameraManInfo *info = [GET_SINGLETON_FOR_CLASS(PersonalManager).cameraManOrderInfos objectAtIndex:sender.tag];
+    [GET_SINGLETON_FOR_CLASS(PersonalManager) backCameraManOrderInfoWithToken:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue withOrderId:info.cameraManOrderId];
 }
 
 - (void)deleteButtonClick:(UIButton *)sender {
-    GoodsInfo *info = [GET_SINGLETON_FOR_CLASS(PersonalManager).orderGoodsInfos objectAtIndex:sender.tag];
-    [GET_SINGLETON_FOR_CLASS(PersonalManager) deleteMemberOrderGoodsInfoWithToken:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue withOrderId:info.goodsOrderId];
+    CameraManInfo *info = [GET_SINGLETON_FOR_CLASS(PersonalManager).cameraManOrderInfos objectAtIndex:sender.tag];
+    [GET_SINGLETON_FOR_CLASS(PersonalManager) deleteCameraManOrderInfoWithToken:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue withOrderId:info.cameraManOrderId];
 }
 
 - (void)didReceiveMemoryWarning {

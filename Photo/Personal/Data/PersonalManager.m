@@ -11,6 +11,7 @@
 #import "LoginManager.h"
 #import "CollectGoodsInfo.h"
 #import "AddressInfo.h"
+#import "CameraManInfo.h"
 
 @implementation PersonalManager
 SYNTHESIZE_SINGLETON_FOR_CLASS(PersonalManager)
@@ -179,8 +180,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(PersonalManager)
 - (void)queryMemberOrderGoodsInfoWithToken:(NSString *)token {
     [PersonalPesRequest queryMemberOrderGoodsInfoWithToken:token withBlock:^(NSDictionary *response, NSString *error) {
         if ([[response objectForKey:@"errorCode"] unsignedLongValue]== 0) {
+            [self.orderGoodsInfos removeAllObjects];
             if (![[response objectForKey:@"data"] isKindOfClass:[NSString class]]) {
-                [self.orderGoodsInfos removeAllObjects];
                 NSArray *array = [response objectForKey:@"data"];
                 for (NSDictionary *dict in array) {
                     GoodsInfo *info = [[GoodsInfo alloc] init];
@@ -199,10 +200,10 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(PersonalManager)
                     info.goodsOrderStatus = [orderGoodsStatu objectForKey:@"orderInfoStatusDetail"];
                     [self.orderGoodsInfos addObject:info];
                 }
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [[NSNotificationCenter defaultCenter] postNotificationName:@"queryMemberOrderGoodsInfoSuccess" object:nil];
-                });
             }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"queryMemberOrderGoodsInfoSuccess" object:nil];
+            });
         } else {
             //请求失败
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -228,7 +229,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(PersonalManager)
             dispatch_async(dispatch_get_main_queue(), ^{
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"backMemberOrderGoodsInfoSuccess" object:nil];
             });
-        }    }];
+        }
+    }];
 }
 
 - (void)deleteMemberOrderGoodsInfoWithToken:(NSString *)token withOrderId:(long)orderId {
@@ -237,34 +239,64 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(PersonalManager)
             dispatch_async(dispatch_get_main_queue(), ^{
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"deleteMemberOrderGoodsInfoSuccess" object:nil];
             });
-        }    }];
+        }
+    }];
 }
 
 - (void)queryCameraManOrderInfoWithToken:(NSString *)token {
     [PersonalPesRequest queryCameraManOrderInfoWithToken:token withBlock:^(NSDictionary *response, NSString *error) {
         if ([[response objectForKey:@"errorCode"] unsignedLongValue]== 0) {
+            [self.cameraManOrderInfos removeAllObjects];
             if (![[response objectForKey:@"data"] isKindOfClass:[NSString class]]) {
-
+                NSArray *array = [response objectForKey:@"data"];
+                for (NSDictionary *dict in array) {
+                    CameraManInfo *info = [[CameraManInfo alloc] init];
+                    info.cameraManGroupName = [dict objectForKey:@"camerGroupName"];
+                    info.cameraManOrderNum = [dict objectForKey:@"orderInfoNum"];
+                    info.cameraManCreatDate = [dict objectForKey:@"creatTime"];
+                    info.cameraManOrderDate = [dict objectForKey:@"orderDate"];
+                    info.cameraManOrderId = [[dict objectForKey:@"orderInfoId"] unsignedLongValue];
+                    NSDictionary *cameraManInfo = [dict objectForKey:@"cameraman"];
+                    info.cameraManName = [cameraManInfo objectForKey:@"cameramanName"];
+                    NSDictionary *status = [dict objectForKey:@"orderInfoStatus"];
+                    info.cameraManOrderStatus = [status objectForKey:@"orderInfoStatusDetail"];
+                    [self.cameraManOrderInfos addObject:info];
+                }
             }
         }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"queryCameraManOrderInfoSuccess" object:nil];
+        });
     }];
 }
 
 - (void)cancelCameraManOrderInfoWithToken:(NSString *)token withOrderId:(long)orderId {
     [PersonalPesRequest cancelCameraManOrderInfoWithToken:token withOrderId:orderId withBlock:^(NSDictionary *response, NSString *error) {
-        
+        if ([[response objectForKey:@"errorCode"] unsignedLongValue]== 0) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"cancelCameraManOrderInfoSuccess" object:nil];
+            });
+        }
     }];
 }
 
 - (void)backCameraManOrderInfoWithToken:(NSString *)token withOrderId:(long)orderId {
     [PersonalPesRequest backCameraManOrderInfoWithToken:token withOrderId:orderId withBlock:^(NSDictionary *response, NSString *error) {
-        
+        if ([[response objectForKey:@"errorCode"] unsignedLongValue]== 0) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"backCameraManOrderInfoSuccess" object:nil];
+            });
+        }
     }];
 }
 
 - (void)deleteCameraManOrderInfoWithToken:(NSString *)token withOrderId:(long)orderId {
     [PersonalPesRequest deleteCameraManOrderInfoWithToken:token withOrderId:orderId withBlock:^(NSDictionary *response, NSString *error) {
-        
+        if ([[response objectForKey:@"errorCode"] unsignedLongValue]== 0) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"deleteCameraManOrderInfoSuccess" object:nil];
+            });
+        }
     }];
 }
 

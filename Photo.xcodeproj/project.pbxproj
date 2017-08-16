@@ -48,6 +48,7 @@
 		A55DEFE71F42F3FD00092AD3 /* GGActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = A55DEFE61F42F3FD00092AD3 /* GGActionSheet.m */; };
 		F40430831F29790A00DDB2E7 /* main_my_bg.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F40430821F29790A00DDB2E7 /* main_my_bg.jpeg */; };
 		F40430951F29D0FD00DDB2E7 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F40430941F29D0FD00DDB2E7 /* LoginViewController.m */; };
+		F404B7661F4420DE000D753E /* CameraManOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F404B7651F4420DE000D753E /* CameraManOrderTableViewCell.m */; };
 		F40575661F2AD29F003C8AF2 /* personal_update_pwd.png in Resources */ = {isa = PBXBuildFile; fileRef = F40575651F2AD29F003C8AF2 /* personal_update_pwd.png */; };
 		F40575691F2AE29B003C8AF2 /* PesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F40575681F2AE29B003C8AF2 /* PesRequest.m */; };
 		F40575701F2AE38D003C8AF2 /* HomePagePesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F405756F1F2AE38D003C8AF2 /* HomePagePesRequest.m */; };
@@ -283,6 +284,8 @@
 		F40430821F29790A00DDB2E7 /* main_my_bg.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = main_my_bg.jpeg; sourceTree = "<group>"; };
 		F40430931F29D0FD00DDB2E7 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		F40430941F29D0FD00DDB2E7 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		F404B7641F4420DE000D753E /* CameraManOrderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraManOrderTableViewCell.h; sourceTree = "<group>"; };
+		F404B7651F4420DE000D753E /* CameraManOrderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraManOrderTableViewCell.m; sourceTree = "<group>"; };
 		F40575651F2AD29F003C8AF2 /* personal_update_pwd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personal_update_pwd.png; sourceTree = "<group>"; };
 		F40575671F2AE29B003C8AF2 /* PesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PesRequest.h; sourceTree = "<group>"; };
 		F40575681F2AE29B003C8AF2 /* PesRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PesRequest.m; sourceTree = "<group>"; };
@@ -1168,6 +1171,8 @@
 				F482373A1F26EC3100DDD487 /* CollectTableViewCell.m */,
 				F405D19B1F2EBC110015A8E6 /* OrderTableViewCell.h */,
 				F405D19C1F2EBC110015A8E6 /* OrderTableViewCell.m */,
+				F404B7641F4420DE000D753E /* CameraManOrderTableViewCell.h */,
+				F404B7651F4420DE000D753E /* CameraManOrderTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1599,6 +1604,7 @@
 				F48679391F3D831A00612E27 /* StoreCommentInfo.m in Sources */,
 				F4FDD6B61F2C37CD007263D4 /* EditAddressViewController.m in Sources */,
 				A514B0F21F2901A1006A765F /* LeadViewController.m in Sources */,
+				F404B7661F4420DE000D753E /* CameraManOrderTableViewCell.m in Sources */,
 				F407335A1F3C397B0006F1F6 /* CameraManDetailSecondViewController.m in Sources */,
 				F4FF8D9E1F39935600E7739D /* ImageInfo.m in Sources */,
 				F4FDD6A61F2C378E007263D4 /* UserDataViewController.m in Sources */,

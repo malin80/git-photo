@@ -84,6 +84,10 @@
 }
 
 - (void)immediatelyOrder {
+    if (!GET_SINGLETON_FOR_CLASS(CameraManager).selectedTime) {
+        [self showtext:@"请选择档期"];
+        return;
+    }
     SelectDressManViewController *controller = [[SelectDressManViewController alloc] init];
     [self.navigationController pushViewController:controller animated:NO];
 }
