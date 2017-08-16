@@ -49,6 +49,8 @@
 		F40430831F29790A00DDB2E7 /* main_my_bg.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F40430821F29790A00DDB2E7 /* main_my_bg.jpeg */; };
 		F40430951F29D0FD00DDB2E7 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F40430941F29D0FD00DDB2E7 /* LoginViewController.m */; };
 		F404B7661F4420DE000D753E /* CameraManOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F404B7651F4420DE000D753E /* CameraManOrderTableViewCell.m */; };
+		F404B7681F443C6D000D753E /* common_introduct.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F404B7671F443C6D000D753E /* common_introduct.jpg */; };
+		F404B76B1F443CB7000D753E /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F404B76A1F443CB7000D753E /* AboutViewController.m */; };
 		F40575661F2AD29F003C8AF2 /* personal_update_pwd.png in Resources */ = {isa = PBXBuildFile; fileRef = F40575651F2AD29F003C8AF2 /* personal_update_pwd.png */; };
 		F40575691F2AE29B003C8AF2 /* PesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F40575681F2AE29B003C8AF2 /* PesRequest.m */; };
 		F40575701F2AE38D003C8AF2 /* HomePagePesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F405756F1F2AE38D003C8AF2 /* HomePagePesRequest.m */; };
@@ -286,6 +288,9 @@
 		F40430941F29D0FD00DDB2E7 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		F404B7641F4420DE000D753E /* CameraManOrderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraManOrderTableViewCell.h; sourceTree = "<group>"; };
 		F404B7651F4420DE000D753E /* CameraManOrderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraManOrderTableViewCell.m; sourceTree = "<group>"; };
+		F404B7671F443C6D000D753E /* common_introduct.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = common_introduct.jpg; sourceTree = "<group>"; };
+		F404B7691F443CB7000D753E /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		F404B76A1F443CB7000D753E /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		F40575651F2AD29F003C8AF2 /* personal_update_pwd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personal_update_pwd.png; sourceTree = "<group>"; };
 		F40575671F2AE29B003C8AF2 /* PesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PesRequest.h; sourceTree = "<group>"; };
 		F40575681F2AE29B003C8AF2 /* PesRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PesRequest.m; sourceTree = "<group>"; };
@@ -1127,6 +1132,8 @@
 				F48237371F26EA1100DDD487 /* CollectViewController.m */,
 				F40430931F29D0FD00DDB2E7 /* LoginViewController.h */,
 				F40430941F29D0FD00DDB2E7 /* LoginViewController.m */,
+				F404B7691F443CB7000D753E /* AboutViewController.h */,
+				F404B76A1F443CB7000D753E /* AboutViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1256,6 +1263,7 @@
 		F4A7A25A1F25CF3B009FAAEE /* Commom */ = {
 			isa = PBXGroup;
 			children = (
+				F404B7671F443C6D000D753E /* common_introduct.jpg */,
 				F407330B1F3BF5420006F1F6 /* common_no_login.png */,
 				F4FF8D901F394C2200E7739D /* splash.png */,
 				F4A7A25D1F25D192009FAAEE /* common_back.png */,
@@ -1472,6 +1480,7 @@
 				F4A7A1361F25A3A5009FAAEE /* tabbar_store_red.png in Resources */,
 				A50BB41C1F3DAF3700F6158B /* LTPickerView.xib in Resources */,
 				F4FF8D9A1F39645C00E7739D /* store_less.png in Resources */,
+				F404B7681F443C6D000D753E /* common_introduct.jpg in Resources */,
 				F482374C1F27106300DDD487 /* homepage_camera.png in Resources */,
 				A5104F721F43393A004ABBE7 /* AlipaySDK.bundle in Resources */,
 				F481E90C1F282D1E00EE3D7C /* personal_address_selected.png in Resources */,
@@ -1629,6 +1638,7 @@
 				F40575701F2AE38D003C8AF2 /* HomePagePesRequest.m in Sources */,
 				F40A2AE81F3165D600BEDFFB /* StoreManager.m in Sources */,
 				F482373F1F27041300DDD487 /* HomePageScrollView.m in Sources */,
+				F404B76B1F443CB7000D753E /* AboutViewController.m in Sources */,
 				F40733581F3C397B0006F1F6 /* CameraManDetailFirstViewController.m in Sources */,
 				F4FDD6AB1F2C379D007263D4 /* OrderManageViewController.m in Sources */,
 				F482375D1F27395100DDD487 /* ShoppingBottomView.m in Sources */,

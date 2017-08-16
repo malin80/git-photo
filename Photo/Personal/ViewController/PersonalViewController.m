@@ -12,6 +12,7 @@
 #import "AddressViewController.h"
 #import "CollectViewController.h"
 #import "LoginViewController.h"
+#import "AboutViewController.h"
 
 #import "Masonry.h"
 #import "PersonalTabelViewCell.h"
@@ -243,7 +244,8 @@
     }];
 }
 - (void)gotoAboutViewController {
-    
+    AboutViewController *controller = [[AboutViewController alloc] init];
+    [self.navigationController pushViewController:controller animated:NO];
 }
 
 - (void)gotoCollectViewController {

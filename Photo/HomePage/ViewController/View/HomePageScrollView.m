@@ -90,7 +90,7 @@
 }
 
 - (void)createPageView {
-    _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 220, ScreenWidth, 20)];
+    _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 180, ScreenWidth, 20)];
     _pageControl.backgroundColor = [UIColor clearColor];
     [_pageControl setCurrentPageIndicatorTintColor:[UIColor blackColor]];
     [_pageControl setPageIndicatorTintColor:[UIColor grayColor]];
