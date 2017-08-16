@@ -142,7 +142,12 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(StoreManager)
 - (void)buyGoodsWithToken:(NSString *)token withMemberName:(NSString *)name withMemberPhone:(NSString *)phone withMemberAddress:(NSString *)address withGoodsId:(long)goodsId withGoodsPrice:(long)goodsPrice withGoodCount:(long)goodsCount withGoodsParam:(NSString *)goodsParam withCartIds:(NSString *)cartIds withIsCart:(long)isCart withCartCount:(long)cartCount {
     [StorePesRequest buyGoodsWithToken:token withMemberName:name withMemberPhone:phone withMemberAddress:address withGoodsId:goodsId withGoodsPrice:goodsPrice withGoodCount:goodsCount withGoodsParam:goodsParam withCartIds:cartIds withIsCart:isCart withCartCount:cartCount withBlock:^(NSDictionary *responseObject, NSString *error) {
         //用这个ID调支付接口
-        self.payIdString = [responseObject objectForKey:@"orderOfGoodsDetailId"];
+        NSLog(@"%@",responseObject);
+        if ([[responseObject objectForKey:@"errorCode"] intValue]==0) {
+            self.payIdString = [responseObject objectForKey:@"orderOfGoodsDetailId"];
+             [[NSNotificationCenter defaultCenter] postNotificationName:@"alipay" object:nil];
+        }
+        
     }];
 }
 

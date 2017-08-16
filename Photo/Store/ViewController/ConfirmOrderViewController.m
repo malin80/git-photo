@@ -19,9 +19,9 @@
 #import "SDWebImageCache.h"
 #import "AlertDialog.h"
 #import "AddAddressViewController.h"
-
-@interface ConfirmOrderViewController () <NavigationBarDelegate,UITableViewDelegate, UITableViewDataSource>
-
+#import "GGActionSheet.h"
+@interface ConfirmOrderViewController () <GGActionSheetDelegate,NavigationBarDelegate,UITableViewDelegate, UITableViewDataSource>
+@property(nonatomic,strong) GGActionSheet *actionSheetImg;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) GoodsInfo *goodsInfo;
 @property (nonatomic, strong) AddressInfo *addressInfo;
@@ -33,14 +33,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     self.navigationController.navigationBar.hidden = YES;
     NavigationBar *bar = [[NavigationBar alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 64) withTitle:@"确认订单"];
     bar.delegate = self;
     [self.view addSubview:bar];
-
+    
     [self createTableView];
     [self createBottomView];
+    [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(alipay) name:@"alipay" object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -116,7 +117,7 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:@"cancelAddDress" object:nil];
         }]];
         [dialog show:self];
-
+        
     }
 }
 
@@ -171,17 +172,7 @@
 //--购物车下单时传 memberId,deliveryName,deliveryPhone,deliveryAddress,cartIds,isCart,cartCount
 
 - (void)confirmOrder {
-    if (self.goodsInfos.count == 1) {
-        self.goodsInfo = [self.goodsInfos objectAtIndex:0];
-        [GET_SINGLETON_FOR_CLASS(StoreManager) buyGoodsWithToken:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue withMemberName:self.addressInfo.name withMemberPhone:self.addressInfo.phone withMemberAddress:self.addressInfo.address withGoodsId:self.goodsInfo.goodsId withGoodsPrice:self.goodsInfo.goodsPrice withGoodCount:self.goodsInfo.goodsCount withGoodsParam:self.goodsInfo.goodsParamValue withCartIds:@"" withIsCart:0 withCartCount:0];
-    } else {
-        NSString *cartIds = @"";
-        for (ShoppingGoodsInfo *info in self.goodsInfos) {
-            cartIds = [NSString stringWithFormat:@"%@;%ld",cartIds,info.goodsCartId];
-        }
-        cartIds = [cartIds substringWithRange:NSMakeRange(1, cartIds.length - 1)];
-        [GET_SINGLETON_FOR_CLASS(StoreManager) buyGoodsWithToken:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue withMemberName:self.addressInfo.name withMemberPhone:self.addressInfo.phone withMemberAddress:self.addressInfo.address withGoodsId:0 withGoodsPrice:0 withGoodCount:0 withGoodsParam:@"" withCartIds:cartIds withIsCart:1 withCartCount:self.goodsInfos.count];
-    }
+    [self.actionSheetImg showGGActionSheet];
 }
 
 - (void)createTableView {
@@ -235,20 +226,81 @@
 - (void)goBack {
     [self.navigationController popViewControllerAnimated:NO];
 }
+#pragma mark - GGActionSheet代理方法
+-(void)GGActionSheetClickWithActionSheet:(GGActionSheet *)actionSheet Index:(int)index{
+    if (self.goodsInfos.count == 1) {
+        self.goodsInfo = [self.goodsInfos objectAtIndex:0];
+        [GET_SINGLETON_FOR_CLASS(StoreManager) buyGoodsWithToken:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue withMemberName:self.addressInfo.name withMemberPhone:self.addressInfo.phone withMemberAddress:self.addressInfo.address withGoodsId:self.goodsInfo.goodsId withGoodsPrice:self.goodsInfo.goodsPrice withGoodCount:self.goodsInfo.goodsCount withGoodsParam:self.goodsInfo.goodsParamValue withCartIds:@"" withIsCart:0 withCartCount:0];
+    } else {
+        NSString *cartIds = @"";
+        for (ShoppingGoodsInfo *info in self.goodsInfos) {
+            cartIds = [NSString stringWithFormat:@"%@;%ld",cartIds,info.goodsCartId];
+        }
+        cartIds = [cartIds substringWithRange:NSMakeRange(1, cartIds.length - 1)];
+        [GET_SINGLETON_FOR_CLASS(StoreManager) buyGoodsWithToken:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue withMemberName:self.addressInfo.name withMemberPhone:self.addressInfo.phone withMemberAddress:self.addressInfo.address withGoodsId:0 withGoodsPrice:0 withGoodCount:0 withGoodsParam:@"" withCartIds:cartIds withIsCart:1 withCartCount:self.goodsInfos.count];
+    }
+}
+-(void)alipay{
+    NSLog(@"%@",GET_SINGLETON_FOR_CLASS(StoreManager).payIdString);
+    
+    NSString *appScheme=@"zhifubao1";
+    [[AlipaySDK defaultService] payOrder:GET_SINGLETON_FOR_CLASS(StoreManager).payIdString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
+        //[self hiddenHub1];
+        if ([resultDic[@"resultStatus"] intValue]==9000) {
+            [self showtext:@"支付成功"];
+        } else{
+            [self showtext:resultDic[@"memo"]];
+        }
 
+    }];
+}
+-(void)wxpay{
+    PayReq *request = [[PayReq alloc] init] ;
+    request.partnerId = @"10000100";
+    request.prepayId= @"1101000000140415649af9fc314aa427";
+    request.package = @"Sign=WXPay";
+    request.nonceStr= @"a462b76e7436e98e0ed6e13c64b4fd1c";
+    request.timeStamp= @"1397527777";
+    request.sign= @"582282D72DD2B03AD892830965F428CB16E7A256";
+    [WXApi sendReq:request];
+}
+
+-(void)onResp:(BaseResp*)resp{
+    if ([resp isKindOfClass:[PayResp class]]){
+        PayResp*response=(PayResp*)resp;
+        switch(response.errCode){
+            caseWXSuccess:
+            
+                //服务器端查询支付通知或查询API返回的结果再提示成功
+                NSLog(@"支付成功");
+            
+                break;
+            default:
+                NSLog(@"支付失败，retcode=%d",resp.errCode);
+                break;
+        }
+    }
+}
+-(GGActionSheet *)actionSheetImg{
+    if (!_actionSheetImg) {
+        _actionSheetImg = [GGActionSheet ActionSheetWithImageArray:@[@"alipay233",@"wechatpay233"] delegate:self];
+        _actionSheetImg.cancelDefaultColor = [UIColor redColor];
+    }
+    return _actionSheetImg;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

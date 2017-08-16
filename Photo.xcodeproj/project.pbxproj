@@ -19,6 +19,19 @@
 		A50BB41A1F3DAF3700F6158B /* DQconstellationView.m in Sources */ = {isa = PBXBuildFile; fileRef = A50BB40C1F3DAF3700F6158B /* DQconstellationView.m */; };
 		A50BB41B1F3DAF3700F6158B /* LTPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A50BB4101F3DAF3700F6158B /* LTPickerView.m */; };
 		A50BB41C1F3DAF3700F6158B /* LTPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A50BB4111F3DAF3700F6158B /* LTPickerView.xib */; };
+		A5104F721F43393A004ABBE7 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A5104F701F43393A004ABBE7 /* AlipaySDK.bundle */; };
+		A5104F731F43393A004ABBE7 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5104F711F43393A004ABBE7 /* AlipaySDK.framework */; };
+		A5104F751F4339A8004ABBE7 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A5104F741F4339A8004ABBE7 /* libc++.tbd */; };
+		A5104F771F4339AF004ABBE7 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A5104F761F4339AF004ABBE7 /* libz.tbd */; };
+		A5104F791F4339B7004ABBE7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5104F781F4339B7004ABBE7 /* SystemConfiguration.framework */; };
+		A5104F7B1F4339BE004ABBE7 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5104F7A1F4339BE004ABBE7 /* CoreTelephony.framework */; };
+		A5104F7D1F4339C7004ABBE7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5104F7C1F4339C7004ABBE7 /* QuartzCore.framework */; };
+		A5104F7F1F4339CE004ABBE7 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5104F7E1F4339CE004ABBE7 /* CoreText.framework */; };
+		A5104F811F4339D6004ABBE7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5104F801F4339D6004ABBE7 /* CoreGraphics.framework */; };
+		A5104F831F4339DD004ABBE7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5104F821F4339DD004ABBE7 /* UIKit.framework */; };
+		A5104F851F4339E7004ABBE7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5104F841F4339E7004ABBE7 /* Foundation.framework */; };
+		A5104F871F4339EF004ABBE7 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5104F861F4339EF004ABBE7 /* CFNetwork.framework */; };
+		A5104F891F4339F9004ABBE7 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5104F881F4339F9004ABBE7 /* CoreMotion.framework */; };
 		A514B0F21F2901A1006A765F /* LeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A514B0F11F2901A1006A765F /* LeadViewController.m */; };
 		A514B1041F2903D3006A765F /* TabbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A514B1031F2903D3006A765F /* TabbarViewController.m */; };
 		A514B10E1F290533006A765F /* FitManage.m in Sources */ = {isa = PBXBuildFile; fileRef = A514B1071F290533006A765F /* FitManage.m */; };
@@ -32,6 +45,7 @@
 		A520C6D11F2B89A400202622 /* DLScrollTabbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = A520C6C71F2B89A400202622 /* DLScrollTabbarView.m */; };
 		A520C6D21F2B89A400202622 /* DLTabedSlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = A520C6CA1F2B89A400202622 /* DLTabedSlideView.m */; };
 		A520C6D31F2B89A400202622 /* DLUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = A520C6CC1F2B89A400202622 /* DLUtility.m */; };
+		A55DEFE71F42F3FD00092AD3 /* GGActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = A55DEFE61F42F3FD00092AD3 /* GGActionSheet.m */; };
 		F40430831F29790A00DDB2E7 /* main_my_bg.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F40430821F29790A00DDB2E7 /* main_my_bg.jpeg */; };
 		F40430951F29D0FD00DDB2E7 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F40430941F29D0FD00DDB2E7 /* LoginViewController.m */; };
 		F40575661F2AD29F003C8AF2 /* personal_update_pwd.png in Resources */ = {isa = PBXBuildFile; fileRef = F40575651F2AD29F003C8AF2 /* personal_update_pwd.png */; };
@@ -220,6 +234,19 @@
 		A50BB40F1F3DAF3700F6158B /* LTPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTPickerView.h; sourceTree = "<group>"; };
 		A50BB4101F3DAF3700F6158B /* LTPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTPickerView.m; sourceTree = "<group>"; };
 		A50BB4111F3DAF3700F6158B /* LTPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LTPickerView.xib; sourceTree = "<group>"; };
+		A5104F701F43393A004ABBE7 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
+		A5104F711F43393A004ABBE7 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
+		A5104F741F4339A8004ABBE7 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		A5104F761F4339AF004ABBE7 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		A5104F781F4339B7004ABBE7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		A5104F7A1F4339BE004ABBE7 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		A5104F7C1F4339C7004ABBE7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		A5104F7E1F4339CE004ABBE7 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		A5104F801F4339D6004ABBE7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A5104F821F4339DD004ABBE7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A5104F841F4339E7004ABBE7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A5104F861F4339EF004ABBE7 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		A5104F881F4339F9004ABBE7 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		A514B0EF1F28FC91006A765F /* hong.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hong.pch; sourceTree = "<group>"; };
 		A514B0F01F2901A1006A765F /* LeadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeadViewController.h; sourceTree = "<group>"; };
 		A514B0F11F2901A1006A765F /* LeadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeadViewController.m; sourceTree = "<group>"; };
@@ -249,6 +276,8 @@
 		A520C6CA1F2B89A400202622 /* DLTabedSlideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLTabedSlideView.m; sourceTree = "<group>"; };
 		A520C6CB1F2B89A400202622 /* DLUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLUtility.h; sourceTree = "<group>"; };
 		A520C6CC1F2B89A400202622 /* DLUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLUtility.m; sourceTree = "<group>"; };
+		A55DEFE51F42F3FD00092AD3 /* GGActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGActionSheet.h; sourceTree = "<group>"; };
+		A55DEFE61F42F3FD00092AD3 /* GGActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGActionSheet.m; sourceTree = "<group>"; };
 		CD7508C1BC4827C026564603 /* libPods-Photo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Photo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFFD29296EE5B8D87B3DB463 /* Pods-Photo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Photo/Pods-Photo.release.xcconfig"; sourceTree = "<group>"; };
 		F40430821F29790A00DDB2E7 /* main_my_bg.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = main_my_bg.jpeg; sourceTree = "<group>"; };
@@ -507,7 +536,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5104F891F4339F9004ABBE7 /* CoreMotion.framework in Frameworks */,
+				A5104F871F4339EF004ABBE7 /* CFNetwork.framework in Frameworks */,
+				A5104F851F4339E7004ABBE7 /* Foundation.framework in Frameworks */,
+				A5104F831F4339DD004ABBE7 /* UIKit.framework in Frameworks */,
+				A5104F811F4339D6004ABBE7 /* CoreGraphics.framework in Frameworks */,
+				A5104F7F1F4339CE004ABBE7 /* CoreText.framework in Frameworks */,
+				A5104F7D1F4339C7004ABBE7 /* QuartzCore.framework in Frameworks */,
+				A5104F7B1F4339BE004ABBE7 /* CoreTelephony.framework in Frameworks */,
+				A5104F791F4339B7004ABBE7 /* SystemConfiguration.framework in Frameworks */,
+				A5104F771F4339AF004ABBE7 /* libz.tbd in Frameworks */,
+				A5104F751F4339A8004ABBE7 /* libc++.tbd in Frameworks */,
 				33BE91EAF0A94AB73B65E9D1 /* libPods-Photo.a in Frameworks */,
+				A5104F731F43393A004ABBE7 /* AlipaySDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -531,6 +572,17 @@
 		3AF5D29E0BF9DB9947619118 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A5104F881F4339F9004ABBE7 /* CoreMotion.framework */,
+				A5104F861F4339EF004ABBE7 /* CFNetwork.framework */,
+				A5104F841F4339E7004ABBE7 /* Foundation.framework */,
+				A5104F821F4339DD004ABBE7 /* UIKit.framework */,
+				A5104F801F4339D6004ABBE7 /* CoreGraphics.framework */,
+				A5104F7E1F4339CE004ABBE7 /* CoreText.framework */,
+				A5104F7C1F4339C7004ABBE7 /* QuartzCore.framework */,
+				A5104F7A1F4339BE004ABBE7 /* CoreTelephony.framework */,
+				A5104F781F4339B7004ABBE7 /* SystemConfiguration.framework */,
+				A5104F761F4339AF004ABBE7 /* libz.tbd */,
+				A5104F741F4339A8004ABBE7 /* libc++.tbd */,
 				CD7508C1BC4827C026564603 /* libPods-Photo.a */,
 			);
 			name = Frameworks;
@@ -603,6 +655,15 @@
 			path = LTPickerView;
 			sourceTree = "<group>";
 		};
+		A5104F6F1F43393A004ABBE7 /* 支付宝 */ = {
+			isa = PBXGroup;
+			children = (
+				A5104F701F43393A004ABBE7 /* AlipaySDK.bundle */,
+				A5104F711F43393A004ABBE7 /* AlipaySDK.framework */,
+			);
+			path = "支付宝";
+			sourceTree = "<group>";
+		};
 		A514B1011F2903D3006A765F /* Tabbar */ = {
 			isa = PBXGroup;
 			children = (
@@ -664,6 +725,15 @@
 				A520C6C81F2B89A400202622 /* DLSlideTabbarProtocol.h */,
 			);
 			path = DLTabbarView;
+			sourceTree = "<group>";
+		};
+		A55DEFE41F42F3FD00092AD3 /* GGActionSheet */ = {
+			isa = PBXGroup;
+			children = (
+				A55DEFE51F42F3FD00092AD3 /* GGActionSheet.h */,
+				A55DEFE61F42F3FD00092AD3 /* GGActionSheet.m */,
+			);
+			path = GGActionSheet;
 			sourceTree = "<group>";
 		};
 		F405756A1F2AE34B003C8AF2 /* PesDelegate */ = {
@@ -1072,6 +1142,8 @@
 		F4A7A0D81F257F14009FAAEE /* ThirdParties */ = {
 			isa = PBXGroup;
 			children = (
+				A5104F6F1F43393A004ABBE7 /* 支付宝 */,
+				A55DEFE41F42F3FD00092AD3 /* GGActionSheet */,
 				A50BB3FA1F3DAF3700F6158B /* 档期选择器 */,
 				A50BB4021F3DAF3700F6158B /* 生日选择器 */,
 				A50BB40D1F3DAF3700F6158B /* 性别选择器 */,
@@ -1320,7 +1392,7 @@
 				TargetAttributes = {
 					F4A7A08A1F256B96009FAAEE = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = NVRZ8WK38H;
+						DevelopmentTeam = NWRGH9QDNR;
 						ProvisioningStyle = Automatic;
 					};
 					F4A7A0A31F256B96009FAAEE = {
@@ -1396,6 +1468,7 @@
 				A50BB41C1F3DAF3700F6158B /* LTPickerView.xib in Resources */,
 				F4FF8D9A1F39645C00E7739D /* store_less.png in Resources */,
 				F482374C1F27106300DDD487 /* homepage_camera.png in Resources */,
+				A5104F721F43393A004ABBE7 /* AlipaySDK.bundle in Resources */,
 				F481E90C1F282D1E00EE3D7C /* personal_address_selected.png in Resources */,
 				F4A7A11C1F259445009FAAEE /* personal_update.png in Resources */,
 				F40430831F29790A00DDB2E7 /* main_my_bg.jpeg in Resources */,
@@ -1560,6 +1633,7 @@
 				F4FD30531F32D35800048DD6 /* CameraDetailTableViewCell.m in Sources */,
 				F4FDD6A41F2C378E007263D4 /* NickNameViewController.m in Sources */,
 				F405D19A1F2EBB2F0015A8E6 /* BookOrderViewController.m in Sources */,
+				A55DEFE71F42F3FD00092AD3 /* GGActionSheet.m in Sources */,
 				F407335B1F3C397B0006F1F6 /* CameraManDetailThirdViewController.m in Sources */,
 				F40A2AF41F3176A100BEDFFB /* StoreDetailFirstViewController.m in Sources */,
 				F40E7A611F30197F00FD7792 /* PersonalPesRequest.m in Sources */,
@@ -1753,11 +1827,12 @@
 			baseConfigurationReference = 1974EED19EF6BC33D1481465 /* Pods-Photo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = NVRZ8WK38H;
+				DEVELOPMENT_TEAM = NWRGH9QDNR;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Photo/OpenAPI/SDK/Tencent",
 					"$(PROJECT_DIR)/Photo/Others/OpenAPI/SDK/Tencent",
+					"$(PROJECT_DIR)/Photo/ThirdParties/支付宝",
 				);
 				GCC_PREFIX_HEADER = /Users/malin/Desktop/Photo/Photo/hong.pch;
 				INFOPLIST_FILE = Photo/Info.plist;
@@ -1781,11 +1856,12 @@
 			baseConfigurationReference = DFFD29296EE5B8D87B3DB463 /* Pods-Photo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = NVRZ8WK38H;
+				DEVELOPMENT_TEAM = NWRGH9QDNR;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Photo/OpenAPI/SDK/Tencent",
 					"$(PROJECT_DIR)/Photo/Others/OpenAPI/SDK/Tencent",
+					"$(PROJECT_DIR)/Photo/ThirdParties/支付宝",
 				);
 				GCC_PREFIX_HEADER = /Users/malin/Desktop/Photo/Photo/hong.pch;
 				INFOPLIST_FILE = Photo/Info.plist;
