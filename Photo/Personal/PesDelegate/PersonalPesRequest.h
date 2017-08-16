@@ -43,4 +43,13 @@
 
 + (void)updateMemberAvatarWithToken:(NSString *)token withUpfile:(NSData *)data withBlock:(void (^)(NSDictionary *response, NSString *error))finished;
 
++ (void)queryCameraManOrderInfoWithToken:(NSString *)token withBlock:(void (^)(NSDictionary *response, NSString *error))finished;
+
++ (void)cancelCameraManOrderInfoWithToken:(NSString *)token withOrderId:(long)orderId withBlock:(void (^)(NSDictionary *response, NSString *error))finished;
+
++ (void)deleteCameraManOrderInfoWithToken:(NSString *)token withOrderId:(long)orderId withBlock:(void (^)(NSDictionary *response, NSString *error))finished;
+
++ (void)backCameraManOrderInfoWithToken:(NSString *)token withOrderId:(long)orderId withBlock:(void (^)(NSDictionary *response, NSString *error))finished;
+
+
 @end

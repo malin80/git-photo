@@ -20,6 +20,7 @@
     [super viewDidLoad];
     
     [GET_SINGLETON_FOR_CLASS(PersonalManager) queryMemberOrderGoodsInfoWithToken:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue];
+    [GET_SINGLETON_FOR_CLASS(PersonalManager) queryCameraManOrderInfoWithToken:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue];
     
     NavigationBar *bar = [[NavigationBar alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 64) withTitle:@"订单管理"];
     bar.delegate = self;

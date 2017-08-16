@@ -16,6 +16,7 @@ DECLARE_SINGLETON_FOR_CLASS(PersonalManager)
 @property (nonatomic, strong) NSMutableArray *addressInfos;
 @property (nonatomic, strong) AddressInfo *normalAddressInfo;
 @property (nonatomic, strong) NSMutableArray *orderGoodsInfos;
+@property (nonatomic, strong) NSMutableArray *cameraManOrderInfos;
 
 //更新用户信息
 - (void)updateMemberInfoWithNickName:(NSString *)nickName
@@ -54,7 +55,10 @@ DECLARE_SINGLETON_FOR_CLASS(PersonalManager)
 - (void)deleteMemberOrderGoodsInfoWithToken:(NSString *)token withOrderId:(long)orderId; //删除订单
 
 //预约订单
-
+- (void)queryCameraManOrderInfoWithToken:(NSString *)token;         //摄影师预约订单
+- (void)cancelCameraManOrderInfoWithToken:(NSString *)token withOrderId:(long)orderId;  //取消订单
+- (void)backCameraManOrderInfoWithToken:(NSString *)token withOrderId:(long)orderId;    //申请退单
+- (void)deleteCameraManOrderInfoWithToken:(NSString *)token withOrderId:(long)orderId;  //删除订单
 
 //更新app
 - (void)updateApp;

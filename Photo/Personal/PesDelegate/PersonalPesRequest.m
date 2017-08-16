@@ -104,4 +104,24 @@
     [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"MemberControl/updateMemberPic.do" dic:dict finished:finished];
 }
 
++ (void)queryCameraManOrderInfoWithToken:(NSString *)token withBlock:(void (^)(NSDictionary *, NSString *))finished {
+    NSDictionary *dict = @{@"token":token};
+    [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"OrderInfoControl/queryOrderInfo.do" dic:dict finished:finished];
+}
+
++ (void)cancelCameraManOrderInfoWithToken:(NSString *)token withOrderId:(long)orderId withBlock:(void (^)(NSDictionary *, NSString *))finished {
+    NSDictionary *dict = @{@"token":token, @"orderInfoId":@(orderId)};
+    [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"OrderInfoControl/cancleOrderInfo.do" dic:dict finished:finished];
+}
+
++ (void)backCameraManOrderInfoWithToken:(NSString *)token withOrderId:(long)orderId withBlock:(void (^)(NSDictionary *, NSString *))finished {
+    NSDictionary *dict = @{@"token":token, @"orderInfoId":@(orderId)};
+    [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"OrderInfoControl/applyOrderInfo.do" dic:dict finished:finished];
+}
+
++ (void)deleteCameraManOrderInfoWithToken:(NSString *)token withOrderId:(long)orderId withBlock:(void (^)(NSDictionary *, NSString *))finished {
+    NSDictionary *dict = @{@"token":token, @"orderInfoId":@(orderId)};
+    [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"OrderInfoControl/deleteOrderInfo.do" dic:dict finished:finished];
+}
+
 @end

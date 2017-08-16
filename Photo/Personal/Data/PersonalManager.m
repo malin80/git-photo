@@ -23,6 +23,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(PersonalManager)
         self.addressInfos = [NSMutableArray array];
         self.normalAddressInfo = [[AddressInfo alloc] init];
         self.orderGoodsInfos = [NSMutableArray array];
+        self.cameraManOrderInfos = [NSMutableArray array];
     }
     return self;
 }
@@ -237,6 +238,34 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(PersonalManager)
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"deleteMemberOrderGoodsInfoSuccess" object:nil];
             });
         }    }];
+}
+
+- (void)queryCameraManOrderInfoWithToken:(NSString *)token {
+    [PersonalPesRequest queryCameraManOrderInfoWithToken:token withBlock:^(NSDictionary *response, NSString *error) {
+        if ([[response objectForKey:@"errorCode"] unsignedLongValue]== 0) {
+            if (![[response objectForKey:@"data"] isKindOfClass:[NSString class]]) {
+
+            }
+        }
+    }];
+}
+
+- (void)cancelCameraManOrderInfoWithToken:(NSString *)token withOrderId:(long)orderId {
+    [PersonalPesRequest cancelCameraManOrderInfoWithToken:token withOrderId:orderId withBlock:^(NSDictionary *response, NSString *error) {
+        
+    }];
+}
+
+- (void)backCameraManOrderInfoWithToken:(NSString *)token withOrderId:(long)orderId {
+    [PersonalPesRequest backCameraManOrderInfoWithToken:token withOrderId:orderId withBlock:^(NSDictionary *response, NSString *error) {
+        
+    }];
+}
+
+- (void)deleteCameraManOrderInfoWithToken:(NSString *)token withOrderId:(long)orderId {
+    [PersonalPesRequest deleteCameraManOrderInfoWithToken:token withOrderId:orderId withBlock:^(NSDictionary *response, NSString *error) {
+        
+    }];
 }
 
 - (void)updateApp {

@@ -10,76 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photo/Personal/Data/PersonalManager.m"
-            timestampString = "524555495.187947"
+            timestampString = "524556897.419417"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "210"
-            endingLineNumber = "210"
-            landmarkName = "-cancelMemberOrderGoodsInfoWithToken:withOrderId:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[PersonalManager cancelMemberOrderGoodsInfoWithToken:withOrderId:]"
-                  moduleName = "Photo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/malin/Desktop/Photo/Photo/Personal/Data/PersonalManager.m"
-                  timestampString = "524555636.474493"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "210"
-                  endingLineNumber = "210"
-                  offsetFromSymbolStart = "58">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__67-[PersonalManager cancelMemberOrderGoodsInfoWithToken:withOrderId:]_block_invoke"
-                  moduleName = "Photo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/malin/Desktop/Photo/Photo/Personal/Data/PersonalManager.m"
-                  timestampString = "524555636.476739"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "211"
-                  endingLineNumber = "211"
-                  offsetFromSymbolStart = "82">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Photo/Personal/Data/PersonalManager.m"
-            timestampString = "524555495.637178"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
-            landmarkName = "-cancelMemberOrderGoodsInfoWithToken:withOrderId:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Photo/Personal/Data/PersonalManager.m"
-            timestampString = "524555718.507549"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
-            landmarkName = "-queryMemberOrderGoodsInfoWithToken:"
+            startingLineNumber = "245"
+            endingLineNumber = "245"
+            landmarkName = "-queryCameraManOrderInfoWithToken:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
