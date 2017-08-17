@@ -24,7 +24,7 @@
 #import "LoginManager.h"
 #import "PersonalManager.h"
 
-@interface PersonalViewController () <UITableViewDelegate, UITableViewDataSource, LoginViewControllerDelegate>
+@interface PersonalViewController () <UITableViewDelegate, UITableViewDataSource, LoginViewControllerDelegate, PersonalHeaderViewDelegate>
 {
     EntrySection *_section;
 
@@ -139,6 +139,7 @@
 
 - (void)createHeaderView {
     _headerView = [[PersonalHeaderView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 140) withIsLoginOut:GET_SINGLETON_FOR_CLASS(LoginManager).loginOut];
+    _headerView.delegate = self;
     if (!GET_SINGLETON_FOR_CLASS(LoginManager).loginOut) {
         UITapGestureRecognizer *tapGesturRecognizer=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(clickHeaderView)];
         [_headerView addGestureRecognizer:tapGesturRecognizer];
@@ -300,12 +301,29 @@
     [GET_SINGLETON_FOR_CLASS(PersonalManager) updateApp];
 }
 
-#pragma loginViewControllerDelegate ---
+#pragma mark --- LoginViewControllerDelegate ---
 - (void)loginViewControllerGoBack {
     [self.controller dismissViewControllerAnimated:NO completion:^{
         [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"isLogin"];
     }];
 }
+
+#pragma mark --- PersonalHeaderViewDelegate ---
+- (void)loginButtonClick {
+    self.controller = [[LoginViewController alloc] init];
+    self.controller.delegate = self;
+    self.controller.block = ^{
+        [self.controller dismissViewControllerAnimated:YES completion:nil];
+        if (_headerView) {
+            [_headerView removeFromSuperview];
+        }
+        [self createHeaderView];
+    };
+    [self presentViewController:self.controller animated:NO completion:^{
+        
+    }];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

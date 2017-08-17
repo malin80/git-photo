@@ -10,6 +10,13 @@
 #import "AvatarView.h"
 #import "MemberInfo.h"
 
+@protocol PersonalHeaderViewDelegate <NSObject>
+
+@optional
+- (void)loginButtonClick;
+
+@end
+
 @interface PersonalHeaderView : UIView
 
 @property (nonatomic, strong) UIImageView *backImageView;
@@ -25,6 +32,8 @@
 @property (nonatomic, strong) MemberInfo *info;
 
 @property (nonatomic, assign) BOOL loginOut;
+
+@property(nonatomic, weak)  id<PersonalHeaderViewDelegate> delegate;
 
 -(id)initWithFrame:(CGRect)frame withIsLoginOut:(BOOL)loginOut;
 

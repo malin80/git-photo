@@ -160,12 +160,19 @@
     if (!_loginButton) {
         _loginButton = [[UIButton alloc] init];
         [_loginButton setTitle:@"立即登录" forState:UIControlStateNormal];
+        [_loginButton addTarget:self action:@selector(loginButtonClick) forControlEvents:UIControlEventTouchUpInside];
         _loginButton.titleLabel.font = [UIFont systemFontOfSize:16];
         _loginButton.layer.borderWidth = 1;
         _loginButton.layer.borderColor = [[UIColor whiteColor] CGColor];
         _loginButton.layer.cornerRadius = 5;
     }
     return _loginButton;
+}
+
+- (void)loginButtonClick {
+    if ([self.delegate respondsToSelector:@selector(loginButtonClick)]) {
+        [self.delegate loginButtonClick];
+    }
 }
 
 @end
