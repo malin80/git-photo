@@ -30,7 +30,7 @@
     [super viewDidLoad];
     
     self.navigationController.navigationBar.hidden = YES;
-    NavigationBar *bar = [[NavigationBar alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 64) withTitle:@"摄影"];
+    NavigationBar *bar = [[NavigationBar alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 64) withTitle:@"摄影"];
     bar.delegate = self;
     bar.line.hidden=YES;
     [self.view addSubview:bar];
@@ -81,6 +81,7 @@
 
 #pragma mark --- NavigationBarDelegate ---
 - (void)goBack {
+    self.navigationController.navigationBar.hidden = NO;
     [self.navigationController popViewControllerAnimated:NO];
 }
 

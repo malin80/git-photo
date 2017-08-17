@@ -18,7 +18,9 @@
         [self initView];
         [self setImmutableConstraints];
         
-        self.info = GET_SINGLETON_FOR_CLASS(ShoppingManager).shoppingGoodsInfos[0];
+        if (GET_SINGLETON_FOR_CLASS(ShoppingManager).shoppingGoodsInfos.count>0) {
+            self.info = GET_SINGLETON_FOR_CLASS(ShoppingManager).shoppingGoodsInfos[0];
+        }
     }
     return self;
 

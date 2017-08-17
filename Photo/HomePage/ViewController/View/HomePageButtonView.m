@@ -102,7 +102,9 @@
 }
 
 - (void)touchWediingButton {
-    
+    if ([self.delegate respondsToSelector:@selector(touchWeddingButton)]) {
+        [self.delegate touchWeddingButton];
+    }
 }
 
 - (void)touchCarButton {

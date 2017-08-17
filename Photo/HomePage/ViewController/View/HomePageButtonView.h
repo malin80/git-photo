@@ -13,6 +13,7 @@
 @optional
 
 - (void)touchCameraButton;
+- (void)touchWeddingButton;
 
 @end
 

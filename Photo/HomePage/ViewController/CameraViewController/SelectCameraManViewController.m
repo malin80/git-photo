@@ -90,6 +90,7 @@
 
 #pragma mark --- NavigationBarDelegate ---
 - (void)goBack {
+    self.navigationController.navigationBar.hidden = NO;
     [self.navigationController popViewControllerAnimated:NO];
 }
 

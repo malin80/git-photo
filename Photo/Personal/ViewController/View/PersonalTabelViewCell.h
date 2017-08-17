@@ -13,5 +13,9 @@
 @property (nonatomic, strong) UIImageView *icon;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UIImageView *arrow;
+@property (nonatomic, strong) UIImageView *icon1;
+@property (nonatomic, strong) UIImageView *icon2;
+@property (nonatomic, strong) UILabel *titleLabel1;
+@property (nonatomic, strong) UILabel *titleLabel2;
 
 @end

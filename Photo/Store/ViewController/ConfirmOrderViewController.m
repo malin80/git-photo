@@ -235,6 +235,7 @@
 
 #pragma mark --- NavigationBarDelegate ---
 - (void)goBack {
+    self.navigationController.navigationBar.hidden = NO;
     [self.navigationController popViewControllerAnimated:NO];
 }
 #pragma mark - GGActionSheet代理方法

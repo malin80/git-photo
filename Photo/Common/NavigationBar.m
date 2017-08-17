@@ -61,6 +61,7 @@
 - (void)goBack {
     if ([self.delegate respondsToSelector:@selector(goBack)]) {
         [self.delegate goBack];
+        [self removeFromSuperview];
     }
 }
 

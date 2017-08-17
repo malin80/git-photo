@@ -8,6 +8,7 @@
 
 #import "HomePageViewController.h"
 #import "CameraViewController.h"
+#import "WeddingViewController.h"
 
 #import "HomePageScrollView.h"
 #import "HomePageButtonView.h"
@@ -83,7 +84,6 @@
     
     UIScrollView *scrollView = [[UIScrollView alloc] init];
     scrollView.frame = CGRectMake(0, 0, ScreenWidth, 140);
-    scrollView.backgroundColor = [UIColor grayColor];
     scrollView.contentSize = CGSizeMake(images.count*ScreenWidth, 140);
     scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.showsVerticalScrollIndicator = NO;
@@ -124,14 +124,14 @@
 
 - (HomePageScrollView *)scrollView {
     if (!_scrollView) {
-        _scrollView = [[HomePageScrollView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 160) withIsHomePage:YES];
+        _scrollView = [[HomePageScrollView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 160) withIsHomePage:YES];
     }
     return _scrollView;
 }
 
 - (HomePageButtonView *)buttonView {
     if (!_buttonView) {
-        _buttonView = [[HomePageButtonView alloc] initWithFrame:CGRectMake(0, 250, [[UIScreen mainScreen] bounds].size.width, 160)];
+        _buttonView = [[HomePageButtonView alloc] initWithFrame:CGRectMake(0, 250, ScreenWidth, 160)];
         _buttonView.delegate = self;
     }
     return _buttonView;
@@ -140,6 +140,11 @@
 #pragma mark --- HomePageButtonViewDelegate ---
 - (void)touchCameraButton {
     CameraViewController *controller = [[CameraViewController alloc] init];
+    [self.navigationController pushViewController:controller animated:NO];
+}
+
+- (void)touchWeddingButton {
+    WeddingViewController *controller = [[WeddingViewController alloc] init];
     [self.navigationController pushViewController:controller animated:NO];
 }
 
