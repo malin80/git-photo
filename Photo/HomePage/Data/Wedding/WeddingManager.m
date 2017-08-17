@@ -59,8 +59,12 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(WeddingManager)
     [WeddingPesRequest queryWeddingBusinessWithId:businessId withBlock:^(NSDictionary *responseObject, NSString *error) {
         if ([[responseObject objectForKey:@"errorCode"] unsignedLongValue]== 0) {
             if (![[responseObject objectForKey:@"data"] isKindOfClass:[NSString class]]) {
-
+                NSDictionary *dict = [responseObject objectForKey:@"data"];
+                self.businessComments = [dict objectForKey:@"businessCommentList"];
             }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"queryWeddingBusinessWithIdSuceess" object:nil];
+            });
         }
     }];
 }

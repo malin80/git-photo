@@ -95,6 +95,9 @@
 		F41371A91F453DF30071F1BA /* WeddingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F41371A81F453DF30071F1BA /* WeddingManager.m */; };
 		F41371AC1F4540D20071F1BA /* WeddingBusinessInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F41371AB1F4540D20071F1BA /* WeddingBusinessInfo.m */; };
 		F41371AF1F4555E50071F1BA /* BusinessDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F41371AE1F4555E50071F1BA /* BusinessDetailViewController.m */; };
+		F41371B21F4575860071F1BA /* BusinessCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F41371B11F4575860071F1BA /* BusinessCommentTableViewCell.m */; };
+		F41371B51F4576E40071F1BA /* BusinessCaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F41371B41F4576E40071F1BA /* BusinessCaseViewController.m */; };
+		F41371B81F4576F00071F1BA /* BusinessTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F41371B71F4576F00071F1BA /* BusinessTypeViewController.m */; };
 		F41B19BE1F340EC00026E483 /* ShoppingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F41B19BD1F340EC00026E483 /* ShoppingManager.m */; };
 		F41B19C11F3411660026E483 /* PersonalManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F41B19C01F3411660026E483 /* PersonalManager.m */; };
 		F41B19C41F3416120026E483 /* AddGoodsToShoppingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F41B19C31F3416120026E483 /* AddGoodsToShoppingViewController.m */; };
@@ -383,6 +386,12 @@
 		F41371AB1F4540D20071F1BA /* WeddingBusinessInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeddingBusinessInfo.m; sourceTree = "<group>"; };
 		F41371AD1F4555E50071F1BA /* BusinessDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessDetailViewController.h; sourceTree = "<group>"; };
 		F41371AE1F4555E50071F1BA /* BusinessDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessDetailViewController.m; sourceTree = "<group>"; };
+		F41371B01F4575860071F1BA /* BusinessCommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessCommentTableViewCell.h; sourceTree = "<group>"; };
+		F41371B11F4575860071F1BA /* BusinessCommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessCommentTableViewCell.m; sourceTree = "<group>"; };
+		F41371B31F4576E40071F1BA /* BusinessCaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessCaseViewController.h; sourceTree = "<group>"; };
+		F41371B41F4576E40071F1BA /* BusinessCaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessCaseViewController.m; sourceTree = "<group>"; };
+		F41371B61F4576F00071F1BA /* BusinessTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessTypeViewController.h; sourceTree = "<group>"; };
+		F41371B71F4576F00071F1BA /* BusinessTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessTypeViewController.m; sourceTree = "<group>"; };
 		F41B19BC1F340EC00026E483 /* ShoppingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingManager.h; sourceTree = "<group>"; };
 		F41B19BD1F340EC00026E483 /* ShoppingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingManager.m; sourceTree = "<group>"; };
 		F41B19BF1F3411660026E483 /* PersonalManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalManager.h; sourceTree = "<group>"; };
@@ -924,6 +933,10 @@
 				F41371901F452CE80071F1BA /* WeddingViewController.m */,
 				F41371AD1F4555E50071F1BA /* BusinessDetailViewController.h */,
 				F41371AE1F4555E50071F1BA /* BusinessDetailViewController.m */,
+				F41371B31F4576E40071F1BA /* BusinessCaseViewController.h */,
+				F41371B41F4576E40071F1BA /* BusinessCaseViewController.m */,
+				F41371B61F4576F00071F1BA /* BusinessTypeViewController.h */,
+				F41371B71F4576F00071F1BA /* BusinessTypeViewController.m */,
 			);
 			path = WeddingViewController;
 			sourceTree = "<group>";
@@ -933,6 +946,8 @@
 			children = (
 				F41371931F452E7D0071F1BA /* WeddingTableViewCell.h */,
 				F41371941F452E7D0071F1BA /* WeddingTableViewCell.m */,
+				F41371B01F4575860071F1BA /* BusinessCommentTableViewCell.h */,
+				F41371B11F4575860071F1BA /* BusinessCommentTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1695,17 +1710,20 @@
 				F40733741F3C49400006F1F6 /* DressManDetailThirdViewController.m in Sources */,
 				F48237421F27078200DDD487 /* HomePageButtonView.m in Sources */,
 				F481E9581F28551C00EE3D7C /* BaseViewController.m in Sources */,
+				F41371B81F4576F00071F1BA /* BusinessTypeViewController.m in Sources */,
 				A514B1111F290533006A765F /* UIColor+EX.m in Sources */,
 				F40A2AEB1F31671000BEDFFB /* GoodsInfo.m in Sources */,
 				A520C6CD1F2B89A400202622 /* DLLRUCache.m in Sources */,
 				F407336B1F3C435E0006F1F6 /* DressManDetailViewController.m in Sources */,
 				F41B19D71F3462070026E483 /* CollectGoodsInfo.m in Sources */,
+				F41371B51F4576E40071F1BA /* BusinessCaseViewController.m in Sources */,
 				A520C6D21F2B89A400202622 /* DLTabedSlideView.m in Sources */,
 				F48679301F3D769000612E27 /* StoreDetailThirdViewController.m in Sources */,
 				A520C6CF1F2B89A400202622 /* DLSlideView.m in Sources */,
 				F40575701F2AE38D003C8AF2 /* HomePagePesRequest.m in Sources */,
 				F40A2AE81F3165D600BEDFFB /* StoreManager.m in Sources */,
 				F482373F1F27041300DDD487 /* HomePageScrollView.m in Sources */,
+				F41371B21F4575860071F1BA /* BusinessCommentTableViewCell.m in Sources */,
 				F404B76B1F443CB7000D753E /* AboutViewController.m in Sources */,
 				F40733581F3C397B0006F1F6 /* CameraManDetailFirstViewController.m in Sources */,
 				F4FDD6AB1F2C379D007263D4 /* OrderManageViewController.m in Sources */,

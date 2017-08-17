@@ -13,6 +13,7 @@
 DECLARE_SINGLETON_FOR_CLASS(WeddingManager)
 
 @property (nonatomic, strong) NSMutableArray *bussinessInfos;
+@property (nonatomic, strong) NSMutableArray *businessComments;
 
 - (void)queryAllWeddingBusiness;
 
