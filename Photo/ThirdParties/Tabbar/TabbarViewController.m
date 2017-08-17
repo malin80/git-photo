@@ -17,6 +17,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+   [self.navigationController.navigationBar setTranslucent:YES];
+    UIImage *backgroundImage=[UIImage imageNamed:@"caihong.jpg"];
+    CGSize titleSize =CGSizeMake(ScreenWidth, 64);
+//    //self.navigationController.navigationBar.bounds.size;  //获取Navigation Bar的位置和大小
+    backgroundImage = [self scaleToSize:backgroundImage size:titleSize];//设置图片的大小与Navigation Bar相同
+    [self.navigationController.navigationBar setBackgroundImage:backgroundImage forBarMetrics:UIBarMetricsDefault];  //设置背景
     [self initViewControllers];
     self.tabBar.backgroundColor = [UIColor whiteColor];
     
@@ -34,10 +40,15 @@
     self.tabBar.itemTitleFont = [UIFont systemFontOfSize:10*SCALEW];
     self.tabBar.itemTitleSelectedFont = [UIFont systemFontOfSize:10*SCALEW];
 }
-
+- (UIImage *)scaleToSize:(UIImage *)img size:(CGSize)size{
+    UIGraphicsBeginImageContext(size);
+    [img drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    UIImage* scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return scaledImage;
+}
 - (void)initViewControllers {
     HomePageViewController  *navController1 = [[HomePageViewController alloc] init];
-    //NaviViewController *navController1 = [[NaviViewController alloc] initWithRootViewController:controller1];
     navController1.yp_tabItemTitle = @"主页";
     UIImage *image1 = [UIImage imageNamed:@"tabbar_homepage_black"];
     UIImage *selectedImage1 = [UIImage imageNamed:@"tabbar_homepage_red"];
@@ -47,7 +58,7 @@
     navController1.yp_tabItemSelectedImage = subSelectedImage1;
     
     StoreViewController *navController2 = [[StoreViewController alloc] init];
-    //NaviViewController *navController2 = [[NaviViewController alloc] initWithRootViewController:controller2];
+   
     navController2.yp_tabItemTitle = @"商店";
     UIImage *image2 = [UIImage imageNamed:@"tabbar_store_black"];
     UIImage *selectedImage2 = [UIImage imageNamed:@"tabbar_store_red"];
@@ -67,7 +78,6 @@
     navController3.yp_tabItemSelectedImage = subSelectedImage3;
     
     PersonalViewController *navController4 = [[PersonalViewController alloc] init];
-    //NaviViewController *navController2 = [[NaviViewController alloc] initWithRootViewController:controller2];
     navController4.yp_tabItemTitle = @"个人中心";
     UIImage *image4 = [UIImage imageNamed:@"tabbar_personal_black"];
     UIImage *selectedImage4 = [UIImage imageNamed:@"tabbar_personal_red"];

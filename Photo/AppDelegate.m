@@ -30,6 +30,7 @@
             TabbarViewController *controller = [[TabbarViewController alloc] init];
             UINavigationController *na=[[UINavigationController alloc]initWithRootViewController:controller];
             self.window.rootViewController = na;
+            
         } else {
             LoginViewController *login=[[LoginViewController alloc]init];
             login.block = ^{

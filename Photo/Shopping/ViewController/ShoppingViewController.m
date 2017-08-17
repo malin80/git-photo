@@ -247,6 +247,7 @@
 
 - (void)buyButtonClick {
     ConfirmOrderViewController *controller = [[ConfirmOrderViewController alloc] init];
+    NSLog(@"%@",_selectedArray);
     controller.goodsInfos = _selectedArray;
     [self.navigationController pushViewController:controller animated:NO];
 }

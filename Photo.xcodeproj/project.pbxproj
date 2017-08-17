@@ -46,6 +46,7 @@
 		A520C6D21F2B89A400202622 /* DLTabedSlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = A520C6CA1F2B89A400202622 /* DLTabedSlideView.m */; };
 		A520C6D31F2B89A400202622 /* DLUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = A520C6CC1F2B89A400202622 /* DLUtility.m */; };
 		A55DEFE71F42F3FD00092AD3 /* GGActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = A55DEFE61F42F3FD00092AD3 /* GGActionSheet.m */; };
+		A5A2CD5E1F448870004495C5 /* caihong.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A5A2CD5D1F448870004495C5 /* caihong.jpg */; };
 		F40430831F29790A00DDB2E7 /* main_my_bg.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F40430821F29790A00DDB2E7 /* main_my_bg.jpeg */; };
 		F40430951F29D0FD00DDB2E7 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F40430941F29D0FD00DDB2E7 /* LoginViewController.m */; };
 		F404B7661F4420DE000D753E /* CameraManOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F404B7651F4420DE000D753E /* CameraManOrderTableViewCell.m */; };
@@ -281,6 +282,7 @@
 		A520C6CC1F2B89A400202622 /* DLUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLUtility.m; sourceTree = "<group>"; };
 		A55DEFE51F42F3FD00092AD3 /* GGActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGActionSheet.h; sourceTree = "<group>"; };
 		A55DEFE61F42F3FD00092AD3 /* GGActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGActionSheet.m; sourceTree = "<group>"; };
+		A5A2CD5D1F448870004495C5 /* caihong.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = caihong.jpg; sourceTree = "<group>"; };
 		CD7508C1BC4827C026564603 /* libPods-Photo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Photo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFFD29296EE5B8D87B3DB463 /* Pods-Photo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Photo/Pods-Photo.release.xcconfig"; sourceTree = "<group>"; };
 		F40430821F29790A00DDB2E7 /* main_my_bg.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = main_my_bg.jpeg; sourceTree = "<group>"; };
@@ -903,6 +905,7 @@
 		F41B19C51F341DE00026E483 /* Store */ = {
 			isa = PBXGroup;
 			children = (
+				A5A2CD5D1F448870004495C5 /* caihong.jpg */,
 				F4FF8D981F39645C00E7739D /* store_less.png */,
 				F4FF8D991F39645C00E7739D /* store_more.png */,
 				F41B19C61F341DE00026E483 /* store_number_add.png */,
@@ -1472,6 +1475,7 @@
 				F48237531F27106300DDD487 /* homepage_wedding.png in Resources */,
 				F4A7A1341F25A3A5009FAAEE /* tabbar_shopping_red.png in Resources */,
 				F4A7A11A1F259445009FAAEE /* personal_shareapp.png in Resources */,
+				A5A2CD5E1F448870004495C5 /* caihong.jpg in Resources */,
 				A50BB4141F3DAF3700F6158B /* icon_next@2x.png in Resources */,
 				F40575661F2AD29F003C8AF2 /* personal_update_pwd.png in Resources */,
 				F4A7A1301F25A3A5009FAAEE /* tabbar_homepage_red.png in Resources */,

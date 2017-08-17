@@ -47,6 +47,7 @@
     [self initView];
     _isClicked1 = NO;
     _array = [NSArray arrayWithObjects:@"产品销量升序", @"产品销量降序", nil];
+    
 }
 
 - (void)addNotification {
