@@ -28,7 +28,9 @@
     [self.contentView addSubview:self.icon2];
     [self.contentView addSubview:self.titleLabel1];
     [self.contentView addSubview:self.titleLabel2];
-
+    [self.contentView addSubview:self.subIcon];
+    [self.contentView addSubview:self.subTitleLabel];
+    [self.contentView addSubview:self.subAddress];
 }
 
 - (void)setImmutableConstraints {
@@ -73,6 +75,23 @@
     [_titleLabel2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.icon2.mas_right).with.offset(20);
         make.top.equalTo(_icon2);
+    }];
+    
+    [_subIcon mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.contentView.mas_left).with.offset(10);
+        make.centerY.equalTo(self.contentView);
+        make.height.equalTo(@(40));
+        make.width.equalTo(@(40));
+    }];
+    
+    [_subTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(_subIcon.mas_top);
+        make.left.equalTo(_subIcon.mas_right);
+    }];
+    
+    [_subAddress mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.mas_bottom);
+        make.left.equalTo(_subTitleLabel);
     }];
 }
 
@@ -131,6 +150,31 @@
         _titleLabel2.textColor = [UIColor colorR:73 G:73 B:73 alpha:1];
     }
     return _titleLabel2;
+}
+
+- (UIImageView *)subIcon {
+    if (!_subIcon) {
+        _subIcon = [[UIImageView alloc] init];
+    }
+    return _subIcon;
+}
+
+- (UILabel *)subTitleLabel {
+    if (!_subTitleLabel) {
+        _subTitleLabel = [[UILabel alloc] init];
+        _subTitleLabel.font = [UIFont systemFontOfSize:12];
+        _subTitleLabel.textColor = [UIColor colorR:73 G:73 B:73 alpha:1];
+    }
+    return _subTitleLabel;
+}
+
+- (UILabel *)subAddress {
+    if (!_subAddress) {
+        _subAddress = [[UILabel alloc] init];
+        _subAddress.font = [UIFont systemFontOfSize:12];
+        _subAddress.textColor = [UIColor colorR:73 G:73 B:73 alpha:1];
+    }
+    return _subAddress;
 }
 
 @end

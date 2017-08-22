@@ -13,5 +13,6 @@
 @interface BusinessDetailViewController : BaseViewController
 
 @property (nonatomic, strong) WeddingBusinessInfo *info;
+@property (nonatomic, assign) BOOL isSubViewController;
 
 @end

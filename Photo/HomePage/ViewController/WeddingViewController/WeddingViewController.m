@@ -77,6 +77,7 @@
     cell.detailLabel.text = [NSString stringWithFormat:@"套系 %ld/ 案例 %ld/ 评论 %ld",info.businessTypeCount,info.businessCaseCount,info.businessCommentCount];
     cell.subTitle1Label.text = info.businessSubText1;
     cell.subTitle2Label.text = info.businessSubText2;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [SDWebImageCache getImageFromSDWebImageWithUrlString:[NSString stringWithFormat:@"%@%@",baseUrl,info.businessPic] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
         cell.icon.image = image;
     }];

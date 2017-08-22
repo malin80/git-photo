@@ -36,4 +36,9 @@
 @property (nonatomic, copy) NSString *businessCasePic;
 @property (nonatomic, copy) NSString *businessTypeName;
 @property (nonatomic, copy) NSString *businessTypeStyle;
+
+@property (nonatomic, copy) NSString *businessTypeDetailDes;
+@property (nonatomic, copy) NSString *businessTypeDetailName;
+@property (nonatomic, copy) NSString *businessTypeDetailPic;
+
 @end

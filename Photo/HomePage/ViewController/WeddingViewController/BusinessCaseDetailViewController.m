@@ -10,6 +10,7 @@
 #import "BusinessCaseDetailTableViewCell.h"
 #import "SDWebImageCache.h"
 #import "NavigationBar.h"
+#import "BusinessDetailViewController.h"
 
 @interface BusinessCaseDetailViewController () <UITableViewDelegate, UITableViewDataSource, NavigationBarDelegate>
 {
@@ -37,21 +38,32 @@
 
 - (void)createHeaderView {
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, 60)];
-    headerView.backgroundColor = [UIColor redColor];
+    headerView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:headerView];
     
-    UILabel *caseNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 60)];
+    UILabel *caseNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 140, 60)];
     caseNameLabel.text = self.info.businessName;
+    caseNameLabel.textColor = [UIColor colorR:68 G:72 B:70 alpha:1];
+    caseNameLabel.font = [UIFont systemFontOfSize:16];
     [headerView addSubview:caseNameLabel];
     
-    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(ScreenWidth - 100, 0, 60, 60)];
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(ScreenWidth - 120, 20, 80, 20)];
     [button setTitle:@"进入店铺" forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor colorR:227 G:209 B:184 alpha:1] forState:UIControlStateNormal];
+    button.titleLabel.font = [UIFont systemFontOfSize:14];
+    button.layer.borderWidth = 1;
+    button.layer.borderColor = [[UIColor colorR:227 G:209 B:184 alpha:1] CGColor];
+    button.layer.cornerRadius = 10;
+    [button addTarget:self action:@selector(enterStore) forControlEvents:UIControlEventTouchUpInside];
     [headerView addSubview:button];
+}
+
+- (void)enterStore {
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 - (void)initDataSource {
     _picArray = [self.info.businessCasePic componentsSeparatedByString:@";"];
-
 }
 
 - (void)createTableView {
@@ -98,23 +110,33 @@
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 40)];
     titleLabel.text = self.info.businessTypeName;
     titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.font = [UIFont systemFontOfSize:14];
+    titleLabel.textColor = [UIColor colorR:68 G:72 B:70 alpha:1];
     [footerView addSubview:titleLabel];
     UILabel *priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(ScreenWidth/2-80, 40, 200, 40)];
     priceLabel.text = [NSString stringWithFormat:@"¥%ld",self.info.businessCasePrice];
+    priceLabel.font = [UIFont systemFontOfSize:14];
+    priceLabel.textColor = [UIColor colorR:68 G:72 B:70 alpha:1];
     [footerView addSubview:priceLabel];
     UILabel *countLabel = [[UILabel alloc] initWithFrame:CGRectMake(ScreenWidth/2+40, 40, 200, 40)];
     countLabel.text = [NSString stringWithFormat:@"已售：%ld",self.info.businessTypeSoldNumber];
+    countLabel.font = [UIFont systemFontOfSize:14];
+    countLabel.textColor = [UIColor colorR:68 G:72 B:70 alpha:1];
     [footerView addSubview:countLabel];
     return footerView;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 40)];
-    UILabel *styleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 40)];
+    UILabel *styleLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, ScreenWidth, 40)];
     styleLabel.text = [NSString stringWithFormat:@"风格：%@",self.info.businessTypeStyle];
+    styleLabel.font = [UIFont systemFontOfSize:14];
+    styleLabel.textColor = [UIColor colorR:68 G:72 B:70 alpha:1];
     [headerView addSubview:styleLabel];
-    UILabel *priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 40, ScreenWidth, 40)];
+    UILabel *priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 40, ScreenWidth, 40)];
     priceLabel.text = [NSString stringWithFormat:@"参考价：%ld",self.info.businessCasePrice];
+    priceLabel.font = [UIFont systemFontOfSize:14];
+    priceLabel.textColor = [UIColor colorR:68 G:72 B:70 alpha:1];
     [headerView addSubview:priceLabel];
     return headerView;
 }

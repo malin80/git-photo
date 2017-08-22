@@ -58,6 +58,7 @@
     cell.titleLabel.text = info.businessTypeName;
     cell.casePriceLabel.text = [NSString stringWithFormat:@"%ld",info.businessCasePrice];
     cell.tagLabel.text = info.businessTypeStyle;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     NSArray *temp=[info.businessCasePic componentsSeparatedByString:@";"];
     NSString *picString = temp[0];
     [SDWebImageCache getImageFromSDWebImageWithUrlString:[NSString stringWithFormat:@"%@%@",baseUrl,picString] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {

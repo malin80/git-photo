@@ -16,6 +16,7 @@
 #import "DLTabedSlideView.h"
 #import "BusinessCaseViewController.h"
 #import "BusinessTypeViewController.h"
+#import "BusinessTypeSubViewController.h"
 
 #define kScrollViewHeight 160
 
@@ -53,7 +54,9 @@
 }
 
 - (void)queryWeddingBusinessWithIdSuceess {
-    [self createCommentTableView];
+    if (!_isSubViewController) {
+        [self createCommentTableView];
+    }
     [self createSlideView];
 }
 
@@ -70,7 +73,9 @@
     [self createScrollView];
     [self createHeaderView];
     [self createTableView];
-
+    if (_isSubViewController) {
+        [self createSlideView];
+    }
 }
 
 - (void)createScrollView {
@@ -187,21 +192,35 @@
     _tabedSlideView.tabItemSelectedColor = [UIColor colorWithRed:0.833 green:0.052 blue:0.130 alpha:1.000];
     _tabedSlideView.tabbarTrackColor = [UIColor colorWithRed:0.833 green:0.052 blue:0.130 alpha:1.000];
     _tabedSlideView.tabbarBottomSpacing = 3.0;
-    
-    DLTabedbarItem *item1 = [DLTabedbarItem itemWithTitle:@"商家案例" image:nil selectedImage:nil];
-    DLTabedbarItem *item2 = [DLTabedbarItem itemWithTitle:@"热门套系" image:nil selectedImage:nil];
-    _tabedSlideView.tabbarItems = @[item1, item2];
+    if (!_isSubViewController) {
+        DLTabedbarItem *item1 = [DLTabedbarItem itemWithTitle:@"商家案例" image:nil selectedImage:nil];
+        DLTabedbarItem *item2 = [DLTabedbarItem itemWithTitle:@"热门套系" image:nil selectedImage:nil];
+        _tabedSlideView.tabbarItems = @[item1, item2];
+    } else {
+        DLTabedbarItem *item1 = [DLTabedbarItem itemWithTitle:@"套系详情" image:nil selectedImage:nil];
+        DLTabedbarItem *item2 = [DLTabedbarItem itemWithTitle:@"参考案例" image:nil selectedImage:nil];
+        _tabedSlideView.tabbarItems = @[item1, item2];
+    }
 
     [_tabedSlideView buildTabbar];
     _tabedSlideView.selectedIndex = 0;
     [_backView addSubview:_tabedSlideView];
     
-    [_tabedSlideView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_commentTabelView.mas_bottom).with.offset(10);
-        make.width.equalTo(@(ScreenWidth));
-        make.height.equalTo(@(320));
-        make.left.equalTo(_backView.mas_left);
-    }];
+    if (_isSubViewController) {
+        [_tabedSlideView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(_tableView.mas_bottom).with.offset(10);
+            make.width.equalTo(@(ScreenWidth));
+            make.height.equalTo(@(320));
+            make.left.equalTo(_backView.mas_left);
+        }];
+    } else {
+        [_tabedSlideView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(_commentTabelView.mas_bottom).with.offset(-40);
+            make.width.equalTo(@(ScreenWidth));
+            make.height.equalTo(@(320));
+            make.left.equalTo(_backView.mas_left);
+        }];
+    }
 }
 
 #pragma mark --- DLTabedSlideViewDelegate ---
@@ -210,19 +229,36 @@
 }
 
 - (UIViewController *)DLTabedSlideView:(DLTabedSlideView *)sender controllerAt:(NSInteger)index {
-    switch (index) {
-        case 0:
-        {
-            BusinessCaseViewController *controller = [[BusinessCaseViewController alloc] init];
-            return controller;
+    if (!_isSubViewController) {
+        switch (index) {
+            case 0:
+            {
+                BusinessCaseViewController *controller = [[BusinessCaseViewController alloc] init];
+                return controller;
+            }
+            case 1:
+            {
+                BusinessTypeViewController *controller = [[BusinessTypeViewController alloc] init];
+                return controller;
+            }
+            default:
+                return nil;
         }
-        case 1:
-        {
-            BusinessTypeViewController *controller = [[BusinessTypeViewController alloc] init];
-            return controller;
+    } else {
+        switch (index) {
+            case 0:
+            {
+                BusinessTypeSubViewController *controller = [[BusinessTypeSubViewController alloc] init];
+                return controller;
+            }
+            case 1:
+            {
+                BusinessTypeViewController *controller = [[BusinessTypeViewController alloc] init];
+                return controller;
+            }
+            default:
+                return nil;
         }
-        default:
-            return nil;
     }
 }
 
@@ -237,7 +273,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (tableView.tag == 101) {
-        return 3;
+        if (!_isSubViewController) {
+            return 3;
+        } else {
+            return 2;
+        }
     } else {
         return GET_SINGLETON_FOR_CLASS(WeddingManager).businessComments.count;
     }
@@ -257,8 +297,16 @@
                 cell.titleLabel2.text = self.info.businessSubText2;
                 break;
             case 1:
-                cell.icon.image = [UIImage imageNamed:@"personal_address"];
-                cell.titleLabel.text = self.info.businessAddress;
+                if (!_isSubViewController) {
+                    cell.icon.image = [UIImage imageNamed:@"personal_address"];
+                    cell.titleLabel.text = self.info.businessAddress;
+                } else {
+                    [SDWebImageCache getImageFromSDWebImageWithUrlString:[NSString stringWithFormat:@"%@%@",baseUrl,self.info.businessPic] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                        cell.subIcon.image = image;
+                    }];
+                    cell.subTitleLabel.text = self.info.businessName;
+                    cell.subAddress.text = self.info.businessAddress;
+                }
                 break;
             case 2:
                 cell.titleLabel.text = self.info.businessPhone;
@@ -306,18 +354,31 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat height = 0;
     if (tableView.tag == 101) {
-        switch (indexPath.row) {
-            case 0:
-                height = 60;
-                break;
-            case 1:
-                height = 40;
-                break;
-            case 2:
-                height = 40;
-                break;
-            default:
-                break;
+        if (!_isSubViewController) {
+            switch (indexPath.row) {
+                case 0:
+                    height = 60;
+                    break;
+                case 1:
+                    height = 40;
+                    break;
+                case 2:
+                    height = 40;
+                    break;
+                default:
+                    break;
+            }
+        } else {
+            switch (indexPath.row) {
+                case 0:
+                    height = 60;
+                    break;
+                case 1:
+                    height = 80;
+                    break;
+                default:
+                    break;
+            }
         }
     } else {
         BusinessCommentTableViewCell *cell = [self tableView:_commentTabelView cellForRowAtIndexPath:indexPath];
@@ -332,7 +393,7 @@
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, 100, 40)];
         label.text = @"顾客评价";
         [view addSubview:label];
-        view.backgroundColor = [UIColor orangeColor];
+        view.backgroundColor = [UIColor clearColor];
         return view;
     } else {
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 40)];
@@ -344,7 +405,7 @@
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     if (tableView.tag == 102) {
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 40)];
-        view.backgroundColor = [UIColor redColor];
+        view.backgroundColor = [UIColor colorR:238 G:238 B:238 alpha:1];
         return view;
     } else {
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 40)];
@@ -355,7 +416,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     if (tableView.tag == 102) {
-        return 40;
+        return 20;
     } else {
         return 0;
     }

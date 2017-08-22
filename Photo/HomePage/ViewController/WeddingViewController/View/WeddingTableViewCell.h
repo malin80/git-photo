@@ -17,5 +17,9 @@
 @property (nonatomic, strong) UILabel *line;
 @property (nonatomic, strong) UILabel *subTitle1Label;
 @property (nonatomic, strong) UILabel *subTitle2Label;
+@property (nonatomic, strong) UILabel *titleLabel1;
+@property (nonatomic, strong) UILabel *titleLabel2;
+@property (nonatomic, strong) UILabel *giftLabel1;
+@property (nonatomic, strong) UILabel *giftLabel2;
 
 @end

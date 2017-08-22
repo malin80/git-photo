@@ -21,6 +21,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(WeddingManager)
     if (self) {
         self.bussinessInfos = [NSMutableArray array];
         self.businessCases = [NSMutableArray array];
+        self.businessTypeDetail = [NSMutableArray array];
     }
     return self;
 }
@@ -61,6 +62,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(WeddingManager)
         if ([[responseObject objectForKey:@"errorCode"] unsignedLongValue]== 0) {
             if (![[responseObject objectForKey:@"data"] isKindOfClass:[NSString class]]) {
                 [self.businessCases removeAllObjects];
+                [self.businessTypeDetail removeAllObjects];
                 WeddingBusinessInfo *info = [[WeddingBusinessInfo alloc] init];
                 NSDictionary *dict = [responseObject objectForKey:@"data"];
                 self.businessComments = [dict objectForKey:@"businessCommentList"];
@@ -78,6 +80,14 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(WeddingManager)
                         info.businessTypeId = [[dict objectForKey:@"businessSetId"] unsignedLongValue];
                         info.businessCaseBrowser = [[dict objectForKey:@"businessCaseBrowser"] unsignedLongValue];
                         [self.businessCases addObject:info];
+                    }
+                    NSArray *typeDetail = [cases objectForKey:@"businessSetDetailList"];
+                    for (NSDictionary *detailDict in typeDetail) {
+                        WeddingBusinessInfo *info = [[WeddingBusinessInfo alloc] init];
+                        info.businessTypeDetailDes = [detailDict objectForKey:@"businessSetDetailDescribe"];
+                        info.businessTypeDetailName = [detailDict objectForKey:@"businessSetDetailName"];
+                        info.businessTypeDetailPic = [detailDict objectForKey:@"businessSetDetailIcon"];
+                        [self.businessTypeDetail addObject:info];
                     }
                 }
             }

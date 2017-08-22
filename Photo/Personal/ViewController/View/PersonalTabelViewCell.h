@@ -18,4 +18,9 @@
 @property (nonatomic, strong) UILabel *titleLabel1;
 @property (nonatomic, strong) UILabel *titleLabel2;
 
+@property (nonatomic, strong) UIImageView *subIcon;
+@property (nonatomic, strong) UIImageView *starView;
+@property (nonatomic, strong) UILabel *subTitleLabel;
+@property (nonatomic, strong) UILabel *subAddress;
+
 @end

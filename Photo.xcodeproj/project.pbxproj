@@ -138,6 +138,7 @@
 		F49D6E7C1F4BBF5E00C21477 /* BusinessTypesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F49D6E7B1F4BBF5E00C21477 /* BusinessTypesTableViewCell.m */; };
 		F49D6E821F4BD79D00C21477 /* BusinessCaseDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F49D6E811F4BD79D00C21477 /* BusinessCaseDetailViewController.m */; };
 		F49D6E851F4BD9B100C21477 /* BusinessCaseDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F49D6E841F4BD9B100C21477 /* BusinessCaseDetailTableViewCell.m */; };
+		F49D6E881F4C002200C21477 /* BusinessTypeSubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F49D6E871F4C002200C21477 /* BusinessTypeSubViewController.m */; };
 		F4A7A0901F256B96009FAAEE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7A08F1F256B96009FAAEE /* main.m */; };
 		F4A7A0931F256B96009FAAEE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7A0921F256B96009FAAEE /* AppDelegate.m */; };
 		F4A7A0961F256B96009FAAEE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7A0951F256B96009FAAEE /* ViewController.m */; };
@@ -458,6 +459,8 @@
 		F49D6E811F4BD79D00C21477 /* BusinessCaseDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessCaseDetailViewController.m; sourceTree = "<group>"; };
 		F49D6E831F4BD9B100C21477 /* BusinessCaseDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessCaseDetailTableViewCell.h; sourceTree = "<group>"; };
 		F49D6E841F4BD9B100C21477 /* BusinessCaseDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessCaseDetailTableViewCell.m; sourceTree = "<group>"; };
+		F49D6E861F4C002200C21477 /* BusinessTypeSubViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessTypeSubViewController.h; sourceTree = "<group>"; };
+		F49D6E871F4C002200C21477 /* BusinessTypeSubViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessTypeSubViewController.m; sourceTree = "<group>"; };
 		F4A7A08B1F256B96009FAAEE /* Photo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4A7A08F1F256B96009FAAEE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F4A7A0911F256B96009FAAEE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -948,6 +951,8 @@
 				F41371B71F4576F00071F1BA /* BusinessTypeViewController.m */,
 				F49D6E801F4BD79D00C21477 /* BusinessCaseDetailViewController.h */,
 				F49D6E811F4BD79D00C21477 /* BusinessCaseDetailViewController.m */,
+				F49D6E861F4C002200C21477 /* BusinessTypeSubViewController.h */,
+				F49D6E871F4C002200C21477 /* BusinessTypeSubViewController.m */,
 			);
 			path = WeddingViewController;
 			sourceTree = "<group>";
@@ -1799,6 +1804,7 @@
 				A50BB4171F3DAF3700F6158B /* DQAgeModel.m in Sources */,
 				F4A7A0901F256B96009FAAEE /* main.m in Sources */,
 				F48237561F27179700DDD487 /* HomePageTableViewCell.m in Sources */,
+				F49D6E881F4C002200C21477 /* BusinessTypeSubViewController.m in Sources */,
 				F40E7A5E1F3014AA00FD7792 /* HomePageManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
