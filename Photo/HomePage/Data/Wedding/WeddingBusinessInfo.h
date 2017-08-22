@@ -27,4 +27,13 @@
 @property (nonatomic, assign) long businessCaseCount;
 @property (nonatomic, assign) long businessTypeCount;
 
+@property (nonatomic, assign) long businessCaseId;
+@property (nonatomic, assign) long businessCasePrice;
+@property (nonatomic, assign) long businessTypeId;
+@property (nonatomic, assign) long businessCaseBrowser;
+@property (nonatomic, assign) long businessTypeSoldNumber;
+
+@property (nonatomic, copy) NSString *businessCasePic;
+@property (nonatomic, copy) NSString *businessTypeName;
+@property (nonatomic, copy) NSString *businessTypeStyle;
 @end

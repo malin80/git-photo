@@ -62,7 +62,7 @@
     _backView.showsHorizontalScrollIndicator = NO;
     _backView.showsVerticalScrollIndicator = NO;
     _backView.contentSize = CGSizeMake(ScreenWidth, 1000);
-    _backView.backgroundColor = [UIColor darkGrayColor];
+    _backView.backgroundColor = [UIColor whiteColor];
     _backView.delegate = self;
     _backView.scrollEnabled = YES;
     [self.view addSubview:_backView];
@@ -172,7 +172,7 @@
     [_backView addSubview:_commentTabelView];
     
     [_commentTabelView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_tableView.mas_bottom);
+        make.top.equalTo(_tableView.mas_bottom).with.offset(10);
         make.width.equalTo(@(ScreenWidth));
         make.left.equalTo(_backView.mas_left);
         make.height.equalTo(@(self.info.businessCommentCount*300));
@@ -197,12 +197,11 @@
     [_backView addSubview:_tabedSlideView];
     
     [_tabedSlideView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_commentTabelView.mas_bottom).with.offset(100);
+        make.top.equalTo(_commentTabelView.mas_bottom).with.offset(10);
         make.width.equalTo(@(ScreenWidth));
         make.height.equalTo(@(320));
         make.left.equalTo(_backView.mas_left);
     }];
-
 }
 
 #pragma mark --- DLTabedSlideViewDelegate ---
@@ -251,6 +250,7 @@
         if (!cell) {
             cell = [[PersonalTabelViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
         }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         switch (indexPath.row) {
             case 0:
                 cell.titleLabel1.text = self.info.businessSubText1;
@@ -294,7 +294,7 @@
             case 1:
                 break;
             case 2:
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.info.businessPhone]];
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",self.info.businessPhone]]];
                     break;
             default:
                 break;
@@ -325,6 +325,50 @@
     }
     return height;
 }
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    if (tableView.tag == 102) {
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 40)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, 100, 40)];
+        label.text = @"顾客评价";
+        [view addSubview:label];
+        view.backgroundColor = [UIColor orangeColor];
+        return view;
+    } else {
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 40)];
+        view.backgroundColor = [UIColor clearColor];
+        return view;
+    }
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    if (tableView.tag == 102) {
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 40)];
+        view.backgroundColor = [UIColor redColor];
+        return view;
+    } else {
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 40)];
+        view.backgroundColor = [UIColor clearColor];
+        return view;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    if (tableView.tag == 102) {
+        return 40;
+    } else {
+        return 0;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (tableView.tag == 102) {
+        return 40;
+    } else {
+        return 0;
+    }
+}
+
 
 #pragma mark --- UIScrollviewDelegate ---
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {

@@ -20,6 +20,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(WeddingManager)
     self = [super init];
     if (self) {
         self.bussinessInfos = [NSMutableArray array];
+        self.businessCases = [NSMutableArray array];
     }
     return self;
 }
@@ -59,8 +60,26 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(WeddingManager)
     [WeddingPesRequest queryWeddingBusinessWithId:businessId withBlock:^(NSDictionary *responseObject, NSString *error) {
         if ([[responseObject objectForKey:@"errorCode"] unsignedLongValue]== 0) {
             if (![[responseObject objectForKey:@"data"] isKindOfClass:[NSString class]]) {
+                [self.businessCases removeAllObjects];
+                WeddingBusinessInfo *info = [[WeddingBusinessInfo alloc] init];
                 NSDictionary *dict = [responseObject objectForKey:@"data"];
                 self.businessComments = [dict objectForKey:@"businessCommentList"];
+                self.businessTypes = [dict objectForKey:@"businessSetList"];
+                info.businessName = [dict objectForKey:@"businessName"];
+                for (NSDictionary *cases in self.businessTypes) {
+                    NSArray *array = [cases objectForKey:@"businessCaseList"];
+                    info.businessTypeName = [cases objectForKey:@"businessSetName"];
+                    info.businessTypeStyle = [cases objectForKey:@"businessSetStyle"];
+                    info.businessTypeSoldNumber = [[cases objectForKey:@"businessSetSoldNumber"] unsignedLongValue];
+                    for (NSDictionary *dict in array) {
+                        info.businessCaseId = [[dict objectForKey:@"businessCaseId"] unsignedLongValue];
+                        info.businessCasePrice = [[dict objectForKey:@"businessCaseCurrentRate"] unsignedLongValue];
+                        info.businessCasePic = [dict objectForKey:@"businessCasePic"];
+                        info.businessTypeId = [[dict objectForKey:@"businessSetId"] unsignedLongValue];
+                        info.businessCaseBrowser = [[dict objectForKey:@"businessCaseBrowser"] unsignedLongValue];
+                        [self.businessCases addObject:info];
+                    }
+                }
             }
             dispatch_async(dispatch_get_main_queue(), ^{
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"queryWeddingBusinessWithIdSuceess" object:nil];

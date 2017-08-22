@@ -7,8 +7,13 @@
 //
 
 #import "BusinessTypeViewController.h"
+#import "WeddingManager.h"
+#import "BusinessTypesTableViewCell.h"
+#import "SDWebImageCache.h"
 
-@interface BusinessTypeViewController ()
+@interface BusinessTypeViewController () <UITableViewDelegate, UITableViewDataSource>
+
+@property (nonatomic, strong) UITableView *tableView;
 
 @end
 
@@ -16,8 +21,57 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
+    [self createTableView];
 }
+
+- (void)createTableView {
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(10, 0, ScreenWidth-20, ScreenHieght) style:UITableViewStyleGrouped];
+    _tableView.dataSource = self;
+    _tableView.delegate = self;
+    _tableView.backgroundColor = [UIColor whiteColor];
+    _tableView.separatorColor = [UIColor clearColor];
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    _tableView.contentInset = UIEdgeInsetsMake(-40, 0, 0, 0);
+    [self.view addSubview:_tableView];
+}
+
+#pragma mark --- tableView delegate ---
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return GET_SINGLETON_FOR_CLASS(WeddingManager).businessTypes.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *cellIdentify = [NSString stringWithFormat:@"cellIdentify"];
+    BusinessTypesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
+    if (!cell) {
+        cell = [[BusinessTypesTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
+    }
+    for (NSDictionary *dict in GET_SINGLETON_FOR_CLASS(WeddingManager).businessTypes) {
+        cell.priceLabel.hidden = NO;
+        cell.countLabel.hidden = NO;
+        cell.titleLabel.text = [dict objectForKey:@"businessSetName"];
+        cell.priceLabel.text = [NSString stringWithFormat:@"%@",[dict objectForKey:@"businessSetPreferentialPrice"]];
+        cell.countLabel.text = [NSString stringWithFormat:@"已售：%@",[dict objectForKey:@"businessSetSoldNumber"]];
+        [SDWebImageCache getImageFromSDWebImageWithUrlString:[NSString stringWithFormat:@"%@%@",baseUrl,[dict objectForKey:@"businessSetPic"]] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+            cell.iconView.image = image;
+        }];
+    }
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 100;
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
