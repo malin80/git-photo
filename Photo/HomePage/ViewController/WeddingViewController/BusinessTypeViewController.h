@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface BusinessTypeViewController : UIViewController
+@interface BusinessTypeViewController : BaseViewController
 
 @end

@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "StoreCommentInfo.h"
 
 @interface StoreCommentTableViewCell : UITableViewCell
 

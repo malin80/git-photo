@@ -58,10 +58,13 @@
 }
 
 - (void)initView {
-    _backView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, 100)];
+    _backView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, 600)];
     _backView.showsHorizontalScrollIndicator = NO;
     _backView.showsVerticalScrollIndicator = NO;
-    _backView.backgroundColor = [UIColor redColor];
+    _backView.contentSize = CGSizeMake(ScreenWidth, 1000);
+    _backView.backgroundColor = [UIColor darkGrayColor];
+    _backView.delegate = self;
+    _backView.scrollEnabled = YES;
     [self.view addSubview:_backView];
     
     [self createScrollView];
@@ -71,7 +74,7 @@
 }
 
 - (void)createScrollView {
-    _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, kScrollViewHeight)];
+    _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, kScrollViewHeight)];
     NSArray *temp=[self.info.businessScrollPic componentsSeparatedByString:@";"];
     for (int i=0; i<temp.count; i++) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(ScreenWidth*i, 0, ScreenWidth, kScrollViewHeight)];
@@ -89,7 +92,7 @@
     _scrollView.delegate = self;
     [_backView addSubview:_scrollView];
     
-    _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 190, ScreenWidth, 20)];
+    _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 130, ScreenWidth, 20)];
     _pageControl.backgroundColor = [UIColor clearColor];
     [_pageControl setCurrentPageIndicatorTintColor:[UIColor blackColor]];
     [_pageControl setPageIndicatorTintColor:[UIColor grayColor]];
@@ -172,7 +175,7 @@
         make.top.equalTo(_tableView.mas_bottom);
         make.width.equalTo(@(ScreenWidth));
         make.left.equalTo(_backView.mas_left);
-        make.height.equalTo(@(self.info.businessCommentCount*100));
+        make.height.equalTo(@(self.info.businessCommentCount*300));
     }];
 }
 
@@ -194,9 +197,9 @@
     [_backView addSubview:_tabedSlideView];
     
     [_tabedSlideView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_commentTabelView.mas_bottom).with.offset(10);
+        make.top.equalTo(_commentTabelView.mas_bottom).with.offset(100);
         make.width.equalTo(@(ScreenWidth));
-        make.height.equalTo(@(100));
+        make.height.equalTo(@(320));
         make.left.equalTo(_backView.mas_left);
     }];
 
@@ -237,7 +240,6 @@
     if (tableView.tag == 101) {
         return 3;
     } else {
-        NSArray *array = GET_SINGLETON_FOR_CLASS(WeddingManager).businessComments;
         return GET_SINGLETON_FOR_CLASS(WeddingManager).businessComments.count;
     }
 }
@@ -266,19 +268,39 @@
         }
         return cell;
     } else {
+        NSDictionary *dict = [GET_SINGLETON_FOR_CLASS(WeddingManager).businessComments objectAtIndex:indexPath.row];
+        NSDictionary *memberDetail = [dict objectForKey:@"memberDetail"];
         NSString *cellIdentify = [NSString stringWithFormat:@"cellIdentify2"];
         BusinessCommentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
         if (!cell) {
             cell = [[BusinessCommentTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
         }
-        cell.backgroundColor = [UIColor redColor];
-        _backView.contentSize = CGSizeMake(ScreenWidth, CGRectGetHeight(_scrollView.frame)+CGRectGetHeight(_tableView.frame)+CGRectGetHeight(_commentTabelView.frame)+CGRectGetHeight(_tabedSlideView.frame));
+        [cell setCommentContentText:[dict objectForKey:@"businessCommentText"] withCommentImageUrl:[dict objectForKey:@"businessCommentPic"]];
+        cell.memberName.text = [memberDetail objectForKey:@"memberName"];;
+        [SDWebImageCache getImageFromSDWebImageWithUrlString:[NSString stringWithFormat:@"%@%@",baseUrl,[memberDetail objectForKey:@"memberPic"]] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+            cell.memberView.image = image;
+        }];
+        [cell createCommentImageWithUrl:[dict objectForKey:@"businessCommentPic"]];
+
         return cell;
     }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (tableView.tag == 101) {
+        switch (indexPath.row) {
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.info.businessPhone]];
+                    break;
+            default:
+                break;
+        }
 
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -298,7 +320,8 @@
                 break;
         }
     } else {
-        height = 100;
+        BusinessCommentTableViewCell *cell = [self tableView:_commentTabelView cellForRowAtIndexPath:indexPath];
+        return cell.frame.size.height;
     }
     return height;
 }
@@ -312,7 +335,6 @@
 
 #pragma mark --- NavigationBarDelegate ---
 - (void)goBack {
-    self.navigationController.navigationBar.hidden = NO;
     [self.navigationController popViewControllerAnimated:NO];
 }
 

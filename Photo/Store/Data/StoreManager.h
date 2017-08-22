@@ -18,7 +18,8 @@ DECLARE_SINGLETON_FOR_CLASS(StoreManager)
 
 @property (nonatomic, strong) NSMutableArray *storeComments;
 
-@property (nonatomic, copy) NSString *payIdString;
+@property (nonatomic, copy) NSString *Paydata;
+@property (nonatomic, strong)NSDictionary *wxDic;
 
 - (void)queryAllGoodsInfo;
 
@@ -33,7 +34,7 @@ DECLARE_SINGLETON_FOR_CLASS(StoreManager)
 - (void)queryGoodsInfoWithGoodsType:(long)goodsType withSortName:(NSString *)sortName withSortOrder:(NSString *)sortOrder;
 
 //立即购买
-- (void)buyGoodsWithToken:(NSString *)token withMemberName:(NSString *)name withMemberPhone:(NSString *)phone withMemberAddress:(NSString *)address withGoodsId:(long)goodsId withGoodsPrice:(long)goodsPrice withGoodCount:(long)goodsCount withGoodsParam:(NSString *)goodsParam withCartIds:(NSString *)cartIds withIsCart:(long)isCart withCartCount:(long)cartCount;
+- (void)buyGoodsWithToken:(NSString *)token withMemberName:(NSString *)name withMemberPhone:(NSString *)phone withMemberAddress:(NSString *)address withGoodsId:(long)goodsId withGoodsPrice:(long)goodsPrice withGoodCount:(long)goodsCount withGoodsParam:(NSString *)goodsParam withCartIds:(NSString *)cartIds withIsCart:(long)isCart withCartCount:(long)cartCount withIndex:(int)index;
 
 
 - (void)queryGoodsDetailInfoWithGoodsId:(long)goodsId;

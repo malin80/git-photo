@@ -65,7 +65,7 @@
     {
         BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url];
         if (!result) {
-            // 其他如支付等SDK的回调
+            [WXApi handleOpenURL:url delegate:self];
         }
         return result;
 }
@@ -78,7 +78,7 @@
     /* 设置友盟appkey */
     [[UMSocialManager defaultManager] setUmSocialAppkey:@"598dc8df310c936e870019f3"];
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:@"wx746c4853f57d7697" appSecret:@"afc14e12f94bf68aaf5fcc3bd0a0b349" redirectURL:nil];
-    
+    [WXApi registerApp:@"wx746c4853f57d7697"];
     UIImageView *span=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHieght)];
     span.image=[UIImage imageNamed:@"splash.png"];
     [self.window addSubview:span];
@@ -118,6 +118,8 @@
         [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
             NSLog(@"result = %@",resultDic);
         }];
+    }else{
+        [WXApi handleOpenURL:url delegate:self];
     }
     return YES;
 }
@@ -130,6 +132,8 @@
         [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
             NSLog(@"result = %@",resultDic);
         }];
+    }else{
+        [WXApi handleOpenURL:url delegate:nil];
     }
     return YES;
 }

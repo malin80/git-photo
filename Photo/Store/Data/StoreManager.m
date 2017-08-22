@@ -139,13 +139,18 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(StoreManager)
     }];
 }
 
-- (void)buyGoodsWithToken:(NSString *)token withMemberName:(NSString *)name withMemberPhone:(NSString *)phone withMemberAddress:(NSString *)address withGoodsId:(long)goodsId withGoodsPrice:(long)goodsPrice withGoodCount:(long)goodsCount withGoodsParam:(NSString *)goodsParam withCartIds:(NSString *)cartIds withIsCart:(long)isCart withCartCount:(long)cartCount {
+- (void)buyGoodsWithToken:(NSString *)token withMemberName:(NSString *)name withMemberPhone:(NSString *)phone withMemberAddress:(NSString *)address withGoodsId:(long)goodsId withGoodsPrice:(long)goodsPrice withGoodCount:(long)goodsCount withGoodsParam:(NSString *)goodsParam withCartIds:(NSString *)cartIds withIsCart:(long)isCart withCartCount:(long)cartCount  withIndex:(int)index{
     [StorePesRequest buyGoodsWithToken:token withMemberName:name withMemberPhone:phone withMemberAddress:address withGoodsId:goodsId withGoodsPrice:goodsPrice withGoodCount:goodsCount withGoodsParam:goodsParam withCartIds:cartIds withIsCart:isCart withCartCount:cartCount withBlock:^(NSDictionary *responseObject, NSString *error) {
         //用这个ID调支付接口
         NSLog(@"%@",responseObject);
         if ([[responseObject objectForKey:@"errorCode"] intValue]==0) {
-            self.payIdString = [responseObject objectForKey:@"orderOfGoodsDetailId"];
-             [[NSNotificationCenter defaultCenter] postNotificationName:@"alipay" object:nil];
+            NSString *payId = [responseObject objectForKey:@"orderOfGoodsDetailId"];
+            if (index==0) {
+                [self payByAliWithToken:token withGoodsPayId:payId withOrderPayId:@""];
+            }else if (index==1){
+                 [self payByWxWithToken:token withGoodsPayId:payId withOrderPayId:@""];
+            }
+            
         }
         
     }];
@@ -174,7 +179,20 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(StoreManager)
 
 - (void)payByAliWithToken:(NSString *)token withGoodsPayId:(NSString *)goodsPayId withOrderPayId:(NSString *)orderPayId {
     [StorePesRequest payByAliWithToken:token withGoodsPayId:goodsPayId withOrderPayId:orderPayId withBlock:^(NSDictionary *responseObject, NSString *error) {
-        
+        if ([[responseObject objectForKey:@"errorCode"] intValue]==0) {
+            NSLog(@"%@",responseObject);
+            self.Paydata=[responseObject objectForKey:@"data"];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"alipay" object:nil];
+        }
+    }];
+}
+- (void)payByWxWithToken:(NSString *)token withGoodsPayId:(NSString *)goodsPayId withOrderPayId:(NSString *)orderPayId {
+    [StorePesRequest payByWechatWithToken:token withGoodsPayId:goodsPayId withOrderPayId:orderPayId withBlock:^(NSDictionary *responseObject, NSString *error) {
+        if ([[responseObject objectForKey:@"errorCode"] intValue]==0) {
+            NSLog(@"%@",responseObject);
+            self.wxDic=[responseObject objectForKey:@"data"];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"wxpay" object:nil];
+        }
     }];
 }
 

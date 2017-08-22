@@ -42,6 +42,7 @@
     [self createTableView];
     [self createBottomView];
     [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(alipay) name:@"alipay" object:nil];
+     [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(wxpay) name:@"wxpay" object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -173,17 +174,17 @@
 
 - (void)confirmOrder {
     [self.actionSheetImg showGGActionSheet];
-    if (self.goodsInfos.count == 1) {
-        self.goodsInfo = [self.goodsInfos objectAtIndex:0];
-        [GET_SINGLETON_FOR_CLASS(StoreManager) buyGoodsWithToken:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue withMemberName:self.addressInfo.name withMemberPhone:self.addressInfo.phone withMemberAddress:self.addressInfo.address withGoodsId:self.goodsInfo.goodsId withGoodsPrice:self.goodsInfo.goodsPrice withGoodCount:self.goodsInfo.goodsCount withGoodsParam:self.goodsInfo.goodsParamValue withCartIds:@"" withIsCart:0 withCartCount:0];
-    } else {
-        NSString *cartIds = @"";
-        for (ShoppingGoodsInfo *info in self.goodsInfos) {
-            cartIds = [NSString stringWithFormat:@"%@;%ld",cartIds,info.goodsCartId];
-        }
-        cartIds = [cartIds substringWithRange:NSMakeRange(1, cartIds.length - 1)];
-        [GET_SINGLETON_FOR_CLASS(StoreManager) buyGoodsWithToken:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue withMemberName:self.addressInfo.name withMemberPhone:self.addressInfo.phone withMemberAddress:self.addressInfo.address withGoodsId:0 withGoodsPrice:0 withGoodCount:0 withGoodsParam:@"" withCartIds:cartIds withIsCart:1 withCartCount:self.goodsInfos.count];
-    }
+//    if (self.goodsInfos.count == 1) {
+//        self.goodsInfo = [self.goodsInfos objectAtIndex:0];
+//        [GET_SINGLETON_FOR_CLASS(StoreManager) buyGoodsWithToken:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue withMemberName:self.addressInfo.name withMemberPhone:self.addressInfo.phone withMemberAddress:self.addressInfo.address withGoodsId:self.goodsInfo.goodsId withGoodsPrice:self.goodsInfo.goodsPrice withGoodCount:self.goodsInfo.goodsCount withGoodsParam:self.goodsInfo.goodsParamValue withCartIds:@"" withIsCart:0 withCartCount:0];
+//    } else {
+//        NSString *cartIds = @"";
+//        for (ShoppingGoodsInfo *info in self.goodsInfos) {
+//            cartIds = [NSString stringWithFormat:@"%@;%ld",cartIds,info.goodsCartId];
+//        }
+//        cartIds = [cartIds substringWithRange:NSMakeRange(1, cartIds.length - 1)];
+//        [GET_SINGLETON_FOR_CLASS(StoreManager) buyGoodsWithToken:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue withMemberName:self.addressInfo.name withMemberPhone:self.addressInfo.phone withMemberAddress:self.addressInfo.address withGoodsId:0 withGoodsPrice:0 withGoodCount:0 withGoodsParam:@"" withCartIds:cartIds withIsCart:1 withCartCount:self.goodsInfos.count];
+//    }
 }
 
 - (void)createTableView {
@@ -242,21 +243,21 @@
 -(void)GGActionSheetClickWithActionSheet:(GGActionSheet *)actionSheet Index:(int)index{
     if (self.goodsInfos.count == 1) {
         self.goodsInfo = [self.goodsInfos objectAtIndex:0];
-        [GET_SINGLETON_FOR_CLASS(StoreManager) buyGoodsWithToken:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue withMemberName:self.addressInfo.name withMemberPhone:self.addressInfo.phone withMemberAddress:self.addressInfo.address withGoodsId:self.goodsInfo.goodsId withGoodsPrice:self.goodsInfo.goodsPrice withGoodCount:self.goodsInfo.goodsCount withGoodsParam:self.goodsInfo.goodsParamValue withCartIds:@"" withIsCart:0 withCartCount:0];
+        [GET_SINGLETON_FOR_CLASS(StoreManager) buyGoodsWithToken:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue withMemberName:self.addressInfo.name withMemberPhone:self.addressInfo.phone withMemberAddress:self.addressInfo.address withGoodsId:self.goodsInfo.goodsId withGoodsPrice:self.goodsInfo.goodsPrice withGoodCount:self.goodsInfo.goodsCount withGoodsParam:self.goodsInfo.goodsParamValue withCartIds:@"" withIsCart:0 withCartCount:0 withIndex:index];
     } else {
         NSString *cartIds = @"";
         for (ShoppingGoodsInfo *info in self.goodsInfos) {
             cartIds = [NSString stringWithFormat:@"%@;%ld",cartIds,info.goodsCartId];
         }
         cartIds = [cartIds substringWithRange:NSMakeRange(1, cartIds.length - 1)];
-        [GET_SINGLETON_FOR_CLASS(StoreManager) buyGoodsWithToken:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue withMemberName:self.addressInfo.name withMemberPhone:self.addressInfo.phone withMemberAddress:self.addressInfo.address withGoodsId:0 withGoodsPrice:0 withGoodCount:0 withGoodsParam:@"" withCartIds:cartIds withIsCart:1 withCartCount:self.goodsInfos.count];
+        [GET_SINGLETON_FOR_CLASS(StoreManager) buyGoodsWithToken:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue withMemberName:self.addressInfo.name withMemberPhone:self.addressInfo.phone withMemberAddress:self.addressInfo.address withGoodsId:0 withGoodsPrice:0 withGoodCount:0 withGoodsParam:@"" withCartIds:cartIds withIsCart:1 withCartCount:self.goodsInfos.count withIndex:index];
     }
 }
 -(void)alipay{
-    NSLog(@"%@",GET_SINGLETON_FOR_CLASS(StoreManager).payIdString);
+    NSLog(@"%@",GET_SINGLETON_FOR_CLASS(StoreManager).Paydata);
     
     NSString *appScheme=@"zhifubao1";
-    [[AlipaySDK defaultService] payOrder:GET_SINGLETON_FOR_CLASS(StoreManager).payIdString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
+    [[AlipaySDK defaultService] payOrder:GET_SINGLETON_FOR_CLASS(StoreManager).Paydata fromScheme:appScheme callback:^(NSDictionary *resultDic) {
         //[self hiddenHub1];
         if ([resultDic[@"resultStatus"] intValue]==9000) {
             [self showtext:@"支付成功"];
@@ -267,32 +268,42 @@
     }];
 }
 -(void)wxpay{
+    NSDictionary *dict= GET_SINGLETON_FOR_CLASS(StoreManager).wxDic;
+    NSLog(@"%@",dict);
     PayReq *request = [[PayReq alloc] init] ;
-    request.partnerId = @"10000100";
-    request.prepayId= @"1101000000140415649af9fc314aa427";
-    request.package = @"Sign=WXPay";
-    request.nonceStr= @"a462b76e7436e98e0ed6e13c64b4fd1c";
-    request.timeStamp= @"1397527777";
-    request.sign= @"582282D72DD2B03AD892830965F428CB16E7A256";
+    request.partnerId = [dict objectForKey:@"partnerid"];
+    request.prepayId= [dict objectForKey:@"prepayid"];;
+    request.package = [dict objectForKey:@"package"];;
+    request.nonceStr= [dict objectForKey:@"noncestr"];;
+    request.timeStamp= [[dict objectForKey:@"timestamp"] intValue];
+    NSLog(@"%u",request.timeStamp);
+    request.sign= [dict objectForKey:@"sign"];
     [WXApi sendReq:request];
 }
 
--(void)onResp:(BaseResp*)resp{
-    if ([resp isKindOfClass:[PayResp class]]){
-        PayResp*response=(PayResp*)resp;
-        switch(response.errCode){
-            caseWXSuccess:
-            
-                //服务器端查询支付通知或查询API返回的结果再提示成功
-                NSLog(@"支付成功");
-            
+-(void) onResp:(BaseResp*)resp
+{
+    //启动微信支付的response
+    NSString *payResoult = [NSString stringWithFormat:@"errcode:%d", resp.errCode];
+    if([resp isKindOfClass:[PayResp class]]){
+        //支付返回结果，实际支付结果需要去微信服务器端查询
+        switch (resp.errCode) {
+            case 0:
+                payResoult = @"支付结果：成功！";
+                break;
+            case -1:
+                payResoult = @"支付结果:失败！";
+                break;
+            case -2:
+                payResoult = @"用户已经退出支付！";
                 break;
             default:
-                NSLog(@"支付失败，retcode=%d",resp.errCode);
+                payResoult = [NSString stringWithFormat:@"支付结果：失败！retcode = %d, retstr = %@", resp.errCode,resp.errStr];
                 break;
         }
     }
 }
+
 -(GGActionSheet *)actionSheetImg{
     if (!_actionSheetImg) {
         _actionSheetImg = [GGActionSheet ActionSheetWithImageArray:@[@"alipay233",@"wechatpay233"] delegate:self];

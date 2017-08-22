@@ -19,7 +19,6 @@
 }
 
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) StoreCommentTableViewCell *prototypeCell;
 
 @end
 
@@ -59,13 +58,11 @@
     if (!cell) {
         cell = [[StoreCommentTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
     }
-    self.prototypeCell = cell;
     [cell setCommentContentText:info.commentText withCommentImageUrl:info.commentImageUrl];
     cell.memberName.text = info.commentName;
     [SDWebImageCache getImageFromSDWebImageWithUrlString:[NSString stringWithFormat:@"%@%@",baseUrl,info.commentImage] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
         cell.memberView.image = image;
     }];
-    cell.backgroundColor = [UIColor darkGrayColor];
     [cell createCommentImageWithUrl:info.commentImageUrl];
     return cell;
 }
