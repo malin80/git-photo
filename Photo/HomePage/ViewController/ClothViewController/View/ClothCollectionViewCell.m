@@ -111,6 +111,7 @@
     }
     return _clothOldPrice;
 }
+
 - (UILabel *)line {
     if (!_line) {
         _line = [[UILabel alloc] init];

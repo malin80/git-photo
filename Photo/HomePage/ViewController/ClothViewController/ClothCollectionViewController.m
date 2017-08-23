@@ -11,6 +11,7 @@
 #import "ClothManager.h"
 #import "ClothInfo.h"
 #import "SDWebImageCache.h"
+#import "ClothDetailViewController.h"
 
 @interface ClothCollectionViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 {
@@ -97,14 +98,15 @@
 {
     return UIEdgeInsetsMake(5, 5, 5, 5);
 }
-//
-//-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    GoodsInfo *info = [GET_SINGLETON_FOR_CLASS(StoreManager).goodsInfoArray objectAtIndex:indexPath.item];
-//    StoreDetailViewController *controller = [[StoreDetailViewController alloc] init];
-//    controller.info = info;
-//    [self.navigationController pushViewController:controller animated:NO];
-//}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    ClothDetailViewController *controller = [[ClothDetailViewController alloc] init];
+    ClothInfo *info = GET_SINGLETON_FOR_CLASS(ClothManager).cloths[indexPath.item];
+    [GET_SINGLETON_FOR_CLASS(ClothManager) queryClothDetailWithClothId:info.clothId];
+    controller.info = info;
+    [self.navigationController pushViewController:controller animated:NO];
+}
 
 
 - (void)didReceiveMemoryWarning {

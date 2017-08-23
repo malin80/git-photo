@@ -72,4 +72,21 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ClothManager)
     }];
 }
 
+- (void)queryClothDetailWithClothId:(long)clothId {
+    [ClothPesRequest queryClothDetailWithClothId:clothId withBlock:^(NSDictionary *responseObject, NSString *error) {
+        if ([[responseObject objectForKey:@"errorCode"] unsignedLongValue]== 0) {
+            NSDictionary *dict = [responseObject objectForKey:@"data"];
+            NSDictionary *shopDict = [dict objectForKey:@"shop"];
+            self.clothShopInfo = [[ClothShopInfo alloc] init];
+            self.clothShopInfo.shopName = [shopDict objectForKey:@"shopName"];
+            self.clothShopInfo.shopPhone = [shopDict objectForKey:@"shopPhone"];
+            self.clothShopInfo.shopAddress = [shopDict objectForKey:@"shopAddress"];
+            self.clothShopInfo.shopDesc = [shopDict objectForKey:@"shopDescribe"];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"queryClothDetailSuccess" object:nil];
+            });
+        }
+    }];
+}
+
 @end

@@ -19,4 +19,9 @@
     [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"WeddingDressShopControl/queryWeddingDressShopByType.do" dic:dict finished:finished];
 }
 
++ (void)queryClothDetailWithClothId:(long)clothId withBlock:(void (^)(NSDictionary *, NSString *))finished {
+    NSDictionary *dict = @{@"WeddingDressShopId":@(clothId)};
+    [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"WeddingDressShopControl/queryWeddingDressShopById.do" dic:dict finished:finished];
+}
+
 @end

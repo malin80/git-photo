@@ -29,7 +29,7 @@
     [GET_SINGLETON_FOR_CLASS(WeddingManager) queryAllWeddingBusiness];
     
     self.navigationController.navigationBar.hidden = YES;
-    NavigationBar *bar = [[NavigationBar alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 64) withTitle:@"摄影"];
+    NavigationBar *bar = [[NavigationBar alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 64) withTitle:@"婚礼策划"];
     bar.delegate = self;
     bar.line.hidden = NO;
     [self.view addSubview:bar];

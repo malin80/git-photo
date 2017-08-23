@@ -111,6 +111,10 @@
 		F43A7DBF1F4D1C2200350A63 /* ClothInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F43A7DBE1F4D1C2200350A63 /* ClothInfo.m */; };
 		F43A7DC21F4D231E00350A63 /* ClothCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43A7DC11F4D231E00350A63 /* ClothCollectionViewController.m */; };
 		F43A7DC51F4D24EE00350A63 /* ClothCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F43A7DC41F4D24EE00350A63 /* ClothCollectionViewCell.m */; };
+		F43A7DC81F4D4FB800350A63 /* ClothDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43A7DC71F4D4FB800350A63 /* ClothDetailViewController.m */; };
+		F43A7DCB1F4D519E00350A63 /* ClothDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F43A7DCA1F4D519E00350A63 /* ClothDetailTableViewCell.m */; };
+		F43A7DCE1F4D5F6000350A63 /* ClothShopInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F43A7DCD1F4D5F6000350A63 /* ClothShopInfo.m */; };
+		F43A7DD01F4D644B00350A63 /* call.png in Resources */ = {isa = PBXBuildFile; fileRef = F43A7DCF1F4D644B00350A63 /* call.png */; };
 		F481E90C1F282D1E00EE3D7C /* personal_address_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = F481E90A1F282D1E00EE3D7C /* personal_address_selected.png */; };
 		F481E90D1F282D1E00EE3D7C /* personal_address_unselect.png in Resources */ = {isa = PBXBuildFile; fileRef = F481E90B1F282D1E00EE3D7C /* personal_address_unselect.png */; };
 		F481E9101F283A5F00EE3D7C /* shopping_select.png in Resources */ = {isa = PBXBuildFile; fileRef = F481E90F1F283A5F00EE3D7C /* shopping_select.png */; };
@@ -426,6 +430,13 @@
 		F43A7DC11F4D231E00350A63 /* ClothCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClothCollectionViewController.m; sourceTree = "<group>"; };
 		F43A7DC31F4D24EE00350A63 /* ClothCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClothCollectionViewCell.h; sourceTree = "<group>"; };
 		F43A7DC41F4D24EE00350A63 /* ClothCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClothCollectionViewCell.m; sourceTree = "<group>"; };
+		F43A7DC61F4D4FB800350A63 /* ClothDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClothDetailViewController.h; sourceTree = "<group>"; };
+		F43A7DC71F4D4FB800350A63 /* ClothDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClothDetailViewController.m; sourceTree = "<group>"; };
+		F43A7DC91F4D519E00350A63 /* ClothDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClothDetailTableViewCell.h; sourceTree = "<group>"; };
+		F43A7DCA1F4D519E00350A63 /* ClothDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClothDetailTableViewCell.m; sourceTree = "<group>"; };
+		F43A7DCC1F4D5F6000350A63 /* ClothShopInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClothShopInfo.h; sourceTree = "<group>"; };
+		F43A7DCD1F4D5F6000350A63 /* ClothShopInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClothShopInfo.m; sourceTree = "<group>"; };
+		F43A7DCF1F4D644B00350A63 /* call.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = call.png; sourceTree = "<group>"; };
 		F481E90A1F282D1E00EE3D7C /* personal_address_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personal_address_selected.png; sourceTree = "<group>"; };
 		F481E90B1F282D1E00EE3D7C /* personal_address_unselect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personal_address_unselect.png; sourceTree = "<group>"; };
 		F481E90F1F283A5F00EE3D7C /* shopping_select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shopping_select.png; sourceTree = "<group>"; };
@@ -1039,6 +1050,8 @@
 				F43A7DB41F4D19E800350A63 /* ClothViewController.m */,
 				F43A7DC01F4D231E00350A63 /* ClothCollectionViewController.h */,
 				F43A7DC11F4D231E00350A63 /* ClothCollectionViewController.m */,
+				F43A7DC61F4D4FB800350A63 /* ClothDetailViewController.h */,
+				F43A7DC71F4D4FB800350A63 /* ClothDetailViewController.m */,
 			);
 			path = ClothViewController;
 			sourceTree = "<group>";
@@ -1048,6 +1061,8 @@
 			children = (
 				F43A7DC31F4D24EE00350A63 /* ClothCollectionViewCell.h */,
 				F43A7DC41F4D24EE00350A63 /* ClothCollectionViewCell.m */,
+				F43A7DC91F4D519E00350A63 /* ClothDetailTableViewCell.h */,
+				F43A7DCA1F4D519E00350A63 /* ClothDetailTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1059,6 +1074,8 @@
 				F43A7DBB1F4D1B0500350A63 /* ClothManager.m */,
 				F43A7DBD1F4D1C2200350A63 /* ClothInfo.h */,
 				F43A7DBE1F4D1C2200350A63 /* ClothInfo.m */,
+				F43A7DCC1F4D5F6000350A63 /* ClothShopInfo.h */,
+				F43A7DCD1F4D5F6000350A63 /* ClothShopInfo.m */,
 			);
 			path = Cloth;
 			sourceTree = "<group>";
@@ -1417,6 +1434,7 @@
 		F4A7A25A1F25CF3B009FAAEE /* Commom */ = {
 			isa = PBXGroup;
 			children = (
+				F43A7DCF1F4D644B00350A63 /* call.png */,
 				F404B7671F443C6D000D753E /* common_introduct.jpg */,
 				F407330B1F3BF5420006F1F6 /* common_no_login.png */,
 				F4FF8D901F394C2200E7739D /* splash.png */,
@@ -1649,6 +1667,7 @@
 				F407330C1F3BF5420006F1F6 /* common_no_login.png in Resources */,
 				F41B19CB1F341E490026E483 /* store_number_sub.png in Resources */,
 				F482372E1F26CC4D00DDD487 /* personal_address_delete.png in Resources */,
+				F43A7DD01F4D644B00350A63 /* call.png in Resources */,
 				F4A7A13D1F25AAE4009FAAEE /* tabbar_shopping_black.png in Resources */,
 				F482374E1F27106300DDD487 /* homepage_cloth.png in Resources */,
 				F48237521F27106300DDD487 /* homepage_video.png in Resources */,
@@ -1773,6 +1792,7 @@
 				F48679391F3D831A00612E27 /* StoreCommentInfo.m in Sources */,
 				F43A7DC51F4D24EE00350A63 /* ClothCollectionViewCell.m in Sources */,
 				F4FDD6B61F2C37CD007263D4 /* EditAddressViewController.m in Sources */,
+				F43A7DC81F4D4FB800350A63 /* ClothDetailViewController.m in Sources */,
 				A514B0F21F2901A1006A765F /* LeadViewController.m in Sources */,
 				F404B7661F4420DE000D753E /* CameraManOrderTableViewCell.m in Sources */,
 				F407335A1F3C397B0006F1F6 /* CameraManDetailSecondViewController.m in Sources */,
@@ -1782,6 +1802,7 @@
 				F40430951F29D0FD00DDB2E7 /* LoginViewController.m in Sources */,
 				A514B10E1F290533006A765F /* FitManage.m in Sources */,
 				A520C6D01F2B89A400202622 /* DLFixedTabbarView.m in Sources */,
+				F43A7DCE1F4D5F6000350A63 /* ClothShopInfo.m in Sources */,
 				F4FF8D971F39506300E7739D /* CameraPesRequest.m in Sources */,
 				F41371911F452CE80071F1BA /* WeddingViewController.m in Sources */,
 				F4FF9E651F42A395009ABECA /* AlertDialog.m in Sources */,
@@ -1795,6 +1816,7 @@
 				A520C6CD1F2B89A400202622 /* DLLRUCache.m in Sources */,
 				F407336B1F3C435E0006F1F6 /* DressManDetailViewController.m in Sources */,
 				F41B19D71F3462070026E483 /* CollectGoodsInfo.m in Sources */,
+				F43A7DCB1F4D519E00350A63 /* ClothDetailTableViewCell.m in Sources */,
 				F43A7DB51F4D19E800350A63 /* ClothViewController.m in Sources */,
 				F41371B51F4576E40071F1BA /* BusinessCaseViewController.m in Sources */,
 				A520C6D21F2B89A400202622 /* DLTabedSlideView.m in Sources */,
