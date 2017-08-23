@@ -154,7 +154,9 @@
 }
 
 - (void)touchClothButton {
-    
+    if ([self.delegate respondsToSelector:@selector(touchClothButton)]) {
+        [self.delegate touchClothButton];
+    }
 }
 
 - (void)touchMoreButton {

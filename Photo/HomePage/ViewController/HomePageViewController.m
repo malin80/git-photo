@@ -9,6 +9,7 @@
 #import "HomePageViewController.h"
 #import "CameraViewController.h"
 #import "WeddingViewController.h"
+#import "ClothViewController.h"
 
 #import "HomePageScrollView.h"
 #import "HomePageButtonView.h"
@@ -145,6 +146,11 @@
 
 - (void)touchWeddingButton {
     WeddingViewController *controller = [[WeddingViewController alloc] init];
+    [self.navigationController pushViewController:controller animated:NO];
+}
+
+- (void)touchClothButton {
+    ClothViewController *controller = [[ClothViewController alloc] init];
     [self.navigationController pushViewController:controller animated:NO];
 }
 

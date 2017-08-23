@@ -105,6 +105,12 @@
 		F41B19CB1F341E490026E483 /* store_number_sub.png in Resources */ = {isa = PBXBuildFile; fileRef = F41B19CA1F341E490026E483 /* store_number_sub.png */; };
 		F41B19D11F343EE70026E483 /* ShoppingGoodsInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F41B19D01F343EE70026E483 /* ShoppingGoodsInfo.m */; };
 		F41B19D71F3462070026E483 /* CollectGoodsInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F41B19D61F3462070026E483 /* CollectGoodsInfo.m */; };
+		F43A7DB51F4D19E800350A63 /* ClothViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43A7DB41F4D19E800350A63 /* ClothViewController.m */; };
+		F43A7DB81F4D1ADF00350A63 /* ClothPesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F43A7DB71F4D1ADF00350A63 /* ClothPesRequest.m */; };
+		F43A7DBC1F4D1B0500350A63 /* ClothManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F43A7DBB1F4D1B0500350A63 /* ClothManager.m */; };
+		F43A7DBF1F4D1C2200350A63 /* ClothInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F43A7DBE1F4D1C2200350A63 /* ClothInfo.m */; };
+		F43A7DC21F4D231E00350A63 /* ClothCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43A7DC11F4D231E00350A63 /* ClothCollectionViewController.m */; };
+		F43A7DC51F4D24EE00350A63 /* ClothCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F43A7DC41F4D24EE00350A63 /* ClothCollectionViewCell.m */; };
 		F481E90C1F282D1E00EE3D7C /* personal_address_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = F481E90A1F282D1E00EE3D7C /* personal_address_selected.png */; };
 		F481E90D1F282D1E00EE3D7C /* personal_address_unselect.png in Resources */ = {isa = PBXBuildFile; fileRef = F481E90B1F282D1E00EE3D7C /* personal_address_unselect.png */; };
 		F481E9101F283A5F00EE3D7C /* shopping_select.png in Resources */ = {isa = PBXBuildFile; fileRef = F481E90F1F283A5F00EE3D7C /* shopping_select.png */; };
@@ -408,6 +414,18 @@
 		F41B19D01F343EE70026E483 /* ShoppingGoodsInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingGoodsInfo.m; sourceTree = "<group>"; };
 		F41B19D51F3462070026E483 /* CollectGoodsInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectGoodsInfo.h; sourceTree = "<group>"; };
 		F41B19D61F3462070026E483 /* CollectGoodsInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectGoodsInfo.m; sourceTree = "<group>"; };
+		F43A7DB31F4D19E800350A63 /* ClothViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClothViewController.h; sourceTree = "<group>"; };
+		F43A7DB41F4D19E800350A63 /* ClothViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClothViewController.m; sourceTree = "<group>"; };
+		F43A7DB61F4D1ADF00350A63 /* ClothPesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClothPesRequest.h; sourceTree = "<group>"; };
+		F43A7DB71F4D1ADF00350A63 /* ClothPesRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClothPesRequest.m; sourceTree = "<group>"; };
+		F43A7DBA1F4D1B0500350A63 /* ClothManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClothManager.h; sourceTree = "<group>"; };
+		F43A7DBB1F4D1B0500350A63 /* ClothManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClothManager.m; sourceTree = "<group>"; };
+		F43A7DBD1F4D1C2200350A63 /* ClothInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClothInfo.h; sourceTree = "<group>"; };
+		F43A7DBE1F4D1C2200350A63 /* ClothInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClothInfo.m; sourceTree = "<group>"; };
+		F43A7DC01F4D231E00350A63 /* ClothCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClothCollectionViewController.h; sourceTree = "<group>"; };
+		F43A7DC11F4D231E00350A63 /* ClothCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClothCollectionViewController.m; sourceTree = "<group>"; };
+		F43A7DC31F4D24EE00350A63 /* ClothCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClothCollectionViewCell.h; sourceTree = "<group>"; };
+		F43A7DC41F4D24EE00350A63 /* ClothCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClothCollectionViewCell.m; sourceTree = "<group>"; };
 		F481E90A1F282D1E00EE3D7C /* personal_address_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personal_address_selected.png; sourceTree = "<group>"; };
 		F481E90B1F282D1E00EE3D7C /* personal_address_unselect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personal_address_unselect.png; sourceTree = "<group>"; };
 		F481E90F1F283A5F00EE3D7C /* shopping_select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shopping_select.png; sourceTree = "<group>"; };
@@ -794,6 +812,8 @@
 				F4FF8D961F39506300E7739D /* CameraPesRequest.m */,
 				F41371961F453CF30071F1BA /* WeddingPesRequest.h */,
 				F41371971F453CF30071F1BA /* WeddingPesRequest.m */,
+				F43A7DB61F4D1ADF00350A63 /* ClothPesRequest.h */,
+				F43A7DB71F4D1ADF00350A63 /* ClothPesRequest.m */,
 			);
 			path = PesDelegate;
 			sourceTree = "<group>";
@@ -835,6 +855,7 @@
 		F405D1B61F2EF4740015A8E6 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				F43A7DB91F4D1AF800350A63 /* Cloth */,
 				F41371991F453DC50071F1BA /* Camera */,
 				F41371A61F453DE20071F1BA /* Wedding */,
 				F40E7A5C1F3014AA00FD7792 /* HomePageManager.h */,
@@ -1008,6 +1029,38 @@
 				F41B19CA1F341E490026E483 /* store_number_sub.png */,
 			);
 			path = Store;
+			sourceTree = "<group>";
+		};
+		F43A7DB11F4D19C800350A63 /* ClothViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F43A7DB21F4D19D900350A63 /* View */,
+				F43A7DB31F4D19E800350A63 /* ClothViewController.h */,
+				F43A7DB41F4D19E800350A63 /* ClothViewController.m */,
+				F43A7DC01F4D231E00350A63 /* ClothCollectionViewController.h */,
+				F43A7DC11F4D231E00350A63 /* ClothCollectionViewController.m */,
+			);
+			path = ClothViewController;
+			sourceTree = "<group>";
+		};
+		F43A7DB21F4D19D900350A63 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F43A7DC31F4D24EE00350A63 /* ClothCollectionViewCell.h */,
+				F43A7DC41F4D24EE00350A63 /* ClothCollectionViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F43A7DB91F4D1AF800350A63 /* Cloth */ = {
+			isa = PBXGroup;
+			children = (
+				F43A7DBA1F4D1B0500350A63 /* ClothManager.h */,
+				F43A7DBB1F4D1B0500350A63 /* ClothManager.m */,
+				F43A7DBD1F4D1C2200350A63 /* ClothInfo.h */,
+				F43A7DBE1F4D1C2200350A63 /* ClothInfo.m */,
+			);
+			path = Cloth;
 			sourceTree = "<group>";
 		};
 		F481E90E1F283A5F00EE3D7C /* Shopping */ = {
@@ -1241,6 +1294,7 @@
 			isa = PBXGroup;
 			children = (
 				F482373C1F2703F700DDD487 /* View */,
+				F43A7DB11F4D19C800350A63 /* ClothViewController */,
 				F405D19E1F2EC2090015A8E6 /* CameraViewController */,
 				F413718E1F452CC90071F1BA /* WeddingViewController */,
 				F4A7A0CF1F256DB1009FAAEE /* HomePageViewController.h */,
@@ -1708,13 +1762,16 @@
 				F4A7A0961F256B96009FAAEE /* ViewController.m in Sources */,
 				F4B67C731F413A9300DA8E4E /* SelectDressManViewController.m in Sources */,
 				A50BB41A1F3DAF3700F6158B /* DQconstellationView.m in Sources */,
+				F43A7DC21F4D231E00350A63 /* ClothCollectionViewController.m in Sources */,
 				F41B19D11F343EE70026E483 /* ShoppingGoodsInfo.m in Sources */,
 				F41B19C11F3411660026E483 /* PersonalManager.m in Sources */,
 				F40E7A6A1F3023F100FD7792 /* LoginPesRequest.m in Sources */,
 				F49D6E821F4BD79D00C21477 /* BusinessCaseDetailViewController.m in Sources */,
 				A50BB4191F3DAF3700F6158B /* DQCanCerEnsureView.m in Sources */,
+				F43A7DBF1F4D1C2200350A63 /* ClothInfo.m in Sources */,
 				F48237381F26EA1100DDD487 /* CollectViewController.m in Sources */,
 				F48679391F3D831A00612E27 /* StoreCommentInfo.m in Sources */,
+				F43A7DC51F4D24EE00350A63 /* ClothCollectionViewCell.m in Sources */,
 				F4FDD6B61F2C37CD007263D4 /* EditAddressViewController.m in Sources */,
 				A514B0F21F2901A1006A765F /* LeadViewController.m in Sources */,
 				F404B7661F4420DE000D753E /* CameraManOrderTableViewCell.m in Sources */,
@@ -1738,6 +1795,7 @@
 				A520C6CD1F2B89A400202622 /* DLLRUCache.m in Sources */,
 				F407336B1F3C435E0006F1F6 /* DressManDetailViewController.m in Sources */,
 				F41B19D71F3462070026E483 /* CollectGoodsInfo.m in Sources */,
+				F43A7DB51F4D19E800350A63 /* ClothViewController.m in Sources */,
 				F41371B51F4576E40071F1BA /* BusinessCaseViewController.m in Sources */,
 				A520C6D21F2B89A400202622 /* DLTabedSlideView.m in Sources */,
 				F48679301F3D769000612E27 /* StoreDetailThirdViewController.m in Sources */,
@@ -1751,6 +1809,7 @@
 				F4FDD6AB1F2C379D007263D4 /* OrderManageViewController.m in Sources */,
 				F482375D1F27395100DDD487 /* ShoppingBottomView.m in Sources */,
 				F482372B1F2606BC00DDD487 /* AddressTableViewCell.m in Sources */,
+				F43A7DB81F4D1ADF00350A63 /* ClothPesRequest.m in Sources */,
 				F40733651F3C3BC00006F1F6 /* DressManViewController.m in Sources */,
 				A50BB4161F3DAF3700F6158B /* CalculateTool.m in Sources */,
 				F405D1A41F2EC6480015A8E6 /* CameraViewController.m in Sources */,
@@ -1789,6 +1848,7 @@
 				F40A2AE01F315F5700BEDFFB /* StoreCollectionViewCell.m in Sources */,
 				A514B1101F290533006A765F /* SvUDIDTools.m in Sources */,
 				F4A7A0931F256B96009FAAEE /* AppDelegate.m in Sources */,
+				F43A7DBC1F4D1B0500350A63 /* ClothManager.m in Sources */,
 				A50BB41B1F3DAF3700F6158B /* LTPickerView.m in Sources */,
 				A514B1041F2903D3006A765F /* TabbarViewController.m in Sources */,
 				F41B19BE1F340EC00026E483 /* ShoppingManager.m in Sources */,
