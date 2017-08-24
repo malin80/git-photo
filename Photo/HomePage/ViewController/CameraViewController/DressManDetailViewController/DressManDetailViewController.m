@@ -17,25 +17,25 @@
 #import "DLTabedSlideView.h"
 #import "CameraManager.h"
 #import "LoginManager.h"
-
-@interface DressManDetailViewController () <NavigationBarDelegate, DLTabedSlideViewDelegate>
+#import "GGActionSheet.h"
+@interface DressManDetailViewController () <NavigationBarDelegate, DLTabedSlideViewDelegate,GGActionSheetDelegate>
 
 @property (nonatomic, strong) DLTabedSlideView *tabedSlideView;
 @property (nonatomic, strong) UIButton *bottomButton;
-
+@property(nonatomic,strong) GGActionSheet *actionSheetImg;
 @end
 
 @implementation DressManDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+   
     [self addNotification];
     [self initView];
 }
 
 - (void)initView {
-    NavigationBar *bar = [[NavigationBar alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 64) withTitle:@"预约化妆师 化妆师"];
+    NavigationBar *bar = [[NavigationBar alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 64) withTitle:@"预约化妆师"];
     bar.delegate = self;
     bar.line.hidden=YES;
     [self.view addSubview:bar];
@@ -77,6 +77,8 @@
 - (void)addNotification {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectDaySuccess:) name:@"selectDaySuccess" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(alipay) name:@"alipayaa" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(wxpay) name:@"wxpayaa" object:nil];
 }
 
 - (void)selectDaySuccess:(NSNotification *)notify {
@@ -90,8 +92,9 @@
 }
 
 - (void)confirmOrder {
+     [self.actionSheetImg showGGActionSheet];
     //支付
-    [GET_SINGLETON_FOR_CLASS(CameraManager) orderCameraManWithCameraId:self.dressManInfo.dressManId withToken:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue withDressId:GET_SINGLETON_FOR_CLASS(CameraManager).selectedCameraManInfo.cameraManId withTime:GET_SINGLETON_FOR_CLASS(CameraManager).selectedTime withType:@"marry" withGroupName:@"摄影"];
+   
 }
 
 #pragma mark --- DLTabedSlideViewDelegate ---
@@ -168,7 +171,68 @@
 - (void)goBack {
     [self.navigationController popViewControllerAnimated:NO];
 }
+#pragma mark - GGActionSheet代理方法
+-(void)GGActionSheetClickWithActionSheet:(GGActionSheet *)actionSheet Index:(int)index{
+    [GET_SINGLETON_FOR_CLASS(CameraManager) orderCameraManWithCameraId:self.dressManInfo.dressManId withToken:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue withDressId:GET_SINGLETON_FOR_CLASS(CameraManager).selectedCameraManInfo.cameraManId withTime:GET_SINGLETON_FOR_CLASS(CameraManager).selectedTime withType:@"marry" withGroupName:@"摄影" withIndex:index];
+}
+-(void)alipay{
+    NSLog(@"%@",GET_SINGLETON_FOR_CLASS(CameraManager).Paydata);
+    
+    NSString *appScheme=@"zhifubao1";
+    [[AlipaySDK defaultService] payOrder:GET_SINGLETON_FOR_CLASS(CameraManager).Paydata fromScheme:appScheme callback:^(NSDictionary *resultDic) {
+        //[self hiddenHub1];
+        if ([resultDic[@"resultStatus"] intValue]==9000) {
+            [self showtext:@"支付成功"];
+        } else{
+            [self showtext:resultDic[@"memo"]];
+        }
+        
+    }];
+}
+-(void)wxpay{
+    NSDictionary *dict= GET_SINGLETON_FOR_CLASS(CameraManager).wxDic;
+    NSLog(@"%@",dict);
+    PayReq *request = [[PayReq alloc] init] ;
+    request.partnerId = [dict objectForKey:@"partnerid"];
+    request.prepayId= [dict objectForKey:@"prepayid"];;
+    request.package = [dict objectForKey:@"package"];;
+    request.nonceStr= [dict objectForKey:@"noncestr"];;
+    request.timeStamp= [[dict objectForKey:@"timestamp"] intValue];
+    NSLog(@"%u",request.timeStamp);
+    request.sign= [dict objectForKey:@"sign"];
+    [WXApi sendReq:request];
+}
 
+-(void) onResp:(BaseResp*)resp
+{
+    //启动微信支付的response
+    NSString *payResoult = [NSString stringWithFormat:@"errcode:%d", resp.errCode];
+    if([resp isKindOfClass:[PayResp class]]){
+        //支付返回结果，实际支付结果需要去微信服务器端查询
+        switch (resp.errCode) {
+            case 0:
+                payResoult = @"支付结果：成功！";
+                break;
+            case -1:
+                payResoult = @"支付结果:失败！";
+                break;
+            case -2:
+                payResoult = @"用户已经退出支付！";
+                break;
+            default:
+                payResoult = [NSString stringWithFormat:@"支付结果：失败！retcode = %d, retstr = %@", resp.errCode,resp.errStr];
+                break;
+        }
+    }
+}
+
+-(GGActionSheet *)actionSheetImg{
+    if (!_actionSheetImg) {
+        _actionSheetImg = [GGActionSheet ActionSheetWithImageArray:@[@"alipay233",@"wechatpay233"] delegate:self];
+        _actionSheetImg.cancelDefaultColor = [UIColor redColor];
+    }
+    return _actionSheetImg;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

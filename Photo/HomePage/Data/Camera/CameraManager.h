@@ -10,6 +10,7 @@
 #import "CameraPesRequest.h"
 #import "CameraManInfo.h"
 #import "DressManInfo.h"
+#import "StorePesRequest.h"
 
 @interface CameraManager : NSObject
 
@@ -26,7 +27,8 @@ DECLARE_SINGLETON_FOR_CLASS(CameraManager)
 @property (nonatomic, strong) DressManInfo *selectedDressManInfo;
 @property (nonatomic, copy)   NSString *selectedTime;
 @property (nonatomic, strong) NSMutableArray *scrollViewImages;
-
+@property (nonatomic, copy) NSString *Paydata;
+@property (nonatomic, strong)NSDictionary *wxDic;
 @property (nonatomic, copy) NSString *commentImages;
 
 - (void)queryCameraGroup;
@@ -41,7 +43,7 @@ DECLARE_SINGLETON_FOR_CLASS(CameraManager)
 
 - (void)queryDressManDetailWithId:(long)dressManId;
 
-- (void)orderCameraManWithCameraId:(long)cameraId withToken:(NSString *)token withDressId:(long)dressId withTime:(NSString *)time withType:(NSString *)type withGroupName:(NSString *)groupName;
+- (void)orderCameraManWithCameraId:(long)cameraId withToken:(NSString *)token withDressId:(long)dressId withTime:(NSString *)time withType:(NSString *)type withGroupName:(NSString *)groupName withIndex:(int)index;
 
 - (void)loadCameraRecommendImages;
 

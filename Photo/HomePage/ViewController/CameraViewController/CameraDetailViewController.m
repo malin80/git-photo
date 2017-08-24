@@ -34,6 +34,7 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [GET_SINGLETON_FOR_CLASS(CameraManager) queryCameraTeamWithGroupId:self.groupId];
     });
+    NSArray *array = GET_SINGLETON_FOR_CLASS(CameraManager).cameraTeams;
     if (GET_SINGLETON_FOR_CLASS(CameraManager).cameraTeams.count >0) {
         [self createTableView];
     }
@@ -51,7 +52,7 @@
 }
 
 - (void)createTableView {
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 250, ScreenWidth, ScreenHieght-360) style:UITableViewStyleGrouped];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 250, ScreenWidth, ScreenHieght-358) style:UITableViewStyleGrouped];
     _tableView.dataSource = self;
     _tableView.delegate = self;
     _tableView.backgroundColor = [UIColor whiteColor];
@@ -107,8 +108,10 @@
 - (void)queryCameraTeamWithGroupIdSuccess {
     if (!_tableView) {
         [self createTableView];
+    }else{
+         [_tableView reloadData];
     }
-    [_tableView reloadData];
+   
 }
 
 - (void)didReceiveMemoryWarning {

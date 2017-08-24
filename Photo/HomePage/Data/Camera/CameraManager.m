@@ -49,6 +49,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(CameraManager)
 - (void)queryCameraTeamWithGroupId:(long)groupId {
     [CameraPesRequest queryCameraTeamWithGroupId:groupId withBlock:^(NSDictionary *responseObject, NSString *error) {
         if ([[responseObject objectForKey:@"errorCode"] unsignedLongValue]== 0) {
+            NSLog(@"%@",responseObject);
             [self.cameraTeams removeAllObjects];
             if (![[responseObject objectForKey:@"data"] isKindOfClass:[NSString class]]) {
                 NSArray *array = [responseObject objectForKey:@"data"];
@@ -162,11 +163,16 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(CameraManager)
     }];
 }
 
-- (void)orderCameraManWithCameraId:(long)cameraId withToken:(NSString *)token withDressId:(long)dressId withTime:(NSString *)time withType:(NSString *)type withGroupName:(NSString *)groupName {
+- (void)orderCameraManWithCameraId:(long)cameraId withToken:(NSString *)token withDressId:(long)dressId withTime:(NSString *)time withType:(NSString *)type withGroupName:(NSString *)groupName withIndex:(int)index{
     [CameraPesRequest orderCameraManOrderWithCameraId:cameraId withToken:token withDressId:dressId withTime:time withType:type withCamerGroupName:groupName withBlock:^(NSDictionary *responseObject, NSString *error) {
         if ([[responseObject objectForKey:@"errorCode"] unsignedLongValue]== 0) {
-            //支付id
-            long payId = [[responseObject objectForKey:@"data"] unsignedLongValue];
+            NSString *payId = [responseObject objectForKey:@"data"];
+            NSLog(@"%@",responseObject);
+            if (index==0) {
+                [self payByAliWithToken:token withGoodsPayId:@""withOrderPayId:payId];
+            }else if (index==1){
+                [self payByWxWithToken:token withGoodsPayId:@"" withOrderPayId:payId];
+            }
         }
     }];
 }
@@ -186,6 +192,24 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(CameraManager)
             dispatch_async(dispatch_get_main_queue(), ^{
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"loadScrollViewImagesSuccess" object:nil];
             });
+        }
+    }];
+}
+- (void)payByAliWithToken:(NSString *)token withGoodsPayId:(NSString *)goodsPayId withOrderPayId:(NSString *)orderPayId {
+    [StorePesRequest payByAliWithToken:token withGoodsPayId:goodsPayId withOrderPayId:orderPayId withBlock:^(NSDictionary *responseObject, NSString *error) {
+        if ([[responseObject objectForKey:@"errorCode"] intValue]==0) {
+            NSLog(@"%@",responseObject);
+            self.Paydata=[responseObject objectForKey:@"data"];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"alipayaa" object:nil];
+        }
+    }];
+}
+- (void)payByWxWithToken:(NSString *)token withGoodsPayId:(NSString *)goodsPayId withOrderPayId:(NSString *)orderPayId {
+    [StorePesRequest payByWechatWithToken:token withGoodsPayId:goodsPayId withOrderPayId:orderPayId withBlock:^(NSDictionary *responseObject, NSString *error) {
+        if ([[responseObject objectForKey:@"errorCode"] intValue]==0) {
+            NSLog(@"%@",responseObject);
+            self.wxDic=[responseObject objectForKey:@"data"];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"wxpayaa" object:nil];
         }
     }];
 }

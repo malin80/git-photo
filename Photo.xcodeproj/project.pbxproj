@@ -45,6 +45,7 @@
 		A520C6D11F2B89A400202622 /* DLScrollTabbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = A520C6C71F2B89A400202622 /* DLScrollTabbarView.m */; };
 		A520C6D21F2B89A400202622 /* DLTabedSlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = A520C6CA1F2B89A400202622 /* DLTabedSlideView.m */; };
 		A520C6D31F2B89A400202622 /* DLUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = A520C6CC1F2B89A400202622 /* DLUtility.m */; };
+		A53EA0081F4DB62800A67C47 /* YJSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A53EA0071F4DB62800A67C47 /* YJSliderView.m */; };
 		A55DEFE71F42F3FD00092AD3 /* GGActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = A55DEFE61F42F3FD00092AD3 /* GGActionSheet.m */; };
 		A5A2CD5E1F448870004495C5 /* caihong.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A5A2CD5D1F448870004495C5 /* caihong.jpg */; };
 		F40430831F29790A00DDB2E7 /* main_my_bg.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F40430821F29790A00DDB2E7 /* main_my_bg.jpeg */; };
@@ -303,6 +304,8 @@
 		A520C6CA1F2B89A400202622 /* DLTabedSlideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLTabedSlideView.m; sourceTree = "<group>"; };
 		A520C6CB1F2B89A400202622 /* DLUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLUtility.h; sourceTree = "<group>"; };
 		A520C6CC1F2B89A400202622 /* DLUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLUtility.m; sourceTree = "<group>"; };
+		A53EA0061F4DB62800A67C47 /* YJSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YJSliderView.h; sourceTree = "<group>"; };
+		A53EA0071F4DB62800A67C47 /* YJSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YJSliderView.m; sourceTree = "<group>"; };
 		A55DEFE51F42F3FD00092AD3 /* GGActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGActionSheet.h; sourceTree = "<group>"; };
 		A55DEFE61F42F3FD00092AD3 /* GGActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGActionSheet.m; sourceTree = "<group>"; };
 		A5A2CD5D1F448870004495C5 /* caihong.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = caihong.jpg; sourceTree = "<group>"; };
@@ -803,6 +806,15 @@
 				A520C6C81F2B89A400202622 /* DLSlideTabbarProtocol.h */,
 			);
 			path = DLTabbarView;
+			sourceTree = "<group>";
+		};
+		A53EA0051F4DB62800A67C47 /* YJSliderView */ = {
+			isa = PBXGroup;
+			children = (
+				A53EA0061F4DB62800A67C47 /* YJSliderView.h */,
+				A53EA0071F4DB62800A67C47 /* YJSliderView.m */,
+			);
+			path = YJSliderView;
 			sourceTree = "<group>";
 		};
 		A55DEFE41F42F3FD00092AD3 /* GGActionSheet */ = {
@@ -1323,6 +1335,7 @@
 		F4A7A0D81F257F14009FAAEE /* ThirdParties */ = {
 			isa = PBXGroup;
 			children = (
+				A53EA0051F4DB62800A67C47 /* YJSliderView */,
 				A5104F6F1F43393A004ABBE7 /* 支付宝 */,
 				A55DEFE41F42F3FD00092AD3 /* GGActionSheet */,
 				A50BB3FA1F3DAF3700F6158B /* 档期选择器 */,
@@ -1577,7 +1590,7 @@
 				TargetAttributes = {
 					F4A7A08A1F256B96009FAAEE = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = NVRZ8WK38H;
+						DevelopmentTeam = NWRGH9QDNR;
 						ProvisioningStyle = Automatic;
 					};
 					F4A7A0A31F256B96009FAAEE = {
@@ -1777,6 +1790,7 @@
 				F4A7A1251F259629009FAAEE /* EntryItem.m in Sources */,
 				F41371981F453CF30071F1BA /* WeddingPesRequest.m in Sources */,
 				F41B19C41F3416120026E483 /* AddGoodsToShoppingViewController.m in Sources */,
+				A53EA0081F4DB62800A67C47 /* YJSliderView.m in Sources */,
 				F4FDD6A71F2C378E007263D4 /* UserNameViewController.m in Sources */,
 				F4A7A0961F256B96009FAAEE /* ViewController.m in Sources */,
 				F4B67C731F413A9300DA8E4E /* SelectDressManViewController.m in Sources */,
@@ -2039,7 +2053,7 @@
 			baseConfigurationReference = 1974EED19EF6BC33D1481465 /* Pods-Photo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = NVRZ8WK38H;
+				DEVELOPMENT_TEAM = NWRGH9QDNR;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Photo/OpenAPI/SDK/Tencent",
@@ -2068,7 +2082,7 @@
 			baseConfigurationReference = DFFD29296EE5B8D87B3DB463 /* Pods-Photo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = NVRZ8WK38H;
+				DEVELOPMENT_TEAM = NWRGH9QDNR;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Photo/OpenAPI/SDK/Tencent",

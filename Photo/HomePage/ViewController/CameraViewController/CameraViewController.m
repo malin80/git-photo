@@ -13,6 +13,7 @@
 #import "NavigationBar.h"
 #import "CameraManager.h"
 #import "HomePageCameraGroupInfo.h"
+#import "DLTabedSlideView.h"
 
 @interface CameraViewController () <NavigationBarDelegate, DLTabedSlideViewDelegate>
 {
@@ -47,7 +48,7 @@
     self.tabedSlideView.tabItemSelectedColor = [UIColor colorWithRed:0.833 green:0.052 blue:0.130 alpha:1.000];
     self.tabedSlideView.tabbarTrackColor = [UIColor colorWithRed:0.833 green:0.052 blue:0.130 alpha:1.000];
     self.tabedSlideView.tabbarBottomSpacing = 3.0;
-
+    
     _slideViews = [NSMutableArray array];
     for (int i = 0; i < GET_SINGLETON_FOR_CLASS(CameraManager).cameraGroups.count; i++) {
         HomePageCameraGroupInfo *info = GET_SINGLETON_FOR_CLASS(CameraManager).cameraGroups[i];
@@ -58,7 +59,7 @@
     [self.tabedSlideView buildTabbar];
     self.tabedSlideView.selectedIndex = 0;
     [self.view addSubview:self.tabedSlideView];
-
+    
     [self.view addSubview:self.scrollView];
 }
 

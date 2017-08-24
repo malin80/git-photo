@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
-#import "DLTabedSlideView.h"
-
-@interface CameraViewController : BaseViewController <DLSlideTabbarDelegate>
+@interface CameraViewController : BaseViewController
 
 @end
