@@ -17,4 +17,8 @@
 
 + (void)queryClothDetailWithClothId:(long)clothId withBlock:(void(^)(NSDictionary *responseObject,NSString *error))finished;
 
++ (void)buyClothWithToken:(NSString *)token withClothId:(long)clothId withClothCount:(long)count withBlock:(void(^)(NSDictionary *responseObject,NSString *error))finished;
+
++ (void)queryClothOrderWithToken:(NSString *)token withBlock:(void(^)(NSDictionary *responseObject,NSString *error))finished;
+
 @end

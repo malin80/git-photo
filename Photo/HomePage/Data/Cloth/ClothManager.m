@@ -9,6 +9,7 @@
 #import "ClothManager.h"
 #import "ClothPesRequest.h"
 #import "ClothInfo.h"
+#import "StoreCommentInfo.h"
 
 @implementation ClothManager
 
@@ -20,6 +21,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ClothManager)
     if (self) {
         self.clothTypes = [NSMutableArray array];
         self.cloths = [NSMutableArray array];
+        self.commentInfos = [NSMutableArray array];
     }
     return self;
 }
@@ -82,9 +84,37 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ClothManager)
             self.clothShopInfo.shopPhone = [shopDict objectForKey:@"shopPhone"];
             self.clothShopInfo.shopAddress = [shopDict objectForKey:@"shopAddress"];
             self.clothShopInfo.shopDesc = [shopDict objectForKey:@"shopDescribe"];
+            
+            
+            NSArray *array = [dict objectForKey:@"weddingDressShopCommentList"];
+            for (NSDictionary *dict in array) {
+                StoreCommentInfo *info = [[StoreCommentInfo alloc] init];
+                info.commentText = [dict objectForKey:@"weddingDressShopCommentText"];
+                info.commentImageUrl = [dict objectForKey:@"weddingDressShopCommentPic"];
+                info.commentGrade = [dict objectForKey:@"weddingDressShopCommentGrade"];
+                NSDictionary *memberDetail = [dict objectForKey:@"memberDetail"];
+                info.commentName = [memberDetail objectForKey:@"pickName"];
+                info.commentImage = [memberDetail objectForKey:@"memberPic"];
+                [self.commentInfos addObject:info];
+            }
+            
             dispatch_async(dispatch_get_main_queue(), ^{
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"queryClothDetailSuccess" object:nil];
             });
+        }
+    }];
+}
+
+- (void)buyClothWithToken:(NSString *)token withClothId:(long)clothId withClothCount:(long)count {
+    [ClothPesRequest buyClothWithToken:token withClothId:clothId withClothCount:count withBlock:^(NSDictionary *responseObject, NSString *error) {
+        
+    }];
+}
+
+- (void)queryClothOrderWithToken:(NSString *)token {
+    [ClothPesRequest queryClothOrderWithToken:token withBlock:^(NSDictionary *responseObject, NSString *error) {
+        if ([[responseObject objectForKey:@"errorCode"] unsignedLongValue]== 0) {
+            
         }
     }];
 }

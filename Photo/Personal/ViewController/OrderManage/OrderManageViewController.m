@@ -9,6 +9,7 @@
 #import "OrderManageViewController.h"
 #import "PersonalManager.h"
 #import "LoginManager.h"
+#import "ClothOrderViewController.h"
 
 @interface OrderManageViewController ()
 
@@ -22,6 +23,7 @@
     [GET_SINGLETON_FOR_CLASS(PersonalManager) queryMemberOrderGoodsInfoWithToken:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue];
     [GET_SINGLETON_FOR_CLASS(PersonalManager) queryCameraManOrderInfoWithToken:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue];
     
+    self.navigationController.navigationBar.hidden = YES;
     NavigationBar *bar = [[NavigationBar alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 64) withTitle:@"订单管理"];
     bar.delegate = self;
     bar.line.hidden=YES;
@@ -39,7 +41,8 @@
     
     DLTabedbarItem *item1 = [DLTabedbarItem itemWithTitle:@"商品订单" image:nil selectedImage:nil];
     DLTabedbarItem *item2 = [DLTabedbarItem itemWithTitle:@"预约订单" image:nil selectedImage:nil];
-    self.tabedSlideView.tabbarItems = @[item1, item2];
+    DLTabedbarItem *item3 = [DLTabedbarItem itemWithTitle:@"婚纱订单" image:nil selectedImage:nil];
+    self.tabedSlideView.tabbarItems = @[item1, item2, item3];
     [self.tabedSlideView buildTabbar];
     
     self.tabedSlideView.selectedIndex = 0;
@@ -47,7 +50,7 @@
 
 #pragma mark --- DLTabedSlideView
 - (NSInteger)numberOfTabsInDLTabedSlideView:(DLTabedSlideView *)sender {
-    return 2;
+    return 3;
 }
 
 - (UIViewController *)DLTabedSlideView:(DLTabedSlideView *)sender controllerAt:(NSInteger)index {
@@ -62,7 +65,11 @@
             BookOrderViewController *controller = [[BookOrderViewController alloc] init];
             return controller;
         }
-            
+        case 2:
+        {
+            ClothOrderViewController *controller = [[ClothOrderViewController alloc] init];
+            return controller;
+        }
         default:
             return nil;
     }

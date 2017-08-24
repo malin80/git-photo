@@ -15,5 +15,7 @@
 @property (nonatomic, copy) NSString *commentText;
 @property (nonatomic, copy) NSString *commentImageUrl;
 @property (nonatomic, copy) NSString *commentTime;
+@property (nonatomic, copy) NSString *commentGrade;
+
 
 @end

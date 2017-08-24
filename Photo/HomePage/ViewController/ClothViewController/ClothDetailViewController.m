@@ -11,6 +11,9 @@
 #import "SDWebImageCache.h"
 #import "NavigationBar.h"
 #import "ClothManager.h"
+#import "ClothCommentTableViewCell.h"
+#import "StoreCommentInfo.h"
+#import "BuyClothViewController.h"
 
 @interface ClothDetailViewController () < NavigationBarDelegate, UITableViewDelegate, UITableViewDataSource>
 {
@@ -35,6 +38,18 @@
     [self addNotification];
     [self initPicArray];
     [self createTableView];
+    
+    UIButton *bottomButton = [[UIButton alloc] initWithFrame:CGRectMake(0, ScreenHieght-50, ScreenWidth, 50)];
+    bottomButton.backgroundColor = [UIColor colorR:255 G:102 B:1 alpha:1];
+    [bottomButton setTitle:@"立即购买" forState:UIControlStateNormal];
+    [bottomButton addTarget:self action:@selector(buyClothClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:bottomButton];
+}
+
+- (void)buyClothClick {
+    BuyClothViewController *controller = [[BuyClothViewController alloc] init];
+    controller.info = self.info;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void)addNotification {
@@ -58,7 +73,7 @@
         headerView.image = image;
     }];
     
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHieght-64) style:UITableViewStylePlain];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHieght-114) style:UITableViewStylePlain];
     _tableView.dataSource = self;
     _tableView.delegate = self;
     _tableView.backgroundColor = [UIColor whiteColor];
@@ -73,7 +88,7 @@
 
 #pragma mark --- tableView delegate ---
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -87,6 +102,9 @@
         case 2:
             return _picArray.count;
             break;
+        case 3:
+            return GET_SINGLETON_FOR_CLASS(ClothManager).commentInfos.count;
+            break;
         default:
             break;
     }
@@ -94,13 +112,14 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *cellIdentify = [NSString stringWithFormat:@"cellIdentify"];
-    ClothDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
-    if (!cell) {
-        cell = [[ClothDetailTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
-    }
     switch (indexPath.section) {
         case 0:
+        {
+            NSString *cellIdentify = [NSString stringWithFormat:@"cellIdentify"];
+            ClothDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
+            if (!cell) {
+                cell = [[ClothDetailTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
+            }
             if (indexPath.row == 0) {
                 cell.priceLabel.hidden = NO;
                 cell.oldPriceLabel.hidden = NO;
@@ -139,9 +158,16 @@
                 cell.icon2.hidden = YES;
                 cell.line.hidden = YES;
             }
+            return cell;
+        }
             break;
         case 1:
         {
+            NSString *cellIdentify = [NSString stringWithFormat:@"cellIdentify"];
+            ClothDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
+            if (!cell) {
+                cell = [[ClothDetailTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
+            }
             NSArray *temp = [self.info.clothParam componentsSeparatedByString:@";"];
             if (indexPath.row == 0) {
                 cell.paramLabel.hidden = NO;
@@ -150,10 +176,16 @@
                 cell.paramLabel.hidden = NO;
                 [cell setCommentContentText:temp[1] withCommentImageUrl:nil];
             }
+            return cell;
         }
             break;
         case 2:
         {
+            NSString *cellIdentify = [NSString stringWithFormat:@"cellIdentify"];
+            ClothDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
+            if (!cell) {
+                cell = [[ClothDetailTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
+            }
             cell.titleView.hidden = YES;
             cell.titleLabel.hidden = YES;
             cell.arrow.hidden = YES;
@@ -167,11 +199,31 @@
             [SDWebImageCache getImageFromSDWebImageWithUrlString:[NSString stringWithFormat:@"%@%@",baseUrl,_picArray[indexPath.row]] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
                 cell.clothView.image = image;
             }];
+            return cell;
         }
+        case 3:
+        {
+            NSString *cellIdentify = [NSString stringWithFormat:@"cellIdentify1"];
+            ClothCommentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
+            if (!cell) {
+                cell = [[ClothCommentTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
+            }
+            StoreCommentInfo *info = [GET_SINGLETON_FOR_CLASS(ClothManager).commentInfos objectAtIndex:indexPath.row];
+            cell.memberName.text = info.commentName;
+            [cell setCommentContentText:info.commentText withCommentImageUrl:info.commentImageUrl];
+            [SDWebImageCache getImageFromSDWebImageWithUrlString:[NSString stringWithFormat:@"%@%@",baseUrl,info.commentImage] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                cell.memberView.image = image;
+            }];
+            [cell createCommentImageWithUrl:info.commentImageUrl];
+            [cell createCommentGradeViewWithGrade:info.commentGrade];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            return cell;
+        }
+            break;
         default:
             break;
     }
-    return cell;
+    return nil;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -194,6 +246,12 @@
         case 2:
             return 200;
             break;
+        case 3:
+        {
+            ClothCommentTableViewCell *cell = [self tableView:_tableView cellForRowAtIndexPath:indexPath];
+            return cell.frame.size.height;
+        }
+            break;
         default:
             break;
     }
@@ -213,6 +271,11 @@
             headerView.backgroundColor = [UIColor colorR:238 G:238 B:238 alpha:1];
         }
             return headerView;
+        case 3:
+        {
+            headerView.backgroundColor = [UIColor colorR:238 G:238 B:238 alpha:1];
+        }
+            return headerView;
         default:
             break;
     }
@@ -228,6 +291,9 @@
             return 20;
             break;
         case 2:
+            return 20;
+            break;
+        case 3:
             return 20;
             break;
         default:

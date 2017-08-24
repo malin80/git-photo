@@ -24,4 +24,14 @@
     [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"WeddingDressShopControl/queryWeddingDressShopById.do" dic:dict finished:finished];
 }
 
++ (void)buyClothWithToken:(NSString *)token withClothId:(long)clothId withClothCount:(long)count withBlock:(void (^)(NSDictionary *, NSString *))finished {
+    NSDictionary *dict = @{@"token":token, @"WeddingDressShopId":@(clothId), @"WeddingDressShopCount":@(count)};
+    [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"WeddingDressShopOrderControl/saveWeddingDressShopOrder.do" dic:dict finished:finished];
+}
+
++ (void)queryClothOrderWithToken:(NSString *)token withBlock:(void (^)(NSDictionary *, NSString *))finished {
+    NSDictionary *dict = @{@"token":token};
+    [GET_SINGLETON_FOR_CLASS(PesRequest) requestWithFunctionName:@"WeddingDressShopOrderControl/queryWeddingDressShopOrder.do" dic:dict finished:finished];
+}
+
 @end

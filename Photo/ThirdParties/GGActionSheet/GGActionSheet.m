@@ -191,10 +191,10 @@ typedef NS_ENUM(NSInteger,GGActionSheetType) {
 }
 
 -(void)buttonClick:(UIButton *)btn{
-    
     [self.delegate GGActionSheetClickWithActionSheet:self Index:(int)btn.tag-990];
     [self dismissAlertView];
 }
+
 -(void)cancelBtnClick{
     [self dismissAlertView];
 }
