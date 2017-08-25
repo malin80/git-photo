@@ -15,6 +15,7 @@
 - (void)touchCameraButton;
 - (void)touchWeddingButton;
 - (void)touchClothButton;
+- (void)touchHotelButton;
 
 @end
 

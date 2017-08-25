@@ -197,6 +197,14 @@
 		F4C618641F3AE2B7004A76B3 /* shopping_no_collection.png in Resources */ = {isa = PBXBuildFile; fileRef = F4C618631F3AE2B7004A76B3 /* shopping_no_collection.png */; };
 		F4C618661F3AE64D004A76B3 /* shopping_no_goods.png in Resources */ = {isa = PBXBuildFile; fileRef = F4C618651F3AE64D004A76B3 /* shopping_no_goods.png */; };
 		F4C618691F3B025F004A76B3 /* CameraManDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C618681F3B025F004A76B3 /* CameraManDetailTableViewCell.m */; };
+		F4D7D2E21F4FB81000A39F38 /* HotelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D7D2E11F4FB81000A39F38 /* HotelViewController.m */; };
+		F4D7D2E61F4FBB6B00A39F38 /* HotelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D7D2E51F4FBB6B00A39F38 /* HotelTableViewCell.m */; };
+		F4D7D2E91F4FBBC100A39F38 /* HotelPesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D7D2E81F4FBBC100A39F38 /* HotelPesRequest.m */; };
+		F4D7D2ED1F4FBD0D00A39F38 /* HotelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D7D2EC1F4FBD0D00A39F38 /* HotelManager.m */; };
+		F4D7D2F01F4FC00600A39F38 /* HotelInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D7D2EF1F4FC00600A39F38 /* HotelInfo.m */; };
+		F4D7D2F21F4FD1B000A39F38 /* jinpai_hotel.png in Resources */ = {isa = PBXBuildFile; fileRef = F4D7D2F11F4FD1B000A39F38 /* jinpai_hotel.png */; };
+		F4D7D2F51F4FD6A200A39F38 /* HotelDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D7D2F41F4FD6A200A39F38 /* HotelDetailViewController.m */; };
+		F4D7D2F81F4FF0FB00A39F38 /* HotelDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D7D2F71F4FF0FB00A39F38 /* HotelDetailTableViewCell.m */; };
 		F4F0AE601F4E72BE00F1B262 /* ClothCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F0AE5F1F4E72BE00F1B262 /* ClothCommentTableViewCell.m */; };
 		F4F0AE671F4E7C4A00F1B262 /* evalevel0.png in Resources */ = {isa = PBXBuildFile; fileRef = F4F0AE611F4E7C4A00F1B262 /* evalevel0.png */; };
 		F4F0AE681F4E7C4A00F1B262 /* evalevel1.png in Resources */ = {isa = PBXBuildFile; fileRef = F4F0AE621F4E7C4A00F1B262 /* evalevel1.png */; };
@@ -580,6 +588,21 @@
 		F4C618651F3AE64D004A76B3 /* shopping_no_goods.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shopping_no_goods.png; sourceTree = "<group>"; };
 		F4C618671F3B025F004A76B3 /* CameraManDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraManDetailTableViewCell.h; sourceTree = "<group>"; };
 		F4C618681F3B025F004A76B3 /* CameraManDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraManDetailTableViewCell.m; sourceTree = "<group>"; };
+		F4D7D2E01F4FB81000A39F38 /* HotelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelViewController.h; sourceTree = "<group>"; };
+		F4D7D2E11F4FB81000A39F38 /* HotelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelViewController.m; sourceTree = "<group>"; };
+		F4D7D2E41F4FBB6B00A39F38 /* HotelTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelTableViewCell.h; sourceTree = "<group>"; };
+		F4D7D2E51F4FBB6B00A39F38 /* HotelTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelTableViewCell.m; sourceTree = "<group>"; };
+		F4D7D2E71F4FBBC100A39F38 /* HotelPesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelPesRequest.h; sourceTree = "<group>"; };
+		F4D7D2E81F4FBBC100A39F38 /* HotelPesRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelPesRequest.m; sourceTree = "<group>"; };
+		F4D7D2EB1F4FBD0D00A39F38 /* HotelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelManager.h; sourceTree = "<group>"; };
+		F4D7D2EC1F4FBD0D00A39F38 /* HotelManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelManager.m; sourceTree = "<group>"; };
+		F4D7D2EE1F4FC00600A39F38 /* HotelInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelInfo.h; sourceTree = "<group>"; };
+		F4D7D2EF1F4FC00600A39F38 /* HotelInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelInfo.m; sourceTree = "<group>"; };
+		F4D7D2F11F4FD1B000A39F38 /* jinpai_hotel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jinpai_hotel.png; sourceTree = "<group>"; };
+		F4D7D2F31F4FD6A200A39F38 /* HotelDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelDetailViewController.h; sourceTree = "<group>"; };
+		F4D7D2F41F4FD6A200A39F38 /* HotelDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelDetailViewController.m; sourceTree = "<group>"; };
+		F4D7D2F61F4FF0FB00A39F38 /* HotelDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelDetailTableViewCell.h; sourceTree = "<group>"; };
+		F4D7D2F71F4FF0FB00A39F38 /* HotelDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelDetailTableViewCell.m; sourceTree = "<group>"; };
 		F4F0AE5E1F4E72BE00F1B262 /* ClothCommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClothCommentTableViewCell.h; sourceTree = "<group>"; };
 		F4F0AE5F1F4E72BE00F1B262 /* ClothCommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClothCommentTableViewCell.m; sourceTree = "<group>"; };
 		F4F0AE611F4E7C4A00F1B262 /* evalevel0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evalevel0.png; sourceTree = "<group>"; };
@@ -870,6 +893,8 @@
 				F41371971F453CF30071F1BA /* WeddingPesRequest.m */,
 				F43A7DB61F4D1ADF00350A63 /* ClothPesRequest.h */,
 				F43A7DB71F4D1ADF00350A63 /* ClothPesRequest.m */,
+				F4D7D2E71F4FBBC100A39F38 /* HotelPesRequest.h */,
+				F4D7D2E81F4FBBC100A39F38 /* HotelPesRequest.m */,
 			);
 			path = PesDelegate;
 			sourceTree = "<group>";
@@ -911,6 +936,7 @@
 		F405D1B61F2EF4740015A8E6 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				F4D7D2EA1F4FBC9700A39F38 /* Hotel */,
 				F43A7DB91F4D1AF800350A63 /* Cloth */,
 				F41371991F453DC50071F1BA /* Camera */,
 				F41371A61F453DE20071F1BA /* Wedding */,
@@ -1359,10 +1385,11 @@
 		F4A7A0C81F256D2B009FAAEE /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				F482373C1F2703F700DDD487 /* View */,
-				F43A7DB11F4D19C800350A63 /* ClothViewController */,
-				F405D19E1F2EC2090015A8E6 /* CameraViewController */,
 				F413718E1F452CC90071F1BA /* WeddingViewController */,
+				F405D19E1F2EC2090015A8E6 /* CameraViewController */,
+				F43A7DB11F4D19C800350A63 /* ClothViewController */,
+				F4D7D2DF1F4FB7F600A39F38 /* HotelViewController */,
+				F482373C1F2703F700DDD487 /* View */,
 				F4A7A0CF1F256DB1009FAAEE /* HomePageViewController.h */,
 				F4A7A0D01F256DB1009FAAEE /* HomePageViewController.m */,
 			);
@@ -1484,6 +1511,7 @@
 		F4A7A25A1F25CF3B009FAAEE /* Commom */ = {
 			isa = PBXGroup;
 			children = (
+				F4D7D2F11F4FD1B000A39F38 /* jinpai_hotel.png */,
 				F4F0AE6D1F4E7ED000F1B262 /* eva_star_click0.png */,
 				F4F0AE6E1F4E7ED000F1B262 /* eva_star_click1.png */,
 				F4F0AE6F1F4E7ED000F1B262 /* eva_star_click2.png */,
@@ -1503,6 +1531,40 @@
 				F4A7A25D1F25D192009FAAEE /* common_back.png */,
 			);
 			path = Commom;
+			sourceTree = "<group>";
+		};
+		F4D7D2DF1F4FB7F600A39F38 /* HotelViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F4D7D2E31F4FBB5800A39F38 /* View */,
+				F4D7D2E01F4FB81000A39F38 /* HotelViewController.h */,
+				F4D7D2E11F4FB81000A39F38 /* HotelViewController.m */,
+				F4D7D2F31F4FD6A200A39F38 /* HotelDetailViewController.h */,
+				F4D7D2F41F4FD6A200A39F38 /* HotelDetailViewController.m */,
+			);
+			path = HotelViewController;
+			sourceTree = "<group>";
+		};
+		F4D7D2E31F4FBB5800A39F38 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F4D7D2E41F4FBB6B00A39F38 /* HotelTableViewCell.h */,
+				F4D7D2E51F4FBB6B00A39F38 /* HotelTableViewCell.m */,
+				F4D7D2F61F4FF0FB00A39F38 /* HotelDetailTableViewCell.h */,
+				F4D7D2F71F4FF0FB00A39F38 /* HotelDetailTableViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F4D7D2EA1F4FBC9700A39F38 /* Hotel */ = {
+			isa = PBXGroup;
+			children = (
+				F4D7D2EB1F4FBD0D00A39F38 /* HotelManager.h */,
+				F4D7D2EC1F4FBD0D00A39F38 /* HotelManager.m */,
+				F4D7D2EE1F4FC00600A39F38 /* HotelInfo.h */,
+				F4D7D2EF1F4FC00600A39F38 /* HotelInfo.m */,
+			);
+			path = Hotel;
 			sourceTree = "<group>";
 		};
 		F4FD30401F32C16F00048DD6 /* Delegate */ = {
@@ -1686,6 +1748,7 @@
 				F41B19C81F341DE00026E483 /* store_number_add.png in Resources */,
 				F4A7A12F1F25A3A5009FAAEE /* tabbar_homepage_black.png in Resources */,
 				F4A7A1151F259445009FAAEE /* personal_about.png in Resources */,
+				F4D7D2F21F4FD1B000A39F38 /* jinpai_hotel.png in Resources */,
 				F4FF8D9B1F39645C00E7739D /* store_more.png in Resources */,
 				F4A7A09B1F256B96009FAAEE /* Assets.xcassets in Resources */,
 				F4A7A1321F25A3A5009FAAEE /* tabbar_personal_red.png in Resources */,
@@ -1876,6 +1939,7 @@
 				F49D6E7C1F4BBF5E00C21477 /* BusinessTypesTableViewCell.m in Sources */,
 				F4FF8D9E1F39935600E7739D /* ImageInfo.m in Sources */,
 				F4FDD6A61F2C378E007263D4 /* UserDataViewController.m in Sources */,
+				F4D7D2E61F4FBB6B00A39F38 /* HotelTableViewCell.m in Sources */,
 				F40430951F29D0FD00DDB2E7 /* LoginViewController.m in Sources */,
 				A514B10E1F290533006A765F /* FitManage.m in Sources */,
 				A520C6D01F2B89A400202622 /* DLFixedTabbarView.m in Sources */,
@@ -1886,7 +1950,9 @@
 				F4FEB0CC1F31A64B00C2F5A3 /* StoreDetailTableViewCell.m in Sources */,
 				F40733741F3C49400006F1F6 /* DressManDetailThirdViewController.m in Sources */,
 				F48237421F27078200DDD487 /* HomePageButtonView.m in Sources */,
+				F4D7D2F01F4FC00600A39F38 /* HotelInfo.m in Sources */,
 				F481E9581F28551C00EE3D7C /* BaseViewController.m in Sources */,
+				F4D7D2ED1F4FBD0D00A39F38 /* HotelManager.m in Sources */,
 				F41371B81F4576F00071F1BA /* BusinessTypeViewController.m in Sources */,
 				A514B1111F290533006A765F /* UIColor+EX.m in Sources */,
 				F40A2AEB1F31671000BEDFFB /* GoodsInfo.m in Sources */,
@@ -1906,11 +1972,13 @@
 				F404B76B1F443CB7000D753E /* AboutViewController.m in Sources */,
 				F40733581F3C397B0006F1F6 /* CameraManDetailFirstViewController.m in Sources */,
 				F4FDD6AB1F2C379D007263D4 /* OrderManageViewController.m in Sources */,
+				F4D7D2E21F4FB81000A39F38 /* HotelViewController.m in Sources */,
 				F4F0AE7B1F4E81E800F1B262 /* BuyClothViewController.m in Sources */,
 				F482375D1F27395100DDD487 /* ShoppingBottomView.m in Sources */,
 				F482372B1F2606BC00DDD487 /* AddressTableViewCell.m in Sources */,
 				F43A7DB81F4D1ADF00350A63 /* ClothPesRequest.m in Sources */,
 				F40733651F3C3BC00006F1F6 /* DressManViewController.m in Sources */,
+				F4D7D2E91F4FBBC100A39F38 /* HotelPesRequest.m in Sources */,
 				A50BB4161F3DAF3700F6158B /* CalculateTool.m in Sources */,
 				F405D1A41F2EC6480015A8E6 /* CameraViewController.m in Sources */,
 				F4FD30531F32D35800048DD6 /* CameraDetailTableViewCell.m in Sources */,
@@ -1948,6 +2016,7 @@
 				F4FD304A1F32C46800048DD6 /* HomePageCameraGroupInfo.m in Sources */,
 				F40A2AE01F315F5700BEDFFB /* StoreCollectionViewCell.m in Sources */,
 				A514B1101F290533006A765F /* SvUDIDTools.m in Sources */,
+				F4D7D2F81F4FF0FB00A39F38 /* HotelDetailTableViewCell.m in Sources */,
 				F4A7A0931F256B96009FAAEE /* AppDelegate.m in Sources */,
 				F43A7DBC1F4D1B0500350A63 /* ClothManager.m in Sources */,
 				A50BB41B1F3DAF3700F6158B /* LTPickerView.m in Sources */,
@@ -1965,6 +2034,7 @@
 				A514B10F1F290533006A765F /* NSString+Category.m in Sources */,
 				A50BB4171F3DAF3700F6158B /* DQAgeModel.m in Sources */,
 				F4A7A0901F256B96009FAAEE /* main.m in Sources */,
+				F4D7D2F51F4FD6A200A39F38 /* HotelDetailViewController.m in Sources */,
 				F48237561F27179700DDD487 /* HomePageTableViewCell.m in Sources */,
 				F49D6E881F4C002200C21477 /* BusinessTypeSubViewController.m in Sources */,
 				F40E7A5E1F3014AA00FD7792 /* HomePageManager.m in Sources */,

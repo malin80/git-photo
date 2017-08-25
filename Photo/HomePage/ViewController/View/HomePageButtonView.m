@@ -146,7 +146,9 @@
 }
 
 - (void)touchHotelButton {
-    
+    if ([self.delegate respondsToSelector:@selector(touchHotelButton)]) {
+        [self.delegate touchHotelButton];
+    }
 }
 
 - (void)touchVideoButton {

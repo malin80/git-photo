@@ -10,6 +10,7 @@
 #import "CameraViewController.h"
 #import "WeddingViewController.h"
 #import "ClothViewController.h"
+#import "HotelViewController.h"
 
 #import "HomePageScrollView.h"
 #import "HomePageButtonView.h"
@@ -152,6 +153,11 @@
 - (void)touchClothButton {
     ClothViewController *controller = [[ClothViewController alloc] init];
     [self.navigationController pushViewController:controller animated:NO];
+}
+
+- (void)touchHotelButton {
+    HotelViewController *controller = [[HotelViewController alloc] init];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 @end
