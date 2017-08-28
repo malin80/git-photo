@@ -57,8 +57,8 @@
                   symbolName = "-[DressManDetailViewController alipay]"
                   moduleName = "Photo"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/chenbingwen/Desktop/Photo/Photo/HomePage/ViewController/CameraViewController/DressManDetailViewController/DressManDetailViewController.m"
-                  timestampString = "525188533.840105"
+                  urlString = "file:///Users/chenbingwen/Desktop/ZhuBaoTuan%202/Photo/Photo/HomePage/ViewController/CameraViewController/DressManDetailViewController/DressManDetailViewController.m"
+                  timestampString = "525535948.324621"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "182"
@@ -72,8 +72,8 @@
                   symbolName = "__38-[DressManDetailViewController alipay]_block_invoke"
                   moduleName = "Photo"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/chenbingwen/Desktop/Photo/Photo/HomePage/ViewController/CameraViewController/DressManDetailViewController/DressManDetailViewController.m"
-                  timestampString = "525188533.842676"
+                  urlString = "file:///Users/chenbingwen/Desktop/ZhuBaoTuan%202/Photo/Photo/HomePage/ViewController/CameraViewController/DressManDetailViewController/DressManDetailViewController.m"
+                  timestampString = "525535948.32721"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "184"
@@ -81,22 +81,6 @@
                   offsetFromSymbolStart = "64">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Photo/HomePage/ViewController/CameraViewController/CameraDetailViewController.m"
-            timestampString = "525188536.366643"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "-createTableView"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

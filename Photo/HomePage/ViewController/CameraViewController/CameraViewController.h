@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
-@interface CameraViewController : BaseViewController
-
+#import "TYTabPagerBar.h"
+#import "TYPagerController.h"
+@interface CameraViewController : BaseViewController<TYTabPagerBarDataSource,TYTabPagerBarDelegate,TYPagerControllerDataSource,TYPagerControllerDelegate>
+@property (nonatomic, weak) TYTabPagerBar *tabBar;
+@property (nonatomic, weak) TYPagerController *pagerController;
+@property (nonatomic,strong) NSMutableArray *sringArry;
 @end

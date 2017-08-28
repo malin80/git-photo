@@ -45,7 +45,14 @@
 		A520C6D11F2B89A400202622 /* DLScrollTabbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = A520C6C71F2B89A400202622 /* DLScrollTabbarView.m */; };
 		A520C6D21F2B89A400202622 /* DLTabedSlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = A520C6CA1F2B89A400202622 /* DLTabedSlideView.m */; };
 		A520C6D31F2B89A400202622 /* DLUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = A520C6CC1F2B89A400202622 /* DLUtility.m */; };
-		A53EA0081F4DB62800A67C47 /* YJSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A53EA0071F4DB62800A67C47 /* YJSliderView.m */; };
+		A545AC7D1F530A6500869313 /* TYTabPagerBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A545AC6E1F530A6500869313 /* TYTabPagerBar.m */; };
+		A545AC7E1F530A6500869313 /* TYTabPagerBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A545AC701F530A6500869313 /* TYTabPagerBarCell.m */; };
+		A545AC7F1F530A6500869313 /* TYTabPagerBarLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = A545AC721F530A6500869313 /* TYTabPagerBarLayout.m */; };
+		A545AC801F530A6500869313 /* TYTabPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A545AC741F530A6500869313 /* TYTabPagerController.m */; };
+		A545AC811F530A6500869313 /* TYTabPagerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A545AC761F530A6500869313 /* TYTabPagerView.m */; };
+		A545AC821F530A6500869313 /* TYPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A545AC781F530A6500869313 /* TYPagerController.m */; };
+		A545AC831F530A6500869313 /* TYPagerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A545AC7A1F530A6500869313 /* TYPagerView.m */; };
+		A545AC841F530A6500869313 /* TYPagerViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = A545AC7C1F530A6500869313 /* TYPagerViewLayout.m */; };
 		A55DEFE71F42F3FD00092AD3 /* GGActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = A55DEFE61F42F3FD00092AD3 /* GGActionSheet.m */; };
 		A5A2CD5E1F448870004495C5 /* caihong.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A5A2CD5D1F448870004495C5 /* caihong.jpg */; };
 		F40430831F29790A00DDB2E7 /* main_my_bg.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F40430821F29790A00DDB2E7 /* main_my_bg.jpeg */; };
@@ -327,8 +334,22 @@
 		A520C6CA1F2B89A400202622 /* DLTabedSlideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLTabedSlideView.m; sourceTree = "<group>"; };
 		A520C6CB1F2B89A400202622 /* DLUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLUtility.h; sourceTree = "<group>"; };
 		A520C6CC1F2B89A400202622 /* DLUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLUtility.m; sourceTree = "<group>"; };
-		A53EA0061F4DB62800A67C47 /* YJSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YJSliderView.h; sourceTree = "<group>"; };
-		A53EA0071F4DB62800A67C47 /* YJSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YJSliderView.m; sourceTree = "<group>"; };
+		A545AC6D1F530A6500869313 /* TYTabPagerBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYTabPagerBar.h; sourceTree = "<group>"; };
+		A545AC6E1F530A6500869313 /* TYTabPagerBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYTabPagerBar.m; sourceTree = "<group>"; };
+		A545AC6F1F530A6500869313 /* TYTabPagerBarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYTabPagerBarCell.h; sourceTree = "<group>"; };
+		A545AC701F530A6500869313 /* TYTabPagerBarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYTabPagerBarCell.m; sourceTree = "<group>"; };
+		A545AC711F530A6500869313 /* TYTabPagerBarLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYTabPagerBarLayout.h; sourceTree = "<group>"; };
+		A545AC721F530A6500869313 /* TYTabPagerBarLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYTabPagerBarLayout.m; sourceTree = "<group>"; };
+		A545AC731F530A6500869313 /* TYTabPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYTabPagerController.h; sourceTree = "<group>"; };
+		A545AC741F530A6500869313 /* TYTabPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYTabPagerController.m; sourceTree = "<group>"; };
+		A545AC751F530A6500869313 /* TYTabPagerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYTabPagerView.h; sourceTree = "<group>"; };
+		A545AC761F530A6500869313 /* TYTabPagerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYTabPagerView.m; sourceTree = "<group>"; };
+		A545AC771F530A6500869313 /* TYPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYPagerController.h; sourceTree = "<group>"; };
+		A545AC781F530A6500869313 /* TYPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYPagerController.m; sourceTree = "<group>"; };
+		A545AC791F530A6500869313 /* TYPagerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYPagerView.h; sourceTree = "<group>"; };
+		A545AC7A1F530A6500869313 /* TYPagerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYPagerView.m; sourceTree = "<group>"; };
+		A545AC7B1F530A6500869313 /* TYPagerViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYPagerViewLayout.h; sourceTree = "<group>"; };
+		A545AC7C1F530A6500869313 /* TYPagerViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYPagerViewLayout.m; sourceTree = "<group>"; };
 		A55DEFE51F42F3FD00092AD3 /* GGActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGActionSheet.h; sourceTree = "<group>"; };
 		A55DEFE61F42F3FD00092AD3 /* GGActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGActionSheet.m; sourceTree = "<group>"; };
 		A5A2CD5D1F448870004495C5 /* caihong.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = caihong.jpg; sourceTree = "<group>"; };
@@ -864,13 +885,35 @@
 			path = DLTabbarView;
 			sourceTree = "<group>";
 		};
-		A53EA0051F4DB62800A67C47 /* YJSliderView */ = {
+		A545AC6B1F530A6500869313 /* TYPagerController */ = {
 			isa = PBXGroup;
 			children = (
-				A53EA0061F4DB62800A67C47 /* YJSliderView.h */,
-				A53EA0071F4DB62800A67C47 /* YJSliderView.m */,
+				A545AC6C1F530A6500869313 /* TabPager */,
+				A545AC771F530A6500869313 /* TYPagerController.h */,
+				A545AC781F530A6500869313 /* TYPagerController.m */,
+				A545AC791F530A6500869313 /* TYPagerView.h */,
+				A545AC7A1F530A6500869313 /* TYPagerView.m */,
+				A545AC7B1F530A6500869313 /* TYPagerViewLayout.h */,
+				A545AC7C1F530A6500869313 /* TYPagerViewLayout.m */,
 			);
-			path = YJSliderView;
+			path = TYPagerController;
+			sourceTree = "<group>";
+		};
+		A545AC6C1F530A6500869313 /* TabPager */ = {
+			isa = PBXGroup;
+			children = (
+				A545AC6D1F530A6500869313 /* TYTabPagerBar.h */,
+				A545AC6E1F530A6500869313 /* TYTabPagerBar.m */,
+				A545AC6F1F530A6500869313 /* TYTabPagerBarCell.h */,
+				A545AC701F530A6500869313 /* TYTabPagerBarCell.m */,
+				A545AC711F530A6500869313 /* TYTabPagerBarLayout.h */,
+				A545AC721F530A6500869313 /* TYTabPagerBarLayout.m */,
+				A545AC731F530A6500869313 /* TYTabPagerController.h */,
+				A545AC741F530A6500869313 /* TYTabPagerController.m */,
+				A545AC751F530A6500869313 /* TYTabPagerView.h */,
+				A545AC761F530A6500869313 /* TYTabPagerView.m */,
+			);
+			path = TabPager;
 			sourceTree = "<group>";
 		};
 		A55DEFE41F42F3FD00092AD3 /* GGActionSheet */ = {
@@ -1399,7 +1442,7 @@
 		F4A7A0D81F257F14009FAAEE /* ThirdParties */ = {
 			isa = PBXGroup;
 			children = (
-				A53EA0051F4DB62800A67C47 /* YJSliderView */,
+				A545AC6B1F530A6500869313 /* TYPagerController */,
 				A5104F6F1F43393A004ABBE7 /* 支付宝 */,
 				A55DEFE41F42F3FD00092AD3 /* GGActionSheet */,
 				A50BB3FA1F3DAF3700F6158B /* 档期选择器 */,
@@ -1888,9 +1931,11 @@
 				F41371951F452E7D0071F1BA /* WeddingTableViewCell.m in Sources */,
 				F4FD304D1F32C97300048DD6 /* CameraDetailViewController.m in Sources */,
 				F4FD30601F3304AF00048DD6 /* CameraManTableViewCell.m in Sources */,
+				A545AC841F530A6500869313 /* TYPagerViewLayout.m in Sources */,
 				F482373B1F26EC3100DDD487 /* CollectTableViewCell.m in Sources */,
 				F41371A91F453DF30071F1BA /* WeddingManager.m in Sources */,
 				F40E7A701F30280400FD7792 /* MemberInfo.m in Sources */,
+				A545AC7E1F530A6500869313 /* TYTabPagerBarCell.m in Sources */,
 				F40575691F2AE29B003C8AF2 /* PesRequest.m in Sources */,
 				F40733711F3C440E0006F1F6 /* DressManDetailSecondViewController.m in Sources */,
 				F4C618621F3AB89C004A76B3 /* AddressInfo.m in Sources */,
@@ -1913,10 +1958,10 @@
 				F4A7A0D71F2574A1009FAAEE /* PersonalViewController.m in Sources */,
 				F4FEB0CF1F31B86500C2F5A3 /* StoreDetailSecondViewController.m in Sources */,
 				F4A7A1221F2595FF009FAAEE /* EntrySection.m in Sources */,
+				A545AC811F530A6500869313 /* TYTabPagerView.m in Sources */,
 				F4A7A1251F259629009FAAEE /* EntryItem.m in Sources */,
 				F41371981F453CF30071F1BA /* WeddingPesRequest.m in Sources */,
 				F41B19C41F3416120026E483 /* AddGoodsToShoppingViewController.m in Sources */,
-				A53EA0081F4DB62800A67C47 /* YJSliderView.m in Sources */,
 				F4FDD6A71F2C378E007263D4 /* UserNameViewController.m in Sources */,
 				F4A7A0961F256B96009FAAEE /* ViewController.m in Sources */,
 				F4B67C731F413A9300DA8E4E /* SelectDressManViewController.m in Sources */,
@@ -1941,9 +1986,11 @@
 				F4FDD6A61F2C378E007263D4 /* UserDataViewController.m in Sources */,
 				F4D7D2E61F4FBB6B00A39F38 /* HotelTableViewCell.m in Sources */,
 				F40430951F29D0FD00DDB2E7 /* LoginViewController.m in Sources */,
+				A545AC7D1F530A6500869313 /* TYTabPagerBar.m in Sources */,
 				A514B10E1F290533006A765F /* FitManage.m in Sources */,
 				A520C6D01F2B89A400202622 /* DLFixedTabbarView.m in Sources */,
 				F43A7DCE1F4D5F6000350A63 /* ClothShopInfo.m in Sources */,
+				A545AC801F530A6500869313 /* TYTabPagerController.m in Sources */,
 				F4FF8D971F39506300E7739D /* CameraPesRequest.m in Sources */,
 				F41371911F452CE80071F1BA /* WeddingViewController.m in Sources */,
 				F4FF9E651F42A395009ABECA /* AlertDialog.m in Sources */,
@@ -1955,6 +2002,7 @@
 				F4D7D2ED1F4FBD0D00A39F38 /* HotelManager.m in Sources */,
 				F41371B81F4576F00071F1BA /* BusinessTypeViewController.m in Sources */,
 				A514B1111F290533006A765F /* UIColor+EX.m in Sources */,
+				A545AC7F1F530A6500869313 /* TYTabPagerBarLayout.m in Sources */,
 				F40A2AEB1F31671000BEDFFB /* GoodsInfo.m in Sources */,
 				A520C6CD1F2B89A400202622 /* DLLRUCache.m in Sources */,
 				F407336B1F3C435E0006F1F6 /* DressManDetailViewController.m in Sources */,
@@ -1968,6 +2016,7 @@
 				F40575701F2AE38D003C8AF2 /* HomePagePesRequest.m in Sources */,
 				F40A2AE81F3165D600BEDFFB /* StoreManager.m in Sources */,
 				F482373F1F27041300DDD487 /* HomePageScrollView.m in Sources */,
+				A545AC831F530A6500869313 /* TYPagerView.m in Sources */,
 				F41371B21F4575860071F1BA /* BusinessCommentTableViewCell.m in Sources */,
 				F404B76B1F443CB7000D753E /* AboutViewController.m in Sources */,
 				F40733581F3C397B0006F1F6 /* CameraManDetailFirstViewController.m in Sources */,
@@ -2035,6 +2084,7 @@
 				A50BB4171F3DAF3700F6158B /* DQAgeModel.m in Sources */,
 				F4A7A0901F256B96009FAAEE /* main.m in Sources */,
 				F4D7D2F51F4FD6A200A39F38 /* HotelDetailViewController.m in Sources */,
+				A545AC821F530A6500869313 /* TYPagerController.m in Sources */,
 				F48237561F27179700DDD487 /* HomePageTableViewCell.m in Sources */,
 				F49D6E881F4C002200C21477 /* BusinessTypeSubViewController.m in Sources */,
 				F40E7A5E1F3014AA00FD7792 /* HomePageManager.m in Sources */,
@@ -2196,7 +2246,7 @@
 					"$(PROJECT_DIR)/Photo/Others/OpenAPI/SDK/Tencent",
 					"$(PROJECT_DIR)/Photo/ThirdParties/支付宝",
 				);
-				GCC_PREFIX_HEADER = /Users/malin/Desktop/Photo/Photo/hong.pch;
+				GCC_PREFIX_HEADER = "/Users/chenbingwen/Desktop/ZhuBaoTuan 2/Photo/Photo/hong.pch";
 				INFOPLIST_FILE = Photo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2225,7 +2275,7 @@
 					"$(PROJECT_DIR)/Photo/Others/OpenAPI/SDK/Tencent",
 					"$(PROJECT_DIR)/Photo/ThirdParties/支付宝",
 				);
-				GCC_PREFIX_HEADER = /Users/malin/Desktop/Photo/Photo/hong.pch;
+				GCC_PREFIX_HEADER = "/Users/chenbingwen/Desktop/ZhuBaoTuan 2/Photo/Photo/hong.pch";
 				INFOPLIST_FILE = Photo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

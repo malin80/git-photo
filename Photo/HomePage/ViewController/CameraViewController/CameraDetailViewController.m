@@ -34,7 +34,6 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [GET_SINGLETON_FOR_CLASS(CameraManager) queryCameraTeamWithGroupId:self.groupId];
     });
-    NSArray *array = GET_SINGLETON_FOR_CLASS(CameraManager).cameraTeams;
     if (GET_SINGLETON_FOR_CLASS(CameraManager).cameraTeams.count >0) {
         [self createTableView];
     }
@@ -108,10 +107,8 @@
 - (void)queryCameraTeamWithGroupIdSuccess {
     if (!_tableView) {
         [self createTableView];
-    }else{
-         [_tableView reloadData];
     }
-   
+        [_tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
