@@ -36,7 +36,9 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [GET_SINGLETON_FOR_CLASS(ClothManager) queryClothTypes];
+    if (GET_SINGLETON_FOR_CLASS(ClothManager).cloths.count ==0) {
+        [GET_SINGLETON_FOR_CLASS(ClothManager) queryClothTypes];
+    }
 }
 
 - (void)addNotification {

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NavigationBar.h"
 
 @interface BaseViewController : UIViewController
 @property (nonatomic, strong)MBProgressHUD *hub1;

@@ -138,7 +138,9 @@
 }
 
 - (void)touchCarButton {
-    
+    if ([self.delegate respondsToSelector:@selector(touchCarButton)]) {
+        [self.delegate touchCarButton];
+    }
 }
 
 - (void)touchFlowerButton {
@@ -210,7 +212,7 @@
     if (!_carButton) {
         _carButton = [[UIButton alloc] init];
         [_carButton addTarget:self action:@selector(touchCarButton) forControlEvents:UIControlEventTouchUpInside];
-        
+        [_carButton addTarget:self action:@selector(touchCarButton) forControlEvents:UIControlEventTouchUpInside];
         [_carButton setTitle:@"婚车" forState:UIControlStateNormal];
         [_carButton setTitleEdgeInsets:UIEdgeInsetsMake(45, -45, 0.0, 0.0)];
         [_carButton setTitleColor:kTextColor forState:UIControlStateNormal];

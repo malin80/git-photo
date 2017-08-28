@@ -11,6 +11,7 @@
 #import "WeddingViewController.h"
 #import "ClothViewController.h"
 #import "HotelViewController.h"
+#import "CarViewController.h"
 
 #import "HomePageScrollView.h"
 #import "HomePageButtonView.h"
@@ -157,6 +158,11 @@
 
 - (void)touchHotelButton {
     HotelViewController *controller = [[HotelViewController alloc] init];
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+- (void)touchCarButton {
+    CarViewController *controller = [[CarViewController alloc] init];
     [self.navigationController pushViewController:controller animated:YES];
 }
 

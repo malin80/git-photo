@@ -204,6 +204,11 @@
 		F4C618641F3AE2B7004A76B3 /* shopping_no_collection.png in Resources */ = {isa = PBXBuildFile; fileRef = F4C618631F3AE2B7004A76B3 /* shopping_no_collection.png */; };
 		F4C618661F3AE64D004A76B3 /* shopping_no_goods.png in Resources */ = {isa = PBXBuildFile; fileRef = F4C618651F3AE64D004A76B3 /* shopping_no_goods.png */; };
 		F4C618691F3B025F004A76B3 /* CameraManDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C618681F3B025F004A76B3 /* CameraManDetailTableViewCell.m */; };
+		F4D3EB6C1F53F62E00569FF0 /* CarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D3EB6B1F53F62E00569FF0 /* CarViewController.m */; };
+		F4D3EB6F1F53FD7400569FF0 /* CarCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D3EB6E1F53FD7400569FF0 /* CarCollectionViewCell.m */; };
+		F4D3EB731F54010300569FF0 /* CarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D3EB721F54010300569FF0 /* CarManager.m */; };
+		F4D3EB761F5401B700569FF0 /* CarPesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D3EB751F5401B700569FF0 /* CarPesRequest.m */; };
+		F4D3EB791F5406B200569FF0 /* CarInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D3EB781F5406B200569FF0 /* CarInfo.m */; };
 		F4D7D2E21F4FB81000A39F38 /* HotelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D7D2E11F4FB81000A39F38 /* HotelViewController.m */; };
 		F4D7D2E61F4FBB6B00A39F38 /* HotelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D7D2E51F4FBB6B00A39F38 /* HotelTableViewCell.m */; };
 		F4D7D2E91F4FBBC100A39F38 /* HotelPesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D7D2E81F4FBBC100A39F38 /* HotelPesRequest.m */; };
@@ -609,6 +614,16 @@
 		F4C618651F3AE64D004A76B3 /* shopping_no_goods.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shopping_no_goods.png; sourceTree = "<group>"; };
 		F4C618671F3B025F004A76B3 /* CameraManDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraManDetailTableViewCell.h; sourceTree = "<group>"; };
 		F4C618681F3B025F004A76B3 /* CameraManDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraManDetailTableViewCell.m; sourceTree = "<group>"; };
+		F4D3EB6A1F53F62E00569FF0 /* CarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarViewController.h; sourceTree = "<group>"; };
+		F4D3EB6B1F53F62E00569FF0 /* CarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarViewController.m; sourceTree = "<group>"; };
+		F4D3EB6D1F53FD7400569FF0 /* CarCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarCollectionViewCell.h; sourceTree = "<group>"; };
+		F4D3EB6E1F53FD7400569FF0 /* CarCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarCollectionViewCell.m; sourceTree = "<group>"; };
+		F4D3EB711F54010300569FF0 /* CarManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarManager.h; sourceTree = "<group>"; };
+		F4D3EB721F54010300569FF0 /* CarManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarManager.m; sourceTree = "<group>"; };
+		F4D3EB741F5401B700569FF0 /* CarPesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarPesRequest.h; sourceTree = "<group>"; };
+		F4D3EB751F5401B700569FF0 /* CarPesRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarPesRequest.m; sourceTree = "<group>"; };
+		F4D3EB771F5406B200569FF0 /* CarInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarInfo.h; sourceTree = "<group>"; };
+		F4D3EB781F5406B200569FF0 /* CarInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarInfo.m; sourceTree = "<group>"; };
 		F4D7D2E01F4FB81000A39F38 /* HotelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelViewController.h; sourceTree = "<group>"; };
 		F4D7D2E11F4FB81000A39F38 /* HotelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelViewController.m; sourceTree = "<group>"; };
 		F4D7D2E41F4FBB6B00A39F38 /* HotelTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelTableViewCell.h; sourceTree = "<group>"; };
@@ -938,6 +953,8 @@
 				F43A7DB71F4D1ADF00350A63 /* ClothPesRequest.m */,
 				F4D7D2E71F4FBBC100A39F38 /* HotelPesRequest.h */,
 				F4D7D2E81F4FBBC100A39F38 /* HotelPesRequest.m */,
+				F4D3EB741F5401B700569FF0 /* CarPesRequest.h */,
+				F4D3EB751F5401B700569FF0 /* CarPesRequest.m */,
 			);
 			path = PesDelegate;
 			sourceTree = "<group>";
@@ -979,6 +996,7 @@
 		F405D1B61F2EF4740015A8E6 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				F4D3EB701F5400F600569FF0 /* Car */,
 				F4D7D2EA1F4FBC9700A39F38 /* Hotel */,
 				F43A7DB91F4D1AF800350A63 /* Cloth */,
 				F41371991F453DC50071F1BA /* Camera */,
@@ -1428,6 +1446,7 @@
 		F4A7A0C81F256D2B009FAAEE /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				F4D3EB681F53F5A200569FF0 /* CarViewController */,
 				F413718E1F452CC90071F1BA /* WeddingViewController */,
 				F405D19E1F2EC2090015A8E6 /* CameraViewController */,
 				F43A7DB11F4D19C800350A63 /* ClothViewController */,
@@ -1574,6 +1593,36 @@
 				F4A7A25D1F25D192009FAAEE /* common_back.png */,
 			);
 			path = Commom;
+			sourceTree = "<group>";
+		};
+		F4D3EB681F53F5A200569FF0 /* CarViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F4D3EB691F53F62000569FF0 /* View */,
+				F4D3EB6A1F53F62E00569FF0 /* CarViewController.h */,
+				F4D3EB6B1F53F62E00569FF0 /* CarViewController.m */,
+			);
+			path = CarViewController;
+			sourceTree = "<group>";
+		};
+		F4D3EB691F53F62000569FF0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F4D3EB6D1F53FD7400569FF0 /* CarCollectionViewCell.h */,
+				F4D3EB6E1F53FD7400569FF0 /* CarCollectionViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F4D3EB701F5400F600569FF0 /* Car */ = {
+			isa = PBXGroup;
+			children = (
+				F4D3EB711F54010300569FF0 /* CarManager.h */,
+				F4D3EB721F54010300569FF0 /* CarManager.m */,
+				F4D3EB771F5406B200569FF0 /* CarInfo.h */,
+				F4D3EB781F5406B200569FF0 /* CarInfo.m */,
+			);
+			path = Car;
 			sourceTree = "<group>";
 		};
 		F4D7D2DF1F4FB7F600A39F38 /* HotelViewController */ = {
@@ -1929,6 +1978,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F41371951F452E7D0071F1BA /* WeddingTableViewCell.m in Sources */,
+				F4D3EB6F1F53FD7400569FF0 /* CarCollectionViewCell.m in Sources */,
 				F4FD304D1F32C97300048DD6 /* CameraDetailViewController.m in Sources */,
 				F4FD30601F3304AF00048DD6 /* CameraManTableViewCell.m in Sources */,
 				A545AC841F530A6500869313 /* TYPagerViewLayout.m in Sources */,
@@ -1952,6 +2002,7 @@
 				F4A7A1081F2588BF009FAAEE /* PersonalHeaderView.m in Sources */,
 				F407335E1F3C3A300006F1F6 /* CameraManDetailViewController.m in Sources */,
 				F4A7A0CE1F256D8B009FAAEE /* ShoppingViewController.m in Sources */,
+				F4D3EB761F5401B700569FF0 /* CarPesRequest.m in Sources */,
 				F4A7A2561F25BC22009FAAEE /* NavigationBar.m in Sources */,
 				A520C6D31F2B89A400202622 /* DLUtility.m in Sources */,
 				F405D1971F2EBAFD0015A8E6 /* GoodsOrderViewController.m in Sources */,
@@ -1961,6 +2012,7 @@
 				A545AC811F530A6500869313 /* TYTabPagerView.m in Sources */,
 				F4A7A1251F259629009FAAEE /* EntryItem.m in Sources */,
 				F41371981F453CF30071F1BA /* WeddingPesRequest.m in Sources */,
+				F4D3EB731F54010300569FF0 /* CarManager.m in Sources */,
 				F41B19C41F3416120026E483 /* AddGoodsToShoppingViewController.m in Sources */,
 				F4FDD6A71F2C378E007263D4 /* UserNameViewController.m in Sources */,
 				F4A7A0961F256B96009FAAEE /* ViewController.m in Sources */,
@@ -2014,6 +2066,7 @@
 				F48679301F3D769000612E27 /* StoreDetailThirdViewController.m in Sources */,
 				A520C6CF1F2B89A400202622 /* DLSlideView.m in Sources */,
 				F40575701F2AE38D003C8AF2 /* HomePagePesRequest.m in Sources */,
+				F4D3EB791F5406B200569FF0 /* CarInfo.m in Sources */,
 				F40A2AE81F3165D600BEDFFB /* StoreManager.m in Sources */,
 				F482373F1F27041300DDD487 /* HomePageScrollView.m in Sources */,
 				A545AC831F530A6500869313 /* TYPagerView.m in Sources */,
@@ -2031,6 +2084,7 @@
 				A50BB4161F3DAF3700F6158B /* CalculateTool.m in Sources */,
 				F405D1A41F2EC6480015A8E6 /* CameraViewController.m in Sources */,
 				F4FD30531F32D35800048DD6 /* CameraDetailTableViewCell.m in Sources */,
+				F4D3EB6C1F53F62E00569FF0 /* CarViewController.m in Sources */,
 				F4FDD6A41F2C378E007263D4 /* NickNameViewController.m in Sources */,
 				F405D19A1F2EBB2F0015A8E6 /* BookOrderViewController.m in Sources */,
 				A55DEFE71F42F3FD00092AD3 /* GGActionSheet.m in Sources */,
@@ -2246,7 +2300,7 @@
 					"$(PROJECT_DIR)/Photo/Others/OpenAPI/SDK/Tencent",
 					"$(PROJECT_DIR)/Photo/ThirdParties/支付宝",
 				);
-				GCC_PREFIX_HEADER = "/Users/chenbingwen/Desktop/ZhuBaoTuan 2/Photo/Photo/hong.pch";
+				GCC_PREFIX_HEADER = /Users/malin/Desktop/Photo/Photo/hong.pch;
 				INFOPLIST_FILE = Photo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2275,7 +2329,7 @@
 					"$(PROJECT_DIR)/Photo/Others/OpenAPI/SDK/Tencent",
 					"$(PROJECT_DIR)/Photo/ThirdParties/支付宝",
 				);
-				GCC_PREFIX_HEADER = "/Users/chenbingwen/Desktop/ZhuBaoTuan 2/Photo/Photo/hong.pch";
+				GCC_PREFIX_HEADER = /Users/malin/Desktop/Photo/Photo/hong.pch;
 				INFOPLIST_FILE = Photo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
