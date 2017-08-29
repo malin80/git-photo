@@ -209,6 +209,12 @@
 		F4D3EB731F54010300569FF0 /* CarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D3EB721F54010300569FF0 /* CarManager.m */; };
 		F4D3EB761F5401B700569FF0 /* CarPesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D3EB751F5401B700569FF0 /* CarPesRequest.m */; };
 		F4D3EB791F5406B200569FF0 /* CarInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D3EB781F5406B200569FF0 /* CarInfo.m */; };
+		F4D3F14C1F55047C007728E9 /* FlowerPesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D3F14B1F55047C007728E9 /* FlowerPesRequest.m */; };
+		F4D3F1501F550499007728E9 /* FlowerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D3F14F1F550499007728E9 /* FlowerManager.m */; };
+		F4D3F1531F5507F6007728E9 /* FlowerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D3F1521F5507F6007728E9 /* FlowerViewController.m */; };
+		F4D3F1571F550B65007728E9 /* FlowerCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D3F1561F550B65007728E9 /* FlowerCollectionViewCell.m */; };
+		F4D3F15A1F550C21007728E9 /* FlowerInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D3F1591F550C21007728E9 /* FlowerInfo.m */; };
+		F4D3F15D1F553AC4007728E9 /* FlowerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D3F15C1F553AC4007728E9 /* FlowerDetailViewController.m */; };
 		F4D7D2E21F4FB81000A39F38 /* HotelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D7D2E11F4FB81000A39F38 /* HotelViewController.m */; };
 		F4D7D2E61F4FBB6B00A39F38 /* HotelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D7D2E51F4FBB6B00A39F38 /* HotelTableViewCell.m */; };
 		F4D7D2E91F4FBBC100A39F38 /* HotelPesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D7D2E81F4FBBC100A39F38 /* HotelPesRequest.m */; };
@@ -624,6 +630,18 @@
 		F4D3EB751F5401B700569FF0 /* CarPesRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarPesRequest.m; sourceTree = "<group>"; };
 		F4D3EB771F5406B200569FF0 /* CarInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarInfo.h; sourceTree = "<group>"; };
 		F4D3EB781F5406B200569FF0 /* CarInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarInfo.m; sourceTree = "<group>"; };
+		F4D3F14A1F55047C007728E9 /* FlowerPesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowerPesRequest.h; sourceTree = "<group>"; };
+		F4D3F14B1F55047C007728E9 /* FlowerPesRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlowerPesRequest.m; sourceTree = "<group>"; };
+		F4D3F14E1F550499007728E9 /* FlowerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowerManager.h; sourceTree = "<group>"; };
+		F4D3F14F1F550499007728E9 /* FlowerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlowerManager.m; sourceTree = "<group>"; };
+		F4D3F1511F5507F6007728E9 /* FlowerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowerViewController.h; sourceTree = "<group>"; };
+		F4D3F1521F5507F6007728E9 /* FlowerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlowerViewController.m; sourceTree = "<group>"; };
+		F4D3F1551F550B65007728E9 /* FlowerCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowerCollectionViewCell.h; sourceTree = "<group>"; };
+		F4D3F1561F550B65007728E9 /* FlowerCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlowerCollectionViewCell.m; sourceTree = "<group>"; };
+		F4D3F1581F550C21007728E9 /* FlowerInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowerInfo.h; sourceTree = "<group>"; };
+		F4D3F1591F550C21007728E9 /* FlowerInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlowerInfo.m; sourceTree = "<group>"; };
+		F4D3F15B1F553AC4007728E9 /* FlowerDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowerDetailViewController.h; sourceTree = "<group>"; };
+		F4D3F15C1F553AC4007728E9 /* FlowerDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlowerDetailViewController.m; sourceTree = "<group>"; };
 		F4D7D2E01F4FB81000A39F38 /* HotelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelViewController.h; sourceTree = "<group>"; };
 		F4D7D2E11F4FB81000A39F38 /* HotelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelViewController.m; sourceTree = "<group>"; };
 		F4D7D2E41F4FBB6B00A39F38 /* HotelTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelTableViewCell.h; sourceTree = "<group>"; };
@@ -955,6 +973,8 @@
 				F4D7D2E81F4FBBC100A39F38 /* HotelPesRequest.m */,
 				F4D3EB741F5401B700569FF0 /* CarPesRequest.h */,
 				F4D3EB751F5401B700569FF0 /* CarPesRequest.m */,
+				F4D3F14A1F55047C007728E9 /* FlowerPesRequest.h */,
+				F4D3F14B1F55047C007728E9 /* FlowerPesRequest.m */,
 			);
 			path = PesDelegate;
 			sourceTree = "<group>";
@@ -996,6 +1016,7 @@
 		F405D1B61F2EF4740015A8E6 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				F4D3F14D1F55048D007728E9 /* Flower */,
 				F4D3EB701F5400F600569FF0 /* Car */,
 				F4D7D2EA1F4FBC9700A39F38 /* Hotel */,
 				F43A7DB91F4D1AF800350A63 /* Cloth */,
@@ -1446,6 +1467,7 @@
 		F4A7A0C81F256D2B009FAAEE /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				F4D3F1491F550152007728E9 /* FlowerViewController */,
 				F4D3EB681F53F5A200569FF0 /* CarViewController */,
 				F413718E1F452CC90071F1BA /* WeddingViewController */,
 				F405D19E1F2EC2090015A8E6 /* CameraViewController */,
@@ -1625,6 +1647,38 @@
 			path = Car;
 			sourceTree = "<group>";
 		};
+		F4D3F1491F550152007728E9 /* FlowerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F4D3F1541F550B55007728E9 /* View */,
+				F4D3F1511F5507F6007728E9 /* FlowerViewController.h */,
+				F4D3F1521F5507F6007728E9 /* FlowerViewController.m */,
+				F4D3F15B1F553AC4007728E9 /* FlowerDetailViewController.h */,
+				F4D3F15C1F553AC4007728E9 /* FlowerDetailViewController.m */,
+			);
+			path = FlowerViewController;
+			sourceTree = "<group>";
+		};
+		F4D3F14D1F55048D007728E9 /* Flower */ = {
+			isa = PBXGroup;
+			children = (
+				F4D3F14E1F550499007728E9 /* FlowerManager.h */,
+				F4D3F14F1F550499007728E9 /* FlowerManager.m */,
+				F4D3F1581F550C21007728E9 /* FlowerInfo.h */,
+				F4D3F1591F550C21007728E9 /* FlowerInfo.m */,
+			);
+			path = Flower;
+			sourceTree = "<group>";
+		};
+		F4D3F1541F550B55007728E9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F4D3F1551F550B65007728E9 /* FlowerCollectionViewCell.h */,
+				F4D3F1561F550B65007728E9 /* FlowerCollectionViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		F4D7D2DF1F4FB7F600A39F38 /* HotelViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1795,7 +1849,7 @@
 				TargetAttributes = {
 					F4A7A08A1F256B96009FAAEE = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = NWRGH9QDNR;
+						DevelopmentTeam = NVRZ8WK38H;
 						ProvisioningStyle = Automatic;
 					};
 					F4A7A0A31F256B96009FAAEE = {
@@ -1984,6 +2038,7 @@
 				A545AC841F530A6500869313 /* TYPagerViewLayout.m in Sources */,
 				F482373B1F26EC3100DDD487 /* CollectTableViewCell.m in Sources */,
 				F41371A91F453DF30071F1BA /* WeddingManager.m in Sources */,
+				F4D3F1501F550499007728E9 /* FlowerManager.m in Sources */,
 				F40E7A701F30280400FD7792 /* MemberInfo.m in Sources */,
 				A545AC7E1F530A6500869313 /* TYTabPagerBarCell.m in Sources */,
 				F40575691F2AE29B003C8AF2 /* PesRequest.m in Sources */,
@@ -2015,6 +2070,7 @@
 				F4D3EB731F54010300569FF0 /* CarManager.m in Sources */,
 				F41B19C41F3416120026E483 /* AddGoodsToShoppingViewController.m in Sources */,
 				F4FDD6A71F2C378E007263D4 /* UserNameViewController.m in Sources */,
+				F4D3F1531F5507F6007728E9 /* FlowerViewController.m in Sources */,
 				F4A7A0961F256B96009FAAEE /* ViewController.m in Sources */,
 				F4B67C731F413A9300DA8E4E /* SelectDressManViewController.m in Sources */,
 				A50BB41A1F3DAF3700F6158B /* DQconstellationView.m in Sources */,
@@ -2025,8 +2081,10 @@
 				F49D6E821F4BD79D00C21477 /* BusinessCaseDetailViewController.m in Sources */,
 				A50BB4191F3DAF3700F6158B /* DQCanCerEnsureView.m in Sources */,
 				F43A7DBF1F4D1C2200350A63 /* ClothInfo.m in Sources */,
+				F4D3F15A1F550C21007728E9 /* FlowerInfo.m in Sources */,
 				F48237381F26EA1100DDD487 /* CollectViewController.m in Sources */,
 				F48679391F3D831A00612E27 /* StoreCommentInfo.m in Sources */,
+				F4D3F15D1F553AC4007728E9 /* FlowerDetailViewController.m in Sources */,
 				F43A7DC51F4D24EE00350A63 /* ClothCollectionViewCell.m in Sources */,
 				F4FDD6B61F2C37CD007263D4 /* EditAddressViewController.m in Sources */,
 				F43A7DC81F4D4FB800350A63 /* ClothDetailViewController.m in Sources */,
@@ -2125,9 +2183,11 @@
 				A50BB41B1F3DAF3700F6158B /* LTPickerView.m in Sources */,
 				A514B1041F2903D3006A765F /* TabbarViewController.m in Sources */,
 				F41B19BE1F340EC00026E483 /* ShoppingManager.m in Sources */,
+				F4D3F1571F550B65007728E9 /* FlowerCollectionViewCell.m in Sources */,
 				F4A7A0D41F256DC3009FAAEE /* StoreViewController.m in Sources */,
 				F41371A31F453DC50071F1BA /* CameraManInfo.m in Sources */,
 				F40733611F3C3A9E0006F1F6 /* CameraManViewController.m in Sources */,
+				F4D3F14C1F55047C007728E9 /* FlowerPesRequest.m in Sources */,
 				F40733591F3C397B0006F1F6 /* CameraManDetailFourViewController.m in Sources */,
 				F41371A41F453DC50071F1BA /* CameraTeamInfo.m in Sources */,
 				F4F0AE601F4E72BE00F1B262 /* ClothCommentTableViewCell.m in Sources */,
@@ -2293,7 +2353,7 @@
 			baseConfigurationReference = 1974EED19EF6BC33D1481465 /* Pods-Photo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = NWRGH9QDNR;
+				DEVELOPMENT_TEAM = NVRZ8WK38H;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Photo/OpenAPI/SDK/Tencent",
@@ -2322,7 +2382,7 @@
 			baseConfigurationReference = DFFD29296EE5B8D87B3DB463 /* Pods-Photo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = NWRGH9QDNR;
+				DEVELOPMENT_TEAM = NVRZ8WK38H;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Photo/OpenAPI/SDK/Tencent",

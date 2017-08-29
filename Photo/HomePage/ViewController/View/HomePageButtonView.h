@@ -17,6 +17,7 @@
 - (void)touchClothButton;
 - (void)touchHotelButton;
 - (void)touchCarButton;
+- (void)touchFlowerButton;
 
 @end
 

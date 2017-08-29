@@ -144,7 +144,9 @@
 }
 
 - (void)touchFlowerButton {
-    
+    if ([self.delegate respondsToSelector:@selector(touchFlowerButton)]) {
+        [self.delegate touchFlowerButton];
+    }
 }
 
 - (void)touchHotelButton {
