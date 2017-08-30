@@ -38,7 +38,7 @@
     [self addSubview:self.videoLabel];
     [self addSubview:self.clothButton];
     [self addSubview:self.clothLabel];
-    [self addSubview:self.moreButton];
+    [self addSubview:self.ceremonyButton];
 }
 
 - (void)setImmutableConstraints {
@@ -116,7 +116,7 @@
         make.bottom.equalTo(_flowerButton.mas_bottom);
     }];
     
-    [_moreButton mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_ceremonyButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_carButton);
         make.left.equalTo(_flowerButton.mas_right).with.offset(kButtonDistance);
         make.width.equalTo(@(kButtonWidth));
@@ -156,7 +156,9 @@
 }
 
 - (void)touchVideoButton {
-    
+    if ([self.delegate respondsToSelector:@selector(touchVideoButton)]) {
+        [self.delegate touchVideoButton];
+    }
 }
 
 - (void)touchClothButton {
@@ -165,8 +167,10 @@
     }
 }
 
-- (void)touchMoreButton {
-    
+- (void)touchCeremonyButton {
+    if ([self.delegate respondsToSelector:@selector(touchCeremonyButton)]) {
+        [self.delegate touchCeremonyButton];
+    }
 }
 
 #pragma mark --- getters and setters ---
@@ -312,20 +316,20 @@
     return _clothLabel;
 }
 
-- (UIButton *)moreButton {
-    if (!_moreButton) {
-        _moreButton = [[UIButton alloc] init];
-        [_moreButton addTarget:self action:@selector(touchMoreButton) forControlEvents:UIControlEventTouchUpInside];
+- (UIButton *)ceremonyButton {
+    if (!_ceremonyButton) {
+        _ceremonyButton = [[UIButton alloc] init];
+        [_ceremonyButton addTarget:self action:@selector(touchCeremonyButton) forControlEvents:UIControlEventTouchUpInside];
         
-        [_moreButton setTitle:@"司仪" forState:UIControlStateNormal];
-        [_moreButton setTitleEdgeInsets:UIEdgeInsetsMake(45, -45, 0.0, 0.0)];
-        [_moreButton setTitleColor:kTextColor forState:UIControlStateNormal];
-        _moreButton.titleLabel.font = [UIFont systemFontOfSize:14];
+        [_ceremonyButton setTitle:@"司仪" forState:UIControlStateNormal];
+        [_ceremonyButton setTitleEdgeInsets:UIEdgeInsetsMake(45, -45, 0.0, 0.0)];
+        [_ceremonyButton setTitleColor:kTextColor forState:UIControlStateNormal];
+        _ceremonyButton.titleLabel.font = [UIFont systemFontOfSize:14];
         
-        [_moreButton setImage:[UIImage imageNamed:@"homepage_more"] forState:UIControlStateNormal];
-        [_moreButton setImageEdgeInsets:UIEdgeInsetsMake(0.0, 0.0, 20, 0.0)];
+        [_ceremonyButton setImage:[UIImage imageNamed:@"homepage_more"] forState:UIControlStateNormal];
+        [_ceremonyButton setImageEdgeInsets:UIEdgeInsetsMake(0.0, 0.0, 20, 0.0)];
     }
-    return _moreButton;
+    return _ceremonyButton;
 }
 
 

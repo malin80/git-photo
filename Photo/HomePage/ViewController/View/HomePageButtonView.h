@@ -18,6 +18,8 @@
 - (void)touchHotelButton;
 - (void)touchCarButton;
 - (void)touchFlowerButton;
+- (void)touchCeremonyButton;
+- (void)touchVideoButton;
 
 @end
 
@@ -36,7 +38,7 @@
 @property (nonatomic, strong) UILabel *videoLabel;
 @property (nonatomic, strong) UIButton *clothButton;
 @property (nonatomic, strong) UILabel *clothLabel;
-@property (nonatomic, strong) UIButton *moreButton;
+@property (nonatomic, strong) UIButton *ceremonyButton;
 
 @property(nonatomic,assign) id<HomePageButtonViewDelegate> delegate;
 

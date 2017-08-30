@@ -13,6 +13,8 @@
 #import "HotelViewController.h"
 #import "CarViewController.h"
 #import "FlowerViewController.h"
+#import "CeremonyViewController.h"
+#import "VideoViewController.h"
 
 #import "HomePageScrollView.h"
 #import "HomePageButtonView.h"
@@ -159,17 +161,27 @@
 
 - (void)touchHotelButton {
     HotelViewController *controller = [[HotelViewController alloc] init];
-    [self.navigationController pushViewController:controller animated:YES];
+    [self.navigationController pushViewController:controller animated:NO];
 }
 
 - (void)touchCarButton {
     CarViewController *controller = [[CarViewController alloc] init];
-    [self.navigationController pushViewController:controller animated:YES];
+    [self.navigationController pushViewController:controller animated:NO];
 }
 
 - (void)touchFlowerButton {
     FlowerViewController *controller = [[FlowerViewController alloc] init];
-    [self.navigationController pushViewController:controller animated:YES];
+    [self.navigationController pushViewController:controller animated:NO];
+}
+
+- (void)touchCeremonyButton {
+    CeremonyViewController *controller = [[CeremonyViewController alloc] init];
+    [self.navigationController pushViewController:controller animated:NO];
+}
+
+- (void)touchVideoButton {
+    VideoViewController *controller = [[VideoViewController alloc] init];
+    [self.navigationController pushViewController:controller animated:NO];
 }
 
 @end

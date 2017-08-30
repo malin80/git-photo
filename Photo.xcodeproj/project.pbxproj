@@ -223,6 +223,19 @@
 		F4D7D2F21F4FD1B000A39F38 /* jinpai_hotel.png in Resources */ = {isa = PBXBuildFile; fileRef = F4D7D2F11F4FD1B000A39F38 /* jinpai_hotel.png */; };
 		F4D7D2F51F4FD6A200A39F38 /* HotelDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D7D2F41F4FD6A200A39F38 /* HotelDetailViewController.m */; };
 		F4D7D2F81F4FF0FB00A39F38 /* HotelDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D7D2F71F4FF0FB00A39F38 /* HotelDetailTableViewCell.m */; };
+		F4E2E32E1F56537700C3CFED /* CeremonyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E2E32D1F56537700C3CFED /* CeremonyViewController.m */; };
+		F4E2E3311F56539500C3CFED /* CeremonyPesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E2E3301F56539500C3CFED /* CeremonyPesRequest.m */; };
+		F4E2E3351F5653B300C3CFED /* CeremonyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E2E3341F5653B300C3CFED /* CeremonyManager.m */; };
+		F4E2E3381F565B4500C3CFED /* CeremonyManViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E2E3371F565B4500C3CFED /* CeremonyManViewController.m */; };
+		F4E2E33B1F565B5000C3CFED /* CeremonyWomenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E2E33A1F565B5000C3CFED /* CeremonyWomenViewController.m */; };
+		F4E2E33E1F565CEE00C3CFED /* CeremonyInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E2E33D1F565CEE00C3CFED /* CeremonyInfo.m */; };
+		F4E2E3411F56650D00C3CFED /* CeremonyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E2E3401F56650D00C3CFED /* CeremonyDetailViewController.m */; };
+		F4E2E3451F568CB000C3CFED /* VideoPesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E2E3441F568CB000C3CFED /* VideoPesRequest.m */; };
+		F4E2E3491F568D3800C3CFED /* VideoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E2E3481F568D3800C3CFED /* VideoManager.m */; };
+		F4E2E34C1F568DA700C3CFED /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E2E34B1F568DA700C3CFED /* VideoViewController.m */; };
+		F4E2E34F1F568E7C00C3CFED /* VideoAuthorInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E2E34E1F568E7C00C3CFED /* VideoAuthorInfo.m */; };
+		F4E2E3521F5693E500C3CFED /* CeremonyWorksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E2E3511F5693E500C3CFED /* CeremonyWorksViewController.m */; };
+		F4E2E3551F5693F400C3CFED /* CeremonyIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E2E3541F5693F400C3CFED /* CeremonyIntroViewController.m */; };
 		F4F0AE601F4E72BE00F1B262 /* ClothCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F0AE5F1F4E72BE00F1B262 /* ClothCommentTableViewCell.m */; };
 		F4F0AE671F4E7C4A00F1B262 /* evalevel0.png in Resources */ = {isa = PBXBuildFile; fileRef = F4F0AE611F4E7C4A00F1B262 /* evalevel0.png */; };
 		F4F0AE681F4E7C4A00F1B262 /* evalevel1.png in Resources */ = {isa = PBXBuildFile; fileRef = F4F0AE621F4E7C4A00F1B262 /* evalevel1.png */; };
@@ -657,6 +670,32 @@
 		F4D7D2F41F4FD6A200A39F38 /* HotelDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelDetailViewController.m; sourceTree = "<group>"; };
 		F4D7D2F61F4FF0FB00A39F38 /* HotelDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelDetailTableViewCell.h; sourceTree = "<group>"; };
 		F4D7D2F71F4FF0FB00A39F38 /* HotelDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelDetailTableViewCell.m; sourceTree = "<group>"; };
+		F4E2E32C1F56537700C3CFED /* CeremonyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CeremonyViewController.h; sourceTree = "<group>"; };
+		F4E2E32D1F56537700C3CFED /* CeremonyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CeremonyViewController.m; sourceTree = "<group>"; };
+		F4E2E32F1F56539500C3CFED /* CeremonyPesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CeremonyPesRequest.h; sourceTree = "<group>"; };
+		F4E2E3301F56539500C3CFED /* CeremonyPesRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CeremonyPesRequest.m; sourceTree = "<group>"; };
+		F4E2E3331F5653B300C3CFED /* CeremonyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CeremonyManager.h; sourceTree = "<group>"; };
+		F4E2E3341F5653B300C3CFED /* CeremonyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CeremonyManager.m; sourceTree = "<group>"; };
+		F4E2E3361F565B4500C3CFED /* CeremonyManViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CeremonyManViewController.h; sourceTree = "<group>"; };
+		F4E2E3371F565B4500C3CFED /* CeremonyManViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CeremonyManViewController.m; sourceTree = "<group>"; };
+		F4E2E3391F565B5000C3CFED /* CeremonyWomenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CeremonyWomenViewController.h; sourceTree = "<group>"; };
+		F4E2E33A1F565B5000C3CFED /* CeremonyWomenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CeremonyWomenViewController.m; sourceTree = "<group>"; };
+		F4E2E33C1F565CEE00C3CFED /* CeremonyInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CeremonyInfo.h; sourceTree = "<group>"; };
+		F4E2E33D1F565CEE00C3CFED /* CeremonyInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CeremonyInfo.m; sourceTree = "<group>"; };
+		F4E2E33F1F56650D00C3CFED /* CeremonyDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CeremonyDetailViewController.h; sourceTree = "<group>"; };
+		F4E2E3401F56650D00C3CFED /* CeremonyDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CeremonyDetailViewController.m; sourceTree = "<group>"; };
+		F4E2E3431F568CB000C3CFED /* VideoPesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoPesRequest.h; sourceTree = "<group>"; };
+		F4E2E3441F568CB000C3CFED /* VideoPesRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoPesRequest.m; sourceTree = "<group>"; };
+		F4E2E3471F568D3800C3CFED /* VideoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoManager.h; sourceTree = "<group>"; };
+		F4E2E3481F568D3800C3CFED /* VideoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoManager.m; sourceTree = "<group>"; };
+		F4E2E34A1F568DA700C3CFED /* VideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoViewController.h; sourceTree = "<group>"; };
+		F4E2E34B1F568DA700C3CFED /* VideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoViewController.m; sourceTree = "<group>"; };
+		F4E2E34D1F568E7C00C3CFED /* VideoAuthorInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoAuthorInfo.h; sourceTree = "<group>"; };
+		F4E2E34E1F568E7C00C3CFED /* VideoAuthorInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoAuthorInfo.m; sourceTree = "<group>"; };
+		F4E2E3501F5693E500C3CFED /* CeremonyWorksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CeremonyWorksViewController.h; sourceTree = "<group>"; };
+		F4E2E3511F5693E500C3CFED /* CeremonyWorksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CeremonyWorksViewController.m; sourceTree = "<group>"; };
+		F4E2E3531F5693F400C3CFED /* CeremonyIntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CeremonyIntroViewController.h; sourceTree = "<group>"; };
+		F4E2E3541F5693F400C3CFED /* CeremonyIntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CeremonyIntroViewController.m; sourceTree = "<group>"; };
 		F4F0AE5E1F4E72BE00F1B262 /* ClothCommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClothCommentTableViewCell.h; sourceTree = "<group>"; };
 		F4F0AE5F1F4E72BE00F1B262 /* ClothCommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClothCommentTableViewCell.m; sourceTree = "<group>"; };
 		F4F0AE611F4E7C4A00F1B262 /* evalevel0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evalevel0.png; sourceTree = "<group>"; };
@@ -975,6 +1014,10 @@
 				F4D3EB751F5401B700569FF0 /* CarPesRequest.m */,
 				F4D3F14A1F55047C007728E9 /* FlowerPesRequest.h */,
 				F4D3F14B1F55047C007728E9 /* FlowerPesRequest.m */,
+				F4E2E32F1F56539500C3CFED /* CeremonyPesRequest.h */,
+				F4E2E3301F56539500C3CFED /* CeremonyPesRequest.m */,
+				F4E2E3431F568CB000C3CFED /* VideoPesRequest.h */,
+				F4E2E3441F568CB000C3CFED /* VideoPesRequest.m */,
 			);
 			path = PesDelegate;
 			sourceTree = "<group>";
@@ -1016,6 +1059,8 @@
 		F405D1B61F2EF4740015A8E6 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				F4E2E3461F568D2F00C3CFED /* Video */,
+				F4E2E3321F5653A700C3CFED /* Ceremony */,
 				F4D3F14D1F55048D007728E9 /* Flower */,
 				F4D3EB701F5400F600569FF0 /* Car */,
 				F4D7D2EA1F4FBC9700A39F38 /* Hotel */,
@@ -1467,6 +1512,8 @@
 		F4A7A0C81F256D2B009FAAEE /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				F4E2E3421F568C9C00C3CFED /* VideoViewController */,
+				F4E2E32B1F56536C00C3CFED /* CeremonyViewController */,
 				F4D3F1491F550152007728E9 /* FlowerViewController */,
 				F4D3EB681F53F5A200569FF0 /* CarViewController */,
 				F413718E1F452CC90071F1BA /* WeddingViewController */,
@@ -1711,6 +1758,56 @@
 				F4D7D2EF1F4FC00600A39F38 /* HotelInfo.m */,
 			);
 			path = Hotel;
+			sourceTree = "<group>";
+		};
+		F4E2E32B1F56536C00C3CFED /* CeremonyViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F4E2E32C1F56537700C3CFED /* CeremonyViewController.h */,
+				F4E2E32D1F56537700C3CFED /* CeremonyViewController.m */,
+				F4E2E3361F565B4500C3CFED /* CeremonyManViewController.h */,
+				F4E2E3371F565B4500C3CFED /* CeremonyManViewController.m */,
+				F4E2E3391F565B5000C3CFED /* CeremonyWomenViewController.h */,
+				F4E2E33A1F565B5000C3CFED /* CeremonyWomenViewController.m */,
+				F4E2E33F1F56650D00C3CFED /* CeremonyDetailViewController.h */,
+				F4E2E3401F56650D00C3CFED /* CeremonyDetailViewController.m */,
+				F4E2E3501F5693E500C3CFED /* CeremonyWorksViewController.h */,
+				F4E2E3511F5693E500C3CFED /* CeremonyWorksViewController.m */,
+				F4E2E3531F5693F400C3CFED /* CeremonyIntroViewController.h */,
+				F4E2E3541F5693F400C3CFED /* CeremonyIntroViewController.m */,
+			);
+			path = CeremonyViewController;
+			sourceTree = "<group>";
+		};
+		F4E2E3321F5653A700C3CFED /* Ceremony */ = {
+			isa = PBXGroup;
+			children = (
+				F4E2E3331F5653B300C3CFED /* CeremonyManager.h */,
+				F4E2E3341F5653B300C3CFED /* CeremonyManager.m */,
+				F4E2E33C1F565CEE00C3CFED /* CeremonyInfo.h */,
+				F4E2E33D1F565CEE00C3CFED /* CeremonyInfo.m */,
+			);
+			path = Ceremony;
+			sourceTree = "<group>";
+		};
+		F4E2E3421F568C9C00C3CFED /* VideoViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F4E2E34A1F568DA700C3CFED /* VideoViewController.h */,
+				F4E2E34B1F568DA700C3CFED /* VideoViewController.m */,
+			);
+			path = VideoViewController;
+			sourceTree = "<group>";
+		};
+		F4E2E3461F568D2F00C3CFED /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				F4E2E3471F568D3800C3CFED /* VideoManager.h */,
+				F4E2E3481F568D3800C3CFED /* VideoManager.m */,
+				F4E2E34D1F568E7C00C3CFED /* VideoAuthorInfo.h */,
+				F4E2E34E1F568E7C00C3CFED /* VideoAuthorInfo.m */,
+			);
+			path = Video;
 			sourceTree = "<group>";
 		};
 		F4FD30401F32C16F00048DD6 /* Delegate */ = {
@@ -2045,18 +2142,22 @@
 				F40733711F3C440E0006F1F6 /* DressManDetailSecondViewController.m in Sources */,
 				F4C618621F3AB89C004A76B3 /* AddressInfo.m in Sources */,
 				F4FDD6B41F2C37CD007263D4 /* AddAddressViewController.m in Sources */,
+				F4E2E33E1F565CEE00C3CFED /* CeremonyInfo.m in Sources */,
 				F4FDD6A31F2C378E007263D4 /* ModifyPasswordViewController.m in Sources */,
+				F4E2E33B1F565B5000C3CFED /* CeremonyWomenViewController.m in Sources */,
 				F4A7A1391F25A779009FAAEE /* AvatarView.m in Sources */,
 				F4B67CAB1F415F0100DA8E4E /* SDWebImageCache.m in Sources */,
 				F405D1A81F2ED06E0015A8E6 /* LoginInfo.m in Sources */,
 				F405D19D1F2EBC110015A8E6 /* OrderTableViewCell.m in Sources */,
 				F4A7A1051F258449009FAAEE /* PersonalTabelViewCell.m in Sources */,
+				F4E2E32E1F56537700C3CFED /* CeremonyViewController.m in Sources */,
 				A50BB4131F3DAF3700F6158B /* FDCalendarItem.m in Sources */,
 				F40A2AE51F31650700BEDFFB /* StorePesRequest.m in Sources */,
 				F4FD305A1F32F7C700048DD6 /* CameraTeamViewController.m in Sources */,
 				F4A7A1081F2588BF009FAAEE /* PersonalHeaderView.m in Sources */,
 				F407335E1F3C3A300006F1F6 /* CameraManDetailViewController.m in Sources */,
 				F4A7A0CE1F256D8B009FAAEE /* ShoppingViewController.m in Sources */,
+				F4E2E3351F5653B300C3CFED /* CeremonyManager.m in Sources */,
 				F4D3EB761F5401B700569FF0 /* CarPesRequest.m in Sources */,
 				F4A7A2561F25BC22009FAAEE /* NavigationBar.m in Sources */,
 				A520C6D31F2B89A400202622 /* DLUtility.m in Sources */,
@@ -2073,11 +2174,13 @@
 				F4D3F1531F5507F6007728E9 /* FlowerViewController.m in Sources */,
 				F4A7A0961F256B96009FAAEE /* ViewController.m in Sources */,
 				F4B67C731F413A9300DA8E4E /* SelectDressManViewController.m in Sources */,
+				F4E2E34F1F568E7C00C3CFED /* VideoAuthorInfo.m in Sources */,
 				A50BB41A1F3DAF3700F6158B /* DQconstellationView.m in Sources */,
 				F43A7DC21F4D231E00350A63 /* ClothCollectionViewController.m in Sources */,
 				F41B19D11F343EE70026E483 /* ShoppingGoodsInfo.m in Sources */,
 				F41B19C11F3411660026E483 /* PersonalManager.m in Sources */,
 				F40E7A6A1F3023F100FD7792 /* LoginPesRequest.m in Sources */,
+				F4E2E3381F565B4500C3CFED /* CeremonyManViewController.m in Sources */,
 				F49D6E821F4BD79D00C21477 /* BusinessCaseDetailViewController.m in Sources */,
 				A50BB4191F3DAF3700F6158B /* DQCanCerEnsureView.m in Sources */,
 				F43A7DBF1F4D1C2200350A63 /* ClothInfo.m in Sources */,
@@ -2095,6 +2198,7 @@
 				F4FF8D9E1F39935600E7739D /* ImageInfo.m in Sources */,
 				F4FDD6A61F2C378E007263D4 /* UserDataViewController.m in Sources */,
 				F4D7D2E61F4FBB6B00A39F38 /* HotelTableViewCell.m in Sources */,
+				F4E2E3311F56539500C3CFED /* CeremonyPesRequest.m in Sources */,
 				F40430951F29D0FD00DDB2E7 /* LoginViewController.m in Sources */,
 				A545AC7D1F530A6500869313 /* TYTabPagerBar.m in Sources */,
 				A514B10E1F290533006A765F /* FitManage.m in Sources */,
@@ -2110,6 +2214,7 @@
 				F4D7D2F01F4FC00600A39F38 /* HotelInfo.m in Sources */,
 				F481E9581F28551C00EE3D7C /* BaseViewController.m in Sources */,
 				F4D7D2ED1F4FBD0D00A39F38 /* HotelManager.m in Sources */,
+				F4E2E3411F56650D00C3CFED /* CeremonyDetailViewController.m in Sources */,
 				F41371B81F4576F00071F1BA /* BusinessTypeViewController.m in Sources */,
 				A514B1111F290533006A765F /* UIColor+EX.m in Sources */,
 				A545AC7F1F530A6500869313 /* TYTabPagerBarLayout.m in Sources */,
@@ -2117,6 +2222,7 @@
 				A520C6CD1F2B89A400202622 /* DLLRUCache.m in Sources */,
 				F407336B1F3C435E0006F1F6 /* DressManDetailViewController.m in Sources */,
 				F41B19D71F3462070026E483 /* CollectGoodsInfo.m in Sources */,
+				F4E2E34C1F568DA700C3CFED /* VideoViewController.m in Sources */,
 				F43A7DCB1F4D519E00350A63 /* ClothDetailTableViewCell.m in Sources */,
 				F43A7DB51F4D19E800350A63 /* ClothViewController.m in Sources */,
 				F41371B51F4576E40071F1BA /* BusinessCaseViewController.m in Sources */,
@@ -2143,6 +2249,7 @@
 				F405D1A41F2EC6480015A8E6 /* CameraViewController.m in Sources */,
 				F4FD30531F32D35800048DD6 /* CameraDetailTableViewCell.m in Sources */,
 				F4D3EB6C1F53F62E00569FF0 /* CarViewController.m in Sources */,
+				F4E2E3491F568D3800C3CFED /* VideoManager.m in Sources */,
 				F4FDD6A41F2C378E007263D4 /* NickNameViewController.m in Sources */,
 				F405D19A1F2EBB2F0015A8E6 /* BookOrderViewController.m in Sources */,
 				A55DEFE71F42F3FD00092AD3 /* GGActionSheet.m in Sources */,
@@ -2175,6 +2282,7 @@
 				F4B67CAE1F41755F00DA8E4E /* DQMarryDateView.m in Sources */,
 				F4A7A0D11F256DB1009FAAEE /* HomePageViewController.m in Sources */,
 				F4FD304A1F32C46800048DD6 /* HomePageCameraGroupInfo.m in Sources */,
+				F4E2E3521F5693E500C3CFED /* CeremonyWorksViewController.m in Sources */,
 				F40A2AE01F315F5700BEDFFB /* StoreCollectionViewCell.m in Sources */,
 				A514B1101F290533006A765F /* SvUDIDTools.m in Sources */,
 				F4D7D2F81F4FF0FB00A39F38 /* HotelDetailTableViewCell.m in Sources */,
@@ -2195,11 +2303,13 @@
 				F40A2AF11F31727800BEDFFB /* StoreDetailViewController.m in Sources */,
 				F48679361F3D7BF700612E27 /* StoreCommentTableViewCell.m in Sources */,
 				A514B10F1F290533006A765F /* NSString+Category.m in Sources */,
+				F4E2E3451F568CB000C3CFED /* VideoPesRequest.m in Sources */,
 				A50BB4171F3DAF3700F6158B /* DQAgeModel.m in Sources */,
 				F4A7A0901F256B96009FAAEE /* main.m in Sources */,
 				F4D7D2F51F4FD6A200A39F38 /* HotelDetailViewController.m in Sources */,
 				A545AC821F530A6500869313 /* TYPagerController.m in Sources */,
 				F48237561F27179700DDD487 /* HomePageTableViewCell.m in Sources */,
+				F4E2E3551F5693F400C3CFED /* CeremonyIntroViewController.m in Sources */,
 				F49D6E881F4C002200C21477 /* BusinessTypeSubViewController.m in Sources */,
 				F40E7A5E1F3014AA00FD7792 /* HomePageManager.m in Sources */,
 			);
