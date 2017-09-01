@@ -7,6 +7,7 @@
 //
 
 #import "CeremonyIntroViewController.h"
+#import "CeremonyManager.h"
 
 @interface CeremonyIntroViewController ()
 
@@ -16,7 +17,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
+    UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(10, 10, ScreenWidth-20, ScreenHieght-200)];
+    backView.layer.borderWidth = 1;
+    backView.layer.borderColor = [[UIColor colorR:235 G:235 B:235 alpha:1] CGColor];
+    [self.view addSubview:backView];
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, ScreenWidth-40, 100)];
+    label.numberOfLines = 10;
+    label.text = GET_SINGLETON_FOR_CLASS(CeremonyManager).ceremonyInfo.ceremonySynopsis;
+    [label sizeToFit];
+    [self.view addSubview:label];
 }
 
 - (void)didReceiveMemoryWarning {

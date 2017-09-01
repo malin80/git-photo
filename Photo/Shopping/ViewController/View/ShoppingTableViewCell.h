@@ -30,8 +30,6 @@
 @property (nonatomic, strong) UILabel *deleteLabel;
 @property (nonatomic, strong) UILabel *line;
 
-- (void)changeSelectViewIconState;
-
 @property(nonatomic, weak) id<ShoppingTableViewCellDelegate> delegate;
 
 

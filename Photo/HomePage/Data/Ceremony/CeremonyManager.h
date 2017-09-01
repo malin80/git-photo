@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CeremonyInfo.h"
 
 @interface CeremonyManager : NSObject
 
@@ -14,7 +15,8 @@ DECLARE_SINGLETON_FOR_CLASS(CeremonyManager)
 
 @property (nonatomic, strong) NSMutableArray *ceremonyManInfos;
 @property (nonatomic, strong) NSMutableArray *ceremonyWomenInfos;
-@property (nonatomic, strong) NSArray *ceremonyWorksList;
+@property (nonatomic, strong) NSMutableArray *ceremonyWorkInfos;
+@property (nonatomic, strong) CeremonyInfo *ceremonyInfo;
 
 - (void)queryAllCeremony;
 

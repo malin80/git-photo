@@ -8,7 +8,7 @@
 
 #import "CeremonyManager.h"
 #import "CeremonyPesRequest.h"
-#import "CeremonyInfo.h"
+#import "CeremonyWorksInfo.h"
 
 @implementation CeremonyManager
 
@@ -21,6 +21,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(CeremonyManager)
     if (self) {
         self.ceremonyManInfos = [NSMutableArray array];
         self.ceremonyWomenInfos = [NSMutableArray array];
+        self.ceremonyWorkInfos = [NSMutableArray array];
+        self.ceremonyInfo = [[CeremonyInfo alloc] init];
     }
     return self;
 }
@@ -28,6 +30,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(CeremonyManager)
 - (void)queryAllCeremony {
     [CeremonyPesRequest queryAllCeremony:^(NSDictionary *responseObject, NSString *error) {
         if ([[responseObject objectForKey:@"errorCode"] unsignedLongValue] == 0) {
+            [self.ceremonyManInfos removeAllObjects];
+            [self.ceremonyWomenInfos removeAllObjects];
             NSArray *array = [responseObject objectForKey:@"data"];
             for (NSDictionary *dict in array) {
                 CeremonyInfo *info = [[CeremonyInfo alloc] init];
@@ -52,8 +56,17 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(CeremonyManager)
 - (void)queryCeremonyDetailWithId:(long)ceremonyId {
     [CeremonyPesRequest queryCeremonyDetailWithId:ceremonyId withBlock:^(NSDictionary *responseObject, NSString *error) {
         if ([[responseObject objectForKey:@"errorCode"] unsignedLongValue] == 0) {
+            [self.ceremonyWorkInfos removeAllObjects];
             NSDictionary *dict = [responseObject objectForKey:@"data"];
-            self.ceremonyWorksList = [dict objectForKey:@"emceeWorksList"];
+            self.ceremonyInfo.ceremonySynopsis = [dict objectForKey:@"emceeSynopsis"];
+            NSArray *array = [dict objectForKey:@"emceeWorksList"];
+            for (NSDictionary *dict in array) {
+                CeremonyWorksInfo *info = [[CeremonyWorksInfo alloc] init];
+                info.worksName = [dict objectForKey:@"emceeWorksName"];
+                info.worksImage = [dict objectForKey:@"emceeWorksScreenshot"];
+                info.worksVideo = [dict objectForKey:@"emceeWorksVideo"];
+                [self.ceremonyWorkInfos addObject:info];
+            }
             [[NSNotificationCenter defaultCenter] postNotificationName:@"queryCeremonyDetailSuccess" object:nil];
         }
     }];
