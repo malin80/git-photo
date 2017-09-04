@@ -87,12 +87,14 @@
 }
 
 - (void)createCommentImageWithUrl:(NSString *)url {
-    NSArray *temp=[url componentsSeparatedByString:@";"];
-    if (temp.count > 0) {
-        for (int i = 0; i<temp.count; i++) {
-            UIImageView *imageView = [[UIImageView alloc] init];
-            [SDWebImageCache getImageFromSDWebImageWithUrlString:[NSString stringWithFormat:@"%@%@",baseUrl,temp[i]] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-                imageView.image = image;
+    self.temp = [url componentsSeparatedByString:@";"];
+    if (self.temp.count > 0) {
+        for (int i = 0; i<self.temp.count; i++) {
+            UIButton *imageView = [[UIButton alloc] init];
+            imageView.tag = i;
+            [imageView addTarget:self action:@selector(touchImageView:) forControlEvents:UIControlEventTouchUpInside];
+            [SDWebImageCache getImageFromSDWebImageWithUrlString:[NSString stringWithFormat:@"%@%@",baseUrl,self.temp[i]] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                [imageView setImage:image forState:UIControlStateNormal];
             }];
             [self.contentView addSubview:imageView];
             
@@ -102,8 +104,14 @@
                 make.height.equalTo(@(kImageViewWidth));
                 make.width.equalTo(@(kImageViewWidth));
             }];
-            
         }
+    }
+}
+
+- (void)touchImageView:(UIButton *)sender {
+    NSString *string = self.temp[sender.tag];
+    if ([self.delegate respondsToSelector:@selector(touchCommentImage:)]) {
+        [self.delegate touchCommentImage:[NSString stringWithFormat:@"%@%@",baseUrl,string]];
     }
 }
 

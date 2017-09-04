@@ -13,7 +13,7 @@
 #import "StoreCommentTableViewCell.h"
 #import "SDWebImageCache.h"
 
-@interface StoreDetailThirdViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface StoreDetailThirdViewController () <UITableViewDelegate, UITableViewDataSource, StoreCommentTableViewCellDelegate>
 {
     TableViewCellCalculator *heightCalculator;
 }
@@ -57,6 +57,7 @@
 
     if (!cell) {
         cell = [[StoreCommentTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
+        cell.delegate = self;
     }
     [cell setCommentContentText:info.commentText withCommentImageUrl:info.commentImageUrl];
     cell.memberName.text = info.commentName;
@@ -64,6 +65,7 @@
         cell.memberView.image = image;
     }];
     [cell createCommentImageWithUrl:info.commentImageUrl];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
@@ -73,6 +75,11 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     StoreCommentTableViewCell *cell = [self tableView:_tableView cellForRowAtIndexPath:indexPath];
     return cell.frame.size.height;
+}
+
+#pragma mark --- StoreCommentTableViewCellDelegate ---
+- (void)touchCommentImage:(NSString *)imageUrl {
+    
 }
 
 - (void)didReceiveMemoryWarning {
