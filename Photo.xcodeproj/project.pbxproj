@@ -229,6 +229,8 @@
 		F4D7D2F21F4FD1B000A39F38 /* jinpai_hotel.png in Resources */ = {isa = PBXBuildFile; fileRef = F4D7D2F11F4FD1B000A39F38 /* jinpai_hotel.png */; };
 		F4D7D2F51F4FD6A200A39F38 /* HotelDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D7D2F41F4FD6A200A39F38 /* HotelDetailViewController.m */; };
 		F4D7D2F81F4FF0FB00A39F38 /* HotelDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D7D2F71F4FF0FB00A39F38 /* HotelDetailTableViewCell.m */; };
+		F4DA7DA41F5CEAB400A434C8 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4DA7DA31F5CEAB400A434C8 /* MapKit.framework */; };
+		F4DA7DA71F5CEC5C00A434C8 /* WeddingMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DA7DA61F5CEC5C00A434C8 /* WeddingMapViewController.m */; };
 		F4E2E32E1F56537700C3CFED /* CeremonyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E2E32D1F56537700C3CFED /* CeremonyViewController.m */; };
 		F4E2E3311F56539500C3CFED /* CeremonyPesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E2E3301F56539500C3CFED /* CeremonyPesRequest.m */; };
 		F4E2E3351F5653B300C3CFED /* CeremonyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E2E3341F5653B300C3CFED /* CeremonyManager.m */; };
@@ -688,6 +690,9 @@
 		F4D7D2F41F4FD6A200A39F38 /* HotelDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelDetailViewController.m; sourceTree = "<group>"; };
 		F4D7D2F61F4FF0FB00A39F38 /* HotelDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelDetailTableViewCell.h; sourceTree = "<group>"; };
 		F4D7D2F71F4FF0FB00A39F38 /* HotelDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelDetailTableViewCell.m; sourceTree = "<group>"; };
+		F4DA7DA31F5CEAB400A434C8 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		F4DA7DA51F5CEC5C00A434C8 /* WeddingMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeddingMapViewController.h; sourceTree = "<group>"; };
+		F4DA7DA61F5CEC5C00A434C8 /* WeddingMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeddingMapViewController.m; sourceTree = "<group>"; };
 		F4E2E32C1F56537700C3CFED /* CeremonyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CeremonyViewController.h; sourceTree = "<group>"; };
 		F4E2E32D1F56537700C3CFED /* CeremonyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CeremonyViewController.m; sourceTree = "<group>"; };
 		F4E2E32F1F56539500C3CFED /* CeremonyPesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CeremonyPesRequest.h; sourceTree = "<group>"; };
@@ -784,6 +789,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4DA7DA41F5CEAB400A434C8 /* MapKit.framework in Frameworks */,
 				A5104F891F4339F9004ABBE7 /* CoreMotion.framework in Frameworks */,
 				A5104F871F4339EF004ABBE7 /* CFNetwork.framework in Frameworks */,
 				A5104F851F4339E7004ABBE7 /* Foundation.framework in Frameworks */,
@@ -820,6 +826,7 @@
 		3AF5D29E0BF9DB9947619118 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F4DA7DA31F5CEAB400A434C8 /* MapKit.framework */,
 				A5104F881F4339F9004ABBE7 /* CoreMotion.framework */,
 				A5104F861F4339EF004ABBE7 /* CFNetwork.framework */,
 				A5104F841F4339E7004ABBE7 /* Foundation.framework */,
@@ -1201,6 +1208,8 @@
 				F49D6E811F4BD79D00C21477 /* BusinessCaseDetailViewController.m */,
 				F49D6E861F4C002200C21477 /* BusinessTypeSubViewController.h */,
 				F49D6E871F4C002200C21477 /* BusinessTypeSubViewController.m */,
+				F4DA7DA51F5CEC5C00A434C8 /* WeddingMapViewController.h */,
+				F4DA7DA61F5CEC5C00A434C8 /* WeddingMapViewController.m */,
 			);
 			path = WeddingViewController;
 			sourceTree = "<group>";
@@ -2209,6 +2218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4DA7DA71F5CEC5C00A434C8 /* WeddingMapViewController.m in Sources */,
 				F41371951F452E7D0071F1BA /* WeddingTableViewCell.m in Sources */,
 				F4D3EB6F1F53FD7400569FF0 /* CarCollectionViewCell.m in Sources */,
 				F4FD304D1F32C97300048DD6 /* CameraDetailViewController.m in Sources */,

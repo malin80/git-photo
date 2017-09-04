@@ -17,6 +17,8 @@ DECLARE_SINGLETON_FOR_CLASS(WeddingManager)
 @property (nonatomic, strong) NSMutableArray *businessCases;
 @property (nonatomic, strong) NSMutableArray *businessTypes;
 @property (nonatomic, strong) NSMutableArray *businessTypeDetail;
+@property (nonatomic, assign) float businessLatitude;
+@property (nonatomic, assign) float businessLongitude;
 
 - (void)queryAllWeddingBusiness;
 

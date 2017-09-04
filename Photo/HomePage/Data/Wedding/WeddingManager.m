@@ -68,6 +68,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(WeddingManager)
                 self.businessComments = [dict objectForKey:@"businessCommentList"];
                 self.businessTypes = [dict objectForKey:@"businessSetList"];
                 info.businessName = [dict objectForKey:@"businessName"];
+                self.businessLatitude = [[dict objectForKey:@"businessLatitude"] floatValue];
+                self.businessLongitude = [[dict objectForKey:@"businessLongitude"] floatValue];
                 for (NSDictionary *cases in self.businessTypes) {
                     NSArray *array = [cases objectForKey:@"businessCaseList"];
                     info.businessTypeName = [cases objectForKey:@"businessSetName"];

@@ -17,6 +17,7 @@
 #import "BusinessCaseViewController.h"
 #import "BusinessTypeViewController.h"
 #import "BusinessTypeSubViewController.h"
+#import "WeddingMapViewController.h"
 
 #define kScrollViewHeight 160
 
@@ -340,6 +341,10 @@
             case 0:
                 break;
             case 1:
+            {
+                WeddingMapViewController *controller = [[WeddingMapViewController alloc] init];
+                [self.navigationController pushViewController:controller animated:NO];
+            }
                 break;
             case 2:
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",self.info.businessPhone]]];
