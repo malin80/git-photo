@@ -13,4 +13,6 @@
 
 + (void)queryAllVideoAuthor:(void(^)(NSDictionary *responseObject,NSString *error))finished;
 
++ (void)queryVideoAuthorDetailWithId:(long)authorId withBlock:(void(^)(NSDictionary *responseObject,NSString *error))finished;
+
 @end

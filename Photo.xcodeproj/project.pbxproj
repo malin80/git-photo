@@ -115,6 +115,10 @@
 		F41B19D71F3462070026E483 /* CollectGoodsInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F41B19D61F3462070026E483 /* CollectGoodsInfo.m */; };
 		F42A34F51F58F49F00BE2722 /* CeremonyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F42A34F41F58F49F00BE2722 /* CeremonyTableViewCell.m */; };
 		F42A34F81F58F6B900BE2722 /* CeremonyWorksInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F42A34F71F58F6B900BE2722 /* CeremonyWorksInfo.m */; };
+		F42A34FB1F5903F700BE2722 /* VideoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F42A34FA1F5903F700BE2722 /* VideoDetailViewController.m */; };
+		F42A34FE1F5906B600BE2722 /* VideoWorksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F42A34FD1F5906B600BE2722 /* VideoWorksViewController.m */; };
+		F42A35011F5906C600BE2722 /* VideoIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F42A35001F5906C600BE2722 /* VideoIntroViewController.m */; };
+		F42A35041F59084B00BE2722 /* VideoWorkInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F42A35031F59084B00BE2722 /* VideoWorkInfo.m */; };
 		F43A7DB51F4D19E800350A63 /* ClothViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43A7DB41F4D19E800350A63 /* ClothViewController.m */; };
 		F43A7DB81F4D1ADF00350A63 /* ClothPesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F43A7DB71F4D1ADF00350A63 /* ClothPesRequest.m */; };
 		F43A7DBC1F4D1B0500350A63 /* ClothManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F43A7DBB1F4D1B0500350A63 /* ClothManager.m */; };
@@ -495,6 +499,14 @@
 		F42A34F41F58F49F00BE2722 /* CeremonyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CeremonyTableViewCell.m; sourceTree = "<group>"; };
 		F42A34F61F58F6B900BE2722 /* CeremonyWorksInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CeremonyWorksInfo.h; sourceTree = "<group>"; };
 		F42A34F71F58F6B900BE2722 /* CeremonyWorksInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CeremonyWorksInfo.m; sourceTree = "<group>"; };
+		F42A34F91F5903F700BE2722 /* VideoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoDetailViewController.h; sourceTree = "<group>"; };
+		F42A34FA1F5903F700BE2722 /* VideoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoDetailViewController.m; sourceTree = "<group>"; };
+		F42A34FC1F5906B600BE2722 /* VideoWorksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoWorksViewController.h; sourceTree = "<group>"; };
+		F42A34FD1F5906B600BE2722 /* VideoWorksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoWorksViewController.m; sourceTree = "<group>"; };
+		F42A34FF1F5906C600BE2722 /* VideoIntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoIntroViewController.h; sourceTree = "<group>"; };
+		F42A35001F5906C600BE2722 /* VideoIntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoIntroViewController.m; sourceTree = "<group>"; };
+		F42A35021F59084B00BE2722 /* VideoWorkInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoWorkInfo.h; sourceTree = "<group>"; };
+		F42A35031F59084B00BE2722 /* VideoWorkInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoWorkInfo.m; sourceTree = "<group>"; };
 		F43A7DB31F4D19E800350A63 /* ClothViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClothViewController.h; sourceTree = "<group>"; };
 		F43A7DB41F4D19E800350A63 /* ClothViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClothViewController.m; sourceTree = "<group>"; };
 		F43A7DB61F4D1ADF00350A63 /* ClothPesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClothPesRequest.h; sourceTree = "<group>"; };
@@ -1813,6 +1825,12 @@
 			children = (
 				F4E2E34A1F568DA700C3CFED /* VideoViewController.h */,
 				F4E2E34B1F568DA700C3CFED /* VideoViewController.m */,
+				F42A34F91F5903F700BE2722 /* VideoDetailViewController.h */,
+				F42A34FA1F5903F700BE2722 /* VideoDetailViewController.m */,
+				F42A34FC1F5906B600BE2722 /* VideoWorksViewController.h */,
+				F42A34FD1F5906B600BE2722 /* VideoWorksViewController.m */,
+				F42A34FF1F5906C600BE2722 /* VideoIntroViewController.h */,
+				F42A35001F5906C600BE2722 /* VideoIntroViewController.m */,
 			);
 			path = VideoViewController;
 			sourceTree = "<group>";
@@ -1824,6 +1842,8 @@
 				F4E2E3481F568D3800C3CFED /* VideoManager.m */,
 				F4E2E34D1F568E7C00C3CFED /* VideoAuthorInfo.h */,
 				F4E2E34E1F568E7C00C3CFED /* VideoAuthorInfo.m */,
+				F42A35021F59084B00BE2722 /* VideoWorkInfo.h */,
+				F42A35031F59084B00BE2722 /* VideoWorkInfo.m */,
 			);
 			path = Video;
 			sourceTree = "<group>";
@@ -2210,10 +2230,12 @@
 				F4B67CAB1F415F0100DA8E4E /* SDWebImageCache.m in Sources */,
 				F405D1A81F2ED06E0015A8E6 /* LoginInfo.m in Sources */,
 				F405D19D1F2EBC110015A8E6 /* OrderTableViewCell.m in Sources */,
+				F42A34FE1F5906B600BE2722 /* VideoWorksViewController.m in Sources */,
 				F4A7A1051F258449009FAAEE /* PersonalTabelViewCell.m in Sources */,
 				F4E2E32E1F56537700C3CFED /* CeremonyViewController.m in Sources */,
 				A50BB4131F3DAF3700F6158B /* FDCalendarItem.m in Sources */,
 				F40A2AE51F31650700BEDFFB /* StorePesRequest.m in Sources */,
+				F42A35041F59084B00BE2722 /* VideoWorkInfo.m in Sources */,
 				F4FD305A1F32F7C700048DD6 /* CameraTeamViewController.m in Sources */,
 				F4A7A1081F2588BF009FAAEE /* PersonalHeaderView.m in Sources */,
 				F407335E1F3C3A300006F1F6 /* CameraManDetailViewController.m in Sources */,
@@ -2313,6 +2335,7 @@
 				F4D3EB6C1F53F62E00569FF0 /* CarViewController.m in Sources */,
 				F4E2E3491F568D3800C3CFED /* VideoManager.m in Sources */,
 				F4FDD6A41F2C378E007263D4 /* NickNameViewController.m in Sources */,
+				F42A35011F5906C600BE2722 /* VideoIntroViewController.m in Sources */,
 				F405D19A1F2EBB2F0015A8E6 /* BookOrderViewController.m in Sources */,
 				A55DEFE71F42F3FD00092AD3 /* GGActionSheet.m in Sources */,
 				F407335B1F3C397B0006F1F6 /* CameraManDetailThirdViewController.m in Sources */,
@@ -2330,6 +2353,7 @@
 				F4B67C761F41443900DA8E4E /* SelectCameraManViewController.m in Sources */,
 				F4FD30471F32C1B200048DD6 /* ShoppingPesRequest.m in Sources */,
 				F48679331F3D7B0900612E27 /* TableViewCellCalculator.m in Sources */,
+				F42A34FB1F5903F700BE2722 /* VideoDetailViewController.m in Sources */,
 				F41371AC1F4540D20071F1BA /* WeddingBusinessInfo.m in Sources */,
 				A50BB4181F3DAF3700F6158B /* DQBirthDateView.m in Sources */,
 				F40E7A641F301BF300FD7792 /* LoginManager.m in Sources */,

@@ -10,6 +10,7 @@
 #import "VideoManager.h"
 #import "CameraManTableViewCell.h"
 #import "SDWebImageCache.h"
+#import "VideoDetailViewController.h"
 
 @interface VideoViewController () <NavigationBarDelegate, UITableViewDelegate, UITableViewDataSource>
 
@@ -23,7 +24,7 @@
     [super viewDidLoad];
 
     self.navigationController.navigationBar.hidden = YES;
-    NavigationBar *bar = [[NavigationBar alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 64) withTitle:@"司仪"];
+    NavigationBar *bar = [[NavigationBar alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 64) withTitle:@"视频广告"];
     bar.delegate = self;
     bar.line.hidden = NO;
     [self.view addSubview:bar];
@@ -77,18 +78,15 @@
     
     cell.name.text = info.authorName;
     cell.content.text = info.authorSign;
-    //    cell.works.text = [NSString stringWithFormat:@"作品 %ld",info.worksOfCameraMan];
-    //    cell.subscribeCount.text = [NSString stringWithFormat:@"预约 %ld",info.subscribeCount];
-    //    cell.commentCount.text = [NSString stringWithFormat:@"评论 %ld",info.commentCount];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    CeremonyDetailViewController *controller = [[CeremonyDetailViewController alloc] init];
-//    CeremonyInfo *info = [GET_SINGLETON_FOR_CLASS(CeremonyManager).ceremonyManInfos objectAtIndex:indexPath.row];
-//    controller.info = info;
-//    [GET_SINGLETON_FOR_CLASS(CeremonyManager) queryCeremonyDetailWithId:info.ceremonyId];
-//    [self.navigationController pushViewController:controller animated:NO];
+    VideoDetailViewController *controller = [[VideoDetailViewController alloc] init];
+    VideoAuthorInfo *info = [GET_SINGLETON_FOR_CLASS(VideoManager).videoAuthors objectAtIndex:indexPath.row];
+    controller.info = info;
+    [GET_SINGLETON_FOR_CLASS(VideoManager) queryVideoAuthorDetailWithId:info.authorId];
+    [self.navigationController pushViewController:controller animated:NO];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

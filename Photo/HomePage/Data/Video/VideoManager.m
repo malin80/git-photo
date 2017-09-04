@@ -19,6 +19,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(VideoManager)
     self = [super init];
     if (self) {
         self.videoAuthors = [NSMutableArray array];
+        self.videoWorkInfos = [NSMutableArray array];
     }
     return self;
 }
@@ -38,6 +39,25 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(VideoManager)
                 [self.videoAuthors addObject:info];
             }
             [[NSNotificationCenter defaultCenter] postNotificationName:@"queryAllVideoAuthorSuccess" object:nil];
+        }
+    }];
+}
+
+- (void)queryVideoAuthorDetailWithId:(long)authorId {
+    [VideoPesRequest queryVideoAuthorDetailWithId:authorId withBlock:^(NSDictionary *responseObject, NSString *error) {
+        if ([[responseObject objectForKey:@"errorCode"] unsignedLongValue] == 0) {
+            [self.videoWorkInfos removeAllObjects];
+            NSDictionary *dict = [responseObject objectForKey:@"data"];
+            self.authorInfo.authorSynopsis = [dict objectForKey:@"videoADAuthorSynopsis"];
+            NSArray *array = [dict objectForKey:@"videoADWorksList"];
+            for (NSDictionary *dict in array) {
+                VideoWorkInfo *info = [[VideoWorkInfo alloc] init];
+                info.worksName = [dict objectForKey:@"videoADWorksTitle"];
+                info.worksImage = [dict objectForKey:@"videoADWorksScreenshot"];
+                info.worksVideo = [dict objectForKey:@"videoADWorksVideo"];
+                [self.videoWorkInfos addObject:info];
+            }
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"queryVideoAuthorDetailSuccess" object:nil];
         }
     }];
 }
