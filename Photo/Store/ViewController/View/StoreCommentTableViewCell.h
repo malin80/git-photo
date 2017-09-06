@@ -11,7 +11,7 @@
 @protocol StoreCommentTableViewCellDelegate <NSObject>
 
 @optional
-- (void)touchCommentImage:(NSString *)imageUrl;
+- (void)touchCommentImage:(NSArray *)imageUrl select:(int)index;
 
 @end
 

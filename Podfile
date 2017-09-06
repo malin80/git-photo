@@ -13,4 +13,5 @@ target ‘Photo’ do
   pod ‘UMengUShare/UI’
   pod 'WechatOpenSDK'
   pod 'VKVideoPlayer'
+  pod 'KSPhotoBrowser', '~> 0.1.3'
 end

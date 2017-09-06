@@ -26,6 +26,7 @@
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 #import <IQKeyboardManager.h>
 #import "UIColor+EX.h"
+#import  <KSPhotoBrowser.h>
 #import  <MBProgressHUD.h>
 #import <SDWebImageManager.h>
 #import <Masonry.h>

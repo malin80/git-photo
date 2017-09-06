@@ -78,8 +78,17 @@
 }
 
 #pragma mark --- StoreCommentTableViewCellDelegate ---
-- (void)touchCommentImage:(NSString *)imageUrl {
-    
+- (void)touchCommentImage:(NSArray *)imageUrl select:(int)index{
+    NSMutableArray *items = @[].mutableCopy;
+    for (int i = 0; i < imageUrl.count; i++) {
+        // Get the large image url
+        NSString *url = [imageUrl[i] stringByReplacingOccurrencesOfString:@"bmiddle" withString:@"large"];
+        UIImageView *imageView =[[UIImageView alloc]init];
+        KSPhotoItem *item = [KSPhotoItem itemWithSourceView:imageView imageUrl:[NSURL URLWithString:url]];
+        [items addObject:item];
+    }
+    KSPhotoBrowser *browser = [KSPhotoBrowser browserWithPhotoItems:items selectedIndex:index];
+    [browser showFromViewController:self];
 }
 
 - (void)didReceiveMemoryWarning {
