@@ -15,7 +15,7 @@
 #import "StoreCommentInfo.h"
 #import "BuyClothViewController.h"
 
-@interface ClothDetailViewController () < NavigationBarDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface ClothDetailViewController () < NavigationBarDelegate, UITableViewDelegate, UITableViewDataSource, ClothCommentTableViewCellDelegate>
 {
     NSArray *_picArray;
 }
@@ -207,6 +207,7 @@
             ClothCommentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
             if (!cell) {
                 cell = [[ClothCommentTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
+                cell.delegate = self;
             }
             StoreCommentInfo *info = [GET_SINGLETON_FOR_CLASS(ClothManager).commentInfos objectAtIndex:indexPath.row];
             cell.memberName.text = info.commentName;
@@ -306,6 +307,20 @@
 #pragma mark --- NavigationBarDelegate ---
 - (void)goBack {
     [self.navigationController popViewControllerAnimated:NO];
+}
+
+#pragma mark --- ClothCommentTableViewCellDelegate ---
+- (void)touchCommentImage:(NSArray *)imageUrl select:(int)index{
+    NSMutableArray *items = @[].mutableCopy;
+    for (int i = 0; i < imageUrl.count; i++) {
+        // Get the large image url
+        NSString *url = [imageUrl[i] stringByReplacingOccurrencesOfString:@"bmiddle" withString:@"large"];
+        UIImageView *imageView =[[UIImageView alloc]init];
+        KSPhotoItem *item = [KSPhotoItem itemWithSourceView:imageView imageUrl:[NSURL URLWithString:url]];
+        [items addObject:item];
+    }
+    KSPhotoBrowser *browser = [KSPhotoBrowser browserWithPhotoItems:items selectedIndex:index];
+    [browser showFromViewController:self];
 }
 
 - (void)didReceiveMemoryWarning {

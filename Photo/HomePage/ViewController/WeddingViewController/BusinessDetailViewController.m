@@ -21,7 +21,7 @@
 
 #define kScrollViewHeight 160
 
-@interface BusinessDetailViewController () <NavigationBarDelegate, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource, DLTabedSlideViewDelegate>
+@interface BusinessDetailViewController () <NavigationBarDelegate, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource, DLTabedSlideViewDelegate, BusinessCommentTableViewCellDelegate>
 {
     UIScrollView *_backView;
     UIScrollView *_scrollView;
@@ -323,6 +323,7 @@
         BusinessCommentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
         if (!cell) {
             cell = [[BusinessCommentTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
+            cell.delegate = self;
         }
         [cell setCommentContentText:[dict objectForKey:@"businessCommentText"] withCommentImageUrl:[dict objectForKey:@"businessCommentPic"]];
         cell.memberName.text = [memberDetail objectForKey:@"memberName"];;
@@ -446,6 +447,20 @@
 #pragma mark --- NavigationBarDelegate ---
 - (void)goBack {
     [self.navigationController popViewControllerAnimated:NO];
+}
+
+#pragma mark --- StoreCommentTableViewCellDelegate ---
+- (void)touchCommentImage:(NSArray *)imageUrl select:(int)index{
+    NSMutableArray *items = @[].mutableCopy;
+    for (int i = 0; i < imageUrl.count; i++) {
+        // Get the large image url
+        NSString *url = [imageUrl[i] stringByReplacingOccurrencesOfString:@"bmiddle" withString:@"large"];
+        UIImageView *imageView =[[UIImageView alloc]init];
+        KSPhotoItem *item = [KSPhotoItem itemWithSourceView:imageView imageUrl:[NSURL URLWithString:url]];
+        [items addObject:item];
+    }
+    KSPhotoBrowser *browser = [KSPhotoBrowser browserWithPhotoItems:items selectedIndex:index];
+    [browser showFromViewController:self];
 }
 
 - (void)didReceiveMemoryWarning {

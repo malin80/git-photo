@@ -109,12 +109,10 @@
 }
 
 - (void)touchImageView:(UIButton *)sender {
-     NSLog(@"%@",self.temp);
     NSMutableArray *mary=[[NSMutableArray alloc]init];
     for (int i=0;  i<self.temp.count;i++) {
         [mary addObject:[NSString stringWithFormat:@"%@%@",baseUrl,self.temp[i]]];
     }
-    NSLog(@"%@",mary);
     if ([self.delegate respondsToSelector:@selector(touchCommentImage: select:)]) {
         [self.delegate touchCommentImage:mary select:sender.tag];
     }
