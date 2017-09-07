@@ -20,22 +20,21 @@
     [self.view addSubview:self.scrollview];
     NSArray *array;
     if (ScreenHieght == 480) {
-        array = @[@"lead4-1",@"lead4-2",@"lead4-3",@"lead4-4"];
+        array = @[@"lead_1_1.jpg",@"lead_2_1.jpg",@"lead_2_1.jpg"];
     }else if(ScreenHieght == 568){
-        array = @[@"lead5-1",@"lead5-2",@"lead5-3",@"lead5-4"];
+        array = @[@"lead_1_2.jpg",@"lead_2_2.jpg",@"lead_3_2.jpg"];
     }else{
-        array = @[@"lead6-1",@"lead6-2",@"lead6-3",@"lead6-4"];
+        array = @[@"lead_1_3.jpg",@"lead_2_3.jpg",@"lead_3_3.jpg"];
     }
-    self.scrollview.contentSize = CGSizeMake(ScreenWidth*4, ScreenHieght);
-    for (int i=0; i<4; i++) {
+    self.scrollview.contentSize = CGSizeMake(ScreenWidth*3, ScreenHieght);
+    for (int i=0; i<3; i++) {
         UIImageView *imageview = [[UIImageView alloc]initWithFrame:CGRectMake(i*ScreenWidth, 0, ScreenWidth, ScreenHieght)];
         imageview.image = [UIImage imageNamed:array[i]];
         [self.scrollview addSubview:imageview];
     }
-    
     [self.view addSubview:self.btn];
 }
--(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     NSLog(@"%f",scrollView.contentOffset.x/ScreenWidth);
     if (scrollView.contentOffset.x/ScreenWidth==0) {
         _btn.userInteractionEnabled=NO;
@@ -44,19 +43,15 @@
         _btn.userInteractionEnabled=NO;
         [_btn setImage:[UIImage imageNamed:@"di2"] forState:0];
     }else if (scrollView.contentOffset.x/ScreenWidth==2){
-        _btn.userInteractionEnabled=NO;
+        _btn.userInteractionEnabled = YES;
         [_btn setImage:[UIImage imageNamed:@"di3"] forState:0];
-    }else if (scrollView.contentOffset.x/ScreenWidth==3){
-        _btn.userInteractionEnabled=YES;
-        [_btn setImage:[UIImage imageNamed:@"di4"] forState:0];
+        _btn.hidden = NO;
     }
 }
 
 #pragma mark 懒加载
 - (UIScrollView *)scrollview{
-    
     if (_scrollview == nil) {
-        
         _scrollview = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHieght)];
         _scrollview.showsHorizontalScrollIndicator = NO;
         _scrollview.delegate = self;
@@ -67,21 +62,21 @@
     return _scrollview;
 }
 - (UIButton *)btn{
-    
     if (_btn == nil) {
-        
         _btn = [[UIButton alloc]initWithFrame:CGRectMake(ScreenWidth/2-50*SCALEW, ScreenHieght-76*SCALEH, 100*SCALEW, 36*SCALEW)];
         _btn.userInteractionEnabled = NO;
         [_btn setImage:[UIImage imageNamed:@"di1"] forState:0];
         [_btn addTarget:self action:@selector(btnPush) forControlEvents:UIControlEventTouchUpInside];
-        _btn.backgroundColor = [UIColor clearColor];
+        _btn.backgroundColor = [UIColor redColor];
+        _btn.hidden = YES;
     }
     return _btn;
 }
+
 -(void)btnPush{
     self.block();
-
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
