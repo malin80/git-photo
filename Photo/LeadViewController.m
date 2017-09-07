@@ -65,9 +65,10 @@
     if (_btn == nil) {
         _btn = [[UIButton alloc]initWithFrame:CGRectMake(ScreenWidth/2-50*SCALEW, ScreenHieght-76*SCALEH, 100*SCALEW, 36*SCALEW)];
         _btn.userInteractionEnabled = NO;
-        [_btn setImage:[UIImage imageNamed:@"di1"] forState:0];
+        [_btn setTitle:@"立即体验" forState:UIControlStateNormal];
+        [_btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [_btn addTarget:self action:@selector(btnPush) forControlEvents:UIControlEventTouchUpInside];
-        _btn.backgroundColor = [UIColor redColor];
+        _btn.backgroundColor = [UIColor colorWithRed:255 green:255 blue:255 alpha:1];
         _btn.hidden = YES;
     }
     return _btn;
