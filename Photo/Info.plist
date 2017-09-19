@@ -7,7 +7,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>Photo</string>
+	<string>彩虹集</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -42,7 +42,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>1.2</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>wechat</string>
@@ -50,9 +50,41 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>音乐权限</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>蓝牙权限</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>日历权限</string>
 	<key>NSCameraUsageDescription</key>
+	<string>摄像头权限</string>
+	<key>NSContactsUsageDescription</key>
+	<string>通讯录权限</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>健康权限</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>健康权限</string>
+	<key>NSHomeKitUsageDescription</key>
 	<string></string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>地理位置权限</string>
+	<key>NSLocationUsageDescription</key>
+	<string>地理位置权限</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>地理位置权限</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>麦克风权限</string>
+	<key>NSMotionUsageDescription</key>
+	<string>运动权限</string>
 	<key>NSPhotoLibraryUsageDescription</key>
+	<string>相册权限</string>
+	<key>NSRemindersUsageDescription</key>
+	<string></string>
+	<key>NSSiriUsageDescription</key>
+	<string>Siri权限</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>语音识别权限</string>
+	<key>NSVideoSubscriberAccountUsageDescription</key>
 	<string></string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
@@ -73,5 +105,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>kTCCServiceMediaLibrary</key>
+	<string></string>
 </dict>
 </plist>

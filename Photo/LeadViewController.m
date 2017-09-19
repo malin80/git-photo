@@ -39,9 +39,11 @@
     if (scrollView.contentOffset.x/ScreenWidth==0) {
         _btn.userInteractionEnabled=NO;
         [_btn setImage:[UIImage imageNamed:@"di1"] forState:0];
+        _btn.hidden = YES;
     }else if (scrollView.contentOffset.x/ScreenWidth==1){
         _btn.userInteractionEnabled=NO;
         [_btn setImage:[UIImage imageNamed:@"di2"] forState:0];
+        _btn.hidden = YES;
     }else if (scrollView.contentOffset.x/ScreenWidth==2){
         _btn.userInteractionEnabled = YES;
         [_btn setImage:[UIImage imageNamed:@"di3"] forState:0];

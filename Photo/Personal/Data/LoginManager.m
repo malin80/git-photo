@@ -65,6 +65,10 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(LoginManager)
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"loginsuccess" object:nil];
                 });
             }
+        } else {
+            if ([self.delegate respondsToSelector:@selector(loginFaield)]) {
+                [self.delegate loginFaield];
+            }
         }
     }];
 }

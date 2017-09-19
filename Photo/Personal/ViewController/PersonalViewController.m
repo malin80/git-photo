@@ -50,7 +50,7 @@
 
     [self addNotification];
     self.view.backgroundColor = [UIColor whiteColor];
-//    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
     [self createHeaderView];
     [self createTableView];
     [self updateSections];

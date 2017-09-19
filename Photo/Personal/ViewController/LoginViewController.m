@@ -22,6 +22,9 @@
     UILabel *_orLabel;
     UIButton *_passwordLoginButton;
     UIImageView *_backView;
+    
+    NSTimer *_verifyTimer;
+    int16_t _countdown;
 }
 
 @property (nonatomic, strong) LoginInfo *loginInfo;
@@ -38,7 +41,7 @@
     [self setImmutableConstraints];
     
     self.loginInfo = [[LoginInfo alloc] init];
-    self.loginInfo.loginType = LoginTypeIdentifyCode;
+    self.loginInfo.loginType = LoginTypePassword;
 }
 
 - (void)initView {
@@ -57,13 +60,14 @@
     [self.view addSubview:_seperateLine];
     
     _identifyTextField = [[UITextField alloc] init];
-    _identifyTextField.placeholder = @"请输入验证码";
+    _identifyTextField.placeholder = @"请输入密码";
     _identifyTextField.textAlignment = NSTextAlignmentCenter;
     _identifyTextField.textColor = UIColorFromRGB(146, 146, 146, 1);
     [self.view addSubview:_identifyTextField];
     
     _identifyButton = [[UIButton alloc] init];
     [_identifyButton setTitle:@"获取验证码" forState:UIControlStateNormal];
+    _identifyButton.hidden = YES;
     _identifyButton.backgroundColor = UIColorFromRGB(95, 193, 255, 1);
     [_identifyButton addTarget:self action:@selector(getIdentifyCode) forControlEvents:UIControlEventTouchUpInside];
     _identifyButton.titleLabel.font = [UIFont systemFontOfSize:12];
@@ -82,7 +86,7 @@
     [self.view addSubview:_orLabel];
     
     _passwordLoginButton = [[UIButton alloc] init];
-    [_passwordLoginButton setTitle:@"账号密码登录" forState:UIControlStateNormal];
+    [_passwordLoginButton setTitle:@"验证码登录" forState:UIControlStateNormal];
     _passwordLoginButton.layer.borderWidth = 2;
     _passwordLoginButton.layer.borderColor = [UIColorFromRGB(123, 199, 229, 1) CGColor];
     [_passwordLoginButton setTitleColor:UIColorFromRGB(71, 177, 215, 1) forState:UIControlStateNormal];
@@ -176,11 +180,13 @@
 - (void)loginWithPassword {
     if (self.loginInfo.loginType == LoginTypeIdentifyCode) {
         _identifyTextField.placeholder = @"请输入密码";
+        _identifyTextField.secureTextEntry = YES;
         _identifyButton.hidden = YES;
         [_passwordLoginButton setTitle:@"验证码登录" forState:UIControlStateNormal];
         self.loginInfo.loginType = LoginTypePassword;
     } else {
         _identifyTextField.placeholder = @"请输入验证码";
+        _identifyTextField.secureTextEntry = NO;
         _identifyButton.hidden = NO;
         [_passwordLoginButton setTitle:@"账号密码登录" forState:UIControlStateNormal];
         self.loginInfo.loginType = LoginTypeIdentifyCode;
@@ -188,8 +194,13 @@
 }
 
 - (void)getIdentifyCode {
-    self.loginInfo.loginType = LoginTypeIdentifyCode;
-    [self.loginManager getLoginIdentifyCodeWithPhoneNumber:_phoneTextField.text];
+    if (_phoneTextField.text.length == 11) {
+        [self startVerifyTimer];
+        self.loginInfo.loginType = LoginTypeIdentifyCode;
+        [self.loginManager getLoginIdentifyCodeWithPhoneNumber:_phoneTextField.text];
+    } else {
+        [self showtext:@"请输入正确的手机号码"];
+    }
 }
 
 - (void)loginViewControllerGoBack {
@@ -198,9 +209,47 @@
     }
 }
 
+- (void)startVerifyTimer
+{
+    _countdown = 60;
+    [_identifyButton setTitle:[NSString stringWithFormat:@"%d秒后重发",_countdown] forState:UIControlStateDisabled];
+    _identifyButton.enabled = NO;
+    if (_verifyTimer) {
+        [_verifyTimer invalidate];
+        _verifyTimer = nil;
+    }
+    _verifyTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateCountDown) userInfo:nil repeats:YES];
+}
+
+- (void)updateCountDown
+{
+    _countdown--;
+    if (_countdown < 0) {
+        [self stopCountdownTimer];
+        [_identifyButton setTitle:@"重新发送" forState:UIControlStateNormal];
+        _identifyButton.enabled = YES;
+    } else {
+        [_identifyButton setTitle:[NSString stringWithFormat:@"%d秒后重发",_countdown] forState:UIControlStateDisabled];
+        _identifyButton.enabled = NO;
+    }
+}
+
+- (void)stopCountdownTimer
+{
+    if (_verifyTimer) {
+        [_verifyTimer invalidate];
+        _verifyTimer = nil;
+    }
+}
+
+
 #pragma mark --- LoginManagerDelegate ---
 - (void)loginSuccess {
     self.block();
+}
+
+- (void)loginFaield {
+    [self showtext:@"登录失败，请重新登录"];
 }
 
 #pragma mark --- getters and setters ---

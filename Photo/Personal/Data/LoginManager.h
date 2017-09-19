@@ -14,6 +14,7 @@
 
 @optional
 - (void)loginSuccess;
+- (void)loginFaield;
 
 @end
 
