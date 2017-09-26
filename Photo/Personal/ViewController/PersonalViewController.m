@@ -50,7 +50,6 @@
 
     [self addNotification];
     self.view.backgroundColor = [UIColor whiteColor];
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
     [self createHeaderView];
     [self createTableView];
     [self updateSections];
@@ -129,11 +128,11 @@
                                  selector:@selector(gotoClearDataViewController)];
     [_section.items addObject:_clearEntryItem];
 
-    // 检查更新
-    _updateEntryItem = [EntryItem iconName:@"personal_update"
-                                    title:@"软件检查更新"
-                                 selector:@selector(updateApp)];
-    [_section.items addObject:_updateEntryItem];
+//    // 检查更新
+//    _updateEntryItem = [EntryItem iconName:@"personal_update"
+//                                    title:@"软件检查更新"
+//                                 selector:@selector(updateApp)];
+//    [_section.items addObject:_updateEntryItem];
 }
 
 
@@ -164,7 +163,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 7;
+    return _section.items.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -294,12 +293,12 @@
     [self showtext:@"清理成功"];
 }
 
-- (void)updateApp {
-//    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-//    NSString *app_Version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
-
-    [GET_SINGLETON_FOR_CLASS(PersonalManager) updateApp];
-}
+//- (void)updateApp {
+////    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+////    NSString *app_Version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+//
+//    [GET_SINGLETON_FOR_CLASS(PersonalManager) updateApp];
+//}
 
 #pragma mark --- LoginViewControllerDelegate ---
 - (void)loginViewControllerGoBack {

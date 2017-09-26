@@ -26,30 +26,29 @@
 
 - (void)createViewController{
     if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"isfirst"] length]>0) {
-        if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"isLogin"] length]>0) {
+//        if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"isLogin"] length]>0) {
             TabbarViewController *controller = [[TabbarViewController alloc] init];
             UINavigationController *na=[[UINavigationController alloc]initWithRootViewController:controller];
             self.window.rootViewController = na;
-            
-        } else {
-            LoginViewController *login=[[LoginViewController alloc]init];
-            login.block = ^{
-                TabbarViewController *controller = [[TabbarViewController alloc] init];
-                UINavigationController *na=[[UINavigationController alloc]initWithRootViewController:controller];
-                self.window.rootViewController = na;
-            };
-            self.window.rootViewController =login;
-        }
+//        } else {
+//            LoginViewController *login=[[LoginViewController alloc]init];
+//            login.block = ^{
+//                TabbarViewController *controller = [[TabbarViewController alloc] init];
+//                UINavigationController *na=[[UINavigationController alloc]initWithRootViewController:controller];
+//                self.window.rootViewController = na;
+//            };
+//            self.window.rootViewController =login;
+//        }
     }else{
         LeadViewController *lead=[[LeadViewController alloc]init];
         lead.block = ^{
-            LoginViewController *login=[[LoginViewController alloc]init];
-            login.block = ^{
+//            LoginViewController *login=[[LoginViewController alloc]init];
+//            login.block = ^{
                 TabbarViewController *controller = [[TabbarViewController alloc] init];
                 UINavigationController *na=[[UINavigationController alloc]initWithRootViewController:controller];
                 self.window.rootViewController = na;
-            };
-            self.window.rootViewController =login;
+//            };
+//            self.window.rootViewController =login;
             [[NSUserDefaults standardUserDefaults] setObject:@"sss" forKey:@"isfirst"];
         };
         self.window.rootViewController =lead;
@@ -89,9 +88,9 @@
             [GET_SINGLETON_FOR_CLASS(StoreManager) queryGoodsClassify];
             [GET_SINGLETON_FOR_CLASS(CameraManager) queryCameraGroup];
             [GET_SINGLETON_FOR_CLASS(LoginManager) getMemberInfo];
-            if (GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue) {
-                [GET_SINGLETON_FOR_CLASS(ShoppingManager) queryShoppingGoodsInfoWithSafeCodeValue:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue];
-            }
+//            if (GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue) {
+            [GET_SINGLETON_FOR_CLASS(ShoppingManager) queryShoppingGoodsInfoWithSafeCodeValue:GET_SINGLETON_FOR_CLASS(LoginManager).memberInfo.safeCodeValue];
+//            }
         });
         span.frame=CGRectMake(0, -ScreenHieght, ScreenWidth, ScreenHieght);
     } completion:^(BOOL finished){
