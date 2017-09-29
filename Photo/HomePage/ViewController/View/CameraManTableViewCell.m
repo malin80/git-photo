@@ -44,8 +44,9 @@
     }];
     
     [_content mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_name.mas_bottom).with.offset(15);
+        make.top.equalTo(_name.mas_bottom).with.offset(5);
         make.left.equalTo(_name);
+        make.right.equalTo(self.contentView.mas_right);
     }];
     
     [_works mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -83,6 +84,8 @@
 - (UILabel *)content {
     if (!_content) {
         _content = [[UILabel alloc] init];
+        _content.font = [UIFont systemFontOfSize:12];
+        _content.numberOfLines = 4;
         [_content sizeToFit];
     }
     return _content;

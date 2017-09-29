@@ -59,7 +59,7 @@
     }];
     
     cell.name.text = info.ceremonyName;
-//    cell.content.text = info.cameraManContent;
+    cell.content.text = info.ceremonySigh;
 //    cell.works.text = [NSString stringWithFormat:@"作品 %ld",info.worksOfCameraMan];
 //    cell.subscribeCount.text = [NSString stringWithFormat:@"预约 %ld",info.subscribeCount];
 //    cell.commentCount.text = [NSString stringWithFormat:@"评论 %ld",info.commentCount];

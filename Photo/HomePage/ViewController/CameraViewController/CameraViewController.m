@@ -62,13 +62,11 @@
 }
 
 - (void)loadData {
-    
     _sringArry = [[NSMutableArray alloc]init];
     for (int i = 0; i < GET_SINGLETON_FOR_CLASS(CameraManager).cameraGroups.count; i++) {
         HomePageCameraGroupInfo *info = GET_SINGLETON_FOR_CLASS(CameraManager).cameraGroups[i];
         [_sringArry addObject:info.cameraGroupName];
     }
-    
     
     [self reloadData];
 }

@@ -63,7 +63,6 @@
 - (UILabel *)teamNameLabel {
     if (!_teamNameLabel) {
         _teamNameLabel = [[UILabel alloc] init];
-        _teamNameLabel.text = @"teamImageView";
         [_teamNameLabel sizeToFit];
     }
     return _teamNameLabel;
@@ -72,7 +71,7 @@
 - (UILabel *)teamDetailLabel {
     if (!_teamDetailLabel) {
         _teamDetailLabel = [[UILabel alloc] init];
-        _teamDetailLabel.text = @"teamImageViewteamImageView";
+        _teamDetailLabel.font = [UIFont systemFontOfSize:14];
     }
     return _teamDetailLabel;
 }
@@ -80,6 +79,7 @@
 - (UILabel *)teamPriceLabel {
     if (!_teamPriceLabel) {
         _teamPriceLabel = [[UILabel alloc] init];
+        _teamPriceLabel.font = [UIFont systemFontOfSize:14];
     }
     return _teamPriceLabel;
 }
