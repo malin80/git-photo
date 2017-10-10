@@ -21,5 +21,6 @@
 @property (nonatomic, strong) UILabel *titleLabel2;
 @property (nonatomic, strong) UILabel *giftLabel1;
 @property (nonatomic, strong) UILabel *giftLabel2;
+@property (nonatomic, strong) UIImageView *gradeImageView;
 
 @end

@@ -33,6 +33,7 @@
     [self.contentView addSubview:self.subTitle2Label];
     [self.contentView addSubview:self.titleLabel1];
     [self.contentView addSubview:self.titleLabel2];
+    [self.contentView addSubview:self.gradeImageView];
 }
 
 - (void)setImmutableConstraints {
@@ -48,9 +49,16 @@
         make.top.equalTo(_icon.mas_top).with.offset(10);
     }];
     
-    [_priceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_gradeImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_titleLabel);
         make.top.equalTo(_titleLabel.mas_bottom).with.offset(10);
+        make.height.equalTo(@(20));
+        make.width.equalTo(@(120));
+    }];
+
+    [_priceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_gradeImageView);
+        make.left.equalTo(_gradeImageView.mas_right).with.offset(5);
     }];
     
     [_detailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -210,6 +218,13 @@
         [_titleLabel2 sizeToFit];
     }
     return _titleLabel2;
+}
+
+- (UIImageView *)gradeImageView {
+    if (!_gradeImageView) {
+        _gradeImageView = [[UIImageView alloc] init];
+    }
+    return _gradeImageView;
 }
 
 @end

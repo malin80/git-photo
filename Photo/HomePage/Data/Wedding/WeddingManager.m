@@ -47,6 +47,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(WeddingManager)
                     info.businessPhone = [dict objectForKey:@"businessPhone"];
                     info.businessAddress = [dict objectForKey:@"businessAddress"];
                     info.businessId = [[dict objectForKey:@"businessId"] unsignedLongValue];
+                    info.businessGrade = [dict objectForKey:@"businessGrade"];
                     [self.bussinessInfos addObject:info];
                 }
             }

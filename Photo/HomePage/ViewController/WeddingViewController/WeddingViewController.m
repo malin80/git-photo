@@ -62,7 +62,6 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSArray *array = GET_SINGLETON_FOR_CLASS(WeddingManager).bussinessInfos;
     return GET_SINGLETON_FOR_CLASS(WeddingManager).bussinessInfos.count;
 }
 
@@ -82,6 +81,20 @@
     [SDWebImageCache getImageFromSDWebImageWithUrlString:[NSString stringWithFormat:@"%@%@",baseUrl,info.businessPic] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
         cell.icon.image = image;
     }];
+    if ([info.businessGrade isEqualToString:@"0星"]) {
+        cell.gradeImageView.image = [UIImage imageNamed:@"evalevel0"];
+    } else if ([info.businessGrade isEqualToString:@"1星"]) {
+        cell.gradeImageView.image = [UIImage imageNamed:@"evalevel1"];
+    } else if ([info.businessGrade isEqualToString:@"2星"]) {
+        cell.gradeImageView.image = [UIImage imageNamed:@"evalevel2"];
+    } else if ([info.businessGrade isEqualToString:@"3星"]) {
+        cell.gradeImageView.image = [UIImage imageNamed:@"evalevel3"];
+    } else if ([info.businessGrade isEqualToString:@"4星"]) {
+        cell.gradeImageView.image = [UIImage imageNamed:@"evalevel4"];
+    } else if ([info.businessGrade isEqualToString:@"5星"]) {
+        cell.gradeImageView.image = [UIImage imageNamed:@"evalevel5"];
+    }
+
 
     return cell;
 }
