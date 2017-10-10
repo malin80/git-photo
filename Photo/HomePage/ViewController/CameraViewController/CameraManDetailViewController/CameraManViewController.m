@@ -26,7 +26,6 @@
     [super viewDidLoad];
     
     [self addNotification];
-    [self createTableView];
 }
 
 - (void)addNotification {
@@ -35,7 +34,15 @@
 }
 
 - (void)queryCameraManSuccess {
-    [_tableView reloadData];
+    if (GET_SINGLETON_FOR_CLASS(CameraManager).cameraMans.count > 0) {
+        [self createTableView];
+    } else {
+        [self createNoDataView];
+    }
+}
+
+- (void)createNoDataView {
+    
 }
 
 - (void)createTableView {

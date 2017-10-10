@@ -76,8 +76,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(CameraManager)
 - (void)queryCameraManWithTeamId:(long)teamId {
     [CameraPesRequest queryCarmeraManWithTeamId:teamId withBlock:^(NSDictionary *responseObject, NSString *error) {
         if ([[responseObject objectForKey:@"errorCode"] unsignedLongValue]== 0) {
+            [self.cameraMans removeAllObjects];
             if (![[responseObject objectForKey:@"data"] isKindOfClass:[NSString class]]) {
-                [self.cameraMans removeAllObjects];
                 NSArray *array = [responseObject objectForKey:@"data"];
                 if (array.count > 0) {
                     for (NSDictionary *dict in array) {
@@ -96,13 +96,12 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(CameraManager)
                         info.cameraManComment = [dict objectForKey:@"cameramanComment"];
                         [self.cameraMans addObject:info];
                     }
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [[NSNotificationCenter defaultCenter] postNotificationName:@"queryCameraManSuccess" object:nil];
-                    });
                 }
             }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"queryCameraManSuccess" object:nil];
+            });
         }
-
     }];
 }
 
