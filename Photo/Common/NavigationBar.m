@@ -41,7 +41,8 @@
 
 - (void)setImmutableConstraints {
     [_titieLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.equalTo(self);
+        make.centerY.equalTo(self).with.offset(5);
+        make.centerX.equalTo(self);
     }];
     
     [_backView mas_makeConstraints:^(MASConstraintMaker *make) {

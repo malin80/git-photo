@@ -125,7 +125,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(CameraManager)
             if (![[responseObject objectForKey:@"data"] isKindOfClass:[NSString class]]) {
                 [self.dressMans removeAllObjects];
                 NSArray *array = [responseObject objectForKey:@"data"];
-                [self.dressMans removeAllObjects];
                 if (array.count > 0) {
                     for (NSDictionary *dict in array) {
                         DressManInfo *info = [[DressManInfo alloc] init];

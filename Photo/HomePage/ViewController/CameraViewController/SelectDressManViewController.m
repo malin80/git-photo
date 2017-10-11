@@ -34,7 +34,7 @@
 }
 
 - (void)createTableView {
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHieght) style:UITableViewStyleGrouped];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHieght-64) style:UITableViewStyleGrouped];
     _tableView.dataSource = self;
     _tableView.delegate = self;
     _tableView.backgroundColor = [UIColor whiteColor];
@@ -75,6 +75,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     DressManInfo *dressManInfo = [GET_SINGLETON_FOR_CLASS(CameraManager).dressMans objectAtIndex:indexPath.row];
     GET_SINGLETON_FOR_CLASS(CameraManager).selectedDressManInfo = dressManInfo;
+    [GET_SINGLETON_FOR_CLASS(CameraManager) queryDressManDetailWithId:dressManInfo.dressManId];
     CameraManDetailViewController *controller = [[CameraManDetailViewController alloc] init];
     CameraManInfo *info = [GET_SINGLETON_FOR_CLASS(CameraManager).cameraMans objectAtIndex:indexPath.row];
     controller.cameraManInfo = info;

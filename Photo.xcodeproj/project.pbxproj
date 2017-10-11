@@ -219,6 +219,8 @@
 		F4C618641F3AE2B7004A76B3 /* shopping_no_collection.png in Resources */ = {isa = PBXBuildFile; fileRef = F4C618631F3AE2B7004A76B3 /* shopping_no_collection.png */; };
 		F4C618661F3AE64D004A76B3 /* shopping_no_goods.png in Resources */ = {isa = PBXBuildFile; fileRef = F4C618651F3AE64D004A76B3 /* shopping_no_goods.png */; };
 		F4C618691F3B025F004A76B3 /* CameraManDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C618681F3B025F004A76B3 /* CameraManDetailTableViewCell.m */; };
+		F4CC164E1F8DBCAB00F5FAF1 /* homepage_no_sheying.png in Resources */ = {isa = PBXBuildFile; fileRef = F4CC164D1F8DBCAB00F5FAF1 /* homepage_no_sheying.png */; };
+		F4CC16501F8DC4FA00F5FAF1 /* homepage_no_order.png in Resources */ = {isa = PBXBuildFile; fileRef = F4CC164F1F8DC4FA00F5FAF1 /* homepage_no_order.png */; };
 		F4D3EB6C1F53F62E00569FF0 /* CarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D3EB6B1F53F62E00569FF0 /* CarViewController.m */; };
 		F4D3EB6F1F53FD7400569FF0 /* CarCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D3EB6E1F53FD7400569FF0 /* CarCollectionViewCell.m */; };
 		F4D3EB731F54010300569FF0 /* CarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D3EB721F54010300569FF0 /* CarManager.m */; };
@@ -671,6 +673,8 @@
 		F4C618651F3AE64D004A76B3 /* shopping_no_goods.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shopping_no_goods.png; sourceTree = "<group>"; };
 		F4C618671F3B025F004A76B3 /* CameraManDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraManDetailTableViewCell.h; sourceTree = "<group>"; };
 		F4C618681F3B025F004A76B3 /* CameraManDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraManDetailTableViewCell.m; sourceTree = "<group>"; };
+		F4CC164D1F8DBCAB00F5FAF1 /* homepage_no_sheying.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homepage_no_sheying.png; sourceTree = "<group>"; };
+		F4CC164F1F8DC4FA00F5FAF1 /* homepage_no_order.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homepage_no_order.png; sourceTree = "<group>"; };
 		F4D3EB6A1F53F62E00569FF0 /* CarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarViewController.h; sourceTree = "<group>"; };
 		F4D3EB6B1F53F62E00569FF0 /* CarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarViewController.m; sourceTree = "<group>"; };
 		F4D3EB6D1F53FD7400569FF0 /* CarCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarCollectionViewCell.h; sourceTree = "<group>"; };
@@ -1370,6 +1374,8 @@
 		F48237431F27106300DDD487 /* HomePageImages */ = {
 			isa = PBXGroup;
 			children = (
+				F4CC164F1F8DC4FA00F5FAF1 /* homepage_no_order.png */,
+				F4CC164D1F8DBCAB00F5FAF1 /* homepage_no_sheying.png */,
 				F48237441F27106300DDD487 /* homepage_camera.png */,
 				F48237451F27106300DDD487 /* homepage_car.png */,
 				F48237461F27106300DDD487 /* homepage_cloth.png */,
@@ -2020,7 +2026,7 @@
 				TargetAttributes = {
 					F4A7A08A1F256B96009FAAEE = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = E7PB4E4C55;
+						DevelopmentTeam = NVRZ8WK38H;
 						ProvisioningStyle = Automatic;
 					};
 					F4A7A0A31F256B96009FAAEE = {
@@ -2126,6 +2132,7 @@
 				F482374F1F27106300DDD487 /* homepage_flower.png in Resources */,
 				F407330C1F3BF5420006F1F6 /* common_no_login.png in Resources */,
 				F4A1087A1F6135A500B68F04 /* lead_2_3@3x.jpg in Resources */,
+				F4CC164E1F8DBCAB00F5FAF1 /* homepage_no_sheying.png in Resources */,
 				F41B19CB1F341E490026E483 /* store_number_sub.png in Resources */,
 				F482372E1F26CC4D00DDD487 /* personal_address_delete.png in Resources */,
 				F43A7DD01F4D644B00350A63 /* call.png in Resources */,
@@ -2133,6 +2140,7 @@
 				F4F0AE751F4E7ED000F1B262 /* eva_star_click2.png in Resources */,
 				F482374E1F27106300DDD487 /* homepage_cloth.png in Resources */,
 				F48237521F27106300DDD487 /* homepage_video.png in Resources */,
+				F4CC16501F8DC4FA00F5FAF1 /* homepage_no_order.png in Resources */,
 				F4A7A1181F259445009FAAEE /* personal_header_image.jpg in Resources */,
 				F4F0AE781F4E7ED000F1B262 /* eva_star_click5.png in Resources */,
 				F4A108761F6135A500B68F04 /* lead_1_1@1x.jpg in Resources */,
@@ -2597,7 +2605,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = E7PB4E4C55;
+				DEVELOPMENT_TEAM = NVRZ8WK38H;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2616,7 +2624,7 @@
 					"$(PROJECT_DIR)/Photo/Others/OpenAPI/SDK/WeChat",
 					"$(PROJECT_DIR)/Photo/Others/OpenAPI/SDK/Weibo",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.malin.photo;
+				PRODUCT_BUNDLE_IDENTIFIER = malin.ProductName;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -2628,7 +2636,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = E7PB4E4C55;
+				DEVELOPMENT_TEAM = NVRZ8WK38H;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2647,7 +2655,7 @@
 					"$(PROJECT_DIR)/Photo/Others/OpenAPI/SDK/WeChat",
 					"$(PROJECT_DIR)/Photo/Others/OpenAPI/SDK/Weibo",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.malin.photo;
+				PRODUCT_BUNDLE_IDENTIFIER = malin.ProductName;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

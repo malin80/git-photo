@@ -13,6 +13,7 @@
 #import "CameraManager.h"
 #import "CameraTeamInfo.h"
 #import "SDWebImageCache.h"
+#import "Masonry.h"
 
 @interface CameraDetailViewController () <UITableViewDelegate, UITableViewDataSource>
 {
@@ -34,20 +35,27 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [GET_SINGLETON_FOR_CLASS(CameraManager) queryCameraTeamWithGroupId:self.groupId];
     });
-    if (GET_SINGLETON_FOR_CLASS(CameraManager).cameraTeams.count >0) {
-        [self createTableView];
-    }
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    if (!_tableView) {
-        [_tableView removeFromSuperview];
-    }
 }
 
 - (void)addNotification {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryCameraTeamWithGroupIdSuccess) name:@"queryCameraTeamWithGroupIdSuccess" object:nil];
+}
+
+- (void)createNodataView {
+    UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0, 250, ScreenWidth, ScreenHieght-358)];
+    [self.view addSubview:backView];
+
+    UIImageView *nodataView = [[UIImageView alloc] init];
+    UIImage *image = [UIImage imageNamed:@"homepage_no_sheying"];
+    nodataView.image = image;
+    [backView addSubview:nodataView];
+
+    [nodataView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(backView);
+        make.height.equalTo(@(160));
+        make.width.equalTo(@(50));
+    }];
 }
 
 - (void)createTableView {
@@ -87,6 +95,7 @@
     cell.teamNameLabel.text = info.teamName;
     cell.teamDetailLabel.text = info.teamDetail;
     cell.teamPriceLabel.text = [NSString stringWithFormat:@"服务费¥%ld起",info.teamPrice];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
@@ -105,10 +114,14 @@
 
 #pragma mark --- notification ---
 - (void)queryCameraTeamWithGroupIdSuccess {
-    if (!_tableView) {
+    if (GET_SINGLETON_FOR_CLASS(CameraManager).cameraTeams.count >0) {
         [self createTableView];
+    } else {
+        if (_tableView) {
+            [_tableView removeFromSuperview];
+        }
+        [self createNodataView];
     }
-        [_tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {

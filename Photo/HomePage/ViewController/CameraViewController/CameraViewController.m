@@ -62,7 +62,8 @@
 }
 
 - (void)loadData {
-    _sringArry = [[NSMutableArray alloc]init];
+    _sringArry = [NSMutableArray array];
+//    _sringArry = [NSMutableArray arrayWithObjects:@"婚纱摄影", @"全球旅拍", @"跟拍", @"跟妆", @"艺术写真", @"儿童摄影", @"全家福", @"形象照", @"宝宝照", @"宠物照", nil];
     for (int i = 0; i < GET_SINGLETON_FOR_CLASS(CameraManager).cameraGroups.count; i++) {
         HomePageCameraGroupInfo *info = GET_SINGLETON_FOR_CLASS(CameraManager).cameraGroups[i];
         [_sringArry addObject:info.cameraGroupName];
@@ -123,53 +124,11 @@
     [_pagerController reloadData];
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
-
-
-//-(void)setupAllChildViewController
-//{
-//    self.sliderView = [[YJSliderView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHieght-64)];
-//
-//    self.sliderView.delegate = self;
-//    [self.view addSubview:self.sliderView];
-//     [self.view addSubview:self.scrollView];
-//}
-//- (NSInteger)numberOfItemsInYJSliderView:(YJSliderView *)sliderView {
-//    return GET_SINGLETON_FOR_CLASS(CameraManager).cameraGroups.count;
-//}
-//
-//- (UIView *)yj_SliderView:(YJSliderView *)sliderView viewForItemAtIndex:(NSInteger)index {
-//    HomePageCameraGroupInfo *info = [GET_SINGLETON_FOR_CLASS(CameraManager).cameraGroups objectAtIndex:index];
-//    [GET_SINGLETON_FOR_CLASS(CameraManager).cameraTeams removeAllObjects];
-//    CameraDetailViewController *controller = [[CameraDetailViewController alloc] init];
-//    controller.groupId = info.cameraGroupId;
-//    controller.view.backgroundColor=[UIColor whiteColor];
-//    return controller.view;
-//}
-//
-//- (NSString *)yj_SliderView:(YJSliderView *)sliderView titleForItemAtIndex:(NSInteger)index {
-//    HomePageCameraGroupInfo *info = GET_SINGLETON_FOR_CLASS(CameraManager).cameraGroups[index];
-//    return info.cameraGroupName;
-//}
-//
-//- (NSInteger)initialzeIndexFoYJSliderView:(YJSliderView *)sliderView {
-//    return 0;
-//}
-
-
 #pragma mark --- NavigationBarDelegate ---
 - (void)goBack {
     self.navigationController.navigationBar.hidden = NO;
     [self.navigationController popViewControllerAnimated:NO];
 }
-
-
 
 #pragma mark --- getters and setters ---
 - (HomePageScrollView *)scrollView {
@@ -177,6 +136,11 @@
         _scrollView = [[HomePageScrollView alloc] initWithFrame:CGRectMake(0, 110, ScreenWidth, 250) withIsHomePage:NO];
     }
     return _scrollView;
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 /*

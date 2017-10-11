@@ -11,6 +11,9 @@
 #import "CameraManDetailSecondViewController.h"
 #import "CameraManDetailThirdViewController.h"
 #import "CameraManDetailFourViewController.h"
+#import "DressManDetailFirstViewController.h"
+#import "DressManDetailSecondViewController.h"
+#import "DressManDetailThirdViewController.h"
 #import "SelectDressManViewController.h"
 #import "NavigationBar.h"
 #import "DLTabedSlideView.h"
@@ -34,7 +37,13 @@
 }
 
 - (void)initView {
-    NavigationBar *bar = [[NavigationBar alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 64) withTitle:@"预约摄影师"];
+    NSString *barTitle = @"";
+    if (self.isSelectController) {
+        barTitle = @"预约婚纱摄影 摄影师";
+    } else {
+        barTitle = @"预约摄影师";
+    }
+    NavigationBar *bar = [[NavigationBar alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 64) withTitle:barTitle];
     bar.delegate = self;
     bar.line.hidden=YES;
     [self.view addSubview:bar];
@@ -114,20 +123,20 @@
         switch (index) {
             case 0:
             {
-                CameraManDetailFirstViewController *controller = [[CameraManDetailFirstViewController alloc] init];
-                controller.cameraManInfo = GET_SINGLETON_FOR_CLASS(CameraManager).cameraManInfo;
+                DressManDetailFirstViewController *controller = [[DressManDetailFirstViewController alloc] init];
+                controller.dressManInfo = GET_SINGLETON_FOR_CLASS(CameraManager).dressManInfo;
                 return controller;
             }
             case 1:
             {
-                CameraManDetailSecondViewController *controller = [[CameraManDetailSecondViewController alloc] init];
-                controller.cameraManInfo = self.cameraManInfo;
+                DressManDetailSecondViewController *controller = [[DressManDetailSecondViewController alloc] init];
+                controller.dressManInfo = GET_SINGLETON_FOR_CLASS(CameraManager).dressManInfo;
                 return controller;
             }
             case 2:
             {
-                CameraManDetailThirdViewController *controller = [[CameraManDetailThirdViewController alloc] init];
-                controller.cameraManInfo = GET_SINGLETON_FOR_CLASS(CameraManager).cameraManInfo;
+                DressManDetailThirdViewController *controller = [[DressManDetailThirdViewController alloc] init];
+                controller.dressManInfo = GET_SINGLETON_FOR_CLASS(CameraManager).dressManInfo;
                 return controller;
             }
             default:

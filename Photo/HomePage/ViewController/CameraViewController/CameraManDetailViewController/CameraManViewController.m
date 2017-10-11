@@ -42,7 +42,36 @@
 }
 
 - (void)createNoDataView {
+    UIView *backView = [[UIView alloc] init];
+    [self.view addSubview:backView];
     
+    [backView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view.mas_top);
+        make.bottom.equalTo(self.view.mas_bottom);
+        make.width.equalTo((@(ScreenWidth)));
+    }];
+    
+    UIImageView *nodataView = [[UIImageView alloc] init];
+    UIImage *image = [UIImage imageNamed:@"homepage_no_order"];
+    nodataView.image = image;
+    [backView addSubview:nodataView];
+    
+    [nodataView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(backView);
+        make.height.equalTo(@(100));
+        make.width.equalTo(@(70));
+    }];
+    
+    UILabel *content = [[UILabel alloc] init];
+    content.text = @"团队还没有摄影师！";
+    content.font = [UIFont systemFontOfSize:12];
+    [content sizeToFit];
+    [backView addSubview:content];
+    
+    [content mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(backView);
+        make.top.equalTo(nodataView.mas_bottom);
+    }];
 }
 
 - (void)createTableView {

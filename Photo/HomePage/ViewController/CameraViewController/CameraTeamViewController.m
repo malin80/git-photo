@@ -37,11 +37,16 @@
     UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, 100)];
     UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 100, 30)];
     title.text = [NSString stringWithFormat:@"团队价格¥ %ld起",self.info.teamPrice];
+    title.textColor = [UIColor whiteColor];
+    title.font = [UIFont systemFontOfSize:16];
     [title sizeToFit];
     [titleView addSubview:title];
     
-    UILabel *content = [[UILabel alloc] initWithFrame:CGRectMake(40, 50, 100, 30)];
-    content.text = [NSString stringWithFormat:@"%@",self.info.teamDetail];
+    UILabel *content = [[UILabel alloc] initWithFrame:CGRectMake(40, 50, ScreenWidth-50, 30)];
+    content.numberOfLines = 3;
+    content.text = [NSString stringWithFormat:@"%@",self.info.teamServieInfo];
+    content.textColor = [UIColor whiteColor];
+    content.font = [UIFont systemFontOfSize:14];
     [content sizeToFit];
     [titleView addSubview:content];
     
