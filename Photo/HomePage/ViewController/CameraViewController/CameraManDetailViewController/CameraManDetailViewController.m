@@ -20,6 +20,8 @@
 #import "CameraManager.h"
 #import "LoginManager.h"
 #import "GGActionSheet.h"
+#import "AlertDialog.h"
+
 @interface CameraManDetailViewController () <NavigationBarDelegate, DLTabedSlideViewDelegate,GGActionSheetDelegate>
 @property(nonatomic,strong) GGActionSheet *actionSheetImg;
 @property (nonatomic, strong) DLTabedSlideView *tabedSlideView;
@@ -104,9 +106,16 @@
 }
 
 - (void)confirmOrder {
-    //支付
-    [self.actionSheetImg showGGActionSheet];
-   
+    AlertDialog *dialog = [AlertDialog style:AlertDialogStyleAlert];
+    dialog.title = @"提示";
+    dialog.message = @"该步骤会产生费用哦！！";
+    [dialog addAction:[AlertAction title:@"确定" style:AlertActionStyleDefault handler:^{
+        [self.actionSheetImg showGGActionSheet];
+    }]];
+    [dialog addAction:[AlertAction title:@"取消" style:AlertActionStyleCancel handler:^{
+        
+    }]];
+    [dialog show:self];
 }
 
 #pragma mark --- DLTabedSlideViewDelegate ---

@@ -37,7 +37,9 @@
     for (NSDictionary *dict in worksList) {
         NSString *pic = [dict objectForKey:@"worksOfDresserPics"];
         [SDWebImageCache getImageFromSDWebImageWithUrlString:[NSString stringWithFormat:@"%@%@",baseUrl,pic] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-            [images addObject:image];
+            if (image) {
+                [images addObject:image];
+            }
         }];
 
     }

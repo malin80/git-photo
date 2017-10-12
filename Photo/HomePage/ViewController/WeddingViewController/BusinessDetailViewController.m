@@ -117,7 +117,7 @@
     [_headerView addSubview:nameLabel];
     
     UILabel *priceLabel = [[UILabel alloc] init];
-    priceLabel.text = [NSString stringWithFormat:@"¥ %ld起",self.info.businessPrice];
+    priceLabel.text = [NSString stringWithFormat:@"¥ %ld",self.info.businessPrice];
     [_headerView addSubview:priceLabel];
     
     UILabel *introLabel = [[UILabel alloc] init];

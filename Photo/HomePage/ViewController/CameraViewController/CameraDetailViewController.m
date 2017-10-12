@@ -94,7 +94,7 @@
 
     cell.teamNameLabel.text = info.teamName;
     cell.teamDetailLabel.text = info.teamDetail;
-    cell.teamPriceLabel.text = [NSString stringWithFormat:@"服务费¥%ld起",info.teamPrice];
+    cell.teamPriceLabel.text = [NSString stringWithFormat:@"服务费¥%ld",info.teamPrice];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }

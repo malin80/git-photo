@@ -36,7 +36,7 @@
 - (void)initView {
     UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, 100)];
     UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 100, 30)];
-    title.text = [NSString stringWithFormat:@"团队价格¥ %ld起",self.info.teamPrice];
+    title.text = [NSString stringWithFormat:@"团队价格¥ %ld",self.info.teamPrice];
     title.textColor = [UIColor whiteColor];
     title.font = [UIFont systemFontOfSize:16];
     [title sizeToFit];

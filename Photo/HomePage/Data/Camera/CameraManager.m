@@ -154,6 +154,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(CameraManager)
             self.dressManInfo.worksList = [dict objectForKey:@"worksOfDresserList"];
             self.dressManInfo.commentList = [dict objectForKey:@"commentList"];
             self.dressManInfo.scheduleList = [dict objectForKey:@"scheduleList"];
+            self.dressManInfo.dressManSynopsis = [dict objectForKey:@"dresserSynopsis"];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"queryDressManDetailWithIdSuccess" object:nil];
             });
