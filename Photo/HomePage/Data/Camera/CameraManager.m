@@ -112,6 +112,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(CameraManager)
             self.cameraManInfo.worksList = [dict objectForKey:@"worksOfCameramanList"];
             self.cameraManInfo.commentList = [dict objectForKey:@"commentList"];
             self.cameraManInfo.scheduleList = [dict objectForKey:@"scheduleList"];
+            self.cameraManInfo.cameraManPic = [dict objectForKey:@"cameramanPic"];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"queryCameraManDetailWithIdSuccess" object:nil];
             });
@@ -155,6 +156,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(CameraManager)
             self.dressManInfo.commentList = [dict objectForKey:@"commentList"];
             self.dressManInfo.scheduleList = [dict objectForKey:@"scheduleList"];
             self.dressManInfo.dressManSynopsis = [dict objectForKey:@"dresserSynopsis"];
+            self.dressManInfo.dressManPic = [dict objectForKey:@"dresserPic"];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"queryDressManDetailWithIdSuccess" object:nil];
             });
@@ -185,7 +187,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(CameraManager)
                 NSString *urlString = [dict objectForKey:@"camerSlideImgUrl"];
                 NSInteger imageId = [[dict objectForKey:@"camerSlideId"] integerValue];
                 info.imageUrl = urlString;
-                info.imageId = &(imageId);
+                info.imageId = imageId;
                 [self.scrollViewImages addObject:info];
             }
             dispatch_async(dispatch_get_main_queue(), ^{

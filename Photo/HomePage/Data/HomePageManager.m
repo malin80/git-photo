@@ -33,7 +33,13 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(HomePageManager)
                 NSString *urlString = [dict objectForKey:@"homeSlideImgUrl"];
                 NSInteger imageId = [[dict objectForKey:@"homeSlideId"] integerValue];
                 info.imageUrl = urlString;
-                info.imageId = &(imageId);
+                info.imageId = imageId;
+                NSDictionary *detailDict = [dict objectForKey:@"slideUrl"];
+                info.imageType = [detailDict objectForKey:@"slideType"];
+                info.cameraManId = [[detailDict objectForKey:@"cameramanId"] unsignedLongValue];
+                info.dressManId = [[detailDict objectForKey:@"dresserId"] unsignedLongValue];
+                info.imageSlideUrl = [detailDict objectForKey:@"slideUrlImg"];
+                info.goodsId = [[detailDict objectForKey:@"goodsIds"] unsignedLongValue];
                 [self.scrollViewImages addObject:info];
             }
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -52,7 +58,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(HomePageManager)
                 info.imageUrl = [dict objectForKey:@"recommendSlideImgsUrl"];
                 info.imageName = [dict objectForKey:@"recommendSlideName"];
                 NSInteger imageId = [[dict objectForKey:@"recommendSlideId"] integerValue];
-                info.imageId = &(imageId);
+                info.imageId = imageId;
                 NSArray *temp = [info.imageUrl componentsSeparatedByString:@";"];
                 [self.singleRecommendImages addObject:temp];
                 [self.recommendImages addObject:info];

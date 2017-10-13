@@ -159,6 +159,8 @@
 		F48679331F3D7B0900612E27 /* TableViewCellCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = F48679321F3D7B0900612E27 /* TableViewCellCalculator.m */; };
 		F48679361F3D7BF700612E27 /* StoreCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F48679351F3D7BF700612E27 /* StoreCommentTableViewCell.m */; };
 		F48679391F3D831A00612E27 /* StoreCommentInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F48679381F3D831A00612E27 /* StoreCommentInfo.m */; };
+		F48F0E5C1F90629D0062F6C2 /* ScrollDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F48F0E5B1F90629D0062F6C2 /* ScrollDetailViewController.m */; };
+		F48F0E5F1F906C350062F6C2 /* ScrollDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F48F0E5E1F906C350062F6C2 /* ScrollDetailHeaderView.m */; };
 		F49D6E7C1F4BBF5E00C21477 /* BusinessTypesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F49D6E7B1F4BBF5E00C21477 /* BusinessTypesTableViewCell.m */; };
 		F49D6E821F4BD79D00C21477 /* BusinessCaseDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F49D6E811F4BD79D00C21477 /* BusinessCaseDetailViewController.m */; };
 		F49D6E851F4BD9B100C21477 /* BusinessCaseDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F49D6E841F4BD9B100C21477 /* BusinessCaseDetailTableViewCell.m */; };
@@ -584,6 +586,10 @@
 		F48679351F3D7BF700612E27 /* StoreCommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreCommentTableViewCell.m; sourceTree = "<group>"; };
 		F48679371F3D831A00612E27 /* StoreCommentInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreCommentInfo.h; sourceTree = "<group>"; };
 		F48679381F3D831A00612E27 /* StoreCommentInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreCommentInfo.m; sourceTree = "<group>"; };
+		F48F0E5A1F90629D0062F6C2 /* ScrollDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScrollDetailViewController.h; path = ../ScrollDetailViewController.h; sourceTree = "<group>"; };
+		F48F0E5B1F90629D0062F6C2 /* ScrollDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScrollDetailViewController.m; path = ../ScrollDetailViewController.m; sourceTree = "<group>"; };
+		F48F0E5D1F906C350062F6C2 /* ScrollDetailHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollDetailHeaderView.h; sourceTree = "<group>"; };
+		F48F0E5E1F906C350062F6C2 /* ScrollDetailHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollDetailHeaderView.m; sourceTree = "<group>"; };
 		F49D6E7A1F4BBF5E00C21477 /* BusinessTypesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessTypesTableViewCell.h; sourceTree = "<group>"; };
 		F49D6E7B1F4BBF5E00C21477 /* BusinessTypesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessTypesTableViewCell.m; sourceTree = "<group>"; };
 		F49D6E801F4BD79D00C21477 /* BusinessCaseDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessCaseDetailViewController.h; sourceTree = "<group>"; };
@@ -1367,6 +1373,8 @@
 				F4FD305F1F3304AF00048DD6 /* CameraManTableViewCell.m */,
 				F4C618671F3B025F004A76B3 /* CameraManDetailTableViewCell.h */,
 				F4C618681F3B025F004A76B3 /* CameraManDetailTableViewCell.m */,
+				F48F0E5D1F906C350062F6C2 /* ScrollDetailHeaderView.h */,
+				F48F0E5E1F906C350062F6C2 /* ScrollDetailHeaderView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1583,6 +1591,8 @@
 				F482373C1F2703F700DDD487 /* View */,
 				F4A7A0CF1F256DB1009FAAEE /* HomePageViewController.h */,
 				F4A7A0D01F256DB1009FAAEE /* HomePageViewController.m */,
+				F48F0E5A1F90629D0062F6C2 /* ScrollDetailViewController.h */,
+				F48F0E5B1F90629D0062F6C2 /* ScrollDetailViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -2311,6 +2321,7 @@
 				F4D3F1531F5507F6007728E9 /* FlowerViewController.m in Sources */,
 				F4A7A0961F256B96009FAAEE /* ViewController.m in Sources */,
 				F4B67C731F413A9300DA8E4E /* SelectDressManViewController.m in Sources */,
+				F48F0E5F1F906C350062F6C2 /* ScrollDetailHeaderView.m in Sources */,
 				F4E2E34F1F568E7C00C3CFED /* VideoAuthorInfo.m in Sources */,
 				A50BB41A1F3DAF3700F6158B /* DQconstellationView.m in Sources */,
 				F43A7DC21F4D231E00350A63 /* ClothCollectionViewController.m in Sources */,
@@ -2382,6 +2393,7 @@
 				F482372B1F2606BC00DDD487 /* AddressTableViewCell.m in Sources */,
 				F43A7DB81F4D1ADF00350A63 /* ClothPesRequest.m in Sources */,
 				F40733651F3C3BC00006F1F6 /* DressManViewController.m in Sources */,
+				F48F0E5C1F90629D0062F6C2 /* ScrollDetailViewController.m in Sources */,
 				F4D7D2E91F4FBBC100A39F38 /* HotelPesRequest.m in Sources */,
 				A50BB4161F3DAF3700F6158B /* CalculateTool.m in Sources */,
 				F405D1A41F2EC6480015A8E6 /* CameraViewController.m in Sources */,

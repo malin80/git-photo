@@ -9,7 +9,6 @@
 #import "HomePageScrollView.h"
 #import "HomePagePesRequest.h"
 #import "HomePageManager.h"
-#import "ImageInfo.h"
 #import "SDWebImageCache.h"
 #import "CameraManager.h"
 
@@ -78,8 +77,12 @@
     [self stopTimer];
     ImageInfo *info = [[ImageInfo alloc] init];
     for (int i = 0; i < _dataSource.count; i++) {
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i*ScreenWidth, 0, ScreenWidth, ScrollViewHeght)];
         info = _dataSource[i];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i*ScreenWidth, 0, ScreenWidth, ScrollViewHeght)];
+        imageView.userInteractionEnabled = YES;
+        imageView.tag = info.imageId;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapImageView)];
+        [imageView addGestureRecognizer:tap];
         [SDWebImageCache getImageFromSDWebImageWithUrlString:[NSString stringWithFormat:@"%@%@",baseUrl,info.imageUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
             imageView.image = image;
         }];
@@ -87,6 +90,13 @@
     }
     _currentPage = 0;
     [self startTimer];
+}
+
+- (void)tapImageView {
+    ImageInfo *info = _dataSource[_pageControl.currentPage];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(tapScrollView:)]) {
+        [self.delegate tapScrollView:info];
+    }
 }
 
 - (void)createPageView {

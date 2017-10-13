@@ -11,7 +11,12 @@
 @interface ImageInfo : NSObject
 
 @property (nonatomic, copy) NSString *imageUrl;
-@property (nonatomic, assign) NSInteger *imageId;
+@property (nonatomic, assign) NSInteger imageId;
 @property (nonatomic, copy) NSString *imageName;
+@property (nonatomic, copy) NSString *imageType;
+@property (nonatomic, assign) long cameraManId;
+@property (nonatomic, assign) long dressManId;
+@property (nonatomic, assign) long goodsId;
+@property (nonatomic, copy) NSString *imageSlideUrl;
 
 @end

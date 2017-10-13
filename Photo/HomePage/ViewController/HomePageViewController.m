@@ -15,6 +15,8 @@
 #import "FlowerViewController.h"
 #import "CeremonyViewController.h"
 #import "VideoViewController.h"
+#import "ScrollDetailViewController.h"
+#import "StoreDetailViewController.h"
 
 #import "HomePageScrollView.h"
 #import "HomePageButtonView.h"
@@ -22,8 +24,9 @@
 #import "HomePageManager.h"
 #import "ImageInfo.h"
 #import "SDWebImageCache.h"
+#import "StoreManager.h"
 
-@interface HomePageViewController () <UITableViewDelegate, UITableViewDataSource, HomePageButtonViewDelegate>
+@interface HomePageViewController () <UITableViewDelegate, UITableViewDataSource, HomePageButtonViewDelegate, HomePageScrollViewDelegate>
 {
 }
 
@@ -131,6 +134,7 @@
 - (HomePageScrollView *)scrollView {
     if (!_scrollView) {
         _scrollView = [[HomePageScrollView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 160) withIsHomePage:YES];
+        _scrollView.delegate = self;
     }
     return _scrollView;
 }
@@ -141,6 +145,23 @@
         _buttonView.delegate = self;
     }
     return _buttonView;
+}
+
+#pragma mark --- HomePageScrollViewDelegate ---
+- (void)tapScrollView:(ImageInfo *)info {
+    if ([info.imageType isEqualToString:@"摄影"]) {
+        ScrollDetailViewController *controller = [[ScrollDetailViewController alloc] init];
+        controller.imageInfo = info;
+        [self.navigationController pushViewController:controller animated:NO];
+    } else {
+        for (GoodsInfo *goodsInfo in GET_SINGLETON_FOR_CLASS(StoreManager).goodsInfoArray) {
+            if (goodsInfo.goodsId == info.goodsId) {
+                StoreDetailViewController *controller = [[StoreDetailViewController alloc] init];
+                controller.info = goodsInfo;
+                [self.navigationController pushViewController:controller animated:NO];
+            }
+        }
+    }
 }
 
 #pragma mark --- HomePageButtonViewDelegate ---
