@@ -296,6 +296,8 @@
             case 0:
                 cell.titleLabel1.text = self.info.businessSubText1;
                 cell.titleLabel2.text = self.info.businessSubText2;
+                cell.giftLabel1.hidden = NO;
+                cell.giftLabel2.hidden = NO;
                 break;
             case 1:
                 if (!_isSubViewController) {
@@ -325,6 +327,7 @@
             cell = [[BusinessCommentTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
             cell.delegate = self;
         }
+        [cell createCommentGradeViewWithGrade:[dict objectForKey:@"businessCommentGrade"]];
         [cell setCommentContentText:[dict objectForKey:@"businessCommentText"] withCommentImageUrl:[dict objectForKey:@"businessCommentPic"]];
         cell.memberName.text = [memberDetail objectForKey:@"memberName"];;
         [SDWebImageCache getImageFromSDWebImageWithUrlString:[NSString stringWithFormat:@"%@%@",baseUrl,[memberDetail objectForKey:@"memberPic"]] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {

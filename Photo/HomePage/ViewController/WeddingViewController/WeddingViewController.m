@@ -73,7 +73,7 @@
         cell = [[WeddingTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
     }
     cell.titleLabel.text = info.businessName;
-    cell.priceLabel.text = [NSString stringWithFormat:@"%ld",info.businessPrice];
+    cell.priceLabel.text = [NSString stringWithFormat:@"¥ %ld",info.businessPrice];
     cell.detailLabel.text = [NSString stringWithFormat:@"套系 %ld/ 案例 %ld/ 评论 %ld",info.businessTypeCount,info.businessCaseCount,info.businessCommentCount];
     cell.subTitle1Label.text = info.businessSubText1;
     cell.subTitle2Label.text = info.businessSubText2;

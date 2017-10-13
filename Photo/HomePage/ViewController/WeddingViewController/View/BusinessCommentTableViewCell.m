@@ -26,6 +26,7 @@
 - (void)initView {
     [self.contentView addSubview:self.memberView];
     [self.contentView addSubview:self.memberName];
+    [self.contentView addSubview:self.commentGardeView];
     [self.contentView addSubview:self.commentContent];
 }
 
@@ -33,13 +34,20 @@
     [_memberView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.contentView.mas_top).with.offset(10);
         make.left.equalTo(self.contentView.mas_left).with.offset(20);
-        make.width.equalTo(@(30));
-        make.height.equalTo(@(30));
+        make.width.equalTo(@(40));
+        make.height.equalTo(@(40));
     }];
     
     [_memberName mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(_memberView);
+        make.centerY.equalTo(_memberView).with.offset(-5);
         make.left.equalTo(_memberView.mas_right).with.offset(10);
+    }];
+    
+    [_commentGardeView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(_memberView).with.offset(5);
+        make.left.equalTo(_memberView.mas_right).with.offset(10);
+        make.width.equalTo(@(120));
+        make.height.equalTo(@(20));
     }];
 }
 
@@ -119,6 +127,21 @@
     }
 }
 
+- (void)createCommentGradeViewWithGrade:(NSString *)grade {
+    if ([grade isEqualToString:@"0星"]) {
+        _commentGardeView.image = [UIImage imageNamed:@"evalevel0"];
+    } else if ([grade isEqualToString:@"1星"]) {
+        _commentGardeView.image = [UIImage imageNamed:@"evalevel1"];
+    } else if ([grade isEqualToString:@"2星"]) {
+        _commentGardeView.image = [UIImage imageNamed:@"evalevel2"];
+    } else if ([grade isEqualToString:@"3星"]) {
+        _commentGardeView.image = [UIImage imageNamed:@"evalevel3"];
+    } else if ([grade isEqualToString:@"4星"]) {
+        _commentGardeView.image = [UIImage imageNamed:@"evalevel4"];
+    } else if ([grade isEqualToString:@"5星"]) {
+        _commentGardeView.image = [UIImage imageNamed:@"evalevel5"];
+    }
+}
 
 #pragma mark --- getters and setters ---
 - (UIImageView *)memberView {
@@ -132,6 +155,7 @@
 - (UILabel *)memberName {
     if (!_memberName) {
         _memberName = [[UILabel alloc] init];
+        _memberName.font = [UIFont systemFontOfSize:14];
         [_memberName sizeToFit];
     }
     return _memberName;
@@ -143,4 +167,12 @@
     }
     return _commentContent;
 }
+
+- (UIImageView *)commentGardeView {
+    if (!_commentGardeView) {
+        _commentGardeView = [[UIImageView alloc] init];
+    }
+    return _commentGardeView;
+}
+
 @end

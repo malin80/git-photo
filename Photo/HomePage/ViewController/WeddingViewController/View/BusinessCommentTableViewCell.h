@@ -19,6 +19,7 @@
 
 @property (nonatomic, strong) UIImageView *memberView;
 @property (nonatomic, strong) UILabel *memberName;
+@property (nonatomic, strong) UIImageView *commentGardeView;
 @property (nonatomic, strong) UILabel *commentContent;
 @property (nonatomic, strong) NSArray *temp;
 
@@ -28,4 +29,7 @@
 - (void)setCommentContentText:(NSString*)text withCommentImageUrl:(NSString *)url;
 
 - (void)createCommentImageWithUrl:(NSString *)url;
+
+- (void)createCommentGradeViewWithGrade:(NSString *)grade;
+
 @end

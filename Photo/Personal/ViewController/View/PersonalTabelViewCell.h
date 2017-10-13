@@ -23,4 +23,7 @@
 @property (nonatomic, strong) UILabel *subTitleLabel;
 @property (nonatomic, strong) UILabel *subAddress;
 
+@property (nonatomic, strong) UILabel *giftLabel1;
+@property (nonatomic, strong) UILabel *giftLabel2;
+
 @end

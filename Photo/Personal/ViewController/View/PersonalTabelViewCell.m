@@ -31,6 +31,8 @@
     [self.contentView addSubview:self.subIcon];
     [self.contentView addSubview:self.subTitleLabel];
     [self.contentView addSubview:self.subAddress];
+    [self.contentView addSubview:self.giftLabel1];
+    [self.contentView addSubview:self.giftLabel2];
 }
 
 - (void)setImmutableConstraints {
@@ -92,6 +94,16 @@
     [_subAddress mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.mas_bottom);
         make.left.equalTo(_subTitleLabel);
+    }];
+    
+    [_giftLabel1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(_titleLabel1.mas_left).with.offset(-5);
+        make.centerY.equalTo(_titleLabel1);
+    }];
+    
+    [_giftLabel2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(_titleLabel2.mas_left).with.offset(-5);
+        make.centerY.equalTo(_titleLabel2);
     }];
 }
 
@@ -176,5 +188,36 @@
     }
     return _subAddress;
 }
+
+- (UILabel *)giftLabel1 {
+    if (!_giftLabel1) {
+        _giftLabel1 = [[UILabel alloc] init];
+        _giftLabel1.text = @"优惠礼";
+        _giftLabel1.font = [UIFont systemFontOfSize:12];
+        _giftLabel1.textColor = [UIColor colorR:246 G:84 B:133 alpha:1];
+        _giftLabel1.layer.borderWidth = 1;
+        _giftLabel1.layer.borderColor = [[UIColor colorR:246 G:84 B:133 alpha:1] CGColor];
+        _giftLabel1.layer.cornerRadius = 5;
+        [_giftLabel1 sizeToFit];
+        _giftLabel1.hidden = YES;
+    }
+    return _giftLabel1;
+}
+
+- (UILabel *)giftLabel2 {
+    if (!_giftLabel2) {
+        _giftLabel2 = [[UILabel alloc] init];
+        _giftLabel2.text = @"订单礼";
+        _giftLabel2.font = [UIFont systemFontOfSize:12];
+        _giftLabel2.textColor = [UIColor colorR:246 G:84 B:133 alpha:1];
+        _giftLabel2.layer.borderWidth = 1;
+        _giftLabel2.layer.borderColor = [[UIColor colorR:246 G:84 B:133 alpha:1] CGColor];
+        _giftLabel2.layer.cornerRadius = 5;
+        [_giftLabel2 sizeToFit];
+        _giftLabel2.hidden = YES;
+    }
+    return _giftLabel2;
+}
+
 
 @end

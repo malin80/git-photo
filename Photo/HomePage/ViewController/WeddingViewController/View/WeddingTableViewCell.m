@@ -57,7 +57,7 @@
     }];
 
     [_priceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_gradeImageView);
+        make.centerY.equalTo(_gradeImageView);
         make.left.equalTo(_gradeImageView.mas_right).with.offset(5);
     }];
     
