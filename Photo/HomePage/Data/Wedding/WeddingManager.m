@@ -64,18 +64,18 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(WeddingManager)
             if (![[responseObject objectForKey:@"data"] isKindOfClass:[NSString class]]) {
                 [self.businessCases removeAllObjects];
                 [self.businessTypeDetail removeAllObjects];
-                WeddingBusinessInfo *info = [[WeddingBusinessInfo alloc] init];
                 NSDictionary *dict = [responseObject objectForKey:@"data"];
                 self.businessComments = [dict objectForKey:@"businessCommentList"];
                 self.businessTypes = [dict objectForKey:@"businessSetList"];
-                info.businessName = [dict objectForKey:@"businessName"];
                 self.businessLatitude = [[dict objectForKey:@"businessLatitude"] floatValue];
                 self.businessLongitude = [[dict objectForKey:@"businessLongitude"] floatValue];
                 for (NSDictionary *cases in self.businessTypes) {
-                    NSArray *array = [cases objectForKey:@"businessCaseList"];
+                    WeddingBusinessInfo *info = [[WeddingBusinessInfo alloc] init];
+                    info.businessName = [dict objectForKey:@"businessName"];
                     info.businessTypeName = [cases objectForKey:@"businessSetName"];
                     info.businessTypeStyle = [cases objectForKey:@"businessSetStyle"];
                     info.businessTypeSoldNumber = [[cases objectForKey:@"businessSetSoldNumber"] unsignedLongValue];
+                    NSArray *array = [cases objectForKey:@"businessCaseList"];
                     for (NSDictionary *dict in array) {
                         info.businessCaseId = [[dict objectForKey:@"businessCaseId"] unsignedLongValue];
                         info.businessCasePrice = [[dict objectForKey:@"businessCaseCurrentRate"] unsignedLongValue];

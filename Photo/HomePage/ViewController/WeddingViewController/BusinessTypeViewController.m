@@ -52,17 +52,17 @@
     if (!cell) {
         cell = [[BusinessTypesTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
     }
-    for (NSDictionary *dict in GET_SINGLETON_FOR_CLASS(WeddingManager).businessTypes) {
-        cell.priceLabel.hidden = NO;
-        cell.countLabel.hidden = NO;
-        cell.titleLabel.text = [dict objectForKey:@"businessSetName"];
-        cell.priceLabel.text = [NSString stringWithFormat:@"%@",[dict objectForKey:@"businessSetPreferentialPrice"]];
-        cell.countLabel.text = [NSString stringWithFormat:@"已售：%@",[dict objectForKey:@"businessSetSoldNumber"]];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [SDWebImageCache getImageFromSDWebImageWithUrlString:[NSString stringWithFormat:@"%@%@",baseUrl,[dict objectForKey:@"businessSetPic"]] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-            cell.iconView.image = image;
-        }];
-    }
+    
+    NSDictionary *dict = GET_SINGLETON_FOR_CLASS(WeddingManager).businessTypes[indexPath.row];
+    cell.priceLabel.hidden = NO;
+    cell.countLabel.hidden = NO;
+    cell.titleLabel.text = [dict objectForKey:@"businessSetName"];
+    cell.priceLabel.text = [NSString stringWithFormat:@"%@",[dict objectForKey:@"businessSetPreferentialPrice"]];
+    cell.countLabel.text = [NSString stringWithFormat:@"已售：%@",[dict objectForKey:@"businessSetSoldNumber"]];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [SDWebImageCache getImageFromSDWebImageWithUrlString:[NSString stringWithFormat:@"%@%@",baseUrl,[dict objectForKey:@"businessSetPic"]] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+        cell.iconView.image = image;
+    }];
     
     return cell;
 }
@@ -75,7 +75,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 100;
+    return 150;
 }
 
 
