@@ -63,11 +63,11 @@
 
 - (void)loadData {
     _sringArry = [NSMutableArray array];
-//    _sringArry = [NSMutableArray arrayWithObjects:@"婚纱摄影", @"全球旅拍", @"跟拍", @"跟妆", @"艺术写真", @"儿童摄影", @"全家福", @"形象照", @"宝宝照", @"宠物照", nil];
-    for (int i = 0; i < GET_SINGLETON_FOR_CLASS(CameraManager).cameraGroups.count; i++) {
-        HomePageCameraGroupInfo *info = GET_SINGLETON_FOR_CLASS(CameraManager).cameraGroups[i];
-        [_sringArry addObject:info.cameraGroupName];
-    }
+    _sringArry = [NSMutableArray arrayWithObjects:@"婚纱摄影", @"全球旅拍", @"跟拍", @"跟妆", @"艺术写真", @"儿童摄影", @"全家福", @"形象照", @"宝宝照", @"宠物照", nil];
+//    for (int i = 0; i < GET_SINGLETON_FOR_CLASS(CameraManager).cameraGroups.count; i++) {
+//        HomePageCameraGroupInfo *info = GET_SINGLETON_FOR_CLASS(CameraManager).cameraGroups[i];
+//        [_sringArry addObject:info.cameraGroupName];
+//    }
     
     [self reloadData];
 }
@@ -75,7 +75,7 @@
 #pragma mark - TYTabPagerBarDataSource
 
 - (NSInteger)numberOfItemsInPagerTabBar {
-    return GET_SINGLETON_FOR_CLASS(CameraManager).cameraGroups.count;
+    return _sringArry.count;
 }
 
 - (UICollectionViewCell<TYTabPagerBarCellProtocol> *)pagerTabBar:(TYTabPagerBar *)pagerTabBar cellForItemAtIndex:(NSInteger)index {
@@ -98,13 +98,17 @@
 #pragma mark - TYPagerControllerDataSource
 
 - (NSInteger)numberOfControllersInPagerController {
-    return GET_SINGLETON_FOR_CLASS(CameraManager).cameraGroups.count;
+    return _sringArry.count;
 }
 
 - (UIViewController *)pagerController:(TYPagerController *)pagerController controllerForIndex:(NSInteger)index prefetching:(BOOL)prefetching {
-    HomePageCameraGroupInfo *info = [GET_SINGLETON_FOR_CLASS(CameraManager).cameraGroups objectAtIndex:index];
+    NSString *groupName = _sringArry[index];
     CameraDetailViewController *controller = [[CameraDetailViewController alloc] init];
-    controller.groupId = info.cameraGroupId;
+    for (HomePageCameraGroupInfo *info in GET_SINGLETON_FOR_CLASS(CameraManager).cameraGroups) {
+        if ([info.cameraGroupName isEqualToString:groupName]) {
+            controller.groupId = info.cameraGroupId;
+        }
+    }
     controller.view.backgroundColor=[UIColor whiteColor];
     return controller;
 }
