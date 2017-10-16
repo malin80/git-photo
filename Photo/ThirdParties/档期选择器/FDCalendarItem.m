@@ -8,16 +8,20 @@
 
 #import "FDCalendarItem.h"
 
+static NSDateFormatter *dateFormattor;
+
 @interface FDCalendarCell : UICollectionViewCell
 
 - (UILabel *)dayLabel;
 - (UILabel *)chineseDayLabel;
+- (UILabel *)busyLabel;
 
 @end
 
 @implementation FDCalendarCell {
     UILabel *_dayLabel;
     UILabel *_chineseDayLabel;
+    UILabel *_busyLabel;
 }
 
 - (UILabel *)dayLabel {
@@ -45,6 +49,22 @@
     return _chineseDayLabel;
 }
 
+- (UILabel *)busyLabel {
+    if (!_busyLabel) {
+        _busyLabel = [[UILabel alloc] initWithFrame:CGRectMake(38, 16, 10, 10)];
+        _busyLabel.text = @"忙";
+        _busyLabel.textAlignment = NSTextAlignmentCenter;
+        _busyLabel.font = [UIFont systemFontOfSize:8];
+        _busyLabel.textColor = [UIColor whiteColor];
+        _busyLabel.backgroundColor = [UIColor blueColor];
+        _busyLabel.hidden = YES;
+        _busyLabel.layer.cornerRadius = 5.0f;
+        _busyLabel.clipsToBounds = YES;
+        [self addSubview:_busyLabel];
+    }
+    return _busyLabel;
+}
+
 @end
 
 #define CollectionViewHorizonMargin 5
@@ -62,16 +82,23 @@ typedef NS_ENUM(NSUInteger, FDCalendarMonth) {
 @interface FDCalendarItem () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (strong, nonatomic) UICollectionView *collectionView;
+@property (nonatomic, assign) NSInteger currentMonth;
+@property (nonatomic, assign) NSInteger currentYear;
 
 @end
 
 @implementation FDCalendarItem
 
-- (instancetype)init {
+- (instancetype)initWithDateArray:(NSArray *)dateArray {
     if (self = [super init]) {
         self.backgroundColor = [UIColor clearColor];
+        self.dateArray = dateArray;
         [self setupCollectionView];
         [self setFrame:CGRectMake(0, 0, DeviceWidth, self.collectionView.frame.size.height + CollectionViewVerticalMargin * 2)];
+        NSDate *date = [NSDate date];
+        NSString *dateString = [self stringFromDate:date];
+        self.currentMonth = [[dateString substringWithRange:NSMakeRange(0, 2)] integerValue];
+        self.currentYear = [[dateString substringWithRange:NSMakeRange(3, 4)] integerValue];
     }
     return self;
 }
@@ -83,7 +110,37 @@ typedef NS_ENUM(NSUInteger, FDCalendarMonth) {
     [self.collectionView reloadData];
 }
 
+- (NSString *)stringFromDate:(NSDate *)date {
+    if (!dateFormattor) {
+        dateFormattor = [[NSDateFormatter alloc] init];
+        [dateFormattor setDateFormat:@"MM-yyyy"];
+    }
+    return [dateFormattor stringFromDate:date];
+}
+
+
 #pragma mark - Public 
+- (void)addMonth {
+    self.currentMonth++;
+    if (self.currentMonth>12) {
+        self.currentMonth = 1;
+        self.currentYear++;
+    }
+    [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%ld",self.currentMonth] forKey:@"currentMonth"];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%ld",self.currentYear] forKey:@"currentYear"];
+    [_collectionView reloadData];
+}
+
+- (void)minusMonth {
+    self.currentMonth--;
+    if (self.currentMonth < 1) {
+        self.currentMonth = 12;
+        self.currentYear--;
+    }
+    [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%ld",self.currentMonth] forKey:@"currentMonth"];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%ld",self.currentYear] forKey:@"currentYear"];
+    [_collectionView reloadData];
+}
 
 // 获取date的下个月日期
 - (NSDate *)nextMonthDate {
@@ -196,7 +253,8 @@ typedef NS_ENUM(NSUInteger, FDCalendarMonth) {
     NSInteger firstWeekday = [self weekdayOfFirstDayInDate];
     NSInteger totalDaysOfMonth = [self totalDaysInMonthOfDate:self.date];
     NSInteger totalDaysOfLastMonth = [self totalDaysInMonthOfDate:[self previousMonthDate]];
-    
+    cell.busyLabel.hidden = YES;
+
     if (indexPath.row < firstWeekday) {    // 小于这个月的第一天
         NSInteger day = totalDaysOfLastMonth - firstWeekday + indexPath.row + 1;
         cell.dayLabel.text = [NSString stringWithFormat:@"%ld", day];
@@ -210,7 +268,20 @@ typedef NS_ENUM(NSUInteger, FDCalendarMonth) {
     } else {    // 属于这个月
         NSInteger day = indexPath.row - firstWeekday + 1;
         cell.dayLabel.text= [NSString stringWithFormat:@"%ld", day];
-        
+        for (NSString *date in self.dateArray) {
+            NSInteger year = [[date substringWithRange:NSMakeRange(0, 4)] integerValue];
+            NSInteger month = [[date substringWithRange:NSMakeRange(5, 2)] integerValue];
+            NSInteger subDay = [[date substringFromIndex:8] integerValue];
+            NSInteger currentMonth = [[[NSUserDefaults standardUserDefaults] objectForKey:@"currentMonth"] integerValue];
+            if (!currentMonth) {
+                currentMonth = self.currentMonth;
+            }
+            if (currentMonth == month && self.currentYear == year) {
+                if (day == subDay) {
+                    cell.busyLabel.hidden = NO;
+                }
+            }
+        }
         if (day == [[NSCalendar currentCalendar] component:NSCalendarUnitDay fromDate:self.date]) {
             cell.backgroundColor = [UIColor redColor];
             cell.layer.cornerRadius = cell.frame.size.height / 2;

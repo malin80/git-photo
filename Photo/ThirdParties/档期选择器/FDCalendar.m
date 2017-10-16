@@ -30,11 +30,11 @@ static NSDateFormatter *dateFormattor;
 
 @implementation FDCalendar
 
-- (instancetype)initWithCurrentDate:(NSDate *)date {
+- (instancetype)initWithCurrentDate:(NSDate *)date withDateArray:(NSArray *)dateArray {
     if (self = [super init]) {
         self.backgroundColor = [UIColor colorWithRed:236 / 255.0 green:236 / 255.0 blue:236 / 255.0 alpha:1.0];
         self.date = date;
-        
+        self.dateArray = dateArray;
         [self setupTitleBar];
         [self setupWeekHeader];
         [self setupCalendarItems];
@@ -179,18 +179,18 @@ static NSDateFormatter *dateFormattor;
 - (void)setupCalendarItems {
     self.scrollView = [[UIScrollView alloc] init];
     
-    self.leftCalendarItem = [[FDCalendarItem alloc] init];
+    self.leftCalendarItem = [[FDCalendarItem alloc] initWithDateArray:self.dateArray];
     [self.scrollView addSubview:self.leftCalendarItem];
     
     CGRect itemFrame = self.leftCalendarItem.frame;
     itemFrame.origin.x = DeviceWidth;
-    self.centerCalendarItem = [[FDCalendarItem alloc] init];
+    self.centerCalendarItem = [[FDCalendarItem alloc] initWithDateArray:self.dateArray];
     self.centerCalendarItem.frame = itemFrame;
     self.centerCalendarItem.delegate = self;
     [self.scrollView addSubview:self.centerCalendarItem];
     
     itemFrame.origin.x = DeviceWidth * 2;
-    self.rightCalendarItem = [[FDCalendarItem alloc] init];
+    self.rightCalendarItem = [[FDCalendarItem alloc] initWithDateArray:self.dateArray];
     self.rightCalendarItem.frame = itemFrame;
     [self.scrollView addSubview:self.rightCalendarItem];
 }
@@ -243,11 +243,13 @@ static NSDateFormatter *dateFormattor;
 // 跳到上一个月
 - (void)setPreviousMonthDate {
     [self setCurrentDate:[self.centerCalendarItem previousMonthDate]];
+    [self.centerCalendarItem minusMonth];
 }
 
 // 跳到下一个月
 - (void)setNextMonthDate {
     [self setCurrentDate:[self.centerCalendarItem nextMonthDate]];
+    [self.centerCalendarItem addMonth];
 }
 
 - (void)showDatePicker {

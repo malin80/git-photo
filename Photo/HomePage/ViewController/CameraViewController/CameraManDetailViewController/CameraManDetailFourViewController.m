@@ -7,6 +7,7 @@
 //
 
 #import "CameraManDetailFourViewController.h"
+#import "CameraManager.h"
 
 @interface CameraManDetailFourViewController ()
 
@@ -16,7 +17,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    FDCalendar *calendar = [[FDCalendar alloc] initWithCurrentDate:[NSDate date]];
+    
+    NSMutableArray *dateArray = [NSMutableArray array];
+    for (NSDictionary *dict in GET_SINGLETON_FOR_CLASS(CameraManager).cameraManInfo.scheduleList) {
+        NSString *date = [dict objectForKey:@"scheduleDate"];
+        [dateArray addObject:date];
+    }
+    
+    FDCalendar *calendar = [[FDCalendar alloc] initWithCurrentDate:[NSDate date] withDateArray:dateArray];
     calendar.daili=self;
     calendar.frame=CGRectMake(0, 0, ScreenWidth, 400);
     [self.view addSubview:calendar];

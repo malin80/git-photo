@@ -13,6 +13,7 @@
 @end
 @interface FDCalendar : UIView
 
-- (instancetype)initWithCurrentDate:(NSDate *)date;
+- (instancetype)initWithCurrentDate:(NSDate *)date withDateArray:(NSArray *)dateArray;
 @property (weak, nonatomic) id<showDataDelegate> daili;
+@property (nonatomic, strong) NSArray *dateArray;
 @end

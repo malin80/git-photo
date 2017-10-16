@@ -18,10 +18,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    FDCalendar *calendar = [[FDCalendar alloc] initWithCurrentDate:[NSDate date]];
-    calendar.daili=self;
-    calendar.frame=CGRectMake(0, 0, ScreenWidth, 400);
-    [self.view addSubview:calendar];
+//    FDCalendar *calendar = [[FDCalendar alloc] initWithCurrentDate:[NSDate date]];
+//    calendar.daili=self;
+//    calendar.frame=CGRectMake(0, 0, ScreenWidth, 400);
+//    [self.view addSubview:calendar];
 }
 
 -(void)showData:(NSString *)riqi{

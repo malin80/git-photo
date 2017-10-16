@@ -101,6 +101,19 @@
         [self showtext:@"请选择档期"];
         return;
     }
+    NSString *selectedTime = GET_SINGLETON_FOR_CLASS(CameraManager).selectedTime;
+    NSMutableArray *dateArray = [NSMutableArray array];
+    for (NSDictionary *dict in GET_SINGLETON_FOR_CLASS(CameraManager).cameraManInfo.scheduleList) {
+        NSString *date = [dict objectForKey:@"scheduleDate"];
+        [dateArray addObject:date];
+    }
+    for (int i=0; i<dateArray.count; i++) {
+        NSString *date = dateArray[i];
+        if ([selectedTime isEqualToString:date]) {
+            [self showtext:@"档期已经有约了"];
+            return;
+        }
+    }
     SelectDressManViewController *controller = [[SelectDressManViewController alloc] init];
     [self.navigationController pushViewController:controller animated:NO];
 }

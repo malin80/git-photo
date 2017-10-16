@@ -39,7 +39,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(HomePageManager)
                 info.cameraManId = [[detailDict objectForKey:@"cameramanId"] unsignedLongValue];
                 info.dressManId = [[detailDict objectForKey:@"dresserId"] unsignedLongValue];
                 info.imageSlideUrl = [detailDict objectForKey:@"slideUrlImg"];
-                info.goodsId = [[detailDict objectForKey:@"goodsIds"] unsignedLongValue];
+                info.goodsId = [[detailDict objectForKey:@"goodsIds"] unsignedLongValue ];
                 [self.scrollViewImages addObject:info];
             }
             dispatch_async(dispatch_get_main_queue(), ^{

@@ -16,9 +16,13 @@
 
 @property (strong, nonatomic) NSDate *date;
 @property (weak, nonatomic) id<FDCalendarItemDelegate> delegate;
+@property (nonatomic, strong) NSArray *dateArray;
 
+- (instancetype)initWithDateArray:(NSArray *)dateArray;
 - (NSDate *)nextMonthDate;
 - (NSDate *)previousMonthDate;
+- (void)addMonth;
+- (void)minusMonth;
 
 @end
 
