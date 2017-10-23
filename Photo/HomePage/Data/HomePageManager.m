@@ -27,6 +27,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(HomePageManager)
 - (void)loadScrollViewImages {
     [HomePagePesRequest loadPageScrollViewImage:^(NSDictionary *responseObject,NSString *error){
         if ([[responseObject objectForKey:@"errorCode"] unsignedLongValue] == 0) {
+            [self.scrollViewImages removeAllObjects];
             NSArray *urlArray = [responseObject objectForKey:@"data"];
             for (NSDictionary *dict in urlArray) {
                 ImageInfo *info = [[ImageInfo alloc] init];

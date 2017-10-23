@@ -30,6 +30,12 @@
     
     [self loadData];
 }
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [_scrollView removeFromSuperview];
+    _scrollView = nil;
+}
+
 - (void)addTabPageBar {
     TYTabPagerBar *tabBar = [[TYTabPagerBar alloc]init];
     tabBar.layout.barStyle = TYPagerBarStyleProgressElasticView;
@@ -64,10 +70,6 @@
 - (void)loadData {
     _sringArry = [NSMutableArray array];
     _sringArry = [NSMutableArray arrayWithObjects:@"婚纱摄影", @"全球旅拍", @"跟拍", @"跟妆", @"艺术写真", @"儿童摄影", @"全家福", @"形象照", @"宝宝照", @"宠物照", nil];
-//    for (int i = 0; i < GET_SINGLETON_FOR_CLASS(CameraManager).cameraGroups.count; i++) {
-//        HomePageCameraGroupInfo *info = GET_SINGLETON_FOR_CLASS(CameraManager).cameraGroups[i];
-//        [_sringArry addObject:info.cameraGroupName];
-//    }
     
     [self reloadData];
 }

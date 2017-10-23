@@ -59,18 +59,20 @@
 
 - (void)createScrollView
 {
-    _scrollView = [[UIScrollView alloc] init];
-    _scrollView.frame = CGRectMake(0, 0, ScreenWidth, ScrollViewHeght);
-    _scrollView.backgroundColor = [UIColor grayColor];
-    _scrollView.contentSize = CGSizeMake(_dataSource.count*ScreenWidth, ScrollViewHeght);
-    _scrollView.showsHorizontalScrollIndicator = NO;
-    _scrollView.showsVerticalScrollIndicator = NO;
-    _scrollView.backgroundColor = [UIColor clearColor];
-    _scrollView.pagingEnabled = YES;
-    _scrollView.delegate = self;
-    [self addSubview:_scrollView];
-    [self createImageView];
-    [self createPageView];
+    if (!_scrollView) {
+        _scrollView = [[UIScrollView alloc] init];
+        _scrollView.frame = CGRectMake(0, 0, ScreenWidth, ScrollViewHeght);
+        _scrollView.backgroundColor = [UIColor grayColor];
+        _scrollView.contentSize = CGSizeMake(_dataSource.count*ScreenWidth, ScrollViewHeght);
+        _scrollView.showsHorizontalScrollIndicator = NO;
+        _scrollView.showsVerticalScrollIndicator = NO;
+        _scrollView.backgroundColor = [UIColor clearColor];
+        _scrollView.pagingEnabled = YES;
+        _scrollView.delegate = self;
+        [self addSubview:_scrollView];
+        [self createImageView];
+        [self createPageView];
+    }
 }
 
 - (void)createImageView {
